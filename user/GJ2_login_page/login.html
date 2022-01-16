@@ -53,7 +53,11 @@
                         <input type="password" class="user_pw">
                     </div>
                 </div>
-                <div class="errmsg"></div>
+                <div id="errmsg">
+                    <span class="id_err">아이디를 입력해 주세요</span>
+                    <span class="pw_err">비밀번호를 입력해 주세요</span>
+                    <span class="idpw_err">아이디 또는 비밀번호가 잘못 입력되었습니다.<br />아이디와 비밀번호를 정확히 입력해 주세요.</span>
+                </div>
                 <!-- 로그인 버튼 -->
                 <div class="btn_group">
                     <button class="btn_login" type="submit">로그인</button>
@@ -76,12 +80,10 @@
             const regexHelper = new RegexHelper();
 
             /** 아이디 검사 */
-            if (!regexHelper.value(".user_id", "아이디를 입력해 주세요.")) { return false; }
-            if (!regexHelper.eng_num(".user_id", "아이디는 영어와 숫자 조합만 입력 가능합니다.")) { return false; }
+            if (!regexHelper.id_value(".user_id", "아이디를 입력해 주세요.")) { return false; }
 
             /** 비밀번호 검사 */
-            if (!regexHelper.value(".user_pw", "비밀번호를 입력해 주세요.")) { return false; }
-            if (!regexHelper.compare_to(".user_pw", "#user_pw_re", "비밀번호 확인이 잘못되었습니다")) { return false; }
+            if (!regexHelper.pw_value(".user_pw", "비밀번호를 입력해 주세요.")) { return false; }
 
             // 처리 완료
             alert("!!입력형식 검사 완료!!");

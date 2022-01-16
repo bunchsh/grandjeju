@@ -86,7 +86,6 @@ html body {
 
 /** PASSWORD */
 #container #content #login .password_group {
-    padding-bottom: 50px;
     font-size: 0;
     text-align: center;
 }
@@ -116,6 +115,22 @@ html body {
 }
 #container #content #login .password_group .password_input .user_pw :invalid {
 	background-color: red;
+}
+
+/** ERROR message */
+#container #content #errmsg {
+    display: block;
+    width: 210px;
+    height: 55px;
+    margin: 10px auto;
+}
+#container #content #errmsg span {
+    display: none;
+    text-align: right;
+    width: 210px;
+    font-size: 8px;
+    font-weight: bold;
+    color: red;
 }
 
 /** LOGIN button */
