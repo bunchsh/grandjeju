@@ -16,7 +16,7 @@ html body {
 /** ---------- HEADER ---------- */
 #header {
     width: 360px;
-    padding-bottom: 10px;
+    padding: 10px 0;
     border-width: 350px;
     border-bottom: 1px solid gray;
 }
