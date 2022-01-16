@@ -28,6 +28,7 @@ class RegexHelper {
             return false; // 실패했음을 반환
         }
         span.style.display='none';
+        input.style.border='2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
@@ -46,6 +47,7 @@ class RegexHelper {
             return false; // 실패했음을 반환
         }
         span.style.display='none';
+        input.style.border='2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
