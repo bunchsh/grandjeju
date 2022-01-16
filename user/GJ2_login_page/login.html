@@ -80,10 +80,10 @@
             const regexHelper = new RegexHelper();
 
             /** 아이디 검사 */
-            if (!regexHelper.id_value(".user_id", "아이디를 입력해 주세요.")) { return false; }
+            if (!regexHelper.id_value(".user_id")) { return false; }
 
             /** 비밀번호 검사 */
-            if (!regexHelper.pw_value(".user_pw", "비밀번호를 입력해 주세요.")) { return false; }
+            if (!regexHelper.pw_value(".user_pw")) { return false; }
 
             // 처리 완료
             alert("!!입력형식 검사 완료!!");
