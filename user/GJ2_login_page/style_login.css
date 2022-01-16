@@ -80,16 +80,13 @@ html body {
     border: 2px solid #ddd;
     border-radius: 0 5px 5px 0;
 }
-#container #content #login .id_group .id_input .user_id :invalid {
-	background-color: red;
-}
 
 /** PASSWORD */
-#container #content #login .password_group {
+#container #content #login .pw_group {
     font-size: 0;
     text-align: center;
 }
-#container #content #login .password_group .password_logo {
+#container #content #login .pw_group .pw_logo {
     display: inline-block;
     background-color: black;
     width: 40px;
@@ -97,24 +94,21 @@ html body {
     border-radius: 10% 0 0 10%;
     vertical-align: bottom;
 }
-#container #content #login .password_group .password_logo i {
+#container #content #login .pw_group .pw_logo i {
     display: block;
     color: white;
     font-size: 20px;
     text-align: center;
     padding-top: 10px;
 }
-#container #content #login .password_group .password_input {
+#container #content #login .pw_group .pw_input {
     display: inline-block;
 }
-#container #content #login .password_group .password_input .user_pw {
+#container #content #login .pw_group .pw_input .user_pw {
     width: 170px;
     height: 35px;
     border: 2px solid #ddd;
     border-radius: 0 5px 5px 0;
-}
-#container #content #login .password_group .password_input .user_pw :invalid {
-	background-color: red;
 }
 
 /** ERROR message */
@@ -134,11 +128,11 @@ html body {
 }
 
 /** LOGIN button */
-#container #content #login .btn_group {
+#container #content #login #btn_group {
     padding-bottom: 10px;
     text-align: center;
 }
-#container #content #login .btn_group .btn_login {
+#container #content #login #btn_group .btn_login {
     width: 100px;
     height: 40px;
     font-size: 14px;
@@ -149,10 +143,10 @@ html body {
 }
 
 /** JOIN link */
-#container #content #login .join_group {
+#container #content #login #join_group {
     text-align: center;
 }
-#container #content #login .join_group .join {
+#container #content #login #join_group .join {
     font-size: 12px;
     color: gray;
     text-align: center;

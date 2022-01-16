@@ -13,15 +13,17 @@ class RegexHelper {
      * @param {string} msg      값이 없을 경우 표시할 메시지 내용
      * @return {boolean}        입력된 경우 true / 입력되지 않은 경우 false
      */
-    id_value(selector, msg) {
+    id_value(selector) {
         // 앞뒤의 공백을 제외하고 내용만 추출
         const field = document.querySelector(selector);
         const content = field.value.trim();
         const span = document.querySelector(".id_err");
+        const input = document.querySelector(".user_id");
 
         if (!content) {
             // 값이 없다면?
             span.style.display='block';
+            input.style.border='2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
         }
@@ -29,15 +31,17 @@ class RegexHelper {
         return true; // 성공했음을 반환
     }
 
-    pw_value(selector, msg) {
+    pw_value(selector) {
         // 앞뒤의 공백을 제외하고 내용만 추출
         const field = document.querySelector(selector);
         const content = field.value.trim();
         const span = document.querySelector(".pw_err");
+        const input = document.querySelector(".user_pw");
 
         if (!content) {
             // 값이 없다면?
             span.style.display='block';
+            input.style.border='2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
         }
