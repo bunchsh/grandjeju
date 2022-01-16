@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            max-width: 360px;
+            margin: auto;
+        }
+        #over {
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* HEADER */
+        #header {
+            width: 360px;
+            height: 60px;
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: 5;
+        }
+        #header .hamburger_icon {
+            float: left;
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            top:15px;
+            left: 10px;
+            cursor: pointer;
+        }
+        #header .logo {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            left: 155px;
+            top: 5px;
+        }
+        #header .header_warp {
+            position: relative;
+        }
+        #header .header_warp img {
+            display: block;
+            width: 100%;
+        }
+        #header .header_warp::after {
+            clear: both;
+            display: block;
+            float: none;
+            content: '';
+        }
+
+        /* CONTAINER */
+        .swiper {
+            width: 360px;
+            height: 100%;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #000 !important;
+        }
+
+        /* NAV_BAR */
+        #side_menu_bar {
+            z-index: 10;
+            max-width: 290px;
+            width: 290px;
+            background-color: rgb(0,0,0);
+            color: #fff;
+            position: absolute;
+            top: 0;
+            display: inline-block;
+            height: 800px;
+            overflow: hidden;
+            transform: translateX(-100%)
+        }
+        .side_menu_bar_active{
+            transform: translateX(0%) !important;
+        }
+
+        #side_menu_bar .side_menu {
+            list-style: none;
+            position: relative;
+            padding: 0px;
+        }
+        #side_menu_bar .side_menu li {
+            padding: 0 10px;
+        }
+        #side_menu_bar .side_menu li a {
+            padding: 16px;
+            display: block;
+        }
+        #side_menu_bar .x_button {
+            position: relative;
+            height: 30px;
+        }
+        #side_menu_bar .x_button a{
+            height: 20px;
+            width: 20px;
+            float: right;
+            margin: 20px 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        #side_menu_bar img {
+            display: block;
+            width: 100%;
+        }
+    
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+</head>
+<body>
+    <div id="over">
+        <!-- HEADER -->
+        <div id="header">
+            <warp class="header_warp">
+                <div class="hamburger_icon">
+                    <a><img src="asset/img/Hamburger_icon.png"></a>
+                </div>
+                <div class="logo"><img src="asset/img/logo.png"></div>
+            </warp> 
+        </div>
+        <!-- CONTAINER -->
+        <div id="container" >
+            <!-- 스위퍼 라이브러리 -->
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="asset/img/main_page.png"></div>
+                    <div class="swiper-slide"><img src="asset/img/main_page_2.png"></div>
+                    <div class="swiper-slide"><img src="asset/img/main_page_3.png"></div>
+                </div>
+                <!-- pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- 사이드 메뉴바 -->
+        <aside id="side_menu_bar">
+            <div class="x_button"><a><img src="asset/img/X_button.png"></a></div>
+            <ul class="side_menu">
+                <li><a>HOME</a></li>
+                <li><a>LOGIN</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>ROOM INFO</a></li>
+                <li><a>ROOM</a></li>
+                <li><a>COMUNITY</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script type="module">
+        var swiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+    <script>
+        const burger = document.querySelector(".hamburger_icon");
+        const side = document.querySelector("#side_menu_bar");
+        const x = document.querySelector(".x_button");
+
+        burger.addEventListener("click" ,e =>{
+            side.classList.add("side_menu_bar_active")
+            side.style.transition = "transform 0.5s";
+        })
+
+        x.addEventListener("click" ,e =>{
+            side.classList.remove("side_menu_bar_active");
+        })
+    </script>
+</body>
+</html>

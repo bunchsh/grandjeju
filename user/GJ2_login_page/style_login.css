@@ -74,6 +74,12 @@ html body {
 #container #content #login .id_group .id_input {
     display: inline-block;
 }
+#container #content #login .id_group a {
+    display: block;
+    height: 20px;
+    z-index: 10;
+
+}
 #container #content #login .id_group .id_input .user_id {
     width: 170px;
     height: 35px;
