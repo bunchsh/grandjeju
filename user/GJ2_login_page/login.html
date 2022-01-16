@@ -1,0 +1,92 @@
+<!--
+ @filename    : login.html
+ @author      : 한송희 (onee.ssong@gmail.com)
+ @description : Grandjeju 로그인 페이지의 구조 구현
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandJeju</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="./style_login.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div id="header">
+        <span class="menu"><i class="fas fa-bars"></i></span>
+        <h2 class="title">LOGIN</h2>
+    </div>
+
+    <!-- CONTAINER -->
+    <div id="container">
+        <!-- CONTENT -->
+        <div id="content">
+            <!-- 로고 -->
+            <div class="logo">
+                <img src="./img/logo2.png" alt="logo">
+            </div>
+
+            <!-- 로그인 폼 -->
+            <form id="login">
+                <!-- 아이디 입력 -->
+                <div class="id_group">
+                    <div class="id_logo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="id_input">
+                        <input type="text" class="user_id">
+                    </div>
+                </div>
+                <!-- 비밀번호 입력 -->
+                <div class="password_group">
+                    <div class="password_logo">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="password_input">
+                        <input type="password" class="user_pw">
+                    </div>
+                </div>
+                <div class="errmsg"></div>
+                <!-- 로그인 버튼 -->
+                <div class="btn_group">
+                    <button class="btn_login" type="submit">로그인</button>
+                </div>
+                <!-- 회원가입 링크 -->
+                <div class="join_group">
+                    <a href="#" class="join">회원가입</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="js/login_regex_helper.js"></script>
+    <script type="text/javascript">
+        document.querySelector('#login').addEventListener("submit", e => {
+            e.preventDefault();
+
+            const regexHelper = new RegexHelper();
+
+            /** 아이디 검사 */
+            if (!regexHelper.value(".user_id", "아이디를 입력해 주세요.")) { return false; }
+            if (!regexHelper.eng_num(".user_id", "아이디는 영어와 숫자 조합만 입력 가능합니다.")) { return false; }
+
+            /** 비밀번호 검사 */
+            if (!regexHelper.value(".user_pw", "비밀번호를 입력해 주세요.")) { return false; }
+            if (!regexHelper.compare_to(".user_pw", "#user_pw_re", "비밀번호 확인이 잘못되었습니다")) { return false; }
+
+            // 처리 완료
+            alert("!!입력형식 검사 완료!!");
+        });
+    </script>
+</body>
+
+</html>

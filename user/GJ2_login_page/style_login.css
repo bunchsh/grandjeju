@@ -1,0 +1,144 @@
+/**
+ * @filename    : style_login.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 로그인 페이지의 스타일 적용 코드 모음
+ */
+
+@charset "UTF-8";
+
+/** ---------- ALL ---------- */
+html body {
+    width: 360px;
+    height: auto;
+}
+
+/** ---------- HEADER ---------- */
+#header {
+    width: 360px;
+    padding-bottom: 10px;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+}
+#header .menu {
+    display: inline;
+    font-size: 26px;
+    float: left;
+    margin-left: 10px;
+}
+
+#header .title {
+    font-size: 24px;
+    margin: 0 150px;
+}
+
+/** ---------- CONTAINER ---------- */
+#container {
+    width: 360px;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    width: 360px;
+}
+/** logo */
+#container #content .logo {
+    margin: 80px 0 30px 0;
+    text-align: center;
+}
+#container #content .logo img {
+    width: 120px;
+    height: 120px;
+}
+
+/** form */
+/** ID */
+#container #content #login .id_group {
+    padding-bottom: 10px;
+    font-size: 0;
+    vertical-align: bottom;
+    text-align: center;
+}
+#container #content #login .id_group .id_logo {
+    display: inline-block;
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 10% 0 0 10%;
+}
+#container #content #login .id_group .id_logo i {
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 8px;
+}
+#container #content #login .id_group .id_input {
+    display: inline-block;
+}
+#container #content #login .id_group .id_input .user_id {
+    width: 170px;
+    height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 0 5px 5px 0;
+}
+#container #content #login .id_group .id_input .user_id :invalid {
+	background-color: red;
+}
+
+/** PASSWORD */
+#container #content #login .password_group {
+    padding-bottom: 50px;
+    font-size: 0;
+    text-align: center;
+}
+#container #content #login .password_group .password_logo {
+    display: inline-block;
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 10% 0 0 10%;
+    vertical-align: bottom;
+}
+#container #content #login .password_group .password_logo i {
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+}
+#container #content #login .password_group .password_input {
+    display: inline-block;
+}
+#container #content #login .password_group .password_input .user_pw {
+    width: 170px;
+    height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 0 5px 5px 0;
+}
+#container #content #login .password_group .password_input .user_pw :invalid {
+	background-color: red;
+}
+
+/** LOGIN button */
+#container #content #login .btn_group {
+    padding-bottom: 10px;
+    text-align: center;
+}
+#container #content #login .btn_group .btn_login {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 5px 5px 5px 5px;
+}
+
+/** JOIN link */
+#container #content #login .join_group {
+    text-align: center;
+}
+#container #content #login .join_group .join {
+    font-size: 12px;
+    color: gray;
+    text-align: center;
+}
