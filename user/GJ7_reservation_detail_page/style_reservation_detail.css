@@ -119,6 +119,16 @@ html body {
     margin: 0 auto;
 }
 
+#container #content .btn_group .btn_cancel_oneday {
+    display: block;
+    width: 330px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    margin: 0 auto;
+}
+
 /** 환불 관련 안내 */
 #container #content .notice_group .notice {
     display: block;
