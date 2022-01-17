@@ -25,6 +25,7 @@ const menu = document.querySelectorAll(".dropdown_menu")
 
 for(const article of articles){
     article.addEventListener("click" ,e =>{
+        
         const sibling = article.nextElementSibling;
         const img = article.lastElementChild;
         
@@ -35,6 +36,7 @@ for(const article of articles){
         } else {
             sibling.setAttribute("id","dropdown_menu_active");
             img.src = "./assets/img/up-arrow.png"
+            console.log('hi');
         }
     })
 }
