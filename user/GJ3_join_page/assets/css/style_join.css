@@ -1,0 +1,71 @@
+/** ---------- ALL ---------- */
+html body {
+    width: 360px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/** ---------- HEADER ---------- */
+#header {
+    width: 360px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+}
+
+#header .hamburger_icon img {
+    float: left;
+    height: 30px;
+    width: 30px;
+    top: 15px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#header .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/* form */
+.join_form{
+    margin-top: 30px;
+}
+form div {
+    width: 330px;
+    position:relative;
+    margin: auto;
+}
+form div a {
+    width: 300px;
+    padding: 10px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+form div input{
+    padding: 0;
+    height: 35px;
+    width: 310px;
+    margin: 0 10px 10px 10px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #000;
+}
+form .join_submit{
+    width: 310px;
+    height: 45px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #000;
+    
+}
+form .join_button_wrap {
+    margin-top: 30px;
+    text-align: center;
+
+}
