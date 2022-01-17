@@ -108,3 +108,12 @@ a {
     position: relative;
     cursor: pointer;
 }
+
+/* logout */
+#logout {
+    position: fixed;
+    bottom: 15px;
+}
+#logout a {
+    color: #9f9f9f;
+}
