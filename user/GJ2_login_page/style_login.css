@@ -165,7 +165,8 @@ html body {
     font-weight: bold;
     color: white;
     background-color: black;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 /** JOIN link */
