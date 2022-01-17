@@ -18,61 +18,79 @@
 </head>
 
 <body>
-    <!-- HEADER -->
-    <div id="header">
-        <span class="menu"><i class="fas fa-bars"></i></span>
-        <h2 class="title">LOGIN</h2>
-    </div>
-
-    <!-- CONTAINER -->
-    <div id="container">
-        <!-- CONTENT -->
-        <div id="content">
-            <!-- 로고 -->
-            <div class="logo">
-                <img src="./img/logo2.png" alt="logo">
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <div class="hamburger_icon">
+                <a><img src="assets/img/Hamburger_icon.png"></a>
             </div>
-
-            <!-- 로그인 폼 -->
-            <form id="login">
-                <!-- 아이디 입력 -->
-                <div class="id_group">
-                    <div class="id_logo">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="id_input">
-                        <input type="text" class="user_id">
-                    </div>
-                    <a><span>비밀번호가 틀립니다.</span></a>
-                </div>
-                <!-- 비밀번호 입력 -->
-                <div class="pw_group">
-                    <div class="pw_logo">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <div class="pw_input">
-                        <input type="password" class="user_pw">
-                    </div>
-                </div>
-                <div id="errmsg">
-                    <span class="id_err">아이디를 입력해 주세요</span>
-                    <span class="pw_err">비밀번호를 입력해 주세요</span>
-                    <span class="idpw_err">아이디 또는 비밀번호가 잘못 입력되었습니다.<br />아이디와 비밀번호를 정확히 입력해 주세요.</span>
-                </div>
-                <!-- 로그인 버튼 -->
-                <div id="btn_group">
-                    <button class="btn_login" type="submit">로그인</button>
-                </div>
-                <!-- 회원가입 링크 -->
-                <div id="join_group">
-                    <a href="#" class="join">회원가입</a>
-                </div>
-            </form>
+            <h2 class="title">LOGIN</h2>
         </div>
+
+        <!-- CONTAINER -->
+        <div id="container">
+            <!-- CONTENT -->
+            <div id="content">
+                <!-- 로고 -->
+                <div class="logo">
+                    <img src="./img/logo2.png" alt="logo">
+                </div>
+
+                <!-- 로그인 폼 -->
+                <form id="login">
+                    <!-- 아이디 입력 -->
+                    <div class="id_group">
+                        <div class="id_logo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="id_input">
+                            <input type="text" class="user_id">
+                        </div>
+                        <a><span>비밀번호가 틀립니다.</span></a>
+                    </div>
+                    <!-- 비밀번호 입력 -->
+                    <div class="pw_group">
+                        <div class="pw_logo">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="pw_input">
+                            <input type="password" class="user_pw">
+                        </div>
+                    </div>
+                    <div id="errmsg">
+                        <span class="id_err">아이디를 입력해 주세요</span>
+                        <span class="pw_err">비밀번호를 입력해 주세요</span>
+                        <span class="idpw_err">아이디 또는 비밀번호가 잘못 입력되었습니다.<br />아이디와 비밀번호를 정확히 입력해 주세요.</span>
+                    </div>
+                    <!-- 로그인 버튼 -->
+                    <div id="btn_group">
+                        <button class="btn_login" type="submit">로그인</button>
+                    </div>
+                    <!-- 회원가입 링크 -->
+                    <div id="join_group">
+                        <a href="#" class="join">회원가입</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 사이드 메뉴바 -->
+        <aside id="side_menu_bar">
+            <div class="x_button"><a><img src="assets/img/X_button.png"></a></div>
+            <ul class="side_menu">
+                <li><a>HOME</a></li>
+                <li><a>LOGIN</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>ROOM INFO</a></li>
+                <li><a>ROOM</a></li>
+                <li><a>COMUNITY</a></li>
+            </ul>
+        </aside>
     </div>
 
 
 
+    <script src='js/script.js'></script>
     <script src="js/login_regex_helper.js"></script>
     <script type="text/javascript">
         document.querySelector('#login').addEventListener("submit", e => {
