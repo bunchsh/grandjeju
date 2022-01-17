@@ -25,16 +25,17 @@ const menu = document.querySelectorAll(".dropdown_menu")
 
 for(const article of articles){
     article.addEventListener("click" ,e =>{
+        
         const sibling = article.nextElementSibling;
         const img = article.lastElementChild;
         
         if (sibling.hasAttribute("id","dropdown_menu_active")){
             sibling.removeAttribute("id","dropdown_menu_active");
-            sibling.style.transition = "transform 0.5s";
             img.src = "./assets/img/down-arrow.png"
         } else {
             sibling.setAttribute("id","dropdown_menu_active");
             img.src = "./assets/img/up-arrow.png"
+            sibling.style.transition = "transform 0.5s";
         }
     })
 }
