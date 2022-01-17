@@ -1,5 +1,5 @@
 /**
- * @filename    : script.js
+ * @filename    : side_menu.js
  * @author      : 양수원 (ysw7939@gmail.com) 
  * @description : 햄버거 사이드 메뉴바 작동코드
  */

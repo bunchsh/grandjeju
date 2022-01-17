@@ -7,25 +7,16 @@
 @charset "UTF-8";
 
 /** ---------- ALL ---------- */
-html body {
+body {
     width: 360px;
-    height: auto;
     margin: 0 auto;
 }
 
 /** ---------- wrap ---------- */
 #wrap {
     position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-#wrap::-webkit-scrollbar{ 
-    display: none; 
-}
-
-#side_menu_bar {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
+    height: 740px;
 }
 
 /** ---------- HEADER ---------- */
@@ -177,52 +168,4 @@ html body {
     font-size: 12px;
     color: gray;
     text-align: center;
-}
-
-/* NAV_BAR */
-#side_menu_bar {
-    z-index: 10;
-    max-width: 290px;
-    width: 290px;
-    background-color: rgb(0,0,0);
-    color: #fff;
-    position: absolute;
-    top: 0;
-    display: inline-block;
-    height: 800px;
-    overflow: hidden;
-    transform: translateX(-105%)
-}
-.side_menu_bar_active{
-    transform: translateX(0%) !important;
-}
-
-#side_menu_bar .side_menu {
-    list-style: none;
-    position: relative;
-    padding: 0px;
-}
-#side_menu_bar .side_menu li {
-    padding: 0 10px;
-}
-#side_menu_bar .side_menu li a {
-    padding: 16px;
-    display: block;
-}
-#side_menu_bar .x_button {
-    position: relative;
-    height: 30px;
-}
-#side_menu_bar .x_button a{
-    height: 20px;
-    width: 20px;
-    float: right;
-    margin: 20px 20px;
-    position: relative;
-    cursor: pointer;
-}
-
-#side_menu_bar img {
-    display: block;
-    width: 100%;
 }

@@ -9,13 +9,13 @@
 /** ---------- ALL ---------- */
 html body {
     width: 360px;
-    height: auto;
     margin: 0 auto;
 }
 
 /** ---------- wrap ---------- */
 #wrap {
     position: relative;
+    height: 740px;
     overflow-x: hidden;
     overflow-y: auto;
 }

@@ -1,5 +1,5 @@
 /**
- * @filename    : script.js
+ * @filename    : side_menu.js
  * @author      : 양수원 (ysw7939@gmail.com) 
  * @description : 햄버거 사이드 메뉴바 작동코드
  */
@@ -35,7 +35,7 @@ for(const article of articles){
         } else {
             sibling.setAttribute("id","dropdown_menu_active");
             img.src = "./assets/img/up-arrow.png"
-            sibling.style.transition = "transform 0.5s";
+            sibling.style.transition = "transform 0.5s, height 0.5s";
         }
     })
 }

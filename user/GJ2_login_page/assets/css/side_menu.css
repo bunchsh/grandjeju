@@ -20,7 +20,7 @@ a {
     position: absolute;
     top: 0;
     display: inline-block;
-    height: 800px;
+    min-height: 800px;
     overflow: hidden;
     transform: translateX(-105%)
 }
