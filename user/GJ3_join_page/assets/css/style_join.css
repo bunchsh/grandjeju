@@ -54,7 +54,7 @@ form div input{
     border: 1px solid #000;
 }
 form .join_submit{
-    width: 310px;
+    width: 315px;
     height: 45px;
     font-size: 14px;
     font-weight: bold;
@@ -62,6 +62,7 @@ form .join_submit{
     background-color: black;
     border-radius: 5px 5px 5px 5px;
     border: 1px solid #000;
+    padding:0px;
     
 }
 form .join_button_wrap {
