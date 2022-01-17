@@ -157,7 +157,3 @@ html body {
     width: 70px;
     height: 43px;
 }
-.swal-button :hover {
-    background-color: white;
-    color: black;
-}

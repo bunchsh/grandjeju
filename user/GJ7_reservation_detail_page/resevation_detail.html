@@ -60,7 +60,7 @@
                 <!-- 예약 취소 버튼 -->
                 <div class="btn_group">
                     <span class="notice">예약 변경은 취소 후, 재예약 바랍니다.</span>
-                    <button class="btn_cancel" type="submit" onclick="swalert()">예약 취소</button>
+                    <button class="btn_cancel" type="submit">예약 취소</button>
                 </div>
             </div>
         </div>
@@ -68,15 +68,17 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        function swalert() {
+        document.getElementsByClassName("btn_cancel")[0].addEventListener('click', function () {
             swal({
-                text: "예약을 취소하시겠습니까?",
+                text: "예약을 취소하시겠습니까?", // Alert 내용
                 buttons: {
-                    confirm: "OK",
-                    cancel: true
+                    confirm: "OK",  // 확인 버튼
+                    cancel: true    // 취소 버튼
                 }
+            }).then(function () {   // 확인 버튼 이벤트
+                location.href = "#";    // 이동
             });
-        }
+        });
     </script>
 </body>
 
