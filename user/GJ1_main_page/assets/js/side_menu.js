@@ -35,7 +35,7 @@ for(const article of articles){
         } else {
             sibling.setAttribute("id","dropdown_menu_active");
             img.src = "./assets/img/up-arrow.png"
-            sibling.style.transition = "transform 0.5s";
+            sibling.style.transition = "transform 0.5s, height 0.5s";
         }
     })
 }
