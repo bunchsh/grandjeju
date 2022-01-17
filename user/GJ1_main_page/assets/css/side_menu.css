@@ -5,6 +5,12 @@
  */
 
 /* NAV_BAR */
+a {
+    color: #fff; 
+    text-decoration: none; 
+    outline: none
+}
+
 #side_menu_bar {
     z-index: 10;
     max-width: 290px;
