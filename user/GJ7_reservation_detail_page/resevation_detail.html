@@ -65,21 +65,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        document.getElementsByClassName("btn_cancel")[0].addEventListener('click', function () {
-            swal({
-                text: "예약을 취소하시겠습니까?", // Alert 내용
-                buttons: {
-                    confirm: "OK",  // 확인 버튼
-                    cancel: true    // 취소 버튼
-                }
-            }).then(function () {   // 확인 버튼 이벤트
-                location.href = "#";    // 이동
-            });
-        });
-    </script>
+    <script src="./cancel_alert.js"></script>
 </body>
-
 </html>
