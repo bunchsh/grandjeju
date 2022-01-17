@@ -31,12 +31,11 @@ for(const article of articles){
         
         if (sibling.hasAttribute("id","dropdown_menu_active")){
             sibling.removeAttribute("id","dropdown_menu_active");
-            sibling.style.transition = "transform 0.5s";
             img.src = "./assets/img/down-arrow.png"
         } else {
             sibling.setAttribute("id","dropdown_menu_active");
             img.src = "./assets/img/up-arrow.png"
-            console.log('hi');
+            sibling.style.transition = "transform 0.5s";
         }
     })
 }
