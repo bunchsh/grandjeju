@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandJeju - 1:1 문의 작성</title>
+
+    <link rel="stylesheet" type="text/css" href="./style_inquiry.css">
+</head>
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <h2 class="title">1:1 문의 작성</h2>
+        </div>
+
+        <!-- CONTAINER -->s
+        <div id="container">
+            <!-- CONTENT -->
+            <div id="content">
+                <form id="inquiry_write">
+                    <div class="select_group">
+                        <select id="inquiry_option">
+                            <option value="">문의 종류</option>
+                            <option value="예약 문의">예약 문의</option>
+                            <option value="시설 문의">시설 문의</option>
+                            <option value="취소 및 환불">취소 및 환불</option>
+                            <option value="기타 문의">기타 문의</option>
+                        </select>
+                    </div>
+                    <div class="title_group">
+                        <input type="text" placeholder="제목">
+                    </div>
+                    <div class="editor_group">
+                        <textarea id="editor" name="content"></textarea>
+                    </div>
+                    <div class="btn_group">
+                        <button type="button" class="btn_write">등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector('#editor'))
+                .then((editor) => {
+                    console.log(editor);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+    </script>
+</body>
+</html>

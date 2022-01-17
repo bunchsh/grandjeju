@@ -23,6 +23,11 @@ html body {
     display: none; 
 }
 
+#side_menu_bar {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /** ---------- HEADER ---------- */
 #header {
     width: 360px;
@@ -42,7 +47,8 @@ html body {
 
 #header .title {
     font-size: 24px;
-    margin: 0 150px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /** ---------- CONTAINER ---------- */

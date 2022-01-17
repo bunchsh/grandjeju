@@ -1,0 +1,88 @@
+/**
+ * @filename    : style_login.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 로그인 페이지의 스타일 적용 코드 모음
+ */
+
+@charset "UTF-8";
+
+/** ---------- ALL ---------- */
+html body {
+    width: 360px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/** ---------- wrap ---------- */
+#wrap {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#wrap::-webkit-scrollbar{ 
+    display: none; 
+}
+
+/** ---------- HEADER ---------- */
+#header {
+    width: 360px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+}
+
+#header .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/** ---------- CONTAINER ---------- */
+#container {
+    width: 360px;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    width: 330px;
+    margin: 0 auto;
+}
+
+/** Dropdown */
+#container #content #inquiry_write .select_group {
+    padding: 10px 0;
+}
+#container #content #inquiry_write .select_group select {
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+/** 제목 input */
+#container #content #inquiry_write .title_group {
+    padding-bottom: 10px;
+}
+#container #content #inquiry_write .title_group input {
+    width: 295px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+/** 에디터 */
+.ck-editor__editable_inline {
+    min-height: 360px;
+}
+
+/** 등록 btn */
+#container #content #inquiry_write .btn_group {
+    float: right;
+    padding: 10px 0;
+}
+#container #content #inquiry_write .btn_group .btn_write {
+    width: 60px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
