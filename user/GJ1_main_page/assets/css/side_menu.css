@@ -54,7 +54,12 @@
 #side_menu_bar .side_menu > li {
     padding: 0 10px;
 }
-#side_menu_bar .side_menu > li a {
+#side_menu_bar .side_menu > li > a {
+    padding: 16px;
+    display: block;
+    float: left;
+}
+#side_menu_bar .clear > a {
     padding: 16px;
     display: block;
     float: left;

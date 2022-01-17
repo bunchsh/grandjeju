@@ -3,7 +3,11 @@
  * @author      : 양수원 (ysw7939@gmail.com)
  * @description : Grandjeju 메인 페이지의 스타일 적용 코드 모음
  */
-
+a {
+    color: #fff; 
+    text-decoration: none; 
+    outline: none
+}
 body {
     max-width: 360px;
     margin: auto;
