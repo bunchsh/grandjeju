@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
     <link  rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/side_menu.css"/>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 </head>
 <body>
@@ -46,12 +47,37 @@
                 <li><a>LOGIN</a></li>
                 <li><a>ABOUT</a></li>
                 <li><a>ROOM INFO</a></li>
-                <li><a>ROOM</a></li>
-                <li><a>COMUNITY</a></li>
+                <li>
+                    <div class="clear" data-drop="room">
+                        <a>ROOM</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu" id="room" >
+                        <li>35H</li>
+                        <li>35P</li>
+                        <li>50H</li>
+                        <li>70P</li>
+                        <li>85P</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear" data-drop="comunity">
+                        <a>COMUNITY</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu" id="comunity">
+                        <li>NOTICE</li>
+                        <li>REVIEW</li>
+                    </ul>
+                </li>
             </ul>
         </aside>
     </div>
     <script src='https://unpkg.com/swiper@7/swiper-bundle.min.js'></script>
+    <script src="assets/js/side_menu.js"></script>
     <script src='assets/js/script.js'></script>
+    <script>
+        
+    </script>
 </body>
 </html>
