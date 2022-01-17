@@ -1,7 +1,7 @@
 /**
- * @filename    : style_login.css
+ * @filename    : style_inquiry.css
  * @author      : 한송희 (onee.ssong@gmail.com)
- * @description : Grandjeju 로그인 페이지의 스타일 적용 코드 모음
+ * @description : Grandjeju 1:1 문의 작성 페이지의 스타일 적용 코드 모음
  */
 
 @charset "UTF-8";
@@ -86,4 +86,31 @@ html body {
     color: white;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+/** sweetalert */
+.swal-modal {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid black;
+  }
+.swal-text {
+    font-size: 13px;
+    color: black;
+    text-align: center;
+}
+.swal-footer {
+    overflow: hidden;
+    text-align: center;
+  }
+.swal-button {
+    display: block;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 0;
+    width: 70px;
+    height: 43px;
 }

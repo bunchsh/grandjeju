@@ -52,48 +52,6 @@ class RegexHelper {
     }
 
     /**
-     * 입력값이 지정된 글자수 미만인지 검사
-     * @param {string} selector 입력 요소에 해당하는 CSS 선택자
-     * @param {int} len         최대 글자수
-     * @param {string} msg      값이 없을 경우 표시될 메시지
-     * @return {boolean}        지정된 글자수 이상인 경우 true / 미만일 경우 false
-     */
-    min_length(selector, len, msg) {
-        // 앞뒤의 공백을 제외하고 내용만 추출
-        const field = document.querySelector(selector);
-        const content = field.value.trim();
-
-        if (content.length < len) {
-            // 입력값이 주어진 길이보다 작다면?
-            alert(msg); // 메시지 표시
-            field.focus(); // 대상 요소에게 포커스 강제 지정
-            return false; // 실패했음을 반환
-        }
-        return true; // 성공했음을 반환
-    }
-
-    /**
-     * 입력값이 지정된 글자수를 초과했는지 검사
-     * @param {string} selector 입력 요소에 해당하는 CSS 선택자
-     * @param {int} len         최대 글자수
-     * @param {string} msg      값이 없을 경우 표시될 메시지
-     * @return {boolean}        초과하지 않은 경우 true / 초과한 경우 false
-     */
-    max_length(selector, len, msg) {
-        // 앞뒤의 공백을 제외하고 내용만 추출
-        const field = document.querySelector(selector);
-        const content = field.value.trim();
-
-        if (content.length > len) {
-            // 입력값이 주어진 길이보다 크다면?
-            alert(msg); // 메시지 표시
-            field.focus(); // 대상 요소에게 포커스 강제 지정
-            return false; // 실패했음을 반환
-        }
-        return true; // 성공했음을 반환
-    }
-
-    /**
      * 입력값이 정규표현식을 충족하는지 검사
      * @param {string} selector   입력 요소에 해당하는 CSS 선택자
      * @param {string} msg        표시할 메시지

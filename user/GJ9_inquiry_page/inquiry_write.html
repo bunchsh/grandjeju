@@ -1,5 +1,12 @@
+<!--
+ @filename    : inquiry_write.html
+ @author      : 한송희 (onee.ssong@gmail.com)
+ @description : Grandjeju 1:1 문의 작성 페이지의 구조 구현
+-->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="./style_inquiry.css">
 </head>
+
 <body>
     <div id="wrap">
         <!-- HEADER -->
@@ -21,7 +29,7 @@
             <div id="content">
                 <form id="inquiry_write">
                     <div class="select_group">
-                        <select id="inquiry_option">
+                        <select class="inquiry_option">
                             <option value="">문의 종류</option>
                             <option value="예약 문의">예약 문의</option>
                             <option value="시설 문의">시설 문의</option>
@@ -30,27 +38,47 @@
                         </select>
                     </div>
                     <div class="title_group">
-                        <input type="text" placeholder="제목">
+                        <input class="title_input" type="text" placeholder="제목">
                     </div>
                     <div class="editor_group">
                         <textarea id="editor" name="content"></textarea>
                     </div>
                     <div class="btn_group">
-                        <button type="button" class="btn_write">등록</button>
+                        <button type="submit" class="btn_write">등록</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+    <script src="./write_regex_helper.js"></script>
     <script>
+        /** editor 구성 */
         ClassicEditor.create(document.querySelector('#editor'))
-                .then((editor) => {
-                    console.log(editor);
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+            .then((editor) => {
+                console.log(editor);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+            document.querySelector('#inquiry_write').addEventListener("submit", e => {
+            e.preventDefault();
+
+            const regexHelper = new RegexHelper();
+
+            /** 문의 종류 검사 */
+            if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) {return false;}
+            /** 제목 검사 */
+            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
+            /** 내용 검사 */
+            if (!regexHelper.value("#editor", "내용이 입력되지 않았습니다.")) {return false;}
+            
+            // 처리 완료
+            location.href="#";
+        });
     </script>
 </body>
+
 </html>
