@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="./style_login.css">
+    <link rel="stylesheet" type="text/css" href="./side_menu.css">
 </head>
 
 <body>
@@ -78,19 +79,40 @@
         <aside id="side_menu_bar">
             <div class="x_button"><a><img src="assets/img/X_button.png"></a></div>
             <ul class="side_menu">
-                <li><a>HOME</a></li>
-                <li><a>LOGIN</a></li>
+                <li><a href="/user/GJ1_main_page/main.html">HOME</a></li>
+                <li><a href="/user/GJ2_login_page/login.html">LOGIN</a></li>
                 <li><a>ABOUT</a></li>
                 <li><a>ROOM INFO</a></li>
-                <li><a>ROOM</a></li>
-                <li><a>COMUNITY</a></li>
+                <li>
+                    <div class="clear" data-drop="room">
+                        <a>ROOM</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu" id="room" >
+                        <li>35H</li>
+                        <li>35P</li>
+                        <li>50H</li>
+                        <li>70P</li>
+                        <li>85P</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear" data-drop="comunity">
+                        <a>COMUNITY</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu" id="comunity">
+                        <li>NOTICE</li>
+                        <li>REVIEW</li>
+                    </ul>
+                </li>
             </ul>
         </aside>
     </div>
 
 
 
-    <script src='js/script.js'></script>
+    <script src='js/side_menu.js'></script>
     <script src="js/login_regex_helper.js"></script>
     <script type="text/javascript">
         document.querySelector('#login').addEventListener("submit", e => {
