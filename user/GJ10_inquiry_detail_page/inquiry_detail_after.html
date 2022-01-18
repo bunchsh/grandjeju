@@ -1,0 +1,68 @@
+<!--
+ @filename    : inquiry_detail.html
+ @author      : 한송희 (onee.ssong@gmail.com)
+ @description : Grandjeju 1:1 문의 상세 페이지(답변 후)의 구조 구현
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandJeju - 문의 내역</title>
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/style_inquiry_detail.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style_inquiry_detail_after.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <h2 class="title">1:1 문의</h2>
+        </div>
+        <!-- CONTAINER -->
+        <div id="container">
+            <!-- CONTENT -->
+            <div id="content">
+                <!-- 제목 항목 -->
+                <div class="title_group">
+                    <span class="title_option">[예약 문의]</span>
+                    <span class="title_title">예약은 어떻게 해야 하나요?</span>
+                </div>
+                <div class="writer_group">
+                    <span class="writer_name">양수원</span>
+                    <span class="write_date">21. 01. 08</span>
+                </div>
+                <div class="main_group">
+                    <div class="ask_group">
+                        <p class="ask_text">예약하는 방법을 모르겠어요!<br />어떻게 예약하는지 알려 주실 수 있을까요?<br />꼭 펜션에 방문하고 싶습니다!</p>
+                    </div>
+                    <div class="answer_group">
+                        <p class="answer_text">[답변]<br />메인 -> 우측 상단 햄버거 버튼 -> ROOM 또는 ROOM INFO 에서 예약하기 버튼을 누르시고 예약해 주시면 됩니다 ^^</p>
+                    </div>
+                </div>
+
+                <!-- 버튼 -->
+                <div class="btn_group">
+                    <!-- <button class="btn_modify" type="button">수정</button> -->
+                    <button class="btn_delete" type="button">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+    <script src="./assets/js/cancel_alert.js"></script>
+    <!-- 수정 버튼 클릭 시, 수정 페이지 이동 -->
+    <script type="text/javascript">
+        document.querySelector('.btn_modify').addEventListener("click", e => {
+            e.preventDefault();
+
+            // 수정 페이지로 이동
+            location.href="#";
+        });
+    </script>
+</body>
+</html>
