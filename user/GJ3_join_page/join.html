@@ -16,32 +16,42 @@
         <h2 class="title">회원가입</h2>
     </div>
     <!-- form -->
-    <form>
+    <form id="join_form_group">
         <div class="join_form">
             <div class="join_id_group">
                 <a>아이디</a>
                 <input type="text" class="join_id">
+                <span class="error_text"></span>
             </div>
             <div class="join_pw_group">
                 <a>비밀번호</a>
                 <input type="password" class="join_pw">
+                <span class="error_text"></span>
             </div>
             <div class="join_pw_re_group">
                 <a>비밀번호 확인</a>
                 <input type="password" class="join_pw_re">
+                <span class="error_text"></span>
             </div>
             <div class="join_name_group">
                 <a>이름</a>
                 <input type="text" class="join_name">
+                <span class="error_text"></span>
             </div>
             <div class="join_tel_group">
                 <a>휴대폰 번호</a>
                 <input type="tel" class="join_tel">
+                <span class="error_text"></span>
             </div>
         </div>
         <div class="join_button_wrap">
             <button type="submit" class="join_submit">회원가입</button>
         </div>
     </form>
+
+    <script src='./assets/js/join_regex_helper.js'></script>
+    <script>
+        
+    </script>
 </body>
 </html>
