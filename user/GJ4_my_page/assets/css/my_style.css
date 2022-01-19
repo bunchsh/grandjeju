@@ -77,33 +77,33 @@ html body {
     text-align: center;
 }
 
-/* tebs */
-#tebs:after {
+/* tabs */
+#tabs:after {
     clear: both;
     float: none;
     display: block;
     content: "";
 }
-#tebs .teb_three {
+#tabs .tab_three {
     float: left;
     width: 33.3333%;
     text-align: center;
     height: 50px;
 
 }
-#tebs .teb_three span{
+#tabs .tab_three span{
     display: block;
-    padding-top: 15px;
+    padding-top: 12px;
  
 }
-#tebs .teb_three a {
+#tabs .tab_three a {
     display : block;
     width: 100%;
     height: 90%;
     border-right: 1px solid #999;  
     border-bottom: 4px solid #999;
 }
-#tebs .teb_three .default {
+#tabs .tab_three .default {
     border-bottom: 4px solid #222;
 }
 .text {
