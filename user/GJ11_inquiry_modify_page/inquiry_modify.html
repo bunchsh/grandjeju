@@ -1,5 +1,5 @@
 <!--
- @filename    : inquiry_write.html
+ @filename    : inquiry_modify.html
  @author      : 한송희 (onee.ssong@gmail.com)
  @description : Grandjeju 1:1 문의 작성 페이지의 구조 구현
 -->
@@ -11,23 +11,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrandJeju - 1:1 문의 작성</title>
+    <title>GrandJeju - 1:1 문의 수정</title>
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/style_inquiry.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style_inquiry_modify.css">
 </head>
 
 <body>
     <div id="wrap">
         <!-- HEADER -->
         <div id="header">
-            <h2 class="title">1:1 문의 작성</h2>
+            <h2 class="title">1:1 문의 수정</h2>
         </div>
 
         <!-- CONTAINER -->
         <div id="container">
             <!-- CONTENT -->
             <div id="content">
-                <form id="inquiry_write">
+                <form id="inquiry_modify">
                     <!-- 문의 종류 선택 -->
                     <div class="select_group">
                         <select class="inquiry_option">
@@ -48,7 +48,8 @@
                     </div>
                     <!-- 버튼 -->
                     <div class="btn_group">
-                        <button type="submit" class="btn_write">등록</button>
+                        <button class="btn_modify" type="submit">수정</button>
+                        <button class="btn_delete" type="button">삭제</button>
                     </div>
                 </form>
             </div>
@@ -56,6 +57,7 @@
     </div>
     <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+    <script src="./assets/js/cancel_alert.js"></script>
     <script src="./assets/js/write_regex_helper.js"></script>
     <script>
         /** editor 구성 */
@@ -67,20 +69,20 @@
                 console.error(error);
             });
 
-            document.querySelector('#inquiry_write').addEventListener("submit", e => {
+        document.querySelector('#inquiry_modify').addEventListener("submit", e => {
             e.preventDefault();
 
             const regexHelper = new RegexHelper();
 
             /** 문의 종류 검사 */
-            if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) {return false;}
+            if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) { return false; }
             /** 제목 검사 */
-            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
+            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) { return false; }
             /** 내용 검사 */
-            if (!regexHelper.value("#editor", "내용이 입력되지 않았습니다.")) {return false;}
-            
+            if (!regexHelper.value("#editor", "내용이 입력되지 않았습니다.")) { return false; }
+
             // 처리 완료
-            location.href="../GJ10_inquiry_detail_page/inquiry_detail_before.html";
+            location.href = "../GJ10_inquiry_detail_page/inquiry_detail_before.html";
         });
     </script>
 </body>
