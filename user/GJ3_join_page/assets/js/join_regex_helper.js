@@ -19,13 +19,11 @@ class RegexHelper{
             e[0].innerHTML = "아이디를 입력해주세요";
             e[0].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else if(!id_pattern.test(id_trim)) {
             e[0].innerHTML = "아이디는 영문,숫자 조합 6~20자까지 가능합니다.";
             e[0].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else {
             i.style.border= '1px solid #000';
@@ -46,13 +44,11 @@ class RegexHelper{
             e[1].innerHTML = "비밀번호를 입력해주세요";
             e[1].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else if(!pw_pattern.test(pw_trim)){
             e[1].innerHTML = "비밀번호는 영문,숫자,특수문자 조합 8~11자까지 입력 가능합니다.";
             e[1].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else {
             i.style.border= '1px solid #000';
@@ -74,14 +70,11 @@ class RegexHelper{
             e[2].innerHTML = "비밀번호를 한번 더 입력 해주세요";
             e[2].style.display = "block";
             i.style.border= '2px solid red';
-            console.log(i,e);
-            i.focus();
             return false;
         } else if(pw!==pw_re) {
             e[2].innerHTML = "비밀번호가 일치하지 않습니다.";
             e[2].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else {
             i.style.border= '1px solid #000';
@@ -102,13 +95,11 @@ class RegexHelper{
             e[3].innerHTML = "이름을 입력해주세요";
             e[3].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else if(!name_pattern.test(name_trim)){
             e[3].innerHTML = "이름은 2자 이상 한글만 입력 가능합니다.";
             e[3].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else {
             i.style.border= '1px solid #000';
@@ -129,13 +120,11 @@ class RegexHelper{
             e[4].innerHTML = "휴대폰 번호를 입력해주세요";
             e[4].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else if(!tel_pattern.test(tel_trim)){
             e[4].innerHTML = "형식에 맞지 않는 번호입니다.";
             e[4].style.display = "block";
             i.style.border= '2px solid red';
-            i.focus();
             return false;
         } else {
             i.style.border= '1px solid #000';
