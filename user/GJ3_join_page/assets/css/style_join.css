@@ -4,22 +4,35 @@ html body {
     height: auto;
     margin: 0 auto;
 }
-
+#over {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+#over::-webkit-scrollbar {
+    display: none;
+}
 /** ---------- HEADER ---------- */
 #header {
     width: 360px;
     padding: 10px 0;
     border-width: 350px;
     border-bottom: 1px solid gray;
+    position: relative;
 }
-
-#header .hamburger_icon img {
+#header .hamburger_icon {
     float: left;
     height: 30px;
     width: 30px;
-    top: 15px;
+    position: absolute;
+    top:15px;
     left: 10px;
     cursor: pointer;
+}
+
+#header .hamburger_icon img {
+    width:100%;
+    display: block;
 }
 
 #header .title {

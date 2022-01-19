@@ -6,52 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style_join.css">
+    <link rel="stylesheet" href="assets/css/side_menu.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <div id="header">
-        <div class="hamburger_icon">
-            <a><img src="assets/img/Hamburger_icon.png"></a>
+    <div id="over">
+        <!-- HEADER -->
+        <div id="header">
+            <div class="hamburger_icon">
+                <a><img src="assets/img/Hamburger_icon.png"></a>
+            </div>
+            <h2 class="title">회원가입</h2>
         </div>
-        <h2 class="title">회원가입</h2>
+        <!-- form -->
+        <form id="join_form_group">
+            <div class="join_form">
+                <div class="join_id_group">
+                    <a>아이디</a>
+                    <input type="text" class="join_id">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_pw_group">
+                    <a>비밀번호</a>
+                    <input type="password" class="join_pw">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_pw_re_group">
+                    <a>비밀번호 확인</a>
+                    <input type="password" class="join_pw_re">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_name_group">
+                    <a>이름</a>
+                    <input type="text" class="join_name">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_tel_group">
+                    <a>휴대폰 번호</a>
+                    <input type="tel" class="join_tel">
+                    <span class="error_text"></span>
+                </div>
+            </div>
+            <div class="join_button_wrap">
+                <button type="submit" class="join_submit">회원가입</button>
+            </div>
+        </form>
+        <!-- 사이드 메뉴바 -->
+        <aside id="side_menu_bar">
+            <div class="x_button"><a><img src="assets/img/X_button.png"></a></div>
+            <ul class="side_menu">
+                <li><a href="../GJ1_main_logout/main.html">HOME</a></li>
+                <li><a href="../GJ2_login_page/login.html">LOGIN</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>ROOM INFO</a></li>
+                <li>
+                    <div class="clear">
+                        <a>ROOM</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu">
+                        <li><a>35H</a></li>
+                        <li><a>35P</a></li>
+                        <li><a>50H</a></li>
+                        <li><a>70P</a></li>
+                        <li><a>85P</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear">
+                        <a>COMUNITY</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu">
+                        <li><a>NOTICE</a></li>
+                        <li><a>REVIEW</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
     </div>
-    <!-- form -->
-    <form id="join_form_group">
-        <div class="join_form">
-            <div class="join_id_group">
-                <a>아이디</a>
-                <input type="text" class="join_id">
-                <span class="error_text"></span>
-            </div>
-            <div class="join_pw_group">
-                <a>비밀번호</a>
-                <input type="password" class="join_pw">
-                <span class="error_text"></span>
-            </div>
-            <div class="join_pw_re_group">
-                <a>비밀번호 확인</a>
-                <input type="password" class="join_pw_re">
-                <span class="error_text"></span>
-            </div>
-            <div class="join_name_group">
-                <a>이름</a>
-                <input type="text" class="join_name">
-                <span class="error_text"></span>
-            </div>
-            <div class="join_tel_group">
-                <a>휴대폰 번호</a>
-                <input type="tel" class="join_tel">
-                <span class="error_text"></span>
-            </div>
-        </div>
-        <div class="join_button_wrap">
-            <button type="submit" class="join_submit">회원가입</button>
-        </div>
-    </form>
 
+    <script src='./assets/js/side_menu.js'></script>
     <script src='./assets/js/join_regex_helper.js'></script>
-    <script>
-        
-    </script>
 </body>
 </html>
