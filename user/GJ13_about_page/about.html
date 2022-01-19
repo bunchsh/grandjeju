@@ -37,18 +37,16 @@
                     <img src="./assets/img/1.jpg" alt="펜션 전경 이미지">
                 </div>
                 <div class="content2">
-                    <h3 class="relax_title">JOY</h3>
-                    <p class="relax_text">가족들과 함께, 친구와 함께, 사랑하는 연인과 함께.<br />아름다운 섬, 제주에서의 시간이 더욱 즐거운 시간이 되도록 GRAND
-                        JEJU가 함께 하겠습니다.</p>
+                    <h3 class="relax_title">RELAX</h3>
+                    <p class="relax_text">청결하고 포근한 침대와 배게.<br />창밖으로 제주의 투명한 바다와 푸른 산을 보실 수 있습니다.<br />여행에서의 노곤함, 모두
+                        GRAND JEJU에서 풀어내세요.</p>
                     <img src="./assets/img/침대.jpg" alt="펜션 침대 이미지">
                 </div>
 
-                <hr>
-
                 <div class="location">
                     <h3 class="loc_title">위치 정보</h3>
-                    <p class="loc_address">제주특별자치도 제주시 애월읍 곽지77로 29</p>
-
+                    <p class="loc_address">제주특별자치도 제주시 애월읍 곽지1길 99</p>
+                    <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -90,6 +88,28 @@
     </div>
 
     <script src='./assets/js/side_menu.js'></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	f95daf633297a3ba1cf7bdb1b15857cd"></script>
+    <script>
+        const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런s스
+        const options = { //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(33.448583, 126.304385), //지도의 중심좌표.
+            level: 3 //지도의 레벨(확대, 축소 정도)
+        };
+
+        const map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+        // 마커가 표시될 위치입니다 
+        const markerPosition = new kakao.maps.LatLng(33.448583, 126.304385);
+
+        // 마커를 생성합니다
+        const marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+    </script>
 </body>
 
 </html>

@@ -34,21 +34,21 @@ body::-webkit-scrollbar {
     padding: 10px 0;
     border-width: 350px;
     border-bottom: 1px solid gray;
+    position: relative;
 }
-
 #header .hamburger_icon {
-    width: 30px;
-    height: 30px;
-}
-
-#header .hamburger_icon img {
-    display: block;
     float: left;
     height: 30px;
     width: 30px;
-    top: 15px;
+    position: absolute;
+    top:15px;
     left: 10px;
     cursor: pointer;
+}
+
+#header .hamburger_icon img {
+    width:100%;
+    display: block;
 }
 
 #header .title {
@@ -63,5 +63,41 @@ body::-webkit-scrollbar {
 }
 /** ---------- CONTENT ---------- */
 #container #content {
-    width: 360px;
+    width: 330px;
+    margin: 0 auto;
+}
+
+/** content 항목들의 ALL */
+#container #content h3 {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+#container #content p {
+    font-size: 12px;
+    color: #222;
+    margin: 10px 0;
+}
+
+#container #content img {
+    border-radius: 5px;
+}
+
+/** 위치 정보 */
+#container #content .location {
+    margin-top: 40px;
+    border-top: 1px solid gray;
+}
+
+#container #content .location h3 {
+    margin-top: 40px;
+}
+
+#container #content .location #map {
+    width: 330px;
+    height: 180px;
+    margin-bottom: 30px;
+    border: 3px solid gray;
+    border-radius: 5px;
 }

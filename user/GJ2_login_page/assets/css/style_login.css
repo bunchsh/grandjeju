@@ -34,21 +34,21 @@ body::-webkit-scrollbar {
     padding: 10px 0;
     border-width: 350px;
     border-bottom: 1px solid gray;
+    position: relative;
 }
-
 #header .hamburger_icon {
-    width: 30px;
-    height: 30px;
-}
-
-#header .hamburger_icon img {
-    display: block;
     float: left;
     height: 30px;
     width: 30px;
-    top: 15px;
+    position: absolute;
+    top:15px;
     left: 10px;
     cursor: pointer;
+}
+
+#header .hamburger_icon img {
+    width:100%;
+    display: block;
 }
 
 #header .title {
