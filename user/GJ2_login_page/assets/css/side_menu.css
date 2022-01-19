@@ -5,7 +5,7 @@
  */
 
 /* NAV_BAR */
-a {
+#side_menu_bar a {
     color: #fff; 
     text-decoration: none; 
     outline: none
