@@ -103,7 +103,9 @@ html body {
     border-right: 1px solid #999;  
     border-bottom: 4px solid #999;
 }
-
+#tebs .teb_three .default {
+    border-bottom: 4px solid #222;
+}
 .text {
     height: 300px;
 }
