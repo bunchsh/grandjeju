@@ -12,12 +12,20 @@ body {
     margin: 0 auto;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 /** ---------- wrap ---------- */
 #wrap {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
     height: 740px;
+}
+
+#wrap::-webkit-scrollbar {
+    display: none;
 }
 
 /** ---------- HEADER ---------- */
