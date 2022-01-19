@@ -89,6 +89,7 @@ body::-webkit-scrollbar {
     width: 40px;
     height: 40px;
     border-radius: 10% 0 0 10%;
+    vertical-align: bottom;
 }
 #container #content #login .id_group .id_logo i {
     display: block;

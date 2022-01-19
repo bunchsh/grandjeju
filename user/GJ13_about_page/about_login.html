@@ -1,0 +1,116 @@
+<!-- @filename    : about.html
+@author      : 한송희 (onee.ssong@gmail.com)
+@description : Grandjeju 펜션 정보 페이지의 구조 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandJeju - ABOUT</title>
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/style_about.css">
+    <link rel="stylesheet" type="text/css" href="./assets//css/side_menu.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <div class="hamburger_icon">
+                <a><img src="./assets/img/Hamburger_icon.png"></a>
+            </div>
+            <h2 class="title">ABOUT</h2>
+        </div>
+
+        <!-- CONTAINER -->
+        <div id="container">
+            <!-- CONTENT -->
+            <div id="content">
+                <div class="content1">
+                    <h3 class="joy_title">JOY</h3>
+                    <p class="joy_text">가족들과 함께, 친구와 함께, 사랑하는 연인과 함께.<br />아름다운 섬, 제주에서의 시간이 더욱 즐거운 시간이 되도록 GRAND JEJU가
+                        함께 하겠습니다.</p>
+                    <img src="./assets/img/1.jpg" alt="펜션 전경 이미지">
+                </div>
+                <div class="content2">
+                    <h3 class="relax_title">RELAX</h3>
+                    <p class="relax_text">청결하고 포근한 침대와 배게.<br />창밖으로 제주의 투명한 바다와 푸른 산을 보실 수 있습니다.<br />여행에서의 노곤함, 모두
+                        GRAND JEJU에서 풀어내세요.</p>
+                    <img src="./assets/img/침대.jpg" alt="펜션 침대 이미지">
+                </div>
+
+                <div class="location">
+                    <h3 class="loc_title">위치 정보</h3>
+                    <p class="loc_address">제주특별자치도 제주시 애월읍 곽지1길 99</p>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 사이드 메뉴바 -->
+        <aside id="side_menu_bar">
+            <div class="x_button"><a><img src="assets/img/X_button.png"></a></div>
+            <ul class="side_menu">
+                <li><a href="../GJ1_main_login/main.html">HOME</a></li>
+                <li><a href="../GJ2_login_page/login.html">MY PAGE</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>ROOM INFO</a></li>
+                <li>
+                    <div class="clear">
+                        <a>ROOM</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu">
+                        <li><a>35H</a></li>
+                        <li><a>35P</a></li>
+                        <li><a>50H</a></li>
+                        <li><a>70P</a></li>
+                        <li><a>85P</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear">
+                        <a>COMUNITY</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu">
+                        <li><a>NOTICE</a></li>
+                        <li><a>REVIEW</a></li>
+                    </ul>
+                </li>
+                <li id="logout"><a>logout</a></li>
+            </ul>
+        </aside>
+    </div>
+    </div>
+
+    <script src='./assets/js/side_menu.js'></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	f95daf633297a3ba1cf7bdb1b15857cd"></script>
+    <script>
+        const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런s스
+        const options = { //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(33.448583, 126.304385), //지도의 중심좌표.
+            level: 3 //지도의 레벨(확대, 축소 정도)
+        };
+
+        const map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+        // 마커가 표시될 위치입니다 
+        const markerPosition = new kakao.maps.LatLng(33.448583, 126.304385);
+
+        // 마커를 생성합니다
+        const marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+    </script>
+</body>
+
+</html>
