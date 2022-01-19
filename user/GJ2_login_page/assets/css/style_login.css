@@ -28,7 +28,13 @@ body {
     border-bottom: 1px solid gray;
 }
 
+#header .hamburger_icon {
+    width: 30px;
+    height: 30px;
+}
+
 #header .hamburger_icon img {
+    display: block;
     float: left;
     height: 30px;
     width: 30px;
