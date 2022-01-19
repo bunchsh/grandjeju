@@ -113,6 +113,7 @@ body::-webkit-scrollbar {
     height: 35px;
     border: 2px solid #ddd;
     border-radius: 0 5px 5px 0;
+    vertical-align: bottom;
 }
 
 /** PASSWORD */
@@ -144,6 +145,7 @@ body::-webkit-scrollbar {
     height: 35px;
     border: 2px solid #ddd;
     border-radius: 0 5px 5px 0;
+    vertical-align: bottom;
 }
 
 /** ERROR message */
