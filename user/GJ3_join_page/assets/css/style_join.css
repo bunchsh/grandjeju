@@ -32,20 +32,19 @@ html body {
 /* form */
 .join_form{
     margin-top: 30px;
-}
-form div {
     width: 330px;
     position:relative;
     margin: auto;
 }
-form div a {
+
+.join_form a {
     width: 300px;
     padding: 10px;
     display: block;
     font-size: 16px;
     font-weight: bold;
 }
-form div input{
+.join_form input{
     padding: 0;
     height: 35px;
     width: 310px;
@@ -53,7 +52,7 @@ form div input{
     border-radius: 5px 5px 5px 5px;
     border: 1px solid #000;
 }
-form .join_submit{
+.join_button_wrap .join_submit{
     width: 315px;
     height: 45px;
     font-size: 14px;
@@ -65,8 +64,21 @@ form .join_submit{
     padding:0px;
     
 }
-form .join_button_wrap {
+.join_button_wrap {
     margin-top: 30px;
     text-align: center;
-
 }
+
+/** ERROR message */
+.error_text{
+    margin: -8px 9px;
+    font-size: 8px;
+    color: red;    
+    display: none;
+    float: right
+}
+
+
+
+
+
