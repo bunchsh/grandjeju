@@ -104,8 +104,148 @@ html body {
     border-bottom: 4px solid #999;
 }
 #tabs .tab_three .default {
-    border-bottom: 4px solid #222;
+    border-bottom: 4px solid #000;
 }
-.text {
+
+/* reserve */
+#reserve {
     height: 300px;
+    width: 90%;
+    margin: auto;
+    margin-top:25px;
+}
+#reserve .history {
+    border: 2px solid #000;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 15px;
+}
+#reserve .history a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+#reserve .history img {
+    position: absolute;
+    right: 10px;
+    top: 25.5px;
+    width: 25px;
+    height: 25px;
+}
+
+#reserve .history h3 {
+    margin: 10px;
+    margin-bottom: 5px;
+}
+
+#reserve .history span {
+    display: block;
+    margin: 3px 0px 0px 10px;
+    font-size: 10px;
+}
+
+#reserve .history span:last-child {
+    margin-bottom: 10px;
+}
+
+/* inquiry */
+#inquiry {
+    height: 300px;
+    width: 90%;
+    margin: auto;
+    margin-top:25px;
+}
+#inquiry .history {
+    border: 2px solid #000;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 15px;
+}
+#inquiry .history a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+#inquiry .history img {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    width: 25px;
+    height: 25px;
+}
+
+#inquiry .history h3 {
+    margin: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#inquiry .history span {
+    display: block;
+    margin: 3px 0px 0px 10px;
+    font-size: 10px;
+}
+
+#inquiry .history span:last-child {
+    margin-bottom: 10px;
+}
+
+#inquiry .history .pluse {
+    width: 100%;
+    display: inline-block;
+    height: 73px;
+}
+#inquiry .history .pluse img {
+    position: static;
+    margin: auto;
+    margin-top: 21px;
+    display: block;
+    width: 35px;
+    height: 35px;
+}
+
+/* review */
+#review {
+    height: 300px;
+    width: 90%;
+    margin: auto;
+    margin-top:25px;
+}
+#review .history {
+    border: 2px solid #000;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 15px;
+}
+#review .history a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+#review .history img {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    width: 25px;
+    height: 25px;
+}
+
+#review .history h3 {
+    margin: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#review .history span {
+    display: block;
+    margin: 3px 0px 0px 10px;
+    font-size: 10px;
+}
+
+#review .history span:last-child {
+    margin-bottom: 10px;
+}
+
+.none {
+    display: none;
 }

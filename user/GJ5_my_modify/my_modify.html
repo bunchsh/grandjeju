@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style_join.css">
+    <link rel="stylesheet" href="assets/css/side_menu.css">
+</head>
+<body>
+    <div id="over">
+        <!-- HEADER -->
+        <div id="header">
+            <h2 class="title">내 정보 수정</h2>
+        </div>
+        <!-- form -->
+        <form id="join_form_group">
+            <div class="join_form">
+                <div class="join_id_group">
+                    <a>아이디</a>
+                    <input type="text" id="join_id" disabled placeholder="">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_pw_group">
+                    <a>비밀번호</a>
+                    <input type="password" class="join_pw">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_pw_re_group">
+                    <a>비밀번호 확인</a>
+                    <input type="password" class="join_pw_re">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_name_group">
+                    <a>이름</a>
+                    <input type="text" class="join_name">
+                    <span class="error_text"></span>
+                </div>
+                <div class="join_tel_group">
+                    <a>휴대폰 번호</a>
+                    <input type="tel" class="join_tel">
+                    <span class="error_text"></span>
+                </div>
+            </div>
+            <div class="button_wrap">
+                <button type="submit" class="modify_button">수정</button>
+                <button type="submit" class="dorp_button">회원탈퇴</button>
+            </div>
+        </form>
+    </div>
+
+    <script src='./assets/js/side_menu.js'></script>
+    <script src='./assets/js/join_regex_helper.js'></script>
+</body>
+</html>
