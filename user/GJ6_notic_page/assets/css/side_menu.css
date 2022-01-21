@@ -8,12 +8,9 @@
 #side_menu_bar a {
     color: #fff; 
     text-decoration: none; 
-    outline: none;
+    outline: none
 }
-a {
-    color: #000;
-    text-decoration: none;
-}
+
 #side_menu_bar {
     z-index: 10;
     max-width: 290px;
@@ -23,8 +20,8 @@ a {
     position: absolute;
     top: 0;
     display: inline-block;
+    min-height: 800px;
     height: 100%;
-    min-height:800px;
     overflow: hidden;
     transform: translateX(-105%)
 }

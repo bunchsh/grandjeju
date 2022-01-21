@@ -1,0 +1,113 @@
+/** ---------- ALL ---------- */
+html body {
+    width: 360px;
+    height: auto;
+    margin: 0 auto;
+}
+#wrap {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+#wrap::-webkit-scrollbar {
+    display: none;
+}
+/** ---------- HEADER ---------- */
+#header {
+    width: 360px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+    position: relative;
+}
+#header .hamburger_icon {
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top:15px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#header .hamburger_icon img {
+    width:100%;
+    display: block;
+}
+
+#header .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/** ---------- CONTAINER ---------- */
+#container {
+    width: 360px;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    width: 330px;
+    margin: 0 auto;
+}
+
+/** content 항목들의 ALL */
+#container #content h3 {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+#container #content .section h3{
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+#container #content .section p{
+    margin: 5px;
+    letter-spacing: -0.8px;
+}
+
+#container #content p {
+    font-size: 12px;
+    color: #222;
+    margin: 10px 0;
+    letter-spacing: -0.8px;
+}
+#container #content .content3 p:last-child{
+    font-size: 8px;
+}
+#container #content .section  {
+    margin-left: 10px;
+}
+
+#content .content2 {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #999;
+}
+
+#container #content img {
+    border-radius: 5px;
+}
+
+#content .content1 img {
+    width: 280px;
+    height: 200px;
+    margin: auto;
+    display: block;
+}
+
+.swiper-wrapper img {
+    width: 310px;
+    height: 200px;
+    display: block;
+    margin: auto;
+}
+.swiper-pagination-bullet-active {
+    background-color: #000 !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    --swiper-navigation-size: 30px;
+    --swiper-theme-color: #000;
+}
