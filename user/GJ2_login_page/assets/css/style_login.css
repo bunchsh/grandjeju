@@ -45,7 +45,7 @@ body::-webkit-scrollbar {
     height: 30px;
     width: 30px;
     position: absolute;
-    top:15px;
+    top: 15px;
     left: 10px;
     cursor: pointer;
 }
