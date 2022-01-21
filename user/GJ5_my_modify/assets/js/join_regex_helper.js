@@ -3,7 +3,7 @@
  * @author      : 양수원 (ysw7939@gmail.com)
  * @description : 정규표현식 검사 수행 후, true/false로 해당 정규표현식을 충족하는지    여부를 반환하는 함수들의 모음
  */
-document.getElementById('join_id').value = tndnjs1010
+
 class RegexHelper{
 
     /**
@@ -174,6 +174,7 @@ tel.addEventListener("focusout", e=>{
 document.querySelector("#join_form_group").addEventListener("submit" ,e =>{
     e.preventDefault();
     console.log(error,id);
+    console.log(tel.value);
     const regexHelper = new RegexHelper();
 
     if(!regexHelper.check_pw(password,error)){return false};
@@ -182,5 +183,19 @@ document.querySelector("#join_form_group").addEventListener("submit" ,e =>{
     if(!regexHelper.check_tel(tel,error)){return false};
 
     alert("회원정보 수정 완료");
+
+    
 })
 
+const drop = document.querySelector(".dorp_button")
+drop.addEventListener("click", e =>{
+    swal({
+        text: "정말 탈퇴하시겠습니까?", // Alert 내용
+        buttons: {
+            confirm: "OK",  // 확인 버튼
+            cancel: true    // 취소 버튼
+        }
+    }).then(function () {   // 확인 버튼 이벤트
+        location.href = "#";    // 이동
+    });
+})

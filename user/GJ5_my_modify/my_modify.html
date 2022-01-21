@@ -19,7 +19,7 @@
             <div class="join_form">
                 <div class="join_id_group">
                     <a>아이디</a>
-                    <input type="text" id="join_id" disabled placeholder="">
+                    <input type="text" class="join_id" value="" disabled placeholder="">
                     <span class="error_text"></span>
                 </div>
                 <div class="join_pw_group">
@@ -45,12 +45,13 @@
             </div>
             <div class="button_wrap">
                 <button type="submit" class="modify_button">수정</button>
-                <button type="submit" class="dorp_button">회원탈퇴</button>
+                <button type="button" class="dorp_button">회원탈퇴</button>
             </div>
         </form>
     </div>
-
-    <script src='./assets/js/side_menu.js'></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src='./assets/js/join_regex_helper.js'></script>
+    <script src='./assets/js/my_info.js'></script>
+    
 </body>
 </html>
