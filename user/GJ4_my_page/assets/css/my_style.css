@@ -4,12 +4,12 @@ html body {
     height: 100%;
     margin: 0 auto;
 }
-#over {
+#wrap {
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
 }
-#over::-webkit-scrollbar {
+#wrap::-webkit-scrollbar {
     display: none;
 }
 /** ---------- HEADER ---------- */
