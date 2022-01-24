@@ -1,0 +1,201 @@
+/**
+ * @filename    : style_room.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 룸 상세 페이지의 스타일 적용 코드 모음
+ */
+
+@charset "UTF-8";
+
+/** ---------- ALL ---------- */
+body {
+    min-width: 360px;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/** ---------- wrap ---------- */
+#wrap {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 740px;
+    margin: 0 auto;
+}
+
+#wrap::-webkit-scrollbar {
+    display: none;
+}
+
+/** ---------- HEADER ---------- */
+#header {
+    min-width: 360px;
+    max-width: 820px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+    position: relative;
+}
+#header .hamburger_icon {
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#header .hamburger_icon img {
+    width:100%;
+    display: block;
+}
+
+#header .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/** ---------- CONTAINER ---------- */
+#container {
+    min-width: 360px;
+    max-width: 820px;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/** ALL */
+#container #content h3 {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/** 객실 이미지 */
+#container #content .room_img {
+    padding-top: 30px;
+}
+#container #content .room_img img {
+    width: 100%;
+    height: 180px;
+}
+
+/** 객실 정보 */
+#container #content .room_group {
+    padding-top: 20px;
+}
+#container #content .room_group h3 {
+    margin-top: 0px;
+    font-size: 22px;
+}
+#container #content .room_group span {
+    font-size: 13px;
+    color: #333;
+}
+
+/** Table Style */
+#container #content table {
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 2px solid gray;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+#container #content th {
+    height: 35px;
+    background-color: #ddd;
+    border: 1px solid gray;
+}
+#container #content tr td {
+    height: 35px;
+    border: 1px solid gray;
+}
+
+/** 객실 요금 테이블 */
+#container #content .room_fee_group {
+    padding-bottom: 30px;
+}
+
+/** 공지사항 요소들 css */
+#container #content p {
+    letter-spacing: -0.8px;
+    font-size: 11px;
+    color: #333;
+}
+
+#container #content .room_notice {
+    border-top: 1px solid gray;
+}
+
+/** 예약하기 버튼 */
+#container #content .btn_group {
+    padding: 20px 0 30px 0;
+}
+#container #content .btn_group button {
+    display: block;
+    width: 95%;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+/** sweetalert */
+.swal-modal {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid black;
+  }
+.swal-text {
+    font-size: 13px;
+    color: black;
+    text-align: center;
+}
+.swal-footer {
+    overflow: hidden;
+    text-align: center;
+  }
+.swal-button {
+    display: block;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 0;
+    width: 70px;
+    height: 43px;
+}
+
+.swiper {
+    width: 100%;
+    height: 180px;
+}
+.swiper-pagination-bullet-active {
+    background-color: #000 !important;
+}
+
+.swiper-button-next {
+    --swiper-navigation-size: 30px;
+    --swiper-theme-color: black;
+}
+.swiper-button-prev {
+    --swiper-navigation-size: 30px;
+    --swiper-theme-color: black;
+}

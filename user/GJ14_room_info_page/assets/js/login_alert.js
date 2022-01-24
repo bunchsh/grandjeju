@@ -5,7 +5,7 @@
  */
 
  /** 로그인 Alert */
- document.getElementsByClassName("btn_reservation")[0].addEventListener('click', function () {
+ document.getElementsByClassName("btn_reservation_logout")[0].addEventListener('click', function () {
     swal({
         text: "로그인 후, 이용해 주세요.", // Alert 내용
         buttons: {
