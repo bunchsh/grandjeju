@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style_review.css">
+    <link rel="stylesheet" href="assets/css/side_menu.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <div class="hamburger_icon">
+                <a><img src="assets/img/Hamburger_icon.png"></a>
+            </div>
+            <h2 class="title">REVIEW</h2>
+        </div>
+        
+        <!-- 글 작성 버튼 -->
+        <div id="btn-group">
+            <button class="btn-write">
+                <a>글 작성</a>
+            </button>
+        </div>
+
+        <div id="content">
+            <ul>
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">다시 한번 더 방문할게요~</h4>
+                        <p class="date">
+                            <span class="name">한송희 |</span>
+                            2022.01.05
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">즐거운 추억 많이 만들고 갑니다!</h4>
+                        <p class="date">
+                            <span class="name">고길동 |</span>
+                            2022.01.04
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">청결한 방! 꺠끗한 침구!</h4>
+                        <p class="date">
+                            <span class="name">둘리 |</span>
+                            2022.01.02
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">마치 제주도 토박이가 된 기분이였어요~</h4>
+                        <p class="date">
+                            <span class="name">양수원 |</span>
+                            2022.01.01
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">즐거운 여행~</h4>
+                        <p class="date">
+                            <span class="name">짱구 |</span>
+                            2022.01.01
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">재미난 여행~</h4>
+                        <p class="date">
+                            <span class="name">짱아 |</span>
+                            2022.01.01
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 페이지 번호 구현 -->
+        <div class="text-center">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link">&laquo</a></li>
+                <li class="page-item active"><a class="page-link">1</a></li>
+                <li class="page-item"><a class="page-link">2</a></li>
+                <li class="page-item"><a class="page-link">3</a></li>
+                <li class="page-item"><a class="page-link">4</a></li>
+                <li class="page-item"><a class="page-link">5</a></li>
+                <li class="page-item"><a class="page-link">&raquo</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- 사이드 메뉴바 -->
+        <aside id="side_menu_bar">
+            <div class="x_button"><a><img src="assets/img/X_button.png"></a></div>
+            <ul class="side_menu">
+                <li><a href="../GJ1_main_logout/main.html">HOME</a></li>
+                <li><a href="../GJ2_login_page/login.html">LOGIN</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>ROOM INFO</a></li>
+                <li>
+                    <div class="clear">
+                        <a>ROOM</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu">
+                        <li><a>35H</a></li>
+                        <li><a>35P</a></li>
+                        <li><a>50H</a></li>
+                        <li><a>70P</a></li>
+                        <li><a>85P</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear">
+                        <a>COMUNITY</a>
+                        <img src="assets/img/down-arrow.png">
+                    </div>
+                    <ul class="dropdown_menu">
+                        <li><a>NOTICE</a></li>
+                        <li><a>REVIEW</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    </div>
+
+    <script src='./assets/js/side_menu.js'></script>
+    <script src='./assets/js/join_regex_helper.js'></script>
+</body>
+</html>
