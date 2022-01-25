@@ -1,7 +1,7 @@
 /**
- * @filename    : style_login.css
- * @author      : 한송희 (onee.ssong@gmail.com)
- * @description : Grandjeju 로그인 페이지의 스타일 적용 코드 모음
+ * @filename    : style_review.css
+ * @author      : 양수원 (ysw7939@gmail.com)
+ * @description : Grandjeju 리뷰 페이지의 스타일 적용 코드 모음
  */
 
 @charset "UTF-8";
@@ -67,8 +67,8 @@ body::-webkit-scrollbar {
     min-width: 360px;
     max-width: 820px;
 }
-/** ---------- CONTENT ---------- */
 
+/* 페이지네이션 */
 #btn-group {
     width: 90%;
     margin: auto;
@@ -112,6 +112,9 @@ body::-webkit-scrollbar {
 }
 #content a {
     color: #000;
+    height: 100%;
+    width: 100%;
+    display: block;
 }
 #content img {
     position: absolute;
