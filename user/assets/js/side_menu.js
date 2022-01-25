@@ -31,10 +31,10 @@ for(const article of articles){
         
         if (sibling.hasAttribute("id","dropdown_menu_active")){
             sibling.removeAttribute("id","dropdown_menu_active");
-            img.src = "./assets/img/down-arrow.png"
+            img.src = "../assets/img/down-arrow.png"
         } else {
             sibling.setAttribute("id","dropdown_menu_active");
-            img.src = "./assets/img/up-arrow.png"
+            img.src = "../assets/img/up-arrow.png"
             sibling.style.transition = "transform 0.5s, height 0.5s";
         }
     })
