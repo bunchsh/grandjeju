@@ -1,0 +1,106 @@
+/**
+ * @filename    : style_inquiry.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 1:1 문의 작성 페이지의 스타일 적용 코드 모음
+ */
+
+@charset "UTF-8";
+
+/** ---------- ALL ---------- */
+html body {
+    width: 360px;
+    margin: 0 auto;
+}
+
+/** ---------- wrap ---------- */
+#wrap {
+    position: relative;
+    height: 740px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#wrap::-webkit-scrollbar{ 
+    display: none; 
+}
+
+/** ---------- HEADER ---------- */
+#header {
+    width: 360px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+}
+
+#header .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/** ---------- CONTAINER ---------- */
+#container {
+    width: 360px;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    width: 330px;
+    margin: 0 auto;
+}
+
+/** 제목 input */
+#container #content #inquiry_write .title_group {
+    padding-bottom: 10px;
+    margin-top: 25px;
+}
+#container #content #inquiry_write .title_group input {
+    width: 320px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+/** 에디터 */
+.ck-editor__editable_inline {
+    min-height: 360px;
+}
+
+/** 등록 btn */
+#container #content #inquiry_write .btn_group {
+    float: right;
+    padding: 10px 0;
+}
+#container #content #inquiry_write .btn_group .btn_write {
+    width: 60px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+/** sweetalert */
+.swal-modal {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid black;
+  }
+.swal-text {
+    font-size: 13px;
+    color: black;
+    text-align: center;
+}
+.swal-footer {
+    overflow: hidden;
+    text-align: center;
+  }
+.swal-button {
+    display: block;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 0;
+    width: 70px;
+    height: 43px;
+}

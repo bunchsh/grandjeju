@@ -1,0 +1,76 @@
+<!--
+ @filename    : inquiry_write.html
+ @author      : 한송희 (onee.ssong@gmail.com)
+ @description : Grandjeju REVEIW 작성 페이지의 구조 구현
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandJeju - REVIEW 작성</title>
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/style_inquiry.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <h2 class="title">REVIEW 작성</h2>
+        </div>
+
+        <!-- CONTAINER -->
+        <div id="container">
+            <!-- CONTENT -->
+            <div id="content">
+                <form id="inquiry_write">
+                    <!-- 제목 항목 -->
+                    <div class="title_group">
+                        <input class="title_input" type="text" placeholder="제목">
+                    </div>
+                    <!-- 본문 항목 -->
+                    <div class="editor_group">
+                        <textarea id="editor" name="content"></textarea>
+                    </div>
+                    <!-- 버튼 -->
+                    <div class="btn_group">
+                        <button type="submit" class="btn_write">등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+    <script src="./assets/js/write_regex_helper.js"></script>
+    <script>
+        /** editor 구성 */
+        ClassicEditor.create(document.querySelector('#editor'))
+            .then((editor) => {
+                console.log(editor);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+            document.querySelector('#inquiry_write').addEventListener("submit", e => {
+            e.preventDefault();
+
+            const regexHelper = new RegexHelper();
+
+            /** 제목 검사 */
+            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
+            /** 내용 검사 */
+            if (!regexHelper.value("#editor", "내용이 입력되지 않았습니다.")) {return false;}
+            
+            // 처리 완료
+            location.href="../GJ10_inquiry_detail_page/inquiry_detail_before.html";
+        });
+    </script>
+</body>
+
+</html>
