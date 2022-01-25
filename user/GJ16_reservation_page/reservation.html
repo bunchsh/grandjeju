@@ -29,7 +29,7 @@
                     <!-- 객실 선택 -->
                     <div class="room_group">
                         <h3 class="room_title">객실 선택</h3>
-                        <select class="room_select" onchange="roomChange(this)">
+                        <select id="room_select" onchange="roomPerson(this)">
                             <option value="">객실 선택</option>
                             <option value="35M">35M</option>
                             <option value="35O">35O</option>
@@ -37,6 +37,7 @@
                             <option value="70O">70O</option>
                             <option value="85M">85M</option>
                         </select>
+                        <span class="errmsg_room" style="display: none">객실을 선택해 주세요.</span>
                     </div>
                     <!-- 숙박 기간 -->
                     <div class="day_group">
@@ -44,10 +45,11 @@
                         <span class="day_select"></span>
                         <a href="#"><i class="far fa-calendar"></i></a>
                     </div>
+                    <span class="errmsg_day" style="display: none">숙박 기간을 선택해 주세요.</span>
                     <!-- 인원 선택 -->
                     <div class="person_group">
                         <h3 class="person_title">인원 선택</h3>
-                        <select class="person_select">
+                        <select id="person_select">
                             <option value="">인원 선택</option>
                         </select>
                     </div>
@@ -55,50 +57,66 @@
                     <div class="booker_group">
                         <h3 class="booker_title">예약자명</h3>
                         <input type="text" class="booker_input">
+                        <span class="errmsg_booker" style="display: none">예약자명을 입력해 주세요.</span>
+                        <span class="errmsg_min" style="display: none">예약자명은 2자 이상 입력 가능합니다.</span>
+                        <span class="errmsg_kor" style="display: none">예약자명은 한글만 입력 가능합니다.</span>
                     </div>
                     <!-- 예약자 연락처 -->
                     <div class="phone_group">
                         <h3 class="phone_title">예약자 연락처</h3>
                         <input type="tel" class="phone_input">
+                        <span class="errmsg_phone" style="display: none">올바른 예약자 연락처를 입력해 주세요.</span>
                     </div>
                     <!-- 결제 수단 -->
                     <div class="paybtn_group">
                         <h3 class="paybtn_title">결제 수단</h3>
-                        <div class="btn_group">
-                            <button class="credit">신용카드</button>
-                            <button class="naverpay"><img src="./assets/img/logo_black.png" alt="네이버페이"></button>
-                            <button class="kakaopay"><img src="./assets/img/제목 없음-1.png" alt="카카오페이"></button>
-                        </div>
+                        <div>
+                            <div class="radio-items">
+                              <div class="credit">
+                                <input id="credit" class="only-sr checked" type="radio" name="pay" value="creditcard" checked>
+                                <label for="credit">신용카드</label>
+                              </div>
+                              <div class="naverpay">
+                                <input id="naverpay" class="only-sr" type="radio" name="pay" value="naverpay">
+                                <label for="naverpay"><img src="./assets/img/logo_black.png" alt="네이버페이"></label>
+                              </div>
+                              <div class="kakaopay">
+                                <input id="kakaopay" class="only-sr" type="radio" name="pay" value="kakaopay">
+                                <label for="kakaopay"><img src="./assets/img/제목 없음-1.png" alt="카카오페이"></label>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                     <!-- 결제 금액 -->
                     <div class="payfee_group">
                         <h3 class="payfee_title">결제 금액</h3>
                         <span class="payfee"></span>
-                        <span> 원</span>
+                        <span class="payfee_won"> 원</span>
                     </div>
                     <!-- 결제하기 버튼 -->
                     <div class="pay_group">
-                        <button class="pay">결제하기</button>
+                        <button class="pay" type="submit">결제하기</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <script src="./assets/js/reservation_regex_helper.js"></script>
     <script type="text/javascript">
+        /** 객실 선택 시, 객실에 따른 선택 가능 인원 출력 */
         function roomPerson(e) {
-            let threefiveM = ["2명", "3명", "4명"];
-            let threefiveO = ["2명", "3명", "4명"];
-            let fiveM = ["2명", "3명", "4명", "5명", "6명"];
-            let sevenO = ["2명", "3명", "4명", "5명", "6명", "7명"];
-            let eightfiveM = ["2명", "3명", "4명", "5명", "6명", "7명", "8명"];
-            let target = document.getElementsByClassName("person_select");
+            let maxfour = ["2명", "3명", "4명"];
+            let maxsix = ["2명", "3명", "4명", "5명", "6명"];
+            let maxseven = ["2명", "3명", "4명", "5명", "6명", "7명"];
+            let maxeight = ["2명", "3명", "4명", "5명", "6명", "7명", "8명"];
+            var target = document.getElementById("person_select");
 
-            if(e.value == "35M") let d = threefiveM;
-            else if (e.value == "35O") let d = threefiveO;
-            else if (e.value == "50M") let d = fiveM;
-            else if (e.value == "70O") let d = sevenO;
-            else if (e.value == "85M") let d = eightfiveM;
+            if (e.value == "35M") var d = maxfour;
+            else if (e.value == "35O") var d = maxfour;
+            else if (e.value == "50M") var d = maxsix;
+            else if (e.value == "70O") var d = maxseven;
+            else if (e.value == "85M") var d = maxeight;
 
             target.options.length = 0;
 
@@ -110,6 +128,30 @@
             }
         }
 
+        /** 미선택 및 미입력 사항과 유효성 검사 */
+        document.querySelector('#reservation').addEventListener("submit", e => {
+            e.preventDefault();
+
+            const regexHelper = new RegexHelper();
+
+            /** 객실 검사 */
+            if (!regexHelper.room_value("#room_select")) { return false; }
+
+            /** 숙박 기간 검사 */
+            if (!regexHelper.day_value(".day_select")) { return false; }
+
+            /** 예악자명 검사 */
+            if (!regexHelper.booker_value(".booker_input")) { return false; }
+            if (!regexHelper.min_length(".booker_input")) { return false; }
+            if (!regexHelper.kor(".booker_input")) { return false; }
+
+            /** 예악자 연락처 검사 */
+            if (!regexHelper.phone_value(".phone_input")) { return false; }
+            if (!regexHelper.phone(".phone_input")) { return false; }
+
+            // 처리 완료
+            location.href = "#";
+        });
     </script>
 
 </body>
