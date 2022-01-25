@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style_reservation.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <div id="header">
+            <h2 class="title">RESERVATION</h2>
+        </div>
+
+        <!-- CONTAINER -->
+        <div id="container">
+            <!-- CONTENT -->
+            <div id="content">
+                <form action="" id="reservation">
+                    <!-- 객실 선택 -->
+                    <div class="room_group">
+                        <h3 class="room_title">객실 선택</h3>
+                        <select class="room_select" onchange="roomChange(this)">
+                            <option value="">객실 선택</option>
+                            <option value="35M">35M</option>
+                            <option value="35O">35O</option>
+                            <option value="50M">50M</option>
+                            <option value="70O">70O</option>
+                            <option value="85M">85M</option>
+                        </select>
+                    </div>
+                    <!-- 숙박 기간 -->
+                    <div class="day_group">
+                        <h3 class="day_title">숙박 기간</h3>
+                        <span class="day_select"></span>
+                        <a href="#"><i class="far fa-calendar"></i></a>
+                    </div>
+                    <!-- 인원 선택 -->
+                    <div class="person_group">
+                        <h3 class="person_title">인원 선택</h3>
+                        <select class="person_select">
+                            <option value="">인원 선택</option>
+                        </select>
+                    </div>
+                    <!-- 예약자명 -->
+                    <div class="booker_group">
+                        <h3 class="booker_title">예약자명</h3>
+                        <input type="text" class="booker_input">
+                    </div>
+                    <!-- 예약자 연락처 -->
+                    <div class="phone_group">
+                        <h3 class="phone_title">예약자 연락처</h3>
+                        <input type="tel" class="phone_input">
+                    </div>
+                    <!-- 결제 수단 -->
+                    <div class="paybtn_group">
+                        <h3 class="paybtn_title">결제 수단</h3>
+                        <div class="btn_group">
+                            <button class="credit">신용카드</button>
+                            <button class="naverpay"><img src="./assets/img/logo_black.png" alt="네이버페이"></button>
+                            <button class="kakaopay"><img src="./assets/img/제목 없음-1.png" alt="카카오페이"></button>
+                        </div>
+                    </div>
+                    <!-- 결제 금액 -->
+                    <div class="payfee_group">
+                        <h3 class="payfee_title">결제 금액</h3>
+                        <span class="payfee"></span>
+                        <span> 원</span>
+                    </div>
+                    <!-- 결제하기 버튼 -->
+                    <div class="pay_group">
+                        <button class="pay">결제하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function roomPerson(e) {
+            let threefiveM = ["2명", "3명", "4명"];
+            let threefiveO = ["2명", "3명", "4명"];
+            let fiveM = ["2명", "3명", "4명", "5명", "6명"];
+            let sevenO = ["2명", "3명", "4명", "5명", "6명", "7명"];
+            let eightfiveM = ["2명", "3명", "4명", "5명", "6명", "7명", "8명"];
+            let target = document.getElementsByClassName("person_select");
+
+            if(e.value == "35M") let d = threefiveM;
+            else if (e.value == "35O") let d = threefiveO;
+            else if (e.value == "50M") let d = fiveM;
+            else if (e.value == "70O") let d = sevenO;
+            else if (e.value == "85M") let d = eightfiveM;
+
+            target.options.length = 0;
+
+            for (x in d) {
+                let opt = document.createElement("option");
+                opt.value = d[x];
+                opt.innerHTML = d[x];
+                target.appendChild(opt);
+            }
+        }
+
+    </script>
+
+</body>
