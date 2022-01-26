@@ -42,8 +42,7 @@
                     <!-- 숙박 기간 -->
                     <div class="day_group">
                         <h3 class="day_title">숙박 기간</h3>
-                        <span class="day_select"></span>
-                        <a href="#"><i class="far fa-calendar"></i></a>
+                        <input class="day_select" placeholder="2022-01-26 ~ 2022-01-27">
                     </div>
                     <span class="errmsg_day" style="display: none">숙박 기간을 선택해 주세요.</span>
                     <!-- 인원 선택 -->
@@ -102,7 +101,12 @@
         </div>
     </div>
 
+    <!-- 유효성 검사를 사용하기 위한 script -->
     <script src="./assets/js/reservation_regex_helper.js"></script>
+
+    <!-- flatpickr을 사용하기 위한 script -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
         /** 객실 선택 시, 객실에 따른 선택 가능 인원 출력 */
         function roomPerson(e) {
@@ -152,6 +156,22 @@
             // 처리 완료
             location.href = "#";
         });
+
+        // 숙박 기간 날짜 범위 선택
+        flatpickr(".day_select", {
+            mode: "range",
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            conjunction: " ~ "
+        });
+        
+        const date = document.querySelector('.day_select')
+        date.addEventListener('change', e => {
+            let date_range = date.value;
+            console.log(date_range);
+        });
+
+        
     </script>
 
 </body>
