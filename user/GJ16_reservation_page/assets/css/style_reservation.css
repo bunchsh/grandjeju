@@ -166,9 +166,16 @@ body::-webkit-scrollbar {
     padding-bottom: 30px;
 }
 
+#container #content .payfee_group .payfee {
+    float: left !important;
+    font-size: 15px !important;
+    color: black !important;
+    font-weight: bold;
+}
+
 #container #content .payfee_group .payfee_won {
     float: left !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     color: black !important;
     font-weight: bold;
 }

@@ -39,12 +39,6 @@
                         </select>
                         <span class="errmsg_room" style="display: none">객실을 선택해 주세요.</span>
                     </div>
-                    <!-- 숙박 기간 -->
-                    <div class="day_group">
-                        <h3 class="day_title">숙박 기간</h3>
-                        <input class="day_select" placeholder="2022-01-26 ~ 2022-01-27">
-                    </div>
-                    <span class="errmsg_day" style="display: none">숙박 기간을 선택해 주세요.</span>
                     <!-- 인원 선택 -->
                     <div class="person_group">
                         <h3 class="person_title">인원 선택</h3>
@@ -52,6 +46,12 @@
                             <option value="">인원 선택</option>
                         </select>
                     </div>
+                    <!-- 숙박 기간 -->
+                    <div class="day_group">
+                        <h3 class="day_title">숙박 기간</h3>
+                        <input class="day_select" placeholder="2022-01-26 ~ 2022-01-27">
+                    </div>
+                    <span class="errmsg_day" style="display: none">숙박 기간을 선택해 주세요.</span>
                     <!-- 예약자명 -->
                     <div class="booker_group">
                         <h3 class="booker_title">예약자명</h3>
@@ -71,20 +71,20 @@
                         <h3 class="paybtn_title">결제 수단</h3>
                         <div>
                             <div class="radio-items">
-                              <div class="credit">
-                                <input id="credit" class="only-sr checked" type="radio" name="pay" value="creditcard" checked>
-                                <label for="credit">신용카드</label>
-                              </div>
-                              <div class="naverpay">
-                                <input id="naverpay" class="only-sr" type="radio" name="pay" value="naverpay">
-                                <label for="naverpay"><img src="./assets/img/logo_black.png" alt="네이버페이"></label>
-                              </div>
-                              <div class="kakaopay">
-                                <input id="kakaopay" class="only-sr" type="radio" name="pay" value="kakaopay">
-                                <label for="kakaopay"><img src="./assets/img/제목 없음-1.png" alt="카카오페이"></label>
-                              </div>
+                                <div class="credit">
+                                    <input id="credit" class="only-sr" type="radio" name="pay" value="creditcard">
+                                    <label for="credit">신용카드</label>
+                                </div>
+                                <div class="naverpay">
+                                    <input id="naverpay" class="only-sr" type="radio" name="pay" value="naverpay">
+                                    <label for="naverpay"><img src="./assets/img/logo_black.png" alt="네이버페이"></label>
+                                </div>
+                                <div class="kakaopay">
+                                    <input id="kakaopay" class="only-sr" type="radio" name="pay" value="kakaopay">
+                                    <label for="kakaopay"><img src="./assets/img/제목 없음-1.png" alt="카카오페이"></label>
+                                </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <!-- 결제 금액 -->
                     <div class="payfee_group">
@@ -127,8 +127,8 @@
             for (x in option) {
                 let opt = document.createElement("option");
                 opt.value = option[x];  // option의 value
-                opt.innerHTML = option[x]+"명";
-                opt.dataset.price = [x]*10000; // 기준 인원 이상 시, 10000원씩 추가
+                opt.innerHTML = option[x] + "명";
+                opt.dataset.price = [x] * 10000; // 기준 인원 이상 시, 10000원씩 추가
                 target.appendChild(opt);
             }
         }
@@ -158,7 +158,7 @@
             location.href = "#";
         });
 
-        // 숙박 기간 날짜 범위 선택
+        /** 숙박 기간 날짜 범위 선택 */
         flatpickr(".day_select", {
             mode: "range",
             minDate: "today",
@@ -167,36 +167,50 @@
                 rangeSeparator: ' ~ '
             }
         });
-        
-        const date = document.querySelector('.day_select')
+
+        /** 숙박 기간 COUNT */
+        const date = document.querySelector('.day_select');
         date.addEventListener('change', e => {
             let date_range = date.value;
-            let start = date_range.slice(0,10)
-            let a = date_range.indexOf('~')+2
-            let end = date_range.slice(a ,a+10)
+            let start = date_range.slice(0, 10)
+            let cut = date_range.indexOf('~') + 2
+            let end = date_range.slice(cut, cut + 10)
 
             let start_date = new Date(start);
             let end_date = new Date(end);
-            
-            const diffDate = start_date.getTime() - end_date.getTime();
-            const dateDays = Math.abs(diffDate / (1000 * 3600 *24));
 
-            console.log(dateDays);
+            const diff_date = start_date.getTime() - end_date.getTime();
+            const date_days = Math.abs(diff_date / (1000 * 3600 * 24));
+
+            console.log("기간:: ", date_days);
+
+            /** 객실에 따른 가격 */
+            const room = document.querySelector('#room_select');
+            let room_price = parseInt(room.options[room.selectedIndex].dataset.price);
+
+            /** 인원에 따른 추가금 책정 */
+            const person = document.querySelector('#person_select');
+            let person_price = parseInt(person.options[person.selectedIndex].dataset.price);
+
+            /** 최종 결제할 가격 */
+            let total_price = (room_price + person_price) * date_days;
+
+            if (isNaN(total_price)) {
+                total_price = '';
+            } else {
+                document.querySelector('.payfee').innerHTML = total_price;
+            }
         });
 
-        const room = document.querySelector('#room_select');
-        room.addEventListener('change', e => {
-            let data = room.options[room.selectedIndex].dataset.price;
-            console.log("숙박비:: ", data);
-            console.log("객실:: ", room.selectedIndex);
-        })
+        const pay_radio = document.getElementsByName('pay');
+        console.log(pay_radio);
 
-        const person = document.querySelector('#person_select');
-        person.addEventListener('change', e => {
-            let data = person.options[person.selectedIndex].dataset.price;
-            console.log("추가금:: ", data);
-            console.log("인원:: ", person.selectedIndex);
-        })
+        for (let i = 0; i < pay_radio.length; i++) {
+            pay_radio[i].addEventListener('click', e => {
+                console.log(this);
+            });
+        };
+
     </script>
 
 </body>
