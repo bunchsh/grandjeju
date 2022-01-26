@@ -31,11 +31,11 @@
                         <h3 class="room_title">객실 선택</h3>
                         <select id="room_select" onchange="roomPerson(this)">
                             <option value="">객실 선택</option>
-                            <option value="35M">35M</option>
-                            <option value="35O">35O</option>
-                            <option value="50M">50M</option>
-                            <option value="70O">70O</option>
-                            <option value="85M">85M</option>
+                            <option value="35M" data-price="40000">35M</option>
+                            <option value="35O" data-price="40000">35O</option>
+                            <option value="50M" data-price="70000">50M</option>
+                            <option value="70O" data-price="120000">70O</option>
+                            <option value="85M" data-price="160000">85M</option>
                         </select>
                         <span class="errmsg_room" style="display: none">객실을 선택해 주세요.</span>
                     </div>
@@ -110,24 +110,25 @@
     <script type="text/javascript">
         /** 객실 선택 시, 객실에 따른 선택 가능 인원 출력 */
         function roomPerson(e) {
-            let maxfour = ["2명", "3명", "4명"];
-            let maxsix = ["2명", "3명", "4명", "5명", "6명"];
-            let maxseven = ["2명", "3명", "4명", "5명", "6명", "7명"];
-            let maxeight = ["2명", "3명", "4명", "5명", "6명", "7명", "8명"];
-            var target = document.getElementById("person_select");
+            let maxfour = ["2", "3", "4"];
+            let maxsix = ["4", "5", "6"];
+            let maxseven = ["5", "6", "7"];
+            let maxeight = ["6", "7", "8"];
+            let target = document.getElementById("person_select");
 
-            if (e.value == "35M") var d = maxfour;
-            else if (e.value == "35O") var d = maxfour;
-            else if (e.value == "50M") var d = maxsix;
-            else if (e.value == "70O") var d = maxseven;
-            else if (e.value == "85M") var d = maxeight;
+            if (e.value == "35M") var option = maxfour;
+            else if (e.value == "35O") var option = maxfour;
+            else if (e.value == "50M") var option = maxsix;
+            else if (e.value == "70O") var option = maxseven;
+            else if (e.value == "85M") var option = maxeight;
 
             target.options.length = 0;
 
-            for (x in d) {
+            for (x in option) {
                 let opt = document.createElement("option");
-                opt.value = d[x];
-                opt.innerHTML = d[x];
+                opt.value = option[x];  // option의 value
+                opt.innerHTML = option[x]+"명";
+                opt.dataset.price = [x]*10000; // 기준 인원 이상 시, 10000원씩 추가
                 target.appendChild(opt);
             }
         }
@@ -183,7 +184,19 @@
             console.log(dateDays);
         });
 
-        
+        const room = document.querySelector('#room_select');
+        room.addEventListener('change', e => {
+            let data = room.options[room.selectedIndex].dataset.price;
+            console.log("숙박비:: ", data);
+            console.log("객실:: ", room.selectedIndex);
+        })
+
+        const person = document.querySelector('#person_select');
+        person.addEventListener('change', e => {
+            let data = person.options[person.selectedIndex].dataset.price;
+            console.log("추가금:: ", data);
+            console.log("인원:: ", person.selectedIndex);
+        })
     </script>
 
 </body>
