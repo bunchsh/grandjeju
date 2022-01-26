@@ -162,7 +162,9 @@
             mode: "range",
             minDate: "today",
             dateFormat: "Y-m-d",
-            conjunction: " ~ "
+            locale: {
+                rangeSeparator: ' ~ '
+            }
         });
         
         const date = document.querySelector('.day_select')
