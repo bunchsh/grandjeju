@@ -180,3 +180,28 @@ class RegexHelper {
         return true; // 성공했음을 반환
     }
 }
+
+/** 미선택 및 미입력 사항과 유효성 검사 */
+document.querySelector('#reservation').addEventListener("submit", e => {
+    e.preventDefault();
+
+    const regexHelper = new RegexHelper();
+
+    /** 객실 검사 */
+    if (!regexHelper.room_value("#room_select")) { return false; }
+
+    /** 숙박 기간 검사 */
+    if (!regexHelper.day_value(".day_select")) { return false; }
+
+    /** 예악자명 검사 */
+    if (!regexHelper.booker_value(".booker_input")) { return false; }
+    if (!regexHelper.min_length(".booker_input")) { return false; }
+    if (!regexHelper.kor(".booker_input")) { return false; }
+
+    /** 예악자 연락처 검사 */
+    if (!regexHelper.phone_value(".phone_input")) { return false; }
+    if (!regexHelper.phone(".phone_input")) { return false; }
+
+    // 처리 완료
+    location.href = "#";
+});

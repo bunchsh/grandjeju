@@ -1,3 +1,7 @@
+<!-- @filename    : reservation.html
+@author      : 한송희 (onee.ssong@gmail.com)
+@description : Grandjeju 예약하기 페이지의 구조 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,122 +111,16 @@
     <!-- flatpickr을 사용하기 위한 script -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./assets/js/flatpickr_reservation.js"></script>
+
+    <!-- 객실에 따른 선택 가능 인원 출력 -->
+    <script src="./assets/js/person_option.js"></script>
+
+    <!-- 결제 금액 출력-->
+    <script src="./assets/js/pay_price.js"></script>
+
     <script type="text/javascript">
-        /** 객실 선택 시, 객실에 따른 선택 가능 인원 출력 */
-        function roomPerson(e) {
-            let maxfour = ["2", "3", "4"];
-            let maxsix = ["4", "5", "6"];
-            let maxseven = ["5", "6", "7"];
-            let maxeight = ["6", "7", "8"];
-            let target = document.getElementById("person_select");
-
-            if (e.value == "35M") var option = maxfour;
-            else if (e.value == "35O") var option = maxfour;
-            else if (e.value == "50M") var option = maxsix;
-            else if (e.value == "70O") var option = maxseven;
-            else if (e.value == "85M") var option = maxeight;
-
-            target.options.length = 0;
-
-            for (x in option) {
-                let opt = document.createElement("option");
-                opt.value = option[x];  // option의 value
-                opt.innerHTML = option[x] + "명";
-                opt.dataset.price = [x] * 10000; // 기준 인원 이상 시, 10000원씩 추가
-                target.appendChild(opt);
-            }
-        }
-
-        /** 미선택 및 미입력 사항과 유효성 검사 */
-        document.querySelector('#reservation').addEventListener("submit", e => {
-            e.preventDefault();
-
-            const regexHelper = new RegexHelper();
-
-            /** 객실 검사 */
-            if (!regexHelper.room_value("#room_select")) { return false; }
-
-            /** 숙박 기간 검사 */
-            if (!regexHelper.day_value(".day_select")) { return false; }
-
-            /** 예악자명 검사 */
-            if (!regexHelper.booker_value(".booker_input")) { return false; }
-            if (!regexHelper.min_length(".booker_input")) { return false; }
-            if (!regexHelper.kor(".booker_input")) { return false; }
-
-            /** 예악자 연락처 검사 */
-            if (!regexHelper.phone_value(".phone_input")) { return false; }
-            if (!regexHelper.phone(".phone_input")) { return false; }
-
-            // 처리 완료
-            location.href = "#";
-        });
-
-        /** 숙박 기간 날짜 범위 선택 */
-        flatpickr(".day_select", {
-            mode: "range",
-            minDate: "today",
-            dateFormat: "Y-m-d",
-            locale: {
-                rangeSeparator: ' ~ '
-            }
-        });
-
-        /** 숙박 기간 COUNT */
-        const date = document.querySelector('.day_select');
-        date.addEventListener('change', e => {
-            let date_range = date.value;
-            let start = date_range.slice(0, 10)
-            let cut = date_range.indexOf('~') + 2
-            let end = date_range.slice(cut, cut + 10)
-
-            let start_date = new Date(start);
-            let end_date = new Date(end);
-
-            const diff_date = start_date.getTime() - end_date.getTime();
-            var date_days = Math.abs(diff_date / (1000 * 3600 * 24));
-
-            console.log("기간:: ", date_days);
-
-            /** 결제할 가격 */
-            let total_price = (room_price + person_price) * date_days;
-    
-            if (isNaN(total_price)) {
-                total_price = '';
-            } else {
-                document.querySelector('.payfee').innerHTML = total_price;
-            }
-        });
-
-        /** 객실에 따른 가격 */
-        const room = document.querySelector('#room_select');
-        var room_price = parseInt(room.options[room.selectedIndex].dataset.price);
-        room.addEventListener('change', e => {
-            /** 결제할 가격 */
-            let room_total = (room_price + person_price) * date_days;
-    
-            if (isNaN(total_price)) {
-                room_total = '';
-            } else {
-                document.querySelector('.payfee').innerHTML = room_total;
-            }
-        });
-
-        /** 인원에 따른 추가금 책정 */
-        const person = document.querySelector('#person_select');
-        var person_price = parseInt(person.options[person.selectedIndex].dataset.price);
-        person.addEventListener('change', e => {
-            /** 결제할 가격 */
-            let person_total = (room_price + person_price) * date_days;
-    
-            if (isNaN(total_price)) {
-                person_total = '';
-            } else {
-                document.querySelector('.payfee').innerHTML = person_total;
-            }
-        });
-
-
+        
         const pay_radio = document.getElementsByName('pay');
         console.log(pay_radio);
 
