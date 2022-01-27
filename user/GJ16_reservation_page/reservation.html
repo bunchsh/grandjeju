@@ -180,27 +180,48 @@
             let end_date = new Date(end);
 
             const diff_date = start_date.getTime() - end_date.getTime();
-            const date_days = Math.abs(diff_date / (1000 * 3600 * 24));
+            var date_days = Math.abs(diff_date / (1000 * 3600 * 24));
 
             console.log("기간:: ", date_days);
 
-            /** 객실에 따른 가격 */
-            const room = document.querySelector('#room_select');
-            let room_price = parseInt(room.options[room.selectedIndex].dataset.price);
-
-            /** 인원에 따른 추가금 책정 */
-            const person = document.querySelector('#person_select');
-            let person_price = parseInt(person.options[person.selectedIndex].dataset.price);
-
-            /** 최종 결제할 가격 */
+            /** 결제할 가격 */
             let total_price = (room_price + person_price) * date_days;
-
+    
             if (isNaN(total_price)) {
                 total_price = '';
             } else {
                 document.querySelector('.payfee').innerHTML = total_price;
             }
         });
+
+        /** 객실에 따른 가격 */
+        const room = document.querySelector('#room_select');
+        var room_price = parseInt(room.options[room.selectedIndex].dataset.price);
+        room.addEventListener('change', e => {
+            /** 결제할 가격 */
+            let room_total = (room_price + person_price) * date_days;
+    
+            if (isNaN(total_price)) {
+                room_total = '';
+            } else {
+                document.querySelector('.payfee').innerHTML = room_total;
+            }
+        });
+
+        /** 인원에 따른 추가금 책정 */
+        const person = document.querySelector('#person_select');
+        var person_price = parseInt(person.options[person.selectedIndex].dataset.price);
+        person.addEventListener('change', e => {
+            /** 결제할 가격 */
+            let person_total = (room_price + person_price) * date_days;
+    
+            if (isNaN(total_price)) {
+                person_total = '';
+            } else {
+                document.querySelector('.payfee').innerHTML = person_total;
+            }
+        });
+
 
         const pay_radio = document.getElementsByName('pay');
         console.log(pay_radio);
