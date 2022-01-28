@@ -25,9 +25,10 @@ class RegexHelper {
             input.style.border = '2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            input.style.border = '2px solid #ddd';
         }
-        span.style.display = 'none';
-        input.style.border = '2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
@@ -49,9 +50,10 @@ class RegexHelper {
             input.style.border = '2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            input.style.border = '2px solid #ddd';
         }
-        span.style.display = 'none';
-        input.style.border = '2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
@@ -69,14 +71,13 @@ class RegexHelper {
 
         if (!content) {
             // 값이 없다면?
-            span.style.display = 'inline-block';
-            input.style.color = 'red';
-            field.focus(); // 대상 요소에게 포커스 강제 지정
+            span.style.display = 'block';
+            // input.style.border = '2px solid red';
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            return true; // 성공했음을 반환
         }
-        span.style.display = 'none';
-        input.style.color = 'black';
-        return true; // 성공했음을 반환
     }
 
     /**
@@ -97,9 +98,10 @@ class RegexHelper {
             input.style.border = '2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            input.style.border = '2px solid #ddd';
         }
-        span.style.display = 'none';
-        input.style.border = '2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
@@ -121,9 +123,10 @@ class RegexHelper {
             input.style.border = '2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            input.style.border = '2px solid #ddd';
         }
-        span.style.display = 'none';
-        input.style.border = '2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
@@ -146,9 +149,10 @@ class RegexHelper {
             input.style.border = '2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            input.style.border = '2px solid #ddd';
         }
-        span.style.display = 'none';
-        input.style.border = '2px solid #ddd';
         return true; // 성공했음을 반환
     }
 
@@ -174,10 +178,38 @@ class RegexHelper {
             input.style.border = '2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+            input.style.border = '2px solid #ddd';
         }
-        span.style.display = 'none';
-        input.style.border = '2px solid #ddd';
         return true; // 성공했음을 반환
+    }
+
+    /**
+     * 결제수단이 선택되어 있는지 검사
+     * @param {string} selector 입력 요소에 해당하는 CSS 선택자
+     * @return {boolean}        체크된 경우 true / 체크되지 않은 경우 false
+     */
+     check(selector) {
+        const field = document.querySelectorAll(selector);
+        const span = document.querySelector(".errmsg_paytype");
+        let checked = false;
+
+        Array.from(field).some((v, i) => {
+            if (v.checked) {
+                checked = true;
+                return true;
+            }
+        });
+        // 반복이 끝까지 수행되면 체크된 항목이 없다는 의미이므로 false 반환
+        if (!checked) {
+            // 선택이 안 되었다면?
+            span.style.display = 'block';
+            return false; // 실패했음을 반환
+        } else {
+            span.style.display = 'none';
+        }
+        return checked;
     }
 }
 
@@ -201,6 +233,9 @@ document.querySelector('#reservation').addEventListener("submit", e => {
     /** 예악자 연락처 검사 */
     if (!regexHelper.phone_value(".phone_input")) { return false; }
     if (!regexHelper.phone(".phone_input")) { return false; }
+
+    /** 결제 수단 검사 */
+    if (!regexHelper.check("input[name=pay]")) { return false; }
 
     // 처리 완료
     location.href = "#";
