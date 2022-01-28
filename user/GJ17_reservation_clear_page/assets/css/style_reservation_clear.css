@@ -1,0 +1,120 @@
+/**
+ * @filename    : style_reservation_clear.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 예약 완료 페이지의 스타일 적용 코드 모음
+ */
+
+@charset "UTF-8";
+
+/** ---------- ALL ---------- */
+html body {
+    width: 360px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/** ---------- wrap ---------- */
+#wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+/** ---------- HEADER ---------- */
+#header {
+    width: 360px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+}
+
+#header .title {
+    font-size: 24px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/** ---------- CONTAINER ---------- */
+#container {
+    width: 360px;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    width: 330px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+#container #content h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/** 객실 항목 */
+#container #content .room_group {
+    height: 60px;
+}
+#container #content .room_group .select_room {
+    font-size: 13px;
+}
+/** 숙박 기간 항목 */
+#container #content .date_group {
+    height: 60px;
+}
+#container #content .date_group .select_date {
+    font-size: 13px;
+}
+/** 인원 항목 */
+#container #content .person_group {
+    height: 60px;
+}
+#container #content .person_group .select_person {
+    font-size: 13px;
+}
+/** 예약자명 항목 */
+#container #content .name_group {
+    height: 60px;
+}
+#container #content .name_group .select_name {
+    font-size: 13px;
+}
+/** 예약자 연락처 항목 */
+#container #content .number_group {
+    height: 60px;
+}
+#container #content .number_group .select_number {
+    font-size: 13px;
+}
+/** 결제 금액 항목 */
+#container #content .pay_group {
+    height: 60px;
+    padding-bottom: 30px;
+}
+#container #content .pay_group .select_pay {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/** 예약 상세 내역 이동 버튼 항목 */
+#container #content .btn_group {
+    display: block;
+    margin: 0 auto;
+}
+
+#container #content .btn_group .notice {
+    display: block;
+    width: 330px;
+    font-size: 8px;
+    font-weight: bold;
+    color: gray;
+    margin: 0 auto;
+}
+
+#container #content .btn_group .btn_ok {
+    display: block;
+    width: 330px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    margin: 0 auto;
+}
