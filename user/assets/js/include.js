@@ -1,6 +1,3 @@
-
-
-
 document.querySelectorAll("*[data-include]").forEach(async (v,i) => {
     console.log("인크루드 시작")
     const include = v.dataset.include;
@@ -20,11 +17,10 @@ document.querySelectorAll("*[data-include]").forEach(async (v,i) => {
     loadScript("../assets/js/side_menu.js");
 });
 
-
-function loadScript ( src){
+// 사이드 메뉴를 동작하게하는 스크립트태그를 생성하는 함수
+function loadScript (src){
     let script = document.createElement('script');
     script.src = src;
-    script.async = false;
     document.body.append(script);
 };
 

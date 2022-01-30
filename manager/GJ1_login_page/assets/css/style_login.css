@@ -1,0 +1,147 @@
+/**
+ * @filename    : style_login.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 로그인 페이지의 스타일 적용 코드 모음
+ */
+
+@charset "UTF-8";
+
+
+
+/** ---------- CONTAINER ---------- */
+#container {
+    width: 100%;
+    height: 100%;
+}
+/** ---------- CONTENT ---------- */
+#container #content {
+    margin: auto;
+    width: 500px;
+}
+/** logo */
+#container #content .logo {
+    margin: 200px 0 30px 0;
+    text-align: center;
+}
+#container #content .logo img {
+    width: 250px;
+    height: 250px;
+}
+
+/** form */
+/** ID */
+#container #content #login .id_group {
+    padding-bottom: 10px;
+    font-size: 0;
+    vertical-align: bottom;
+    text-align: center;
+}
+#container #content #login .id_group .id_logo {
+    display: inline-block;
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 10% 0 0 10%;
+    vertical-align: bottom;
+}
+#container #content #login .id_group .id_logo i {
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 8px;
+}
+#container #content #login .id_group .id_input {
+    display: inline-block;
+    vertical-align: bottom;
+}
+#container #content #login .id_group a {
+    display: block;
+    height: 20px;
+    z-index: 10;
+
+}
+#container #content #login .id_group .id_input .user_id {
+    width: 170px;
+    height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 0 5px 5px 0;
+    vertical-align: bottom;
+}
+
+/** PASSWORD */
+#container #content #login .pw_group {
+    font-size: 0;
+    text-align: center;
+}
+#container #content #login .pw_group .pw_logo {
+    display: inline-block;
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 10% 0 0 10%;
+    vertical-align: bottom;
+}
+#container #content #login .pw_group .pw_logo i {
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+}
+#container #content #login .pw_group .pw_input {
+    display: inline-block;
+    vertical-align: bottom;
+}
+#container #content #login .pw_group .pw_input .user_pw {
+    width: 170px;
+    height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 0 5px 5px 0;
+    vertical-align: bottom;
+}
+
+
+/** LOGIN button */
+#container #content #login #btn_group {
+    margin-top: 30px;
+    text-align: center;
+}
+#container #content #login #btn_group .btn_login {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+
+/** sweetalert */
+.swal-modal {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid black;
+  }
+.swal-text {
+    font-size: 13px;
+    color: black;
+    text-align: center;
+}
+.swal-footer {
+    overflow: hidden;
+    text-align: center;
+  }
+.swal-button {
+    display: block;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 0;
+    width: 70px;
+    height: 43px;
+}
