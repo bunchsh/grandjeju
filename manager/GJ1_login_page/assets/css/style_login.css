@@ -20,12 +20,16 @@
 }
 /** logo */
 #container #content .logo {
-    margin: 200px 0 30px 0;
+    margin: 150px 0 30px 0;
     text-align: center;
 }
 #container #content .logo img {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
+}
+
+#container #content .logo .login_title {
+    font-size: 15px;
 }
 
 /** form */
