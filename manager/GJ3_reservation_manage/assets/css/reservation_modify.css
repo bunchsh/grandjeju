@@ -1,0 +1,61 @@
+/**
+ * @filename    : reservation_manage.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju Grandjeju 관리자 사이트의 예약 관리 페이지의 스타일 적용 코드 모음
+ */
+
+/**----- CONTAINER -----*/
+/** TITLE */
+.float-left {
+    width: 100%;
+}
+.float-left .my_h3 {
+    margin: 30px 0px 0px 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+hr {
+    background-color: #000;
+    width: 350px;
+    margin: 3px;
+    margin-bottom: 30px;
+}
+
+/** FORM */
+#reservation_form .form-group {
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+
+#reservation_form .form-group select {
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+#reservation_form .form-group .input_group span{
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+#reservation_form .form-group #stay_start, #stay_end {
+    width: 40%;
+    margin-top: 5px;
+}
+
+#reservation_form .text-center {
+    padding-top: 30px; 
+}
+
+#reservation_form .text-center button {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid black;
+}

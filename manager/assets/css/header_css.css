@@ -1,0 +1,35 @@
+/**
+ * @filename    : header_css.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju Grandjeju 관리자 사이트의 header 부분 css
+ */
+
+/** HEADER */
+.navbar-header {
+    padding: 0 20px;
+}
+.navbar {
+    padding: 0;
+    height: 50px;
+}
+
+.mr-auto {
+    height: 60px;
+}
+
+.nav-item {
+    border-left: 1px solid white;
+    font-size: 14px;
+    padding: 12px 20px 0 20px;
+    font-weight: bold;
+}
+
+.nav-item:nth-child(4) {
+    border-right: 1px solid white;
+}
+
+.logout_group .nav-item {
+    padding-top: 0;
+    border: none;
+    font-weight: normal;
+}
