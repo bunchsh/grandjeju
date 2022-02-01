@@ -1,7 +1,7 @@
 <!--
- @filename    : review_manage.html
+ @filename    : inquiry_manage.html
  @author      : 한송희 (onee.ssong@gmail.com)
- @description : Grandjeju 관리자 사이트의 리뷰 관리 페이지 구조 구현
+ @description : Grandjeju 관리자 사이트의 1:1 관리 페이지 구조 구현
 -->
 
 <!DOCTYPE html>
@@ -11,10 +11,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrandJeju - 리뷰 관리</title>
+    <title>GrandJeju - 1:1 문의 관리</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/review_manage.css">
+    <link rel="stylesheet" href="assets/css/inquiry_manage.css">
     <link rel="stylesheet" href="/manager/assets/css/header_css.css">
 </head>
 
@@ -26,7 +26,7 @@
         <!-- CONTAINER -->
         <div class="container">
             <div class="float-left">
-                <h3 class="my_h3">리뷰 관리</h3>
+                <h3 class="my_h3">1:1 문의 관리</h3>
                 <hr />
             </div>
 
@@ -35,7 +35,7 @@
                 <div class="clearfix">
                     <div class="float-right">
                         <div class="btn-group float-right my_margin">
-                            <span class="my_border">전체 리뷰 내역</span></h4>
+                            <span class="my_border">전체 문의 내역</span></h4>
                             <span class="my_count" id="count"></span>
                         </div>
                         <form class="my_margin" id="form_serch" method="get" action="">
@@ -62,6 +62,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">번호</th>
+                                <th scope="col">답변 상태</th>
                                 <th scope="col">아이디</th>
                                 <th scope="col">이름</th>
                                 <th scope="col">리뷰 제목</th>
@@ -87,24 +88,26 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/manager/assets/js/include.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script id="members-list-template" type="text/x-handlebars-template">
+    <script id="inquiry-list-template" type="text/x-handlebars-template">
         {{#each item}}
             <tr>
                 <th scope="row">{{review_id}}</th>
+                <td><button value="{{type}}"></button></td>
                 <td>{{user_id}}</td>
                 <td>{{user_name}}</td>
                 <td>{{title}}</td>
-                <td>{{review_date}}</td>
+                <td>{{inquiry_date}}</td>
                 <td>
-                   <a href="#" class="btn btn-danger btn-xs btn-delete" data-review_id="{{review_id}}" data-name="{{name}}">삭제</a>
+                    <a href="/myschool/inquiry/inquiry_modify.html?inquiry_id={{inquiry_id}}" class="btn btn-success btn-xs btn-edit">수정</a>
+                    <a href="#" class="btn btn-danger btn-xs btn-delete" data-inquiry_id="{{inquiry_id}}" data-name="{{name}}">삭제</a>
                 </td>
             </tr>
         {{/each}}
     </script>
     
-    <script src="./assets/js/review_search.js"></script>
-    <script src="./assets/js/review_pagination.js"></script>
-    <script src="./assets/js/review_order.js"></script>
+    <script src="./assets/js/inquiry_search.js"></script>
+    <script src="./assets/js/inquiry_pagination.js"></script>
+    <script src="./assets/js/inquiry_order.js"></script>
 
 </body>
 
