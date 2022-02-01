@@ -6,47 +6,12 @@
 
 @charset "UTF-8";
 
-/** ---------- ALL ---------- */
-html body {
-    width: 360px;
-    margin: 0 auto;
-}
-
-/** ---------- wrap ---------- */
-#wrap {
-    position: relative;
-    height: 740px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-#wrap::-webkit-scrollbar{ 
-    display: none; 
-}
-
-/** ---------- HEADER ---------- */
-#header {
-    width: 360px;
-    padding: 10px 0;
-    border-width: 350px;
-    border-bottom: 1px solid gray;
-}
-
-#header .title {
-    font-size: 24px;
-    text-align: center;
-    margin: 0 auto;
-}
-
 /** ---------- CONTAINER ---------- */
 #container {
-    width: 360px;
-}
-/** ---------- CONTENT ---------- */
-#container #content {
-    width: 330px;
+    width: 90%;
     margin: 0 auto;
 }
-
+/** ---------- CONTENT ---------- */
 /** 제목 */
 #container #content .title_group {
     padding: 30px 0 10px 0;
@@ -67,7 +32,7 @@ html body {
 
 /** 본문 */
 #container #content .main_group {
-    width: 310px;
+    width: 90%;
     min-height: 480px;
     margin: 0 auto;
     border-bottom: 1px solid gray;

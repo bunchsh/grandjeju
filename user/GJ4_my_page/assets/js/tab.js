@@ -1,5 +1,8 @@
-
-
+/**
+ * @filename    : tab.js
+ * @author      : 양수원 (ysw7939@gmail.com) 
+ * @description : tab 작동 함수
+ */
 
 // tab
 const tabs = document.querySelectorAll(".tab_three");

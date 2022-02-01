@@ -6,43 +6,13 @@
 
 @charset "UTF-8";
 
-/** ---------- ALL ---------- */
-html body {
-    width: 360px;
-    height: auto;
-    margin: 0 auto;
-}
-
-/** ---------- wrap ---------- */
-#wrap {
-    position: relative;
-    overflow: hidden;
-}
-
-/** ---------- HEADER ---------- */
-#header {
-    width: 360px;
-    padding: 10px 0;
-    border-width: 350px;
-    border-bottom: 1px solid gray;
-}
-
-#header .title {
-    font-size: 24px;
-    margin: 0 auto;
-    text-align: center;
-}
-
 /** ---------- CONTAINER ---------- */
 #container {
-    width: 360px;
-}
-/** ---------- CONTENT ---------- */
-#container #content {
-    width: 330px;
+    width: 80%;
     margin: 0 auto;
     padding: 30px 0;
 }
+/** ---------- CONTENT ---------- */
 #container #content h3 {
     font-size: 15px;
     font-weight: bold;
@@ -102,7 +72,7 @@ html body {
 
 #container #content .btn_group .notice {
     display: block;
-    width: 330px;
+    width: 90%;
     font-size: 8px;
     font-weight: bold;
     color: gray;
@@ -111,10 +81,11 @@ html body {
 
 #container #content .btn_group .btn_ok {
     display: block;
-    width: 330px;
+    width: 90%;
     height: 40px;
     background-color: black;
     color: white;
     border-radius: 5px 5px 5px 5px;
+    border: none;
     margin: 0 auto;
 }

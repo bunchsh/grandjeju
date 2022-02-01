@@ -1,0 +1,36 @@
+/**
+ * @filename    : header_style.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju 사이트의 header 스타일 공통 적용 코드 모음
+ */
+
+/** ---------- HEADER ---------- */
+#header {
+    min-width: 360px;
+    max-width: 820px;
+    padding: 10px 0;
+    border-width: 350px;
+    border-bottom: 1px solid gray;
+    position: relative;
+}
+#header .hamburger_icon {
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top:15px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#header .hamburger_icon img {
+    width:100%;
+    display: block;
+    margin-top: -5px;
+}
+
+#header .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+}

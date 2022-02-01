@@ -1,46 +1,8 @@
-/** ---------- ALL ---------- */
-html body {
-    width: 360px;
-    height: auto;
-    margin: 0 auto;
-}
-#wrap {
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: relative;
-}
-#wrap::-webkit-scrollbar {
-    display: none;
-}
-/** ---------- HEADER ---------- */
-#header {
-    width: 360px;
-    padding: 10px 0;
-    border-width: 350px;
-    border-bottom: 1px solid gray;
-    position: relative;
-}
-#header .hamburger_icon {
-    float: left;
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top:15px;
-    left: 10px;
-    cursor: pointer;
-}
-
-#header .hamburger_icon img {
-    width:100%;
-    display: block;
-}
-
-#header .title {
-    font-size: 24px;
-    text-align: center;
-    margin: 0 auto;
-}
-
+/**
+ * @filename    : style_join.css
+ * @author      : 양수원 (ysw7939@gmail.com)
+ * @description : Grandjeju 회원가입 페이지의 스타일 적용 코드 모음
+ */
 
 /* form */
 .join_form{

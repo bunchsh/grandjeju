@@ -1,0 +1,35 @@
+/**
+ * @filename    : style_reservation.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : 유저 페이지 공통 스타일 적용 코드 모음
+ */
+
+ @charset "UTF-8";
+
+/** ---------- ALL ---------- */
+body {
+    min-width: 360px;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/** ---------- wrap ---------- */
+#wrap {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 740px;
+    margin: 0 auto;
+}
+
+#wrap::-webkit-scrollbar {
+    display: none;
+}

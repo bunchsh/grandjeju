@@ -5,67 +5,10 @@
  */
 
 @charset "UTF-8";
-
-/** ---------- ALL ---------- */
-body {
-    min-width: 360px;
-    max-width: 820px;
-    margin: 0 auto;
-}
-
-body::-webkit-scrollbar {
-    display: none;
-}
-
-/** ---------- wrap ---------- */
-#wrap {
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 1180px;
-    min-height: 740px;
-    margin: 0 auto;
-}
-
-#wrap::-webkit-scrollbar {
-    display: none;
-}
-
-/** ---------- HEADER ---------- */
-#header {
-    min-width: 360px;
-    max-width: 820px;
-    padding: 10px 0;
-    border-width: 350px;
-    border-bottom: 1px solid gray;
-    position: relative;
-    height: 53px;
-}
-#header .hamburger_icon {
-    float: left;
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: 12px;
-    left: 10px;
-    cursor: pointer;
-}
-
-#header .hamburger_icon img {
-    width:100%;
-    display: block;
-}
-
-#header .title {
-    font-size: 24px;
-    text-align: center;
-    margin: 0 auto;
-}
-
 /** ---------- CONTAINER ---------- */
 #container {
-    min-width: 360px;
-    max-width: 820px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 /* 페이지네이션 */
@@ -115,6 +58,7 @@ body::-webkit-scrollbar {
     height: 100%;
     width: 100%;
     display: block;
+    text-decoration: none;
 }
 #content img {
     position: absolute;
@@ -132,6 +76,12 @@ body::-webkit-scrollbar {
     padding-bottom : 10px;
     display: block;
     margin: 0px;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+#content span {
+    font-size: 13px;
 }
 .text-center .pagination a {
     color:#000

@@ -13,8 +13,7 @@
 
 #side_menu_bar {
     z-index: 10;
-    max-width: 290px;
-    width: 290px;
+    width: 60%;
     background-color: rgb(0,0,0);
     color: #fff;
     position: absolute;

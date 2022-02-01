@@ -93,3 +93,19 @@ class RegexHelper {
         return this.field(selector, msg, /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])$/);
     }
 }
+
+// 로그인 유효성 검사
+document.querySelector('#login').addEventListener("submit", e => {
+    e.preventDefault();
+
+    const regexHelper = new RegexHelper();
+
+    /** 아이디 검사 */
+    if (!regexHelper.id_value(".user_id")) { return false; }
+
+    /** 비밀번호 검사 */
+    if (!regexHelper.pw_value(".user_pw")) { return false; }
+
+    // 처리 완료
+    location.href="../GJ1_main_page/main_login.html";
+});
