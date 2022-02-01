@@ -4,6 +4,12 @@
  * @description : 총 리뷰 내역 수, 삭제 버튼 구현을 위한 함수와 pagination 구현을 위한 함수 호출
  */
 
+// 핸들바 인덱스 번호
+Handlebars.registerHelper('inc', function(index) {
+    index++;
+    return index;
+})
+
 /** GET 파라미터 받기 */
 const params = new URLSearchParams(window.location.search);
 const query = params.get('query') || "";
@@ -23,7 +29,7 @@ document.querySelector('#search').value = search;
 
     // ajax 요청
     try {
-        const response = await axios.get('/review', {
+        const response = await axios.get('/inquiry', {
             params: {
                 query: query,
                 page: page,
@@ -31,7 +37,7 @@ document.querySelector('#search').value = search;
                 order: order
             }
         });
-        const total = await axios.get('/review')
+        const total = await axios.get('/inquiry')
         json = response.data
         total_count = total.data.pagenation.totalCount
         console.log(json);
@@ -44,7 +50,7 @@ document.querySelector('#search').value = search;
     // ajax결과가 존재한다면?
     if (json != null) {
         console.log(json.pagenation);
-        const source = document.querySelector("#members-list-template").innerHTML;
+        const source = document.querySelector("#inquiry-list-template").innerHTML;
         const template = Handlebars.compile(source);
         const html = template(json);
 
@@ -69,7 +75,7 @@ document.querySelector('#search').value = search;
                 if (confirm('정말' + user_name + '(을)를 삭제하시겠습니까?')) {
                     // Ajax를 통한 삭제 처리
                     try {
-                        const url = '/review/' + member_id;
+                        const url = '/inquiry/' + member_id;
                         await axios.delete(url);
                     } catch (e) {
                         // 에러가 발생한 경우 벡엔드가 주는 json 받기

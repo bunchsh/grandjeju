@@ -16,7 +16,11 @@ function pagenation(selector, data) {
     const a1 = document.createElement("a");
     a1.innerHTML = "&laquo;";
     a1.classList.add("page-link");
-    a1.setAttribute("href", "/GJ4_review_manage/review_manage.html?page=" + data.prevGroupLastPage + "&query=" + query);
+    a1.setAttribute("href", "/GJ4_review_manage_page/review_manage.html?page=" + data.prevGroupLastPage + "&query=" + query);
+
+    if(!(order == null)){
+        a1.setAttribute("href", "/GJ4_review_manage_page/review_manage.html?page=" + data.prevGroupLastPage + "&query=" + query +  "&order=" + order)
+    }
 
     if (data.prevGroupLastPage == 0) {
         li1.classList.add('disabled');
@@ -34,7 +38,11 @@ function pagenation(selector, data) {
         const a2 = document.createElement("a");
         a2.innerHTML = i;
         a2.classList.add('page-link');
-        a2.setAttribute("href", "/GJ4_review_manage/review_manage.html?page=" + i + "&query=" + query);
+        a2.setAttribute("href", "/GJ4_review_manage_page/review_manage.html?page=" + i + "&query=" + query);
+
+        if (!(order == null)) {
+            a2.setAttribute("href", "/GJ4_review_manage_page/review_manage.html?page=" + i + "&query=" + query + "&order=" + order);
+        }
 
         if (data.nowPage == i) {
             li2.classList.add('active');
@@ -51,7 +59,12 @@ function pagenation(selector, data) {
     const a3 = document.createElement("a");
     a3.innerHTML = "&raquo;";
     a3.classList.add("page-link");
-    a3.setAttribute("href", "/GJ4_review_manage/review_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query);
+    a3.setAttribute("href", "/GJ4_review_manage_page/review_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query);
+
+    if (!(order == null)) {
+        a3.setAttribute("href","/GJ4_review_manage_page/review_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&order=" + order);
+    }
+
 
     if (data.nextGroupFirstPage == 0) {
         li3.classList.add('disabled');

@@ -244,7 +244,7 @@ module.exports = (app) => {
     })
 
     /** 데이터 삭제 --> Delete(DELETE) */
-    router.delete("members/:member_id", async (req, res,next) =>{
+    router.delete("/members/:member_id", async (req, res,next) =>{
         const member_id = req.get('member_id');
 
         try {

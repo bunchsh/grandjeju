@@ -15,13 +15,13 @@ module.exports = (app) => {
     let dbcon = null;
 
     /** 전체 목록 조회 --> Read(SELECT) */
-    router.get("/members", async(req, res, next) => {
+    router.get("/review", async(req, res, next) => {
 
         // 검색어 파라미터 받기 -> 검색어가 없을 경우 전체 목록 조회이므로 유효성검사 안함
         const query = req.get('query');
 
-        // 검색 종류 파라미터 받기 (기본값은 user_id)
-        const search = req.get('search','user_id');
+        // 검색 종류 파라미터 받기 (기본값은 title)
+        const search = req.get('search','title');
 
         // 현재 페이지 번호 받기 (기본값은 1)
         const page = req.get('page', 1);
@@ -40,20 +40,17 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 전체 데이터 수를 조회
-            let sql1 = 'SELECT COUNT(*) AS cnt FROM members';
+            let sql1 = 'SELECT COUNT(*) AS cnt FROM review';
 
             // SQL문에 설정할 치환값
             let args1 = [];
             
             if (query != null) {
-                if (search == 'user_id'){
-                    sql1 += " WHERE user_id LIKE concat('%', ?, '%')";
+                if (search == 'title'){
+                    sql1 += " WHERE title LIKE concat('%', ?, '%')";
                     args1.push(query);
                 } else if (search == 'user_name') {
                     sql1 += " WHERE user_name LIKE concat('%', ?, '%')";
-                    args1.push(query);
-                } else if (search == 'user_phone') {
-                    sql1 += " WHERE user_phone LIKE concat('%', ?, '%')";
                     args1.push(query);
                 }
             }
@@ -70,29 +67,26 @@ module.exports = (app) => {
             
 
             // 데이터 조회
-            let sql2 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members"
+            let sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, CONVERT(photo USING utf8) as photo, date_format(review_date,'%Y-%m-%d') review_date FROM review"
 
             // SQL문에 설정할 치환값
             let args2 = [];
 
             if (query != null) {
-                if( search == 'user_id'){
-                    sql2 += " WHERE user_id LIKE concat('%', ?, '%')";
+                if (search == 'title'){
+                    sql2 += " WHERE title LIKE concat('%', ?, '%')";
                     args2.push(query);
                 } else if (search == 'user_name') {
                     sql2 += " WHERE user_name LIKE concat('%', ?, '%')";
-                    args2.push(query);
-                } else if (search == 'user_phone') {
-                    sql2 += " WHERE user_phone LIKE concat('%', ?, '%')";
                     args2.push(query);
                 }
             }
             
             if (order != null) {
                 if (order == 'asc'){
-                    sql2 += " ORDER BY user_name asc"
+                    sql2 += " ORDER BY review_date asc"
                 } else if (order == 'desc'){
-                    sql2 += " ORDER BY user_name desc"
+                    sql2 += " ORDER BY review_date desc"
                 }
             }
 
@@ -115,12 +109,12 @@ module.exports = (app) => {
     });
 
     /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
-    router.get("/members/:member_id", async(req, res, next) =>{
-        const member_id = req.get('member_id');
+    router.get("/review/:review_id", async(req, res, next) =>{
+        const review_id = req.get('review_id');
 
 
         try {
-            regexHelper.value(member_id, '요청 파라미터가 없습니다.');
+            regexHelper.value(review_id, '요청 파라미터가 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -133,8 +127,8 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date FROM members WHERE member_id=?';
-            const [result] = await dbcon.query(sql, [member_id]);
+            const sql = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, CONVERT(photo USING utf8) as photo, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE review_id=?";
+            const [result] = await dbcon.query(sql, [review_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result;
@@ -149,15 +143,16 @@ module.exports = (app) => {
     });
 
     /** 데이터 추가 --> Create(INSERT) */
-    router.post("/members", async(req, res, next) =>{
+    router.post("/review", async(req, res, next) =>{
         // 저장을 위한 파라미터 입력받기
         const user_id = req.post('user_id');
-        const user_pw = req.post('user_pw');
         const user_name = req.post('user_name');
-        const user_phone = req.post('user_phone');
+        const title = req.post('title');
+        const text = req.post('text');
+        const photo = req.post('photo','없음');
 
         try {
-            regexHelper.value(user_pw, '아이디가 없습니다.');
+            regexHelper.value(user_id, '아이디가 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -172,12 +167,12 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 저장하기
-            const sql = 'INSERT INTO members (user_id, user_pw, user_name, user_phone) VALUES (?,?,?,?)';
-            const input_data = [user_id, user_pw, user_name, user_phone];
+            const sql = 'INSERT INTO review (user_id, user_name, title, text, photo) VALUES (?,?,?,?,?)';
+            const input_data = [user_id, user_name, title, text, photo];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out reg_date  FROM members where member_id=?';
+            const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, CONVERT(photo USING utf8) as photo, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE review_id=?";
             const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -193,16 +188,16 @@ module.exports = (app) => {
     });
 
     /** 데이터 수정 --> Update(UPDATE) */
-    router.put("/members/:member_id", async (req, res,next) =>{
-        const member_id = req.get('member_id');
+    router.put("/review/:review_id", async (req, res,next) =>{
+        const review_id = req.get('review_id');
         const user_id = req.post('user_id');
-        const user_pw = req.post('user_pw');
         const user_name = req.post('user_name');
-        const user_phone = req.post('user_phone');
+        const title = req.post('title');
+        const text = req.post('text');
+        const photo = req.post('photo','없음');
         
 
         try {
-            regexHelper.value(member_id, '필수 파라미터가 없습니다.');
             regexHelper.value(user_id, '교수이름이 없습니다.');
         } catch (err) {
             return next(err);
@@ -218,8 +213,8 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 수정하기
-            const sql = 'UPDATE members SET user_id=?, user_pw=?, user_name=?, user_phone=? WHERE member_id=?';
-            const input_data = [user_id, user_pw, user_name, user_phone, member_id];
+            const sql = 'UPDATE review SET user_id=?, user_name=?, title=?, text=?, photo=? WHERE review_id=?';
+            const input_data = [user_id, user_name, title, text, photo, review_id];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 결과 행 수가 0이라면 예외처리
@@ -228,8 +223,8 @@ module.exports = (app) => {
             }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date FROM members where member_id=?';
-            const [result2] = await dbcon.query(sql2, [member_id]);
+            const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, CONVERT(photo USING utf8) as photo, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE review_id=?";
+            const [result2] = await dbcon.query(sql2, [review_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result2;
@@ -244,11 +239,11 @@ module.exports = (app) => {
     })
 
     /** 데이터 삭제 --> Delete(DELETE) */
-    router.delete("members/:member_id", async (req, res,next) =>{
-        const member_id = req.get('member_id');
+    router.delete("/review/:review_id", async (req, res,next) =>{
+        const review_id = req.get('review_id');
 
         try {
-            regexHelper.value(member_id, '요청 파라미터가 없습니다.');
+            regexHelper.value(review_id, '요청 파라미터가 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -262,10 +257,10 @@ module.exports = (app) => {
             // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
             // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
             // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
-            // await dbcon.query("DELETE FROM student WHERE member_id=?", [member_id]);
+            // await dbcon.query("DELETE FROM student WHERE review_id=?", [review_id]);
             // 데이터 삭제하기
-            const sql = 'DELETE FROM members WHERE member_id=?';
-            const [result1] = await dbcon.query(sql, [member_id]);
+            const sql = 'DELETE FROM review WHERE review_id=?';
+            const [result1] = await dbcon.query(sql, [review_id]);
 
 
             // 결과 행 수가 0이라면 예외처리

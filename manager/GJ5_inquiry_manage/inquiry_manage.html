@@ -21,7 +21,7 @@
 <body>
     <div id="wrap">
         <!-- HEADER -->
-        <div data-include="/manager/assets/inc/header.html"></div>
+        <div data-include="../assets/inc/header.html"></div>
         
         <!-- CONTAINER -->
         <div class="container">
@@ -86,20 +86,20 @@
 
     <!-- 백엔드 연동을 위한 JS -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/manager/assets/js/include.js"></script>
+    <script src="../assets/js/include.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script id="inquiry-list-template" type="text/x-handlebars-template">
         {{#each item}}
             <tr>
-                <th scope="row">{{review_id}}</th>
+                <th scope="row">{{inc @index}}</th>
                 <td><button value="{{type}}"></button></td>
                 <td>{{user_id}}</td>
                 <td>{{user_name}}</td>
                 <td>{{title}}</td>
                 <td>{{inquiry_date}}</td>
                 <td>
-                    <a href="/myschool/inquiry/inquiry_modify.html?inquiry_id={{inquiry_id}}" class="btn btn-success btn-xs btn-edit">수정</a>
-                    <a href="#" class="btn btn-danger btn-xs btn-delete" data-inquiry_id="{{inquiry_id}}" data-name="{{name}}">삭제</a>
+                    <a href="/GJ5_inquiry_manage/inquiry_manage.html?inquiry_id={{inquiry_id}}" class="btn btn-success btn-xs btn-edit">수정</a>
+                    <a href="#" class="btn btn-danger btn-xs btn-delete" data-inquiry_id="{{inquiry_id}}" data-user_name="{{user_name}}">삭제</a>
                 </td>
             </tr>
         {{/each}}

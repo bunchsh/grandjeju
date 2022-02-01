@@ -252,7 +252,7 @@ module.exports = (app) => {
     })
 
     /** 데이터 삭제 --> Delete(DELETE) */
-    router.delete("reservation/:reserv_id", async (req, res,next) =>{
+    router.delete("/reservation/:reserv_id", async (req, res,next) =>{
         const reserv_id = req.get('reserv_id');
 
         try {

@@ -69,9 +69,9 @@ document.querySelector('#search').value = search;
 
                 // 클릭된 버튼에 숨겨진 data속성값들을 가져온다.
                 const reserv_id = current.dataset.reserv_id;
-                const user_name = current.dataset.user_name;
+                const reserv_name = current.dataset.reserv_name;
 
-                if (confirm('정말' + user_name + '(을)를 삭제하시겠습니까?')) {
+                if (confirm('정말' + reserv_name + '(을)를 삭제하시겠습니까?')) {
                     // Ajax를 통한 삭제 처리
                     try {
                         const url = '/reservation/' + reserv_id;
