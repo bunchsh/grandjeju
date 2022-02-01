@@ -1,0 +1,64 @@
+/**
+ * @filename    : inquiry_answer.css
+ * @author      : 한송희 (onee.ssong@gmail.com)
+ * @description : Grandjeju Grandjeju 관리자 사이트의 1:1 문의 관리 페이지의 스타일 적용 코드 모음
+ */
+
+/**----- CONTAINER -----*/
+/** TITLE */
+.my_h3 {
+    margin: 30px 0px 0px 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+hr {
+    background-color: #000;
+    width: 350px;
+    margin: 3px;
+}
+
+/** button */
+.float-right {
+    margin: 30px 0px 20px 0px;
+}
+
+.float-right .list_btn {
+    background-color: #bbb;
+    color: white;
+}
+
+.float-right .save_btn {
+    background-color: black;
+    color: white;
+}
+
+/** table */
+table {
+    text-align: center;
+    font-size: 14px;
+
+    display:flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+tbody{
+    display:flex;
+}
+
+th,td{
+    display:block;
+}
+
+/** pagination */
+.page-link {
+    color: #000;
+}
+
+.page-item.active .page-link {
+    background-color: #000;
+    border-color: #000;
+    z-index: 5;
+}
