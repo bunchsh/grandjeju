@@ -5,7 +5,7 @@
  */
 
 // 내림차순 버튼
-function order_btn(date) {
+function order_btn(data) {
     const btn_a = document.createElement("a")
     btn_a.setAttribute("id","order_a")
     btn_a.classList.add("btn");

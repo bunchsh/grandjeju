@@ -29,7 +29,7 @@ document.querySelector('#search').value = search;
 
     // ajax 요청
     try {
-        const response = await axios.get('/GJ2_members', {
+        const response = await axios.get('/members', {
             params: {
                 query: query,
                 page: page,
@@ -37,7 +37,7 @@ document.querySelector('#search').value = search;
                 order: order
             }
         });
-        const total = await axios.get('/GJ2_members')
+        const total = await axios.get('/members')
         json = response.data
         total_count = total.data.pagenation.totalCount
         console.log(json);
@@ -74,7 +74,7 @@ document.querySelector('#search').value = search;
                 if (confirm('정말' + user_name + '(을)를 삭제하시겠습니까?')) {
                     // Ajax를 통한 삭제 처리
                     try {
-                        const url = '/members_manage/' + member_id;
+                        const url = '/members/' + member_id;
                         await axios.delete(url);
                     } catch (e) {
                         // 에러가 발생한 경우 벡엔드가 주는 json 받기

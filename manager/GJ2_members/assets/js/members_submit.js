@@ -18,7 +18,7 @@ document.querySelector("#members_form").addEventListener("submit", async (e) => 
     let json = null;
 
     try {
-        const response = await axios.put("/GJ2_members/" + member_id, {
+        const response = await axios.put("/members/" + member_id, {
             user_id: user_id,
             user_name: user_name,
             user_phone: user_phone

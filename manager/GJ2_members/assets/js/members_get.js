@@ -28,7 +28,7 @@ let member_id = null; // 아래에서 받은 member_id을 받아 사용 가능
     let json = null;
 
     try {
-        const response = await axios.get('/members_modify/' + member_id);
+        const response = await axios.get('/members/' + member_id);
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);
