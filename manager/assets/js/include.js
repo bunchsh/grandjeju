@@ -4,6 +4,7 @@ const dataInclude = document.querySelectorAll("*[data-include]");
 dataInclude.forEach(async (v, i) => {
     const include = v.dataset.include;
     let html = null;
+    console.log(include);
 
     try {
         const response = await axios.get(include);

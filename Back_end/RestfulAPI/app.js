@@ -148,11 +148,12 @@ app.use('/', router);
 | 5) 각 URL별 백엔드 기능 정의
 -----------------------------------------------------------*/
 app.use(require('./Grandjeju/Members')(app));
+app.use(require('./Grandjeju/reservation')(app));
 
 
 //런타임 에러가 발생한 경우에 대한 일괄 처리
 app.use((err, req, res, next) => {
-    
+
     if(err instanceof BadRequestException) {
         res.sendError(err);
     } else {
