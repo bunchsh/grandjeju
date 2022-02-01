@@ -30,7 +30,7 @@ hr {
 }
 
 #members_form .text-center {
-    padding-top: 30px; 
+    padding: 30px 0 40px 0;
 }
 
 #members_form .text-center button {

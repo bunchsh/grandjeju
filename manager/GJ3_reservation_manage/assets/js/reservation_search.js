@@ -23,7 +23,7 @@ document.querySelector('#search').value = search;
 
     // ajax 요청
     try {
-        const response = await axios.get('/GJ3_reservation_manage', {
+        const response = await axios.get('/reservation', {
             params: {
                 query: query,
                 page: page,
@@ -31,7 +31,7 @@ document.querySelector('#search').value = search;
                 order: order
             }
         });
-        const total = await axios.get('/GJ3_reservation_manage')
+        const total = await axios.get('/reservation')
         json = response.data
         total_count = total.data.pagenation.totalCount
         console.log(json);
@@ -68,7 +68,7 @@ document.querySelector('#search').value = search;
                 if (confirm('정말' + user_name + '(을)를 삭제하시겠습니까?')) {
                     // Ajax를 통한 삭제 처리
                     try {
-                        const url = '/reservation_manage/' + reserv_id;
+                        const url = '/reservation/' + reserv_id;
                         await axios.delete(url);
                     } catch (e) {
                         // 에러가 발생한 경우 벡엔드가 주는 json 받기

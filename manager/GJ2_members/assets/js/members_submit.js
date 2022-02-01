@@ -10,6 +10,7 @@ document.querySelector("#members_form").addEventListener("submit", async (e) => 
 
     // 입력값 받아오기
     const user_id = document.querySelector("#user_id").value;
+    const user_pw = document.querySelector("#user_pw").value;
     const user_name = document.querySelector("#user_name").value;
     const user_phone = document.querySelector("#user_phone").value;
 
@@ -20,6 +21,7 @@ document.querySelector("#members_form").addEventListener("submit", async (e) => 
     try {
         const response = await axios.put("/members/" + member_id, {
             user_id: user_id,
+            user_pw: user_pw,
             user_name: user_name,
             user_phone: user_phone
         });

@@ -21,7 +21,7 @@ document.querySelector("#reservation_form").addEventListener("submit", async (e)
     let json = null;
 
     try {
-        const response = await axios.put("/GJ3_reservation_manage/" + reserv_id, {
+        const response = await axios.put("/reservation/" + reserv_id, {
             user_id: user_id,
             reserv_name: reserv_name,
             reserv_phone: reserv_phone,
