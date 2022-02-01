@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/inquiry_manage.css">
-    <link rel="stylesheet" href="/manager/assets/css/header_css.css">
+    <link rel="stylesheet" href="../assets/css/header_css.css">
 </head>
 
 <body>
@@ -63,6 +63,7 @@
                             <tr>
                                 <th scope="col">번호</th>
                                 <th scope="col">답변 상태</th>
+                                <th scope="col">문의종류</th>
                                 <th scope="col">아이디</th>
                                 <th scope="col">이름</th>
                                 <th scope="col">리뷰 제목</th>
@@ -92,7 +93,8 @@
         {{#each item}}
             <tr>
                 <th scope="row">{{inc @index}}</th>
-                <td><button value="{{type}}"></button></td>
+                <td><button class="btn btn-success">{{state}}</button></td>
+                <td>{{type}}</td>
                 <td>{{user_id}}</td>
                 <td>{{user_name}}</td>
                 <td>{{title}}</td>
