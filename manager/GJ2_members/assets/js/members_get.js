@@ -10,6 +10,7 @@ let member_id = null; // 아래에서 받은 member_id을 받아 사용 가능
 (async () => {
     /** 입력을 위한 input 태그 객체 */
     const inputUserid = document.querySelector("#user_id");
+    const inputPw = document.querySelector("#user_pw");
     const inputName = document.querySelector("#user_name");
     const inputUserphone = document.querySelector("#user_phone");
 
@@ -40,6 +41,7 @@ let member_id = null; // 아래에서 받은 member_id을 받아 사용 가능
         console.log(json);
 
         inputUserid.value = json.item[0].user_id;
+        inputPw.value = json.item[0].user_pw;
         inputName.value = json.item[0].user_name;
         inputUserphone.value = json.item[0].user_phone;
     }

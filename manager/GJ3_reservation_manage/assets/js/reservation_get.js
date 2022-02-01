@@ -31,7 +31,7 @@ let reserv_id = null; // 아래에서 받은 reserv_id을 받아 사용 가능
     let json = null;
 
     try {
-        const response = await axios.get('/reservation_modify/' + reserv_id);
+        const response = await axios.get('/reservation/' + reserv_id);
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);
