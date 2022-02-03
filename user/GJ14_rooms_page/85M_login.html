@@ -129,24 +129,28 @@
                 </div>
 
                 <div class="btn_group">
-                    <button class="btn_reservation_logout">
+                    <button class="btn_reservation">
                         예약하기
                     </button>
                 </div>
             </div>
         </div>
-    <!-- 사이드 메뉴바 -->
-    <div data-include="../assets/inc/side_menu_login.html"></div>
-</div>
 
-<script src='./assets/js/login_alert.js'></script>
-<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-<script src="assets/js/swiper.js"></script>
+        <!-- 사이드 메뉴바 -->
+        <div data-include="../assets/inc/side_menu_login.html"></div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-<script src="assets/js/swiper.js"></script>
-<script async="false" src="../assets/js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script async="false" src="../assets/js/include.js"></script>
+
+    <script>
+        document.querySelector(".btn_reservation").addEventListener("click", e => {
+            location.href="../GJ15_reservation_page/reservation.html"
+        });
+    </script>
+</body>
 </body>
 
 </html>

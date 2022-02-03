@@ -8,7 +8,8 @@
 #side_menu_bar a {
     color: #fff; 
     text-decoration: none; 
-    outline: none
+    outline: none;
+    font-weight: bold;
 }
 
 #side_menu_bar {
