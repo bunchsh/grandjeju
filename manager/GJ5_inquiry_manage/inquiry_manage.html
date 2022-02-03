@@ -88,24 +88,7 @@
     <!-- 백엔드 연동을 위한 JS -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../assets/js/include.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script id="inquiry-list-template" type="text/x-handlebars-template">
-        {{#each item}}
-            <tr>
-                <th scope="row">{{inc @index}}</th>
-                <td><button class="btn btn-success">{{state}}</button></td>
-                <td>{{type}}</td>
-                <td>{{user_id}}</td>
-                <td>{{user_name}}</td>
-                <td>{{title}}</td>
-                <td>{{inquiry_date}}</td>
-                <td>
-                    <a href="/GJ5_inquiry_manage/inquiry_manage.html?inquiry_id={{inquiry_id}}" class="btn btn-success btn-xs btn-edit">수정</a>
-                    <a href="#" class="btn btn-danger btn-xs btn-delete" data-inquiry_id="{{inquiry_id}}" data-user_name="{{user_name}}">삭제</a>
-                </td>
-            </tr>
-        {{/each}}
-    </script>
+
     
     <script src="./assets/js/inquiry_search.js"></script>
     <script src="./assets/js/inquiry_pagination.js"></script>

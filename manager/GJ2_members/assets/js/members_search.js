@@ -4,11 +4,11 @@
  * @description : 총 회원 수, 삭제 버튼 구현을 위한 함수와 pagination 구현을 위한 함수 호출
  */
 
-// 핸들바 인덱스 번호
-Handlebars.registerHelper('inc', function(index) {
-    index++;
-    return index;
-})
+// // 핸들바 인덱스 번호
+// Handlebars.registerHelper('inc', function(index) {
+//     index++;
+//     return index;
+// })
 
 /** GET 파라미터 받기 */
 const params = new URLSearchParams(window.location.search);

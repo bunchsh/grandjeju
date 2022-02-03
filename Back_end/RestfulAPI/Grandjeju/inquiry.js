@@ -237,6 +237,54 @@ module.exports = (app) => {
         res.sendJson({'item': json});
     })
 
+    /** 답변상태 수정 --> Update(UPDATE) */
+    router.put("/inquiry_state/:inquiry_id", async (req, res,next) =>{
+        const inquiry_id = req.get('inquiry_id');
+        const state = req.post('state');
+        console.log(state);
+        
+
+        try {
+            regexHelper.value(inquiry_id, '필수 파라미터가 없습니다.');
+        } catch (err) {
+            return next(err);
+        }
+
+        /** 데이터 수정하기 */
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+        
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 데이터 수정하기
+            const sql = "UPDATE inquiry SET state=? WHERE inquiry_id=?";
+            const input_data = [state, inquiry_id];
+            const [result1] = await dbcon.query(sql, input_data);
+
+            // 결과 행 수가 0이라면 예외처리
+            if (result1.affectedRows < 1) {
+                throw new Error('수정된 데이터가 없습니다.');
+            }
+
+            // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
+            const sql2 = "SELECT inquiry_id, user_id, user_name, type, title, CONVERT(inquiry_text USING utf8) as inquiry_text, CONVERT(answer_text USING utf8) as answer_text, date_format(inquiry_date,'%Y-%m-%d') inquiry_date, date_format(answer_date,'%Y-%m-%d') answer_date, state  FROM inquiry WHERE inquiry_id=?";
+            const [result2] = await dbcon.query(sql2, [inquiry_id]);
+
+            // 조회 결과를 미리 준비한 변수에 저장함
+            json = result2;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson({'item': json});
+    })
+
     /** 데이터 삭제 --> Delete(DELETE) */
     router.delete("/inquiry/:inquiry_id", async (req, res,next) =>{
         const inquiry_id = req.get('inquiry_id');
