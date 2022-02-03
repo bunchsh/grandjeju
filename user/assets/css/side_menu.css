@@ -10,6 +10,7 @@
     text-decoration: none; 
     outline: none;
     font-weight: bold;
+    font-size: 16px !important;
 }
 
 #side_menu_bar {
@@ -23,7 +24,7 @@
     min-height: 800px;
     height: 100%;
     overflow: hidden;
-    transform: translateX(-105%)
+    transform: translateX(-105%);
 }
 #side_menu_bar .side_menu > li::after {
     clear: both;
@@ -59,12 +60,13 @@
     padding: 0px;
 }
 #side_menu_bar .side_menu > li {
-    padding: 0 10px;
+    padding: 0 10px !important;
 }
 #side_menu_bar .side_menu > li > a {
     padding: 16px;
     display: block;
     float: left;
+    font-size: 16px !important;
 }
 #side_menu_bar .clear > a {
     padding: 16px;
@@ -82,6 +84,7 @@
     height: 0px;
 }
 #side_menu_bar .dropdown_menu li {
+    display: block !important;
     width: 230px;
     height: 16px;
     padding: 7px 7px 14px 30px;
