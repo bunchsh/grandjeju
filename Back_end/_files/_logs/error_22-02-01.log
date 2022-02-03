@@ -5307,3 +5307,68 @@
     at next (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
     at Layer.handle [as handle_request] (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\layer.js:91:12)
     at trim_prefix (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:323:13)
+2022-02-01 19:52:13.608 [error] Error
+2022-02-01 19:52:13.609 [error] Field 'members_member_id' doesn't have a default value
+2022-02-01 19:52:13.611 [error] Error: Field 'members_member_id' doesn't have a default value
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\app.js:162:23
+    at Layer.handle_error (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:321:13)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:341:12)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:641:15
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:260:14)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\route.js:127:14)
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\Grandjeju\inquiry.js:181:20
+2022-02-01 19:52:14.293 [error] Error
+2022-02-01 19:52:14.293 [error] Field 'members_member_id' doesn't have a default value
+2022-02-01 19:52:14.294 [error] Error: Field 'members_member_id' doesn't have a default value
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\app.js:162:23
+    at Layer.handle_error (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:321:13)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:341:12)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:641:15
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:260:14)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\route.js:127:14)
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\Grandjeju\inquiry.js:181:20
+2022-02-01 19:55:53.090 [error] Error
+2022-02-01 19:55:53.091 [error] Can't add new command when connection is in closed state
+2022-02-01 19:55:53.091 [error] Error: Can't add new command when connection is in closed state
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\app.js:162:23
+    at Layer.handle_error (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:321:13)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:341:12)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:641:15
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:260:14)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\route.js:127:14)
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\Grandjeju\inquiry.js:181:20
+2022-02-01 19:57:35.922 [error] Error
+2022-02-01 19:57:35.923 [error] Column 'title' cannot be null
+2022-02-01 19:57:35.924 [error] Error: Column 'title' cannot be null
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\app.js:162:23
+    at Layer.handle_error (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:321:13)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:341:12)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:641:15
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:260:14)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\route.js:127:14)
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\Grandjeju\inquiry.js:231:20
+2022-02-01 19:58:23.237 [error] Error
+2022-02-01 19:58:23.237 [error] 페이지를 찾을 수 없습니다.
+2022-02-01 19:58:23.238 [error] Error: 페이지를 찾을 수 없습니다.
+    at C:\Users\User\GRANDJEJU\Back_end\RestfulAPI\app.js:168:17
+    at Layer.handle [as handle_request] (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:323:13)
+    at C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:284:7
+    at param (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:360:14)
+    at param (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:416:3)
+    at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:323:13)
