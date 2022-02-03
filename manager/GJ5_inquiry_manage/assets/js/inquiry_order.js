@@ -35,3 +35,43 @@ function order_btn(data) {
     btn_a.appendChild(icon);
     document.querySelector('#order_btn').appendChild(btn_a)
 }
+
+function option_Y(data) {
+    const item_a = document.createElement("a");
+    item_a.classList.add("dropdown-item")
+    item_a.innerHTML = "답변완료"
+
+    if(data.indexOf("search_state") == -1){
+        item_a.setAttribute("href", data + "&search_state=Y")
+    }
+
+    if(data.indexOf("?") == -1) {
+        item_a.setAttribute("href",data + "?search_state=Y")
+    }
+    if(search_state == "N") {
+        item_a.setAttribute("href",data.substring(0,data.indexOf('N')) + "Y")
+    }
+
+    document.querySelector('#select_state').appendChild(item_a);
+}
+
+function option_N(data) {
+    const item_a = document.createElement("a");
+    item_a.classList.add("dropdown-item")
+    item_a.innerHTML = "답변대기"
+
+    if(data.indexOf("search_state") == -1){
+        item_a.setAttribute("href", data + "&search_state=N")
+    }
+
+    if(data.indexOf("?") == -1) {
+        item_a.setAttribute("href",data + "?search_state=N")
+    }
+    if(search_state == "Y") {
+        console.log(data.substring(0,data.indexOf('Y')));
+        item_a.setAttribute("href",data.substring(0,data.indexOf('Y')) + "N")
+    }
+
+
+    document.querySelector('#select_state').appendChild(item_a);
+}

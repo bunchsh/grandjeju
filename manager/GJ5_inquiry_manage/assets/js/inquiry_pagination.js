@@ -20,6 +20,14 @@ function pagenation(selector, data) {
 
     if(!(order == null)){
         a1.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query +  "&order=" + order)
+        
+        if(search_state != null){
+            a1.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query + "&order=" + order + "&search_state=" + search_state);
+        }
+    }
+    
+    if(search_state != null){
+        a1.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query + "&search_state=" + search_state);
     }
 
     if (data.prevGroupLastPage == 0) {
@@ -42,6 +50,14 @@ function pagenation(selector, data) {
 
         if (!(order == null)) {
             a2.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query + "&order=" + order);
+
+            if(search_state != null){
+                a2.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query + "&order=" + order + "&search_state=" + search_state);
+            }
+        }
+
+        if(search_state != null){
+            a2.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query + "&search_state=" + search_state);
         }
 
         if (data.nowPage == i) {
@@ -61,8 +77,15 @@ function pagenation(selector, data) {
     a3.classList.add("page-link");
     a3.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query);
 
-    if (!(order == null)) {
+    if (order != null) {
         a3.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&order=" + order);
+        if(search_state != null){
+            a3.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&order=" + order + "&search_state=" + search_state);
+        }
+    }
+
+    if(search_state != null){
+        a3.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&search_state=" + search_state);
     }
 
 
