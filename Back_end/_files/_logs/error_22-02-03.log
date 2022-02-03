@@ -232,3 +232,42 @@
     at next (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
     at Layer.handle [as handle_request] (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\layer.js:91:12)
     at trim_prefix (C:\Users\User\GRANDJEJU\node_modules\express\lib\router\index.js:323:13)
+2022-02-03 20:11:40.304 [error] Error
+2022-02-03 20:11:40.304 [error] 페이지를 찾을 수 없습니다.
+2022-02-03 20:11:40.304 [error] Error: 페이지를 찾을 수 없습니다.
+    at C:\Users\Owner\grandjeju\Back_end\RestfulAPI\app.js:168:17
+    at Layer.handle [as handle_request] (C:\Users\Owner\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (C:\Users\Owner\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-03 20:29:51.108 [error] Error
+2022-02-03 20:29:51.109 [error] 페이지를 찾을 수 없습니다.
+2022-02-03 20:29:51.109 [error] Error: 페이지를 찾을 수 없습니다.
+    at C:\Users\Owner\grandjeju\Back_end\RestfulAPI\app.js:168:17
+    at Layer.handle [as handle_request] (C:\Users\Owner\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (C:\Users\Owner\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-03 20:30:52.548 [error] Error
+2022-02-03 20:30:52.549 [error] 페이지를 찾을 수 없습니다.
+2022-02-03 20:30:52.549 [error] Error: 페이지를 찾을 수 없습니다.
+    at C:\Users\Owner\grandjeju\Back_end\RestfulAPI\app.js:168:17
+    at Layer.handle [as handle_request] (C:\Users\Owner\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (C:\Users\Owner\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\Owner\grandjeju\node_modules\express\lib\router\index.js:323:13)

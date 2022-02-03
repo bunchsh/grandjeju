@@ -29,7 +29,7 @@ module.exports = (app) => {
         // 한 페이지에 보여줄 목록 수 받기 (기본값은 10, 최소 10, 최대 30)
         const rows = req.get('rows', 10);
 
-        const search_state = req.get('search_state');
+        const search_state = req.get('search_state',);
 
         const search_type = req.get('search_type');
 

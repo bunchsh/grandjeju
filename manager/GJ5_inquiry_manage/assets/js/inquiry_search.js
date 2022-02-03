@@ -33,7 +33,7 @@ const params = new URLSearchParams(window.location.search);
 const query = params.get('query') || "";
 const page = params.get('page') || 1;
 const search = params.get('search') || 'title';
-const search_state = params.get('search_state');
+const search_state = params.get('search_state') || "";
 const search_type = params.get('search_type');
 const order = params.get('order')
 

@@ -36,22 +36,43 @@ function order_btn(data) {
     document.querySelector('#order_btn').appendChild(btn_a)
 }
 
+function page_reset(url) {
+    const find_page = url.indexOf('page=') + 5
+    console.log(url);
+    console.log(url.substring(0,find_page) + 1)
+    console.log(url.substring(find_page + 1))
+    return (url.substring(0,find_page) + 1) + (url.substring(find_page + 1))
+}
+
 function option_Y(data) {
     const item_a = document.createElement("a");
     item_a.classList.add("dropdown-item")
     item_a.innerHTML = "답변완료"
+    console.log(page_reset(data));
 
-    if(data.indexOf("search_state") == -1){
-        item_a.setAttribute("href", data + "&search_state=Y")
+    // search_state가 없을때
+    if(data.indexOf("search_state") == -1 ){
+        if(data.indexOf("?") == -1) {
+            item_a.setAttribute("href",data + "?search_state=Y")
+        } else {
+            item_a.setAttribute("href",data + "&search_state=Y")
+        }
     }
 
-    if(data.indexOf("?") == -1) {
-        item_a.setAttribute("href",data + "?search_state=Y")
+    // search_state가 있을 때
+    if(data.indexOf("search_state") != -1) {
+        if(search_state == "N") {
+            if (page != 1) {
+                const url = page_reset(data);
+                item_a.setAttribute("href",url.substring(0,url.indexOf('N')) + "Y")
+            } else {
+                item_a.setAttribute("href",data.substring(0,data.indexOf('N')) + "Y")
+            }
+        } else if(search_state == "") {
+            item_a.setAttribute("href",data.substring(0,data.indexOf('search_state=')+13) + "Y")
+        }
     }
-    if(search_state == "N") {
-        item_a.setAttribute("href",data.substring(0,data.indexOf('N')) + "Y")
-    }
-
+    
     document.querySelector('#select_state').appendChild(item_a);
 }
 
@@ -60,18 +81,30 @@ function option_N(data) {
     item_a.classList.add("dropdown-item")
     item_a.innerHTML = "답변대기"
 
-    if(data.indexOf("search_state") == -1){
-        item_a.setAttribute("href", data + "&search_state=N")
+    // search_state가 없을때
+    if(data.indexOf("search_state") == -1 ){
+        if(data.indexOf("?") == -1) {
+            item_a.setAttribute("href",data + "?search_state=N")
+        } else {
+            item_a.setAttribute("href",data + "&search_state=N")
+        }
     }
 
-    if(data.indexOf("?") == -1) {
-        item_a.setAttribute("href",data + "?search_state=N")
+    // search_state가 있을 때
+    if(data.indexOf("search_state") != -1) {
+        if(search_state == "Y") {
+            if (page != 1) {
+                const url = page_reset(data);
+                item_a.setAttribute("href",url.substring(0,url.indexOf('Y')) + "N")
+            } else {
+                item_a.setAttribute("href",data.substring(0,data.indexOf('Y')) + "N")
+            }
+        } else if(search_state == "") {
+            item_a.setAttribute("href",data.substring(0,data.indexOf('search_state=')+13) + "N")
+        }
     }
-    if(search_state == "Y") {
-        console.log(data.substring(0,data.indexOf('Y')));
-        item_a.setAttribute("href",data.substring(0,data.indexOf('Y')) + "N")
-    }
-
 
     document.querySelector('#select_state').appendChild(item_a);
 }
+
+
