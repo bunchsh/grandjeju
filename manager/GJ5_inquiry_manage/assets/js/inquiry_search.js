@@ -33,7 +33,10 @@ const params = new URLSearchParams(window.location.search);
 const query = params.get('query') || "";
 const page = params.get('page') || 1;
 const search = params.get('search') || 'title';
+const search_state = params.get('search_state') || "";
+const search_type = params.get('search_type');
 const order = params.get('order')
+
 
 // 검색어 파라미터를 input 태그에 설정된
 document.querySelector('#query').value = query;
@@ -52,6 +55,8 @@ document.querySelector('#search').value = search;
                 query: query,
                 page: page,
                 search: search,
+                search_state: search_state,
+                search_type: search_type,
                 order: order
             }
         });
@@ -159,5 +164,7 @@ document.querySelector('#search').value = search;
         // --> 페이지번호 HTML이 출력될 위치에 대한 selector와 페이지 번호 구현에 필요한 정보 전달
         pagenation(".pagination", json.pagenation);
         order_btn(decodeURIComponent(location.href));
+        option_Y(decodeURIComponent(location.href));
+        option_N(decodeURIComponent(location.href));
     }
 })();

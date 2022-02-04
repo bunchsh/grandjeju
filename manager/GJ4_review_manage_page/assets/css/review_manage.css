@@ -83,3 +83,8 @@ table {
     border-color: #000;
     z-index: 5;
 }
+
+.table-responsive .table .thead-dark tr th{
+    display:table-cell;
+    vertical-align: middle;
+}

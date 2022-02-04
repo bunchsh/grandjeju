@@ -22,7 +22,7 @@ module.exports = {
     public_path: path.join(__dirname, '../../manager'),
 
     /** favicon 경로 */
-    favicon_path: path.join(__dirname, '../public/favicon.png'),
+    favicon_path: path.join(__dirname, '../favicon.png'),
 
     /** 쿠키 저장시 사용할 도메인 */
     // 1) localhost인 경우 공백으로 설정

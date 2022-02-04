@@ -16,7 +16,7 @@ hr {
     width: 350px;
     margin: 3px;
 }
- 
+
 /** 내역 COUNT */
 .my_margin {
     margin: 40px 0 20px 0;
@@ -52,4 +52,10 @@ table {
     background-color: #000;
     border-color: #000;
     z-index: 5;
+}
+
+
+.table-responsive .table .thead-dark tr th{
+    display:table-cell;
+    vertical-align: middle;
 }

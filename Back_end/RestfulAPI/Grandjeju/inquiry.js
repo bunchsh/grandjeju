@@ -29,6 +29,10 @@ module.exports = (app) => {
         // 한 페이지에 보여줄 목록 수 받기 (기본값은 10, 최소 10, 최대 30)
         const rows = req.get('rows', 10);
 
+        const search_state = req.get('search_state',);
+
+        const search_type = req.get('search_type');
+
         const order = req.get('order');
         // 데이터 조회 결과가 저장될 빈 변수
         let json = null;
@@ -53,9 +57,30 @@ module.exports = (app) => {
                     sql1 += " WHERE user_name LIKE concat('%', ?, '%')";
                     args1.push(query);
                 }
+                if (search_state != null) {
+                    sql1 += " AND state=?"
+                    args1.push(search_state);
+                }
+    
+                if (search_type != null) {
+                    sql1 += " AND type=?"
+                    args1.push(search_type);
+                }
+            } else if (search_state != null) {
+                sql1 += " WHERE state=?"
+                args1.push(search_state);
+
+                if (search_type != null) {
+                    sql1 += " AND type=?"
+                    args1.push(search_type);
+                }
+            } else if (search_type != null) {
+                sql1 += " WHERE type=?"
+                args1.push(search_type)
             }
+            
 
-
+            
 
             const [result1] = await dbcon.query(sql1, args1);
             const totalCount = result1[0].cnt;
@@ -80,6 +105,26 @@ module.exports = (app) => {
                     sql2 += " WHERE user_name LIKE concat('%', ?, '%')";
                     args2.push(query);
                 }
+                if (search_state != null) {
+                    sql2 += " AND state=?"
+                    args2.push(search_state);
+                }
+    
+                if (search_type != null) {
+                    sql2 += " AND type=?"
+                    args2.push(search_type);
+                }
+            } else if (search_state != null) {
+                sql2 += " WHERE state=?"
+                args2.push(search_state);
+                
+                if (search_type != null) {
+                    sql2 += " AND type=?"
+                    args2.push(search_type);
+                }
+            } else if (search_type != null) {
+                sql2 += " WHERE type=?"
+                args2.push(search_type)
             }
             
             if (order != null) {

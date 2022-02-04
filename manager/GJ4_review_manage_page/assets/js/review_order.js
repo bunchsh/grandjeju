@@ -16,20 +16,20 @@ function order_btn(data) {
     icon.classList.add("bi-sort-alpha-down");
 
     if(data.indexOf("order") == -1) {
-        btn_a.setAttribute("href",data + "&order=asc")
+        btn_a.setAttribute("href",data + "&order=desc")
     }
 
     if(data.indexOf("?") == -1) {
-        btn_a.setAttribute("href",data + "?order=asc")
+        btn_a.setAttribute("href",data + "?order=desc")
     }
 
     if(order == 'asc' ) {
         btn_a.setAttribute("href",data.substring(0,data.indexOf('asc')) + "desc");
-        icon.classList.replace("bi-sort-alpha-down","bi-sort-alpha-up-alt" );
+        icon.classList.replace("bi-sort-alpha-up-alt" ,"bi-sort-alpha-down");
     }
     if(order == 'desc'){
         btn_a.setAttribute("href",data.substring(0,data.indexOf('desc')) + "asc");
-        icon.classList.replace("bi-sort-alpha-up-alt" ,"bi-sort-alpha-down");
+        icon.classList.replace("bi-sort-alpha-down","bi-sort-alpha-up-alt" );
     }
 
     btn_a.appendChild(icon);
