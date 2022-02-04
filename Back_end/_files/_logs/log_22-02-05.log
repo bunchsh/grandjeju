@@ -1,0 +1,238 @@
+2022-02-05 04:21:30.191 [debug] -------------------------------------
+2022-02-05 04:21:30.194 [debug] |        Start Express Server       |
+2022-02-05 04:21:30.195 [debug] -------------------------------------
+2022-02-05 04:21:30.195 [debug] server address => http://1.231.57.240:3000
+2022-02-05 04:21:30.196 [debug] server address => http://192.168.232.1:3000
+2022-02-05 04:21:30.196 [debug] server address => http://192.168.146.1:3000
+2022-02-05 04:21:30.196 [debug] -------------------------------------
+2022-02-05 04:21:51.922 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:51.924 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:51.925 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/inquiry_manage.html
+2022-02-05 04:21:51.930 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :6ms
+2022-02-05 04:21:51.931 [debug] ----------------------------------------
+2022-02-05 04:21:52.391 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.393 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.394 [debug] [GET]http://1.231.57.240:3000/assets/css/header_css.css
+2022-02-05 04:21:52.395 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.396 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.396 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/css/inquiry_manage.css
+2022-02-05 04:21:52.398 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :5ms
+2022-02-05 04:21:52.399 [debug] ----------------------------------------
+2022-02-05 04:21:52.400 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :4ms
+2022-02-05 04:21:52.401 [debug] ----------------------------------------
+2022-02-05 04:21:52.402 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.402 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.403 [debug] [GET]http://1.231.57.240:3000/assets/js/include.js
+2022-02-05 04:21:52.404 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.404 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.404 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_pagination.js
+2022-02-05 04:21:52.405 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.406 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.406 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_search.js
+2022-02-05 04:21:52.407 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.408 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.408 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_order.js
+2022-02-05 04:21:52.409 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:52.410 [debug] ----------------------------------------
+2022-02-05 04:21:52.412 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :6ms
+2022-02-05 04:21:52.412 [debug] ----------------------------------------
+2022-02-05 04:21:52.415 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :11ms
+2022-02-05 04:21:52.416 [debug] ----------------------------------------
+2022-02-05 04:21:52.417 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :9ms
+2022-02-05 04:21:52.418 [debug] ----------------------------------------
+2022-02-05 04:21:52.557 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.558 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.558 [debug] [GET]http://1.231.57.240:3000/assets/inc/header.html
+2022-02-05 04:21:52.559 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :1ms
+2022-02-05 04:21:52.560 [debug] ----------------------------------------
+2022-02-05 04:21:52.568 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.569 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.569 [debug] [GET]http://1.231.57.240:3000/inquiry?query=&page=1&search=title&search_state=
+2022-02-05 04:21:52.573 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.575 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.575 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.576 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.576 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.576 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.577 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.581 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.581 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.581 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/img/logo.png
+2022-02-05 04:21:52.584 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :3ms
+2022-02-05 04:21:52.584 [debug] ----------------------------------------
+2022-02-05 04:21:52.616 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.618 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.619 [debug] [GET]http://1.231.57.240:3000/favicon.ico
+2022-02-05 04:21:52.620 [error] Error
+2022-02-05 04:21:52.621 [error] 페이지를 찾을 수 없습니다.
+2022-02-05 04:21:52.621 [error] Error: 페이지를 찾을 수 없습니다.
+    at C:\Users\Owner\GRANDJEJU\Back_end\RestfulAPI\app.js:168:17
+    at Layer.handle [as handle_request] (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:323:13)
+    at C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:284:7
+    at param (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:360:14)
+    at param (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:416:3)
+    at next (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:323:13)
+2022-02-05 04:21:52.625 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:52.625 [debug] ----------------------------------------
+2022-02-05 04:21:52.808 [debug] {"nowPage":1,"totalCount":46,"listCount":10,"totalPage":5,"groupCount":5,"totalGroup":5,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":0,"offset":0}
+2022-02-05 04:21:52.828 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :259ms
+2022-02-05 04:21:52.828 [debug] ----------------------------------------
+2022-02-05 04:21:52.832 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:52.833 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:52.833 [debug] [GET]http://1.231.57.240:3000/inquiry
+2022-02-05 04:21:52.834 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.835 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.836 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.836 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.836 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.836 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.837 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:52.845 [debug] {"nowPage":1,"totalCount":46,"listCount":10,"totalPage":5,"groupCount":5,"totalGroup":5,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":0,"offset":0}
+2022-02-05 04:21:52.848 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :15ms
+2022-02-05 04:21:52.848 [debug] ----------------------------------------
+2022-02-05 04:21:56.599 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.601 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.602 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/inquiry_manage.html?order=desc
+2022-02-05 04:21:56.603 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :2ms
+2022-02-05 04:21:56.604 [debug] ----------------------------------------
+2022-02-05 04:21:56.624 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.625 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.625 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/css/inquiry_manage.css
+2022-02-05 04:21:56.630 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.630 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.631 [debug] [GET]http://1.231.57.240:3000/assets/css/header_css.css
+2022-02-05 04:21:56.632 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:56.633 [debug] ----------------------------------------
+2022-02-05 04:21:56.634 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.634 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.635 [debug] [GET]http://1.231.57.240:3000/assets/js/include.js
+2022-02-05 04:21:56.637 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.638 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.639 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_search.js
+2022-02-05 04:21:56.640 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.641 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.642 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_pagination.js
+2022-02-05 04:21:56.643 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.643 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.644 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_order.js
+2022-02-05 04:21:56.645 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :15ms
+2022-02-05 04:21:56.645 [debug] ----------------------------------------
+2022-02-05 04:21:56.647 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :13ms
+2022-02-05 04:21:56.647 [debug] ----------------------------------------
+2022-02-05 04:21:56.648 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :10ms
+2022-02-05 04:21:56.648 [debug] ----------------------------------------
+2022-02-05 04:21:56.650 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :9ms
+2022-02-05 04:21:56.651 [debug] ----------------------------------------
+2022-02-05 04:21:56.652 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :9ms
+2022-02-05 04:21:56.652 [debug] ----------------------------------------
+2022-02-05 04:21:56.666 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.667 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.667 [debug] [GET]http://1.231.57.240:3000/assets/inc/header.html
+2022-02-05 04:21:56.668 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :1ms
+2022-02-05 04:21:56.669 [debug] ----------------------------------------
+2022-02-05 04:21:56.674 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.677 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.678 [debug] [GET]http://1.231.57.240:3000/inquiry?query=&page=1&search=title&search_state=&order=desc
+2022-02-05 04:21:56.680 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.683 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.684 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.685 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.685 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.686 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.686 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.690 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.691 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.692 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/img/logo.png
+2022-02-05 04:21:56.701 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :10ms
+2022-02-05 04:21:56.705 [debug] ----------------------------------------
+2022-02-05 04:21:56.722 [debug] {"nowPage":1,"totalCount":46,"listCount":10,"totalPage":5,"groupCount":5,"totalGroup":5,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":0,"offset":0}
+2022-02-05 04:21:56.750 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :73ms
+2022-02-05 04:21:56.752 [debug] ----------------------------------------
+2022-02-05 04:21:56.755 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:56.755 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:56.756 [debug] [GET]http://1.231.57.240:3000/inquiry
+2022-02-05 04:21:56.756 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.757 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.757 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.757 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.757 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.758 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.758 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:56.764 [debug] {"nowPage":1,"totalCount":46,"listCount":10,"totalPage":5,"groupCount":5,"totalGroup":5,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":0,"offset":0}
+2022-02-05 04:21:56.766 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :11ms
+2022-02-05 04:21:56.767 [debug] ----------------------------------------
+2022-02-05 04:21:57.666 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.668 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.668 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/inquiry_manage.html?order=asc
+2022-02-05 04:21:57.670 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :3ms
+2022-02-05 04:21:57.670 [debug] ----------------------------------------
+2022-02-05 04:21:57.692 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.693 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.693 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/css/inquiry_manage.css
+2022-02-05 04:21:57.698 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :4ms
+2022-02-05 04:21:57.699 [debug] ----------------------------------------
+2022-02-05 04:21:57.699 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.700 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.700 [debug] [GET]http://1.231.57.240:3000/assets/css/header_css.css
+2022-02-05 04:21:57.701 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.701 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.701 [debug] [GET]http://1.231.57.240:3000/assets/js/include.js
+2022-02-05 04:21:57.702 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.702 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.703 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_search.js
+2022-02-05 04:21:57.704 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.704 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.705 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_pagination.js
+2022-02-05 04:21:57.705 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.706 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.706 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/js/inquiry_order.js
+2022-02-05 04:21:57.707 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:57.707 [debug] ----------------------------------------
+2022-02-05 04:21:57.708 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:57.708 [debug] ----------------------------------------
+2022-02-05 04:21:57.709 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:57.709 [debug] ----------------------------------------
+2022-02-05 04:21:57.711 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:57.713 [debug] ----------------------------------------
+2022-02-05 04:21:57.713 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :7ms
+2022-02-05 04:21:57.714 [debug] ----------------------------------------
+2022-02-05 04:21:57.722 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.723 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.723 [debug] [GET]http://1.231.57.240:3000/assets/inc/header.html
+2022-02-05 04:21:57.724 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :1ms
+2022-02-05 04:21:57.724 [debug] ----------------------------------------
+2022-02-05 04:21:57.732 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.732 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.733 [debug] [GET]http://1.231.57.240:3000/inquiry?query=&page=1&search=title&search_state=&order=asc
+2022-02-05 04:21:57.733 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.734 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.734 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.734 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.735 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.736 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.736 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.738 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.739 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.739 [debug] [GET]http://1.231.57.240:3000/GJ5_inquiry_manage/assets/img/logo.png
+2022-02-05 04:21:57.740 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :1ms
+2022-02-05 04:21:57.740 [debug] ----------------------------------------
+2022-02-05 04:21:57.767 [debug] {"nowPage":1,"totalCount":46,"listCount":10,"totalPage":5,"groupCount":5,"totalGroup":5,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":0,"offset":0}
+2022-02-05 04:21:57.769 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :37ms
+2022-02-05 04:21:57.769 [debug] ----------------------------------------
+2022-02-05 04:21:57.773 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 04:21:57.775 [debug] [client의 UserAgent]::ffff:1.231.57.240 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 04:21:57.776 [debug] [GET]http://1.231.57.240:3000/inquiry
+2022-02-05 04:21:57.780 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.781 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.781 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.781 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.781 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.782 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.782 [debug] [HTTP %s Params] %s=%s
+2022-02-05 04:21:57.786 [debug] {"nowPage":1,"totalCount":46,"listCount":10,"totalPage":5,"groupCount":5,"totalGroup":5,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":0,"offset":0}
+2022-02-05 04:21:57.789 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :14ms
+2022-02-05 04:21:57.792 [debug] ----------------------------------------
