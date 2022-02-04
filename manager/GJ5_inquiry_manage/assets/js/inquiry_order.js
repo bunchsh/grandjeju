@@ -36,6 +36,7 @@ function order_btn(data) {
     document.querySelector('#order_btn').appendChild(btn_a)
 }
 
+// url에 
 function page_reset(url) {
     const find_page = url.indexOf('page=') + 5
     console.log(url);
@@ -69,7 +70,12 @@ function option_Y(data) {
                 item_a.setAttribute("href",data.substring(0,data.indexOf('N')) + "Y")
             }
         } else if(search_state == "") {
-            item_a.setAttribute("href",data.substring(0,data.indexOf('search_state=')+13) + "Y")
+            if (page != 1) {
+                const url = page_reset(data);
+                item_a.setAttribute("href",url.substring(0,data.indexOf('search_state=')+13) + "Y")
+            } else {
+                item_a.setAttribute("href",data.substring(0,data.indexOf('search_state=')+13) + "Y")
+            }
         }
     }
     
@@ -100,7 +106,12 @@ function option_N(data) {
                 item_a.setAttribute("href",data.substring(0,data.indexOf('Y')) + "N")
             }
         } else if(search_state == "") {
-            item_a.setAttribute("href",data.substring(0,data.indexOf('search_state=')+13) + "N")
+            if (page != 1) {
+                const url = page_reset(data);
+                item_a.setAttribute("href",url.substring(0,data.indexOf('search_state=')+13) + "N")
+            } else {
+                item_a.setAttribute("href",data.substring(0,data.indexOf('search_state=')+13) + "N")
+            }
         }
     }
 
