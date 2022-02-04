@@ -16,24 +16,7 @@ function pagenation(selector, data) {
     const a1 = document.createElement("a");
     a1.innerHTML = "&laquo;";
     a1.classList.add("page-link");
-    a1.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query);
-
-    if(!(order == null)){
-        a1.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query +  "&order=" + order)
-        
-        if(search_state != null){
-            a1.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query + "&order=" + order + "&search_state" + search_state);
-        }
-    }
-    
-    if(search_state != null){
-        a1.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.prevGroupLastPage + "&query=" + query + "&search_state=" + search_state);
-    }
-
-    if (data.prevGroupLastPage == 0) {
-        li1.classList.add('disabled');
-        a1.removeAttribute('href');
-    }
+    a1.setAttribute("href",`/GJ5_inquiry_manage/inquiry_manage.html?search=${search} &page=${data.prevGroupLastPage} &query=${query} &search_state=${search_state}`);
 
     li1.appendChild(a1);
     container.appendChild(li1);
@@ -46,19 +29,8 @@ function pagenation(selector, data) {
         const a2 = document.createElement("a");
         a2.innerHTML = i;
         a2.classList.add('page-link');
-        a2.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query);
+        a2.setAttribute("href",`/GJ5_inquiry_manage/inquiry_manage.html?search=${search}&page=${i}&query=${query}&search_state=${search_state}`);
 
-        if (!(order == null)) {
-            a2.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query + "&order=" + order);
-
-            if(search_state != null){
-                a2.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query + "&order=" + order + "&search_state=" + search_state);
-            }
-        }
-
-        if(search_state != null){
-            a2.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + i + "&query=" + query + "&search_state=" + search_state);
-        }
 
         if (data.nowPage == i) {
             li2.classList.add('active');
@@ -75,19 +47,7 @@ function pagenation(selector, data) {
     const a3 = document.createElement("a");
     a3.innerHTML = "&raquo;";
     a3.classList.add("page-link");
-    a3.setAttribute("href", "/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query);
-
-    if (order != null) {
-        a3.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&order=" + order);
-        if(search_state != null){
-            a3.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&order=" + order + "&search_state=" + search_state);
-        }
-    }
-
-    if(search_state != null){
-        a3.setAttribute("href","/GJ5_inquiry_manage/inquiry_manage.html?page=" + data.nextGroupFirstPage + "&query=" + query + "&search_state=" + search_state);
-    }
-
+    a3.setAttribute("href",`/GJ5_inquiry_manage/inquiry_manage.html?search=${search} &page=${data.nextGroupFirstPage} &query=${query} &search_state=${search_state}`);
 
     if (data.nextGroupFirstPage == 0) {
         li3.classList.add('disabled');
