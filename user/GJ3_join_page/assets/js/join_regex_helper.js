@@ -142,11 +142,11 @@ const regex = new RegexHelper();
 
 // 각 인풋 태그에 대한 변수선언
 const error = document.querySelectorAll(".error_text");
-const id = document.querySelector('.join_id');
-const password = document.querySelector(".join_pw");
-const passowrd_re = document.querySelector(".join_pw_re");
-const name = document.querySelector(".join_name");
-const tel = document.querySelector(".join_tel");
+const id = document.querySelector('.user_id');
+const password = document.querySelector(".user_pw");
+const passowrd_re = document.querySelector(".user_pw_re");
+const name = document.querySelector(".user_name");
+const tel = document.querySelector(".user_phone");
 
 
 // input 요소에서 커서가 벗어났을때 아이디 유효성 검사
@@ -171,16 +171,16 @@ tel.addEventListener("focusout", e=>{
 })
 
 // 데이터를 전송 할때 (submit버튼) 폼요소 전체의 유효성 검사
-document.querySelector("#join_form_group").addEventListener("submit" ,e =>{
-    e.preventDefault();
-    console.log(error,id);
-    const regexHelper = new RegexHelper();
+// document.querySelector("#join_form_group").addEventListener("submit" ,e =>{
+//     e.preventDefault();
+//     console.log(error,id);
+//     const regexHelper = new RegexHelper();
 
-    if(!regexHelper.check_id(id,error)){return false};
-    if(!regexHelper.check_pw(password,error)){return false};
-    if(!regexHelper.check_pw_re(passowrd_re,password,error)){return false};
-    if(!regexHelper.check_name(name,error)){return false};
-    if(!regexHelper.check_tel(tel,error)){return false};
+//     if(!regexHelper.check_id(id,error)){return false};
+//     if(!regexHelper.check_pw(password,error)){return false};
+//     if(!regexHelper.check_pw_re(passowrd_re,password,error)){return false};
+//     if(!regexHelper.check_name(name,error)){return false};
+//     if(!regexHelper.check_tel(tel,error)){return false};
 
-    alert("회원가입 완료");
-})
+//     window.location = "/GJ2_login_page/login.html"
+// })

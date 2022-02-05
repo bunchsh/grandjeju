@@ -41,7 +41,16 @@
     min-height: 200px;
     padding-top: 10px;
 }
-#container #content .main_group .ask_group .ask_text {
+#container #content .main_group .ask_group .inquiry_text {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#container #content .main_group .answer_group {
+    padding-top: 10px;
+    border-top: 1px solid gray;
+}
+#container #content .main_group .answer_group .answer_text {
     font-size: 12px;
     line-height: 20px;
 }
@@ -66,6 +75,15 @@
     background-color: black;
     color: white;
     border-radius: 0 5px 5px 0;
+    border: 1px solid black;
+}
+
+#container #content .btn_group .btn_delete_after {
+    width: 60px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
     border: 1px solid black;
 }
 

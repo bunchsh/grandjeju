@@ -24170,3 +24170,144 @@
 2022-02-05 15:14:01.049 [debug] {"nowPage":1,"totalCount":79,"listCount":10,"totalPage":8,"groupCount":5,"totalGroup":8,"nowGroup":1,"groupStart":1,"groupEnd":5,"prevGroupLastPage":0,"nextGroupFirstPage":6,"offset":0}
 2022-02-05 15:14:01.050 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :6ms
 2022-02-05 15:14:01.051 [debug] ----------------------------------------
+2022-02-05 23:40:56.937 [debug] -------------------------------------
+2022-02-05 23:40:56.940 [debug] |        Start Express Server       |
+2022-02-05 23:40:56.940 [debug] -------------------------------------
+2022-02-05 23:40:56.940 [debug] server address => http://172.30.1.4:3000
+2022-02-05 23:40:56.941 [debug] -------------------------------------
+2022-02-05 23:42:13.683 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.685 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.686 [debug] [GET]http://172.30.1.4:3000/GJ2_members/members_manage.html
+2022-02-05 23:42:13.698 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :13ms
+2022-02-05 23:42:13.699 [debug] ----------------------------------------
+2022-02-05 23:42:13.741 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.742 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.742 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/css/members_manage.css
+2022-02-05 23:42:13.744 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.745 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.745 [debug] [GET]http://172.30.1.4:3000/assets/css/header_css.css
+2022-02-05 23:42:13.749 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.750 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.750 [debug] [GET]http://172.30.1.4:3000/assets/js/include.js
+2022-02-05 23:42:13.752 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.752 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.752 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/js/members_search.js
+2022-02-05 23:42:13.753 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.754 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.754 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/js/members_pagination.js
+2022-02-05 23:42:13.755 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.755 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.756 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/js/members_order.js
+2022-02-05 23:42:13.758 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :13ms
+2022-02-05 23:42:13.759 [debug] ----------------------------------------
+2022-02-05 23:42:13.760 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :18ms
+2022-02-05 23:42:13.760 [debug] ----------------------------------------
+2022-02-05 23:42:13.761 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :11ms
+2022-02-05 23:42:13.762 [debug] ----------------------------------------
+2022-02-05 23:42:13.763 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :11ms
+2022-02-05 23:42:13.763 [debug] ----------------------------------------
+2022-02-05 23:42:13.765 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :11ms
+2022-02-05 23:42:13.765 [debug] ----------------------------------------
+2022-02-05 23:42:13.766 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :11ms
+2022-02-05 23:42:13.767 [debug] ----------------------------------------
+2022-02-05 23:42:13.977 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.977 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.977 [debug] [GET]http://172.30.1.4:3000/assets/inc/header.html
+2022-02-05 23:42:13.979 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :2ms
+2022-02-05 23:42:13.979 [debug] ----------------------------------------
+2022-02-05 23:42:13.982 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.982 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.983 [debug] [GET]http://172.30.1.4:3000/members?query=&page=1&search=user_id
+2022-02-05 23:42:13.983 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:42:13.984 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:42:13.984 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/img/logo.png
+2022-02-05 23:42:13.988 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:42:13.989 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:42:13.989 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:42:13.989 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:42:13.990 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:42:13.994 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :10ms
+2022-02-05 23:42:13.994 [debug] ----------------------------------------
+2022-02-05 23:42:14.021 [error] Error
+2022-02-05 23:42:14.021 [error] Unknown database 'grandjeju'
+2022-02-05 23:42:14.022 [error] Error: Unknown database 'grandjeju'
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:162:23
+    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:67:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
+2022-02-05 23:42:14.026 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :44ms
+2022-02-05 23:42:14.026 [debug] ----------------------------------------
+2022-02-05 23:43:17.592 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.592 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.593 [debug] [GET]http://172.30.1.4:3000/GJ2_members/members_manage.html
+2022-02-05 23:43:17.595 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :3ms
+2022-02-05 23:43:17.596 [debug] ----------------------------------------
+2022-02-05 23:43:17.619 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.619 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.620 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/css/members_manage.css
+2022-02-05 23:43:17.622 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.622 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.623 [debug] [GET]http://172.30.1.4:3000/assets/css/header_css.css
+2022-02-05 23:43:17.624 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :5ms
+2022-02-05 23:43:17.624 [debug] ----------------------------------------
+2022-02-05 23:43:17.626 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :4ms
+2022-02-05 23:43:17.626 [debug] ----------------------------------------
+2022-02-05 23:43:17.628 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.628 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.628 [debug] [GET]http://172.30.1.4:3000/assets/js/include.js
+2022-02-05 23:43:17.629 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.630 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.630 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/js/members_search.js
+2022-02-05 23:43:17.631 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.631 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.632 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/js/members_pagination.js
+2022-02-05 23:43:17.633 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.633 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.633 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/js/members_order.js
+2022-02-05 23:43:17.634 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :6ms
+2022-02-05 23:43:17.635 [debug] ----------------------------------------
+2022-02-05 23:43:17.635 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :5ms
+2022-02-05 23:43:17.636 [debug] ----------------------------------------
+2022-02-05 23:43:17.636 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :5ms
+2022-02-05 23:43:17.637 [debug] ----------------------------------------
+2022-02-05 23:43:17.638 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :5ms
+2022-02-05 23:43:17.638 [debug] ----------------------------------------
+2022-02-05 23:43:17.643 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.643 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.643 [debug] [GET]http://172.30.1.4:3000/assets/inc/header.html
+2022-02-05 23:43:17.645 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :2ms
+2022-02-05 23:43:17.646 [debug] ----------------------------------------
+2022-02-05 23:43:17.648 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.648 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.648 [debug] [GET]http://172.30.1.4:3000/members?query=&page=1&search=user_id
+2022-02-05 23:43:17.650 [debug] *****클라이언트가 접속했습니다.*****
+2022-02-05 23:43:17.650 [debug] [client의 UserAgent]::ffff:172.30.1.4 / Windows 10.0 / Chrome (97.0.4692.99) / Microsoft Windows
+2022-02-05 23:43:17.651 [debug] [GET]http://172.30.1.4:3000/GJ2_members/assets/img/logo.png
+2022-02-05 23:43:17.652 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:43:17.652 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:43:17.652 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:43:17.653 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:43:17.653 [debug] [HTTP %s Params] %s=%s
+2022-02-05 23:43:17.654 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :4ms
+2022-02-05 23:43:17.655 [debug] ----------------------------------------
+2022-02-05 23:43:17.659 [error] Error
+2022-02-05 23:43:17.659 [error] Unknown database 'grandjeju'
+2022-02-05 23:43:17.660 [error] Error: Unknown database 'grandjeju'
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:162:23
+    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:67:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
+2022-02-05 23:43:17.661 [debug] ※※※※※ 클라이언트의 접속이 종료되었습니다. ※※※※※    [실행하는데 걸린시간 runtime] :13ms
+2022-02-05 23:43:17.661 [debug] ----------------------------------------

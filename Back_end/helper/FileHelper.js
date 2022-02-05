@@ -12,10 +12,10 @@ module.exports.mkdirs = (target, permission=0755) => {
     if (target == undefined || target == null) {return;}
 
     // 윈도우의 경의 '\'를 '/'로 반환.
-    // target = target.replace(/\\gi, "/");
+    target = target.replace(/\\/gi, "/");
     // node.js 17버전 이상 가능.
     // --> target = "a/b/c"
-    target = target.replaceAll("\\", "/");
+    // target = target.replaceAll("\\", "/");
 
     // 주어진 경로값을 "/" 단위로 자른다.
     // --> target_list = ["a", "b", "c"]

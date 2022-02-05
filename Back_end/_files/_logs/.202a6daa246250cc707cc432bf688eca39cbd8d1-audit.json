@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "Q:\\2021 풀스택 과정\\grandjeju\\Back_end\\_files\\_logs\\.202a6daa246250cc707cc432bf688eca39cbd8d1-audit.json",
+    "files": [
+        {
+            "date": 1644072056210,
+            "name": "Q:\\2021 풀스택 과정\\grandjeju\\Back_end\\_files\\_logs\\error_22-02-05.log",
+            "hash": "77d9ddb3eb9a7c40ad332baca57b6e98"
+        },
+        {
+            "date": 1644075131532,
+            "name": "Q:\\2021 풀스택 과정\\grandjeju\\Back_end\\_files\\_logs\\error_22-02-06.log",
+            "hash": "5fd6d94c1cb5ac6f01286cb9670f5559"
+        }
+    ],
+    "hashType": "md5"
+}

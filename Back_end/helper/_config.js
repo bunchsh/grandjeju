@@ -21,6 +21,9 @@ module.exports = {
     /** manager 디렉토리 경로 */
     public_path: path.join(__dirname, '../../manager'),
 
+    /** manager 디렉토리 경로 */
+    user_path: path.join(__dirname, '../../user'),
+
     /** favicon 경로 */
     favicon_path: path.join(__dirname, '../favicon.png'),
 
