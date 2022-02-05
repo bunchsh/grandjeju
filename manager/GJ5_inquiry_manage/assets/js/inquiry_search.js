@@ -34,8 +34,8 @@ const query = params.get('query') || "";
 const page = params.get('page') || 1;
 const search = params.get('search') || 'title';
 const search_state = params.get('search_state') || "";
-const search_type = params.get('search_type');
-const order = params.get('order')
+const search_type = params.get('search_type') || "";
+const order = params.get('order') || "";
 
 
 // 검색어 파라미터를 input 태그에 설정된
@@ -166,5 +166,9 @@ document.querySelector('#search').value = search;
         order_btn(decodeURIComponent(location.href));
         option_Y(decodeURIComponent(location.href));
         option_N(decodeURIComponent(location.href));
+        type_reserve(decodeURIComponent(location.href));
+        type_facility(decodeURIComponent(location.href));
+        type_cancel(decodeURIComponent(location.href));
+        type_besides(decodeURIComponent(location.href));
     }
 })();

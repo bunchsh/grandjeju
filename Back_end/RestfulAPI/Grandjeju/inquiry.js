@@ -129,9 +129,9 @@ module.exports = (app) => {
             
             if (order != null) {
                 if (order == 'asc'){
-                    sql2 += " ORDER BY user_name asc"
+                    sql2 += " ORDER BY inquiry_date asc"
                 } else if (order == 'desc'){
-                    sql2 += " ORDER BY user_name desc"
+                    sql2 += " ORDER BY inquiry_date desc"
                 }
             }
 
