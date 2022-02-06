@@ -4,17 +4,30 @@
  * @description : where절에 검색 조건을 추가 할 드롭다운 버튼함수 구현
  */
 
-// url에 page값을 1로 변경하는 함수
-function page_reset(url) {
-    const find_page = url.indexOf('page=') + 5
-    return (url.substring(0,find_page) + 1) + (url.substring(find_page + 1))
-}
-// 문자열에 찾고싶은 단어의 끝위치를 리턴하는 함수
-function find_index(url,string) {
-    return url.indexOf(string) + string.length
+/**
+ * URL에 page값을 1로 변경하는 함수
+ * @param {string} data      현재 url값
+ */
+function page_reset(data) {
+    const find_page = data.indexOf('page=') + 5
+    return (data.substring(0,find_page) + 1) + (data.substring(find_page + 1))
 }
 
-// 문의 종류의 드롭다운 아이템 항목을 생성하는 함수
+/**
+ * URL 문자열에 찾고싶은 단어의 끝위치를 리턴하는 함수
+ * @param {string} data      현재 url값
+ * @param {string} string   url에서 찾고싶은 단어
+ */
+function find_index(data,string) {
+    return data.indexOf(string) + string.length
+}
+
+
+/**
+ * 문의 종류의 드롭다운 아이템 항목을 생성하는 함수
+ * @param {string} data     현재 url값
+ * @param {string} type     해당 아이템이 가르키는 type정보
+ */
 function create_item(data,type) {
     const url = page_reset(data)
     const index = find_index(data, "search_type=")
@@ -52,7 +65,6 @@ function create_item(data,type) {
 }
 
 
-
 function type_reserve(data) {
     create_item(data, "예약 문의")
 }
@@ -70,7 +82,13 @@ function type_besides(data) {
 }
 
 
-function option_Y(data) {
+/**
+ * 답변상태의 종류를 변경하기위한 드롭다운 아이템 생성함수
+ * @param {string} data     현재 url값
+ * @param {string} string   유저에게 보여질 드롭다운 아이템 내용
+ * @param {string} state    해당 아이템이 가르키는 state값 
+ */
+function create_item_state(data, string, state) {
     const url = page_reset(data)
     const index = find_index(data, "search_state=")
     const u_index = find_index(url, "search_state=")
@@ -78,15 +96,15 @@ function option_Y(data) {
     const item_a = document.createElement("a");
 
     item_a.classList.add("dropdown-item")
-    item_a.innerHTML = "답변완료"
+    item_a.innerHTML = string
     console.log(page_reset(data));
 
     // search_state가 없을때
     if(data.indexOf("search_state") == -1 ){
         if(data.indexOf("?") == -1) {
-            item_a.setAttribute("href",data + "?search_state=Y")
+            item_a.setAttribute("href",data + "?search_state=" + state)
         } else {
-            item_a.setAttribute("href",data + "&search_state=Y")
+            item_a.setAttribute("href",data + "&search_state=" + state)
         }
     }
 
@@ -101,48 +119,18 @@ function option_Y(data) {
         }
 
         if (page != 1) {
-            item_a.setAttribute("href",url.substring(0,u_index) + "Y" + rest_url1)
+            item_a.setAttribute("href",url.substring(0,u_index) + state + rest_url1)
         } else {
-            item_a.setAttribute("href",data.substring(0,index) + "Y" + rest_url2)
+            item_a.setAttribute("href",data.substring(0,index) + state + rest_url2)
         }
-
     }
     
     document.querySelector('#select_state').appendChild(item_a);
 }
 
+function option_Y(data) {
+    create_item_state(data,"답변 완료","Y")
+}
 function option_N(data) {
-    const url = page_reset(data)
-    const index = find_index(data, "search_state=")
-    const u_index = find_index(url, "search_state=")
-
-    const item_a = document.createElement("a");
-    item_a.classList.add("dropdown-item")
-    item_a.innerHTML = "답변대기"
-
-    // search_state가 없을때
-    if(data.indexOf("search_state") == -1 ){
-        if(data.indexOf("?") == -1) {
-            item_a.setAttribute("href",data + "?search_state=N")
-        } else {
-            item_a.setAttribute("href",data + "&search_state=N")
-        }
-    }
-
-    // search_state가 있을 때
-    if(data.indexOf("search_state") != -1) {
-        let rest_url1 = url.substring(index)
-        let rest_url2 = data.substring(index)
-        if (search_state != "") {
-            rest_url1 = url.substring(index+search_state.length)
-            rest_url2 = data.substring(index+search_state.length)
-        }
-
-        if (page != 1) {
-            item_a.setAttribute("href",url.substring(0,u_index) + "N" + rest_url1)
-        } else {
-            item_a.setAttribute("href",data.substring(0,index) + "N" + rest_url2)
-        }
-    }
-    document.querySelector('#select_state').appendChild(item_a);
+    create_item_state(data,"답변 대기","N")
 }

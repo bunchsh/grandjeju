@@ -25,7 +25,9 @@ function order_btn(data) {
 
     if(order == 'asc' ) {
         btn_a.setAttribute("href",data.substring(0,data.indexOf('asc')) + "desc");
+        btn_a.classList.add("blue");
         icon.classList.replace("bi-sort-alpha-up-alt" ,"bi-sort-alpha-down");
+        
     }
     if(order == 'desc'){
         btn_a.setAttribute("href",data.substring(0,data.indexOf('desc')) + "asc");

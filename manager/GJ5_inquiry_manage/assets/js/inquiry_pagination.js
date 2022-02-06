@@ -16,7 +16,7 @@ function pagenation(selector, data) {
     const a1 = document.createElement("a");
     a1.innerHTML = "&laquo;";
     a1.classList.add("page-link");
-    a1.setAttribute("href",`/GJ5_inquiry_manage/inquiry_manage.html?search=${search}&page=${data.prevGroupLastPage}&query=${query} &search_state=${search_state}&search_type=${search_type}&order=${order}`);
+    a1.setAttribute("href",`/GJ5_inquiry_manage/inquiry_manage.html?search=${search}&page=${data.prevGroupLastPage}&query=${query}&search_state=${search_state}&search_type=${search_type}&order=${order}`);
 
     
     if (data.prevGroupLastPage == 0) {
