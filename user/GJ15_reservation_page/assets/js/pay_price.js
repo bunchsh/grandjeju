@@ -111,12 +111,13 @@ date.addEventListener('change', e => {
                                 msg += '상점 거래ID : ' + rsp.merchant_uid;
                                 msg += '결제 금액 : ' + rsp.paid_amount;
                                 msg += '카드 승인번호 : ' + rsp.apply_num;
+                                location.href = "../GJ16_reservation_clear_page/resevation_clear.html"
                             } else {
                                 var msg = '결제에 실패하였습니다.';
                                 msg += '에러내용 : ' + rsp.error_msg;
+                                history.back();
                             }
                             alert(msg);
-                            location.href = "../GJ16_reservation_clear_page/resevation_clear.html"
                         });
                     });
                 } else if (pay_radio[i].value == "payco") {
@@ -148,12 +149,13 @@ date.addEventListener('change', e => {
                                 msg += '상점 거래ID : ' + rsp.merchant_uid;
                                 msg += '결제 금액 : ' + rsp.paid_amount;
                                 msg += '카드 승인번호 : ' + rsp.apply_num;
+                                location.href = "../GJ16_reservation_clear_page/resevation_clear.html"
                             } else {
                                 var msg = '결제에 실패하였습니다.';
                                 msg += '에러내용 : ' + rsp.error_msg;
+                                history.back();
                             }
                             alert(msg);
-                            location.href = "../GJ16_reservation_clear_page/resevation_clear.html"
                         });
                     });
                 } else {
@@ -184,12 +186,13 @@ date.addEventListener('change', e => {
                                 msg += '상점 거래ID : ' + rsp.merchant_uid;
                                 msg += '결제 금액 : ' + rsp.paid_amount;
                                 msg += '카드 승인번호 : ' + rsp.apply_num;
+                                location.href = "../GJ16_reservation_clear_page/resevation_clear.html"
                             } else {
                                 var msg = '결제에 실패하였습니다.';
                                 msg += '에러내용 : ' + rsp.error_msg;
+                                history.back();
                             }
                             alert(msg);
-                            location.href = "../GJ16_reservation_clear_page/resevation_clear.html"
                         });
                     });
                 }

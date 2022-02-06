@@ -237,6 +237,5 @@ document.querySelector('#reservation').addEventListener("submit", e => {
     /** 결제 수단 검사 */
     if (!regexHelper.check("input[name=pay]")) { return false; }
 
-    // 처리 완료
-    location.href = "#";
+    
 });
