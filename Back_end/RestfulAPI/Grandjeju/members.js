@@ -155,9 +155,11 @@ module.exports = (app) => {
         const user_pw = req.post('user_pw');
         const user_name = req.post('user_name');
         const user_phone = req.post('user_phone');
+        const is_out = req.post('is_out');
+        const reg_date = req.post('reg_date');
 
         try {
-            regexHelper.value(user_pw, '아이디가 없습니다.');
+            regexHelper.value(user_id, '아이디가 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -172,12 +174,12 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 저장하기
-            const sql = 'INSERT INTO members (user_id, user_pw, user_name, user_phone) VALUES (?,?,?,?)';
-            const input_data = [user_id, user_pw, user_name, user_phone];
+            const sql = "INSERT INTO members (user_id, user_pw, user_name, user_phone, is_out, reg_date) VALUES (?,?,?,?,'N',now())";
+            const input_data = [user_id, user_pw, user_name, user_phone, is_out, reg_date];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out reg_date  FROM members where member_id=?';
+            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date FROM members where member_id=?';
             const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -203,7 +205,7 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(member_id, '필수 파라미터가 없습니다.');
-            regexHelper.value(user_id, '교수이름이 없습니다.');
+            regexHelper.value(user_id, '아이디가 없습니다.');
         } catch (err) {
             return next(err);
         }

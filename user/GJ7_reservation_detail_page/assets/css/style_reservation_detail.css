@@ -23,7 +23,7 @@
 #container #content .room_group {
     height: 60px;
 }
-#container #content .room_group .select_room {
+#container #content .room_group .room {
     font-size: 13px;
 }
 /** 숙박 기간 항목 */
@@ -37,21 +37,21 @@
 #container #content .person_group {
     height: 60px;
 }
-#container #content .person_group .select_person {
+#container #content .person_group .person {
     font-size: 13px;
 }
 /** 예약자명 항목 */
 #container #content .name_group {
     height: 60px;
 }
-#container #content .name_group .select_name {
+#container #content .name_group .reserv_name {
     font-size: 13px;
 }
 /** 예약자 연락처 항목 */
 #container #content .number_group {
     height: 60px;
 }
-#container #content .number_group .select_number {
+#container #content .number_group .reserv_phone {
     font-size: 13px;
 }
 /** 결제 금액 항목 */
@@ -59,7 +59,7 @@
     height: 60px;
     padding-bottom: 30px;
 }
-#container #content .pay_group .select_pay {
+#container #content .pay_group .pay_price {
     font-size: 13px;
     font-weight: bold;
 }

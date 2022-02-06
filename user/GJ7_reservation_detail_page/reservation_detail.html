@@ -35,32 +35,32 @@
                 <!-- 객실 항목 -->
                 <div class="room_group">
                     <h3 class="roomtitle">객실</h3>
-                    <span class="select_room"></span>
+                    <span class="room"></span>
                 </div>
                 <!-- 숙박 기간 항목 -->
                 <div class="date_group">
                     <h3 class="datetitle">숙박 기간</h3>
-                    <span class="select_date"></span>
+                    <p class="select_date"><span class="stay_start"></span> ~ <span class="stay_end"></span></p>
                 </div>
                 <!-- 인원 항목 -->
                 <div class="person_group">
                     <h3 class="persontitle">인원</h3>
-                    <span class="select_person"></span>
+                    <span class="person"></span>
                 </div>
                 <!-- 예약자명 항목 -->
                 <div class="name_group">
                     <h3 class="nametitle">예약자명</h3>
-                    <span class="select_name"></span>
+                    <span class="reserv_name"></span>
                 </div>
                 <!-- 예약자 연락처 항목 -->
                 <div class="number_group">
                     <h3 class="numbertitle">예약자 연락처</h3>
-                    <span class="select_number"></span>
+                    <span class="reserv_phone"></span>
                 </div>
                 <!-- 결제 금액 항목 -->
                 <div class="pay_group">
                     <h3 class="paytitle">결제 금액</h3>
-                    <span class="select_pay"></span>
+                    <span class="pay_price"></span>
                 </div>
 
                 <!-- 예약 취소 버튼 -->
@@ -73,5 +73,51 @@
     </div>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/cancel_alert.js"></script>
+
+    <!-- Fake API 예약 내역 출력 -->
+    <script>
+        function get_reservation(reserv_id) {
+            const xhr = new XMLHttpRequest();
+            const method = 'GET';
+            const url = "http://localhost:3000/reservation/" + reserv_id;
+
+            xhr.onreadystatechange = (e) => {
+                const { target } = e;
+
+                if (target.readyState == XMLHttpRequest.DONE) {
+                    if (target.status == 200) {
+                        const req = JSON.parse(target.response);
+                        document.querySelector('.room').innerHTML = req.room;
+                        document.querySelector('.reserv_name').innerHTML = req.reserv_name;
+                        document.querySelector('.reserv_phone').innerHTML = req.reserv_phone;
+                        document.querySelector('.stay_start').innerHTML = req.stay_start;
+                        document.querySelector('.stay_end').innerHTML = req.stay_end;
+                        document.querySelector('.person').innerHTML = req.person;
+                        document.querySelector('.pay_price').innerHTML = req.pay_price;
+                    } else {
+                        const s = parseInt(target.status / 100);
+                        let errMsg = null;
+
+                        if (s == 4) {
+                            errMsg = '[' + target.status + ']' + target.statusText + '- 요청 주소가 잘못되었습니다.';
+                        } else if (s == 5) {
+                            errMsg = '[' + target.status + ']' + target.statusText + '- 서버의 응답이 없습니다.';
+                        } else {
+                            errMsg = '[' + target.status + ']' + target.statusText + '- 요청에 실패하였습니다.';
+                        }
+                        alert(errMsg);
+                    }
+                }
+            };
+
+            xhr.open(method, url);
+            xhr.send();
+        }
+
+        (() => {
+            get_reservation(9001);
+        })();
+
+    </script>
 </body>
 </html>

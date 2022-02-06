@@ -4,7 +4,7 @@
  * @desciption : 정규표현식 검사 수행 후, true/false로 해당 정규표현식 충족하는지 여부를 반환하는 함수들의 모음
  */
 const BadRequestException = require('../exceptions/BadRequestExeption');
-class RegexHelper{
+class RegexHelper {
     /** 
      * 값의 존재 여부를 검사한다.
      * @Param {string} content 검사할 값
@@ -12,7 +12,7 @@ class RegexHelper{
      */
 
     value(content, msg) {
-        if(content == undefined || content == null || content.trim().length == 0) {
+        if (content == undefined || content == null || content.trim().length == 0) {
             throw new BadRequestException(msg);
         }
 
@@ -26,7 +26,7 @@ class RegexHelper{
      * @param {string} msg        값이 없을 경우 표시될 메시지
      */
     maxLength(content, len, msg) {
-        if(!this.value(content) || content.length > len){
+        if (!this.value(content) || content.length > len) {
             throw new BadRequestException(msg);
         }
 
@@ -40,7 +40,7 @@ class RegexHelper{
      * @param {string} msg      값이 없을 경우 표시될 메시지
      */
     minLength(content, len, msg) {
-        if(!this.value(content) || content.length < len){
+        if (!this.value(content) || content.length < len) {
             throw new BadRequestException(msg);
         }
         return true;
@@ -52,7 +52,7 @@ class RegexHelper{
      * @param {string} compare  검사 대상
      * @param {string} msg      값이 없을 경우 표시될 메시지
      */
-     minLength(origin, compare, msg) {
+    minLength(origin, compare, msg) {
         var src = origin.trim(); // 원본값을 가져온다.
         var dsc = compare.trim() // 비교할 값을 가져온다.
 
@@ -72,7 +72,7 @@ class RegexHelper{
         var src = content.trim();
 
         // 입력값이 없거나 입력값에 대한 정규표현식 검사가 실패라면?
-        if(!src || !regexExper.test(src)){
+        if (!src || !regexExper.test(src)) {
             throw new BadRequestException(msg);
         }
         return true;
@@ -92,7 +92,7 @@ class RegexHelper{
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
      */
-     eng(content, msg) {
+    eng(content, msg) {
         return this.field(content, msg, /^[a-zA-Z]*$/);
     }
 
@@ -101,7 +101,7 @@ class RegexHelper{
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
      */
-     kor(content, msg) {
+    kor(content, msg) {
         return this.field(content, msg, /^[ㄱ-ㅎ가-힣]*$/);
     }
 
@@ -110,7 +110,7 @@ class RegexHelper{
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
      */
-     engNum(content, msg) {
+    engNum(content, msg) {
         return this.field(content, msg, /^[a-zA-Z0-9]*$/);
     }
 
@@ -119,7 +119,7 @@ class RegexHelper{
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
      */
-     korNum(content, msg) {
+    korNum(content, msg) {
         return this.field(content, msg, /^[ㄱ-ㅎ가-힣0-9]*$/);
     }
 
@@ -128,7 +128,7 @@ class RegexHelper{
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
      */
-     email(content, msg) {
+    email(content, msg) {
         return this.field(content, msg, /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);
     }
 
@@ -153,19 +153,19 @@ class RegexHelper{
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
      */
-     cellphone(content, msg) {
-         var check1 = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/ // 핸드폰 형식
-         var check2 = /^\d{2,3}\d{3,4}\d{4}$/ //집전화 형식
+    cellphone(content, msg) {
+        var check1 = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/ // 핸드폰 형식
+        var check2 = /^\d{2,3}\d{3,4}\d{4}$/ //집전화 형식
 
-        var src =content.trim();
+        var src = content.trim();
 
         // 입력값이 ㅇ벗거나, 핸드푠 형식도 아니고     집전화 형식도 아니라면
-        if(!src || (!check1.test(src) && !check2.test(src))){
+        if (!src || (!check1.test(src) && !check2.test(src))) {
             throw new BadRequestException(msg);
         }
         return true;
     }
-    
+
 
 }
 module.exports = new RegexHelper();

@@ -34,18 +34,18 @@
             <div id="content">
                 <!-- 제목 항목 -->
                 <div class="title_group">
-                    <span class="title_option">[예약 문의]</span>
-                    <span class="title_title">예약은 어떻게 해야 하나요?</span>
+                    <span class="type"></span>
+                    <span class="title_title"></span>
                 </div>
                 <!-- 작성자 및 작성 날짜 항목 -->
                 <div class="writer_group">
-                    <span class="writer_name">양수원</span>
-                    <span class="write_date">21. 01. 08</span>
+                    <span class="user_name"></span>
+                    <span class="inquiry_date"></span>
                 </div>
                 <!-- 본문 항목 -->
                 <div class="main_group">
                     <div class="ask_group">
-                        <p class="ask_text">예약하는 방법을 모르겠어요!<br />어떻게 예약하는지 알려 주실 수 있을까요?<br />꼭 펜션에 방문하고 싶습니다!</p>
+                        <p class="inquiry_text">
                     </div>
                 </div>
 
@@ -59,6 +59,51 @@
     </div>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/cancel_alert.js"></script>
+
+    <!-- Fake API 1:1 문의 내역 출력 -->
+    <script>
+        function get_inquiry(inquiry_id) {
+            const xhr = new XMLHttpRequest();
+            const method = 'GET';
+            const url = "http://localhost:3000/inquiry/" + inquiry_id;
+
+            xhr.onreadystatechange = (e) => {
+                const { target } = e;
+
+                if (target.readyState == XMLHttpRequest.DONE) {
+                    if (target.status == 200) {
+                        const req = JSON.parse(target.response);
+                        document.querySelector('.type').innerHTML = "[" + req.type + "]";
+                        document.querySelector('.title_title').innerHTML = req.title;
+                        document.querySelector('.user_name').innerHTML = req.user_name;
+                        document.querySelector('.inquiry_date').innerHTML = req.inquiry_date;
+                        document.querySelector('.inquiry_text').innerHTML = req.inquiry_text;
+                    } else {
+                        const s = parseInt(target.status / 100);
+                        let errMsg = null;
+
+                        if (s == 4) {
+                            errMsg = '[' + target.status + ']' + target.statusText + '- 요청 주소가 잘못되었습니다.';
+                        } else if (s == 5) {
+                            errMsg = '[' + target.status + ']' + target.statusText + '- 서버의 응답이 없습니다.';
+                        } else {
+                            errMsg = '[' + target.status + ']' + target.statusText + '- 요청에 실패하였습니다.';
+                        }
+                        alert(errMsg);
+                    }
+                }
+            };
+
+            xhr.open(method, url);
+            xhr.send();
+        }
+
+        (() => {
+            get_inquiry(900001);
+        })();
+
+    </script>
+
     <!-- 수정 버튼 클릭 시, 수정 페이지 이동 -->
     <script type="text/javascript">
         document.querySelector('.btn_modify').addEventListener("click", e => {

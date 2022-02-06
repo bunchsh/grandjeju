@@ -6,12 +6,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GrandJeju - JOIN</title>
-    <link rel="stylesheet" href="../assets/css/side_menu.css"/>
+    <link rel="stylesheet" href="../assets/css/side_menu.css" />
     <link rel="stylesheet" href="../assets/css/all.css">
     <link rel="stylesheet" href="../assets/css/header_style.css">
     <link rel="stylesheet" href="./assets/css/style_join.css">
@@ -20,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="wrap">
         <!-- HEADER -->
@@ -34,27 +36,27 @@
             <div class="join_form">
                 <div class="join_id_group">
                     <a>아이디</a>
-                    <input type="text" class="join_id">
+                    <input type="text" class="user_id">
                     <span class="error_text"></span>
                 </div>
                 <div class="join_pw_group">
                     <a>비밀번호</a>
-                    <input type="password" class="join_pw">
+                    <input type="password" class="user_pw">
                     <span class="error_text"></span>
                 </div>
                 <div class="join_pw_re_group">
                     <a>비밀번호 확인</a>
-                    <input type="password" class="join_pw_re">
+                    <input type="password" class="user_pw_re">
                     <span class="error_text"></span>
                 </div>
                 <div class="join_name_group">
                     <a>이름</a>
-                    <input type="text" class="join_name">
+                    <input type="text" class="user_name">
                     <span class="error_text"></span>
                 </div>
                 <div class="join_tel_group">
                     <a>휴대폰 번호</a>
-                    <input type="tel" class="join_tel">
+                    <input type="tel" class="user_phone">
                     <span class="error_text"></span>
                 </div>
             </div>
@@ -66,11 +68,51 @@
         <div data-include="../assets/inc/side_menu_logout.html"></div>
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script async="false" src="../assets/js/include.js"></script>
+    <script async="false" src="../assets/js/include_side.js"></script>
     <script src="./assets/js/login_regex_helper.js"></script>
     <script src='./assets/js/join_regex_helper.js'></script>
+
+    <script>
+        document.querySelector("#join_form_group").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const regexHelper = new RegexHelper();
+
+            if (!regexHelper.check_id(id, error)) { return false };
+            if (!regexHelper.check_pw(password, error)) { return false };
+            if (!regexHelper.check_pw_re(passowrd_re, password, error)) { return false };
+            if (!regexHelper.check_name(name, error)) { return false };
+            if (!regexHelper.check_tel(tel, error)) { return false };
+
+
+            // 입력값 받아오기
+            const user_id = document.querySelector(".user_id").value;
+            const user_pw = document.querySelector(".user_pw").value;
+            const user_name = document.querySelector(".user_name").value;
+            const user_phone = document.querySelector(".user_phone").value;
+
+            // 입력값에 대한 유효성 검사 진행 (생략)
+
+            let json = null;
+
+            try {
+                const response = await axios.post("/memberstest/join", {
+                    user_id: user_id,
+                    user_pw: user_pw,
+                    user_name: user_name,
+                    user_phone: user_phone
+                });
+
+                json = response.data;
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                return;
+            }
+
+            // alert("회원가입이 완료되었습니다!");
+            window.location = "/GJ2_login_page/login.html"
+        });
+    </script>
 </body>
+
 </html>

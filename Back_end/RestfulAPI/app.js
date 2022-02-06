@@ -117,6 +117,7 @@ app.use(methodOverride('_method'));     // HTML form
 
 /** HTML,CSS,IMG,JS 등의 정적 파일을 URL에 노출시킬 폴더연결 */
 app.use("/", static(config.public_path));
+app.use("/", static(config.user_path));
 app.use('/upload', static(config.upload.dir));
 app.use('/thumb',static(config.thumbnail.dir));
 
@@ -148,6 +149,7 @@ app.use('/', router);
 | 5) 각 URL별 백엔드 기능 정의
 -----------------------------------------------------------*/
 app.use(require('./Grandjeju/Members')(app));
+app.use(require('./Grandjeju/Members_test')(app));
 app.use(require('./Grandjeju/reservation')(app));
 app.use(require('./Grandjeju/review')(app));
 app.use(require('./Grandjeju/inquiry')(app));

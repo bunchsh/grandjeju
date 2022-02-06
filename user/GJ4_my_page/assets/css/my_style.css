@@ -120,6 +120,14 @@
     margin-bottom: 10px;
 }
 
+#reserve .history .stay_date span {
+    display: inline;
+}
+
+#reserve .history .stay_date span:last-child {
+    margin: 0;
+}
+
 /* inquiry */
 #inquiry {
     height: 300px;
