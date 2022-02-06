@@ -1040,3 +1040,13 @@
 2022-02-06 23:38:55.316 [error] Error: 관리자가 아닙니다.
     at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:296:25
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 23:46:00.573 [error] Error
+2022-02-06 23:46:00.573 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 23:46:00.574 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:286:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 23:46:17.691 [error] Error
+2022-02-06 23:46:17.691 [error] 관리자가 아닙니다.
+2022-02-06 23:46:17.692 [error] Error: 관리자가 아닙니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:296:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
