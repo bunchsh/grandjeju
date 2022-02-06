@@ -126,6 +126,7 @@ module.exports = (app) => {
         const user_phone = req.post('user_phone');
         const is_out = req.post('is_out');
         const reg_date = req.post('reg_date');
+        const is_admin = req.post('is_admin');
 
         // not null로 설정된 정보에 대한 입력 값 유효성 검사 및 입력한 내용의 형식 검사
         try {
@@ -167,9 +168,9 @@ module.exports = (app) => {
             }
 
             // 전송받은 모든 정보를 회원 테이블에 저장 (INSERT)
-            let sql = "INSERT INTO members (user_id, user_pw, user_name, user_phone, is_out, reg_date) VALUES (?,?,?,?,'N',now())";
+            let sql = "INSERT INTO members (user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin) VALUES (?,?,?,?,'N',now(),'N')";
 
-            const args = [user_id, user_pw, user_name, user_phone, is_out, reg_date];
+            const args = [user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin];
 
             await dbcon.query(sql, args);
         } catch (err) {
@@ -209,7 +210,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회 결과에서 비밀번호는 제외)
-            let sql1 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date FROM members WHERE user_id=? AND user_pw=?';
+            let sql1 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin FROM members WHERE user_id=? AND user_pw=?';
             let args1 = [user_id, user_pw];
 
             const [result1] = await dbcon.query(sql1, args1);
@@ -231,6 +232,68 @@ module.exports = (app) => {
         // 탈퇴한 회원은 로그인 금지
         if (json[0].is_out == 'Y') {
             return next(new BadRequestException('탈퇴한 회원입니다.'));
+        }
+
+        // 조회 결과를 세션에 저장
+        req.session.memberInfo = json[0];
+
+        res.sendJson();
+    });
+
+    /**
+     * 관리자 로그인
+     */
+     router.post("/memberstest/adminlogin", async (req, res, next) => {
+        // 저장을 위한 파라미터 입력 받기
+        const user_id = req.post('user_id');
+        console.log(user_id);
+        const user_pw = req.post('user_pw');
+        console.log(user_pw);
+
+        try {
+            // 아이디와 비밀번호를 유추하는데 힌트가 될 수 있으므로 유효성 검사는 입력 여부만 확인
+            regexHelper.value(user_id, '아이디를 입력하세요.');
+            regexHelper.value(user_pw, '비밀번호를 입력하세요.');
+        } catch (err) {
+            return next(err);
+        }
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회 결과에서 비밀번호는 제외)
+            let sql1 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin FROM members WHERE user_id=? AND user_pw=?';
+            let args1 = [user_id, user_pw];
+
+            const [result1] = await dbcon.query(sql1, args1);
+
+            // 조회된 회원 정보 객체를 저장하고 있는 1차원 배열 (원소는 1개)
+            json = result1;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 조회된 데이터가 없다면? WHERE절이 맞지 않는다는 의미
+        // => 아이디 비밀번호가 틀림
+        if (json == null || json.length == 0) {
+            return next(new BadRequestException('아이디나 비밀번호가 잘못되었습니다.'));
+        }
+
+        // 탈퇴한 회원은 로그인 금지
+        if (json[0].is_out == 'Y') {
+            return next(new BadRequestException('탈퇴한 회원입니다.'));
+        }
+
+        // 관리자만 로그인 가능
+        if (json[0].is_admin == 'N') {
+            return next(new BadRequestException('관리자가 아닙니다.'));
         }
 
         // 조회 결과를 세션에 저장

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 페이지</title>
+    <title>GrandJeju - 관리자 페이지</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/style_login.css">
 </head>
+
 <body>
     <div id="container">
         <div id='content'>
@@ -43,23 +45,41 @@
                 </div>
             </form>
         </div>
-    
-        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src='assets/js/login_regex_helper.js'></script>
         <script>
-            document.querySelector('#login').addEventListener("submit", e => {
-            e.preventDefault();
+            document.querySelector('#login').addEventListener("submit", async e => {
+                e.preventDefault();
 
-            const regexHelper = new RegexHelper();
+                const regexHelper = new RegexHelper();
 
-            /** 문의 종류 검사 */
-            if (!regexHelper.value(".user_id", "아이디가 입력되지 않았습니다.")) {return false;}
-            /** 제목 검사 */
-            if (!regexHelper.value(".user_pw", "비밀번호가 입력되지 않았습니다.")) {return false;}
-            
-            // 처리 완료
-            alert('로그인 완료')
-        });
+                /** 아이디 검사 */
+                if (!regexHelper.value(".user_id", "아이디가 입력되지 않았습니다.")) { return false; }
+                /** 비밀번호 검사 */
+                if (!regexHelper.value(".user_pw", "비밀번호가 입력되지 않았습니다.")) { return false; }
+
+                let json = null;
+
+                const user_id = document.querySelector(".user_id").value;
+                const user_pw = document.querySelector(".user_pw").value;
+
+                try {
+                    const response = await axios.post("/memberstest/adminlogin", {
+                        user_id: user_id,
+                        user_pw: user_pw
+                    });
+
+                    json = response.data;
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    return;
+                }
+
+                // 처리 완료
+                window.location = "/GJ2_members/members_manage.html"
+            });
         </script>
 </body>
+
 </html>

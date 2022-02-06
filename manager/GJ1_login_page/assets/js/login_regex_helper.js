@@ -20,12 +20,7 @@ class RegexHelper {
 
         if (!content) {
             // 값이 없다면?
-            swal({
-                text: msg, // Alert 내용
-                buttons: {
-                    confirm: "OK",  // 확인 버튼
-                }
-            });
+            alert(msg);
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
         }

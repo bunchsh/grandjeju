@@ -858,3 +858,185 @@
 2022-02-06 02:11:01.316 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
     at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:228:25
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:13:39.161 [error] Error
+2022-02-06 02:13:39.161 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 02:13:39.161 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:228:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:14:59.691 [error] Error
+2022-02-06 02:14:59.691 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 02:14:59.692 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:228:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:17:23.285 [error] Error
+2022-02-06 02:17:23.286 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 02:17:23.286 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:228:25
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:20:48.038 [error] Error
+2022-02-06 02:20:48.038 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:20:48.039 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:20:48.065 [error] Error
+2022-02-06 02:20:48.065 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:20:48.065 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:28:31.801 [error] Error
+2022-02-06 02:28:31.801 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:28:31.801 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:29:16.579 [error] Error
+2022-02-06 02:29:16.579 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:29:16.580 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:31:08.957 [error] Error
+2022-02-06 02:31:08.957 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 02:31:08.958 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:228:25
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:33:42.318 [error] Error
+2022-02-06 02:33:42.319 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:33:42.319 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:35:40.713 [error] Error
+2022-02-06 02:35:40.713 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:35:40.713 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:36:05.853 [error] Error
+2022-02-06 02:36:05.853 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:36:05.853 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:36:23.876 [error] Error
+2022-02-06 02:36:23.876 [error] 이미 사용 중인 아이디입니다.
+2022-02-06 02:36:23.876 [error] Error: 이미 사용 중인 아이디입니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:166:23
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:36:38.160 [error] Error
+2022-02-06 02:36:38.160 [error] 이미 사용 중인 아이디입니다.
+2022-02-06 02:36:38.160 [error] Error: 이미 사용 중인 아이디입니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:166:23
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 02:36:40.912 [error] Error
+2022-02-06 02:36:40.912 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 02:36:40.912 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:170:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 02:36:57.820 [error] Error
+2022-02-06 02:36:57.820 [error] 이미 사용 중인 아이디입니다.
+2022-02-06 02:36:57.820 [error] Error: 이미 사용 중인 아이디입니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:166:23
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 22:59:20.376 [error] Error
+2022-02-06 22:59:20.377 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 22:59:20.377 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:228:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 23:33:10.750 [error] Error
+2022-02-06 23:33:10.750 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 23:33:10.751 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:229:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 23:33:34.399 [error] Error
+2022-02-06 23:33:34.399 [error] 페이지를 찾을 수 없습니다.
+2022-02-06 23:33:34.400 [error] Error: 페이지를 찾을 수 없습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:173:17
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:360:14)
+    at param (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:371:14)
+    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:416:3)
+    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle [as handle_request] (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:323:13)
+2022-02-06 23:36:06.522 [error] Error
+2022-02-06 23:36:06.523 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 23:36:06.523 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:229:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 23:38:29.975 [error] Error
+2022-02-06 23:38:29.975 [error] 아이디나 비밀번호가 잘못되었습니다.
+2022-02-06 23:38:29.975 [error] Error: 아이디나 비밀번호가 잘못되었습니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:286:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+2022-02-06 23:38:55.315 [error] Error
+2022-02-06 23:38:55.315 [error] 관리자가 아닙니다.
+2022-02-06 23:38:55.316 [error] Error: 관리자가 아닙니다.
+    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\Grandjeju\Members_test.js:296:25
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
