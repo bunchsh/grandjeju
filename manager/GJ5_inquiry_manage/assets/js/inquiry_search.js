@@ -94,7 +94,7 @@ document.querySelector('#search').value = search;
             index += 1;
         });
 
-        document.querySelector("#count").innerHTML = total_count + "명";
+        document.querySelector("#count").innerHTML = total_count + "개";
 
         // 삭제 버튼에 대한 이벤트 처리
         const btnDelete = document.querySelectorAll(".btn-delete");
