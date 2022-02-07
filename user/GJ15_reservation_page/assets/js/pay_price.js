@@ -34,6 +34,19 @@ person.addEventListener('change', e => {
     }
 });
 
+// regexHelper 클래스 호출
+const regexHelper = new RegexHelper(); 
+// 예약자명과 예약자 연락처를 검사하는 로직
+function regex() {
+    if (!regexHelper.booker_value(".booker_input")) { return false; }
+    if (!regexHelper.min_length(".booker_input")) { return false; }
+    if (!regexHelper.kor(".booker_input")) { return false; }
+
+    /** 예악자 연락처 검사 */
+    if (!regexHelper.phone_value(".phone_input")) { return false; }
+    if (!regexHelper.phone(".phone_input")) { return false; }
+}
+
 /** 숙박 기간 COUNT */
 const date = document.querySelector('.day_select');
 date.addEventListener('change', e => {
@@ -85,6 +98,7 @@ date.addEventListener('change', e => {
                     document.querySelector('#reservation').addEventListener('submit', e => {
                         e.preventDefault();
                         console.log("신용카드");
+                        regex();
 
                         IMP.init('imp52209533');
                         // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -124,6 +138,7 @@ date.addEventListener('change', e => {
                     document.querySelector('#reservation').addEventListener('submit', e => {
                         e.preventDefault();
                         console.log("페이코");
+                        regex();
 
                         IMP.init('imp52209533');
                         // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -162,6 +177,7 @@ date.addEventListener('change', e => {
                     document.querySelector('#reservation').addEventListener('submit', e => {
                         e.preventDefault();
                         console.log("카카오페이");
+                        regex();
 
                         IMP.init('imp52209533');
                         // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
