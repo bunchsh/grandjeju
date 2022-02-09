@@ -282,6 +282,8 @@ module.exports = (app) => {
         res.sendJson();
     });
 
+    /* 회원가입, 로그인 ,로그아웃 로직 시작 */
+
     router.post("/members/login", async(req, res, next) => {
         // 파라미터 받기
         const user_id = req.post('user_id');
