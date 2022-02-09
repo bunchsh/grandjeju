@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "c:\\Users\\Owner\\Desktop\\grandjeju-4047a7d5c2b5d2de676342c07a466f6f952c0a2d\\Back_end\\_files\\_logs\\.80c13270a10b3bb211e0f019527a511e1da3f1a5-audit.json",
+    "files": [
+        {
+            "date": 1644402965740,
+            "name": "c:\\Users\\Owner\\Desktop\\grandjeju-4047a7d5c2b5d2de676342c07a466f6f952c0a2d\\Back_end\\_files\\_logs\\error_22-02-09.log",
+            "hash": "d80f9521760c19c11f75dd2c1ee54fdf"
+        }
+    ],
+    "hashType": "md5"
+}

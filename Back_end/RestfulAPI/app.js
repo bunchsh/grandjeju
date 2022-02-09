@@ -138,9 +138,6 @@ app.use(expressSession({
 /** req, res 객체의 기능을 확장하는 모듈 */
 app.use(webHelper());
 
-/** favicon 설정 */
-app.use(favicon(config.favicon_path));
-
 // 라우터(URL 분배기) 객체 설정 --> 맨 마지막에 설정
 const router = express.Router();
 // 라우터를 express에 등록
