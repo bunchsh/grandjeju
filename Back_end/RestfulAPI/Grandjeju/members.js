@@ -281,5 +281,61 @@ module.exports = (app) => {
         // 모든 처리에 성공했으므로 정상 조회 결과 구성
         res.sendJson();
     });
+
+    router.post("/members/login", async(req, res, next) => {
+        // 파라미터 받기
+        const user_id = req.post('user_id');
+        const user_pw = req.post('user_pw');
+
+        try {
+            // 아이디와 비밀번호를 유추하는데 흰트가 될 수 있으므로
+            // 유효성 검사는 입력 여부만 확인한다.
+            regexHelper.value(user_id, '아이디를 입력하세요.');
+            regexHelper.value(user_pw, '비밀번호를 입력하세요.');
+        } catch(err){
+            return next(err);
+        }
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회결과에서 비밀번호는 제외)
+            let sql1 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members WHERE user_id =? AND user_pw=?" ;
+            let args1 = [user_id, user_pw];
+
+            const [result1] = await dbcon.query(sql1, args1);
+
+            // 조회된 회원정보 객체를 저장하고 있는 1차원 배열(원소는 1개)
+            json = result1;
+
+            // login_date값을 now()로 update처리
+            let sql2 = "UPDATE members SET login_date=now() WHERE id=?"
+            dbcon.query(sql2, json[0].id);
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 조회된 데이터가 없다면? WHERE절이 맞지 않다는 의미 -> 아이디,비번 틀림
+        if(json == null || json.length == 0) {
+            return next(new BadRequestException('아이디나 비밀번호가 잘못되었습니다.'));
+        }
+
+        // 탈퇴한 회원은 로그인 금지
+        if(json[0].is_out == 'Y') {
+            return next(new BadRequestException('탈퇴한 회원입니다.'));
+        }
+
+        // 조회 결과를 세션에 저장 
+        req.session.memberInfo = json[0];
+
+        res.sendJson();
+    });
     return router;
 }
