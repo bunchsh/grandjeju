@@ -13,6 +13,7 @@ class RegexHelper {
      * @param {string} msg      값이 없을 경우 표시할 메시지 내용
      * @return {boolean}        입력된 경우 true / 입력되지 않은 경우 false
      */
+
     value(selector, msg) {
         // 앞뒤의 공백을 제외하고 내용만 추출
         const field = document.querySelector(selector);

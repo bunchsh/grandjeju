@@ -137,10 +137,10 @@ date.addEventListener("change", (e) => {
                   m_redirect_url:
                     "https://www.yourdomain.com/payments/complete",
                   /*
-                        모바일 결제시,
-                        결제가 끝나고 랜딩되는 URL을 지정
-                        (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-                        */
+                    모바일 결제시,
+                    결제가 끝나고 랜딩되는 URL을 지정
+                    (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+                    */
                 },
                 function (rsp) {
                   console.log(rsp);
@@ -183,10 +183,10 @@ date.addEventListener("change", (e) => {
                 buyer_tel: buyer_name,
                 m_redirect_url: "https://www.yourdomain.com/payments/complete",
                 /*
-                        모바일 결제시,
-                        결제가 끝나고 랜딩되는 URL을 지정
-                        (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-                        */
+                  모바일 결제시,
+                  결제가 끝나고 랜딩되는 URL을 지정
+                  (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+                  */
               },
               function (rsp) {
                 console.log(rsp);
@@ -226,10 +226,10 @@ date.addEventListener("change", (e) => {
                 buyer_name: buyer_name,
                 m_redirect_url: "https://www.yourdomain.com/payments/complete",
                 /*
-                        모바일 결제시,
-                        결제가 끝나고 랜딩되는 URL을 지정
-                        (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-                        */
+                  모바일 결제시,
+                  결제가 끝나고 랜딩되는 URL을 지정
+                  (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+                  */
               },
               function (rsp) {
                 console.log(rsp);
