@@ -59,11 +59,8 @@ module.exports = (app) => {
                 }
             }
 
-
-
             const [result1] = await dbcon.query(sql1, args1);
             const totalCount = result1[0].cnt;
-
 
             // 페이지번호 정보를 계산한다.
             pagenation = utilHelper.pagenation(totalCount, page, rows);
