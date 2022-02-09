@@ -101,7 +101,7 @@
         function get_user(user) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
-            const url = "http://localhost:3000/members/" + user;
+            const url = "http://172.30.1.4:3020/members/" + user;
 
             xhr.onreadystatechange = (e) => {
                 const { target } = e;

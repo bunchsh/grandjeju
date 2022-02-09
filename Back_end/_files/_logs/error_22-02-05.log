@@ -76,29 +76,3 @@
     at next (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\index.js:260:14)
     at next (C:\Users\Owner\GRANDJEJU\node_modules\express\lib\router\route.js:127:14)
     at C:\Users\Owner\GRANDJEJU\Back_end\RestfulAPI\Grandjeju\inquiry.js:147:20
-2022-02-05 23:42:14.021 [error] Error
-2022-02-05 23:42:14.021 [error] Unknown database 'grandjeju'
-2022-02-05 23:42:14.022 [error] Error: Unknown database 'grandjeju'
-    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:162:23
-    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:71:5)
-    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
-    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
-    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
-    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
-    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:67:12)
-    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
-    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
-    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
-2022-02-05 23:43:17.659 [error] Error
-2022-02-05 23:43:17.659 [error] Unknown database 'grandjeju'
-2022-02-05 23:43:17.660 [error] Error: Unknown database 'grandjeju'
-    at Q:\2021 풀스택 과정\grandjeju\Back_end\RestfulAPI\app.js:162:23
-    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:71:5)
-    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
-    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
-    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
-    at next (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:275:10)
-    at Layer.handle_error (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\layer.js:67:12)
-    at trim_prefix (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:321:13)
-    at Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:284:7
-    at Function.process_params (Q:\2021 풀스택 과정\grandjeju\node_modules\express\lib\router\index.js:341:12)
