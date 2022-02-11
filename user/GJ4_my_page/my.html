@@ -101,7 +101,7 @@
         function get_user(user) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
-            const url = "http://172.30.1.4:3020/members/" + user;
+            const url = "http://172.30.1.4:3000/members/" + user;
 
             xhr.onreadystatechange = (e) => {
                 const { target } = e;
@@ -141,7 +141,7 @@
         function get_reservation(reserv_id) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
-            const url = "http://localhost:3000/reservation/" + reserv_id;
+            const url = "http://172.30.1.4:3000/reservation/" + reserv_id;
 
             xhr.onreadystatechange = (e) => {
                 const { target } = e;
@@ -185,7 +185,7 @@
         function get_inquiry(inquiry_id) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
-            const url = "http://localhost:3000/inquiry/" + inquiry_id;
+            const url = "http://172.30.1.4:3000/inquiry/" + inquiry_id;
 
             xhr.onreadystatechange = (e) => {
                 const { target } = e;
@@ -227,7 +227,7 @@
         function get_review(review_id) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
-            const url = "http://localhost:3000/review/" + review_id;
+            const url = "http://172.30.1.4:3000/review/" + review_id;
 
             xhr.onreadystatechange = (e) => {
                 const { target } = e;
