@@ -26,11 +26,12 @@
     z-index: 8;
 }
 #header .logo {
+    position: absolute;
     height: 50px;
     width: 50px;
-    text-align: center;
-    margin: 0 auto;
     margin-top: 5px;
+
+    left: 384px;
 }
 #header .header_warp {
     position: relative;
