@@ -31,4 +31,9 @@ document.querySelector("#members_form").addEventListener("submit", async (e) => 
         alert(e.response.data.rtmsg);
         return;
     }
+
+    if(json != null) {
+        window.location = "/GJ2_members/members_manage.html"
+    }
+    
 });

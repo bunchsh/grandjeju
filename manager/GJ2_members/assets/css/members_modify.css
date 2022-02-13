@@ -22,7 +22,7 @@ hr {
 }
 
 /** FORM */
-#members_form .form-group {
+#members_form .form-group , #fixed  {
     width: 60%;
     margin: 0 auto;
     padding-bottom: 30px;
