@@ -57,10 +57,10 @@
                 </div>
                 <!-- 객실 소개 -->
                 <div class="room_group">
-                    <h3 class="room_name">70O</h3>
+                    <h3 class="room_name">35M</h3>
                     <span>
-                        기준 5인 / 최대 7인 <br />
-                        단층 / 투룸형 <br />
+                        기준 2인 / 최대 2인 <br />
+                        단층 / 원룸형 <br />
                         취사 가능</span>
                 </div>
                 <!-- 객실 요금-->
@@ -75,8 +75,8 @@
                                 <th>성수기 (금~일)</th>
                             </tr>
                             <tr>
-                                <td>100.000</td>
-                                <td>120.000</td>
+                                <td>40.000</td>
+                                <td>50.000</td>
                             </tr>
                         </tbody>
                     </table>
@@ -129,27 +129,27 @@
                 </div>
 
                 <div class="btn_group">
-                    <button class="btn_reservation">
+                    <button class="btn_reservation_logout">
                         예약하기
                     </button>
                 </div>
             </div>
         </div>
-
         <!-- 사이드 메뉴바 -->
-        <div data-include="../assets/inc/side_menu_login.html"></div>
+        <div data-include="../assets/inc/side_menu.html"></div>
     </div>
+
+    
+    <script src="../assets/js/side_menu_login.js"></script>
+
+    <script src='./assets/js/login_alert.js'></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="assets/js/swiper.js"></script>
     <script async="false" src="../assets/js/include_side.js"></script>
 
-    <script>
-        document.querySelector(".btn_reservation").addEventListener("click", e => {
-            location.href="../GJ15_reservation_page/reservation.html"
-        });
-    </script>
 </body>
 
 </html>

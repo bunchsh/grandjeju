@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="../assets/css/all.css">
     <link rel="stylesheet" href="../assets/css/header_style.css">
     <link rel="stylesheet" href="../assets/css/side_menu.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/style_room.css">
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style_room_info.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,31 +35,59 @@
         <div id="container">
             <!-- CONTENT -->
             <div id="content">
-                <!-- 객실 이미지 -->
-                <div class="room_img">
-                    <!-- 스위퍼 라이브러리 -->
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="assets/img/room1.jpg"></div>
-                            <div class="swiper-slide"><img src="assets/img/room2.jpg"></div>
-                            <div class="swiper-slide"><img src="assets/img/room3.jpg"></div>
-                        </div>
-                        <!-- pagination -->
-                        <div class="swiper-pagination"></div>
-                        <!-- navigation -->
-                        <div class="swiper_navigation">
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 객실 소개 -->
-                <div class="room_group">
-                    <h3 class="room_name">70O</h3>
-                    <span>
-                        기준 5인 / 최대 7인 <br />
-                        단층 / 투룸형 <br />
-                        취사 가능</span>
+                <!-- 객실 정보 -->
+                <div class="room_info_group">
+                    <h3 class="room_info_title">
+                        객실 정보
+                    </h3>
+                    <table class="room_info_table">
+                        <tbody class="room_info_tbody">
+                            <tr class="table_title">
+                                <th>객실</th>
+                                <th>기준 인원 / 최대 인원</th>
+                                <th>침대</th>
+                                <th>방 넓이</th>
+                            </tr>
+                            <!-- 35M -->
+                            <tr>
+                                <td>35M</td>
+                                <td>2 / 2</td>
+                                <td>1구</td>
+                                <td>10평</td>
+                            </tr>
+                            <!-- 35H -->
+                            <tr>
+                                <td>35H</td>
+                                <td>2 / 2</td>
+                                <td>1구</td>
+                                <td>10평</td>
+                            </tr>
+                            <!-- 50M -->
+                            <tr>
+                                <td>50M</td>
+                                <td>4 / 6</td>
+                                <td>3구</td>
+                                <td>15평</td>
+                            </tr>
+                            <!-- 70O -->
+                            <tr>
+                                <td>70O</td>
+                                <td>5 / 7</td>
+                                <td>3구</td>
+                                <td>21평</td>
+                            </tr>
+                            <!-- 85M -->
+                            <tr>
+                                <td>85M</td>
+                                <td>6 / 8</td>
+                                <td>3구</td>
+                                <td>26평</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="plus">
+                        * M은 마운틴 뷰이며, O는 오션 뷰입니다.
+                    </span>
                 </div>
                 <!-- 객실 요금-->
                 <div class="room_fee_group">
@@ -71,23 +97,42 @@
                     <table class="room_fee_table">
                         <tbody class="room_fee_tbody">
                             <tr class="table_title">
+                                <th>객실</th>
                                 <th>비수기 (월~목)</th>
                                 <th>성수기 (금~일)</th>
                             </tr>
+                            <!-- 35M -->
                             <tr>
+                                <td>35M</td>
+                                <td>40.000</td>
+                                <td>50.000</td>
+                            </tr>
+                            <!-- 35H -->
+                            <tr>
+                                <td>35H</td>
+                                <td>40.000</td>
+                                <td>50.000</td>
+                            </tr>
+                            <!-- 50M -->
+                            <tr>
+                                <td>50M</td>
+                                <td>60.000</td>
+                                <td>70.000</td>
+                            </tr>
+                            <!-- 70O -->
+                            <tr>
+                                <td>70O</td>
                                 <td>100.000</td>
                                 <td>120.000</td>
                             </tr>
+                            <!-- 85M -->
+                            <tr>
+                                <td>85M</td>
+                                <td>150.000</td>
+                                <td>160.000</td>
+                            </tr>
                         </tbody>
                     </table>
-                    <div class="room_article">
-                        <h3 class="room_article_title">
-                            구비 물품
-                        </h3>
-                        <p>
-                            침대, TV, 냉장고, 에어컨, 식탁, 싱크대, 전자렌지, 전기밥솥, 식기류, 전기 포트, 헤어드라이어, 수건, 비누, 샴푸, 컨디셔너, 바디워시
-                        </p>
-                    </div>
                 </div>
                 <div class="room_notice">
                     <h3 class="room_notice_title">
@@ -135,18 +180,19 @@
                 </div>
             </div>
         </div>
-    <!-- 사이드 메뉴바 -->
-    <div data-include="../assets/inc/side_menu_logout.html"></div>
-</div>
 
-<script src='./assets/js/login_alert.js'></script>
-<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-<script src="assets/js/swiper.js"></script>
+        <!-- 사이드 메뉴바 -->
+        <div data-include="../assets/inc/side_menu.html"></div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-<script src="assets/js/swiper.js"></script>
-<script async="false" src="../assets/js/include_side.js"></script>
+    
+    <script src="../assets/js/side_menu_login.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script async="false" src="../assets/js/include_side.js"></script>
+
+    <script src='./assets/js/login_alert.js'></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
 </body>
 
 </html>

@@ -17,17 +17,21 @@ class RegexHelper {
         // 앞뒤의 공백을 제외하고 내용만 추출
         const field = document.querySelector(selector);
         const content = field.value.trim();
-        const span = document.querySelector(".id_err");
+        const span_id = document.querySelector(".id_err");
+        const span_pw = document.querySelector(".pw_err");
+        const span_idpw = document.querySelector(".idpw_err");
         const input = document.querySelector(".user_id");
 
         if (!content) {
             // 값이 없다면?
-            span.style.display='block';
+            span_id.style.display='block';
+            span_pw.style.display='none';
+            span_idpw.style.display='none';
             input.style.border='2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
         }
-        span.style.display='none';
+        span_id.style.display='none';
         input.style.border='2px solid #ddd';
         return true; // 성공했음을 반환
     }
@@ -36,17 +40,21 @@ class RegexHelper {
         // 앞뒤의 공백을 제외하고 내용만 추출
         const field = document.querySelector(selector);
         const content = field.value.trim();
-        const span = document.querySelector(".pw_err");
+        const span_id = document.querySelector(".id_err");
+        const span_pw = document.querySelector(".pw_err");
+        const span_idpw = document.querySelector(".idpw_err");
         const input = document.querySelector(".user_pw");
 
         if (!content) {
             // 값이 없다면?
-            span.style.display='block';
+            span_id.style.display='none';
+            span_pw.style.display='block';
+            span_idpw.style.display='none';
             input.style.border='2px solid red';
             field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
         }
-        span.style.display='none';
+        span_pw.style.display='none';
         input.style.border='2px solid #ddd';
         return true; // 성공했음을 반환
     }
@@ -94,18 +102,37 @@ class RegexHelper {
     }
 }
 
-// 로그인 유효성 검사
-// document.querySelector('#login').addEventListener("submit", e => {
-//     e.preventDefault();
+document.querySelector('#login').addEventListener("submit", async e => {
+            e.preventDefault();
 
-//     const regexHelper = new RegexHelper();
+            const regexHelper = new RegexHelper();
 
-//     /** 아이디 검사 */
-//     if (!regexHelper.id_value(".user_id")) { return false; }
+            /** 아이디 검사 */
+            if (!regexHelper.id_value(".user_id")) { return false; }
 
-//     /** 비밀번호 검사 */
-//     if (!regexHelper.pw_value(".user_pw")) { return false; }
+            /** 비밀번호 검사 */
+            if (!regexHelper.pw_value(".user_pw")) { return false; }
 
-//     // 처리 완료
-//     location.href="../GJ1_main_page/main_login.html";
-// });
+            let json = null;
+
+            const user_id = document.querySelector(".user_id").value;
+            const user_pw = document.querySelector(".user_pw").value;
+            const span = document.querySelector(".idpw_err");
+
+            try {
+                const response = await axios.post("/memberstest/login", {
+                    user_id: user_id,
+                    user_pw: user_pw
+                });
+
+                json = response.data;
+                
+            } catch (e) {
+                span.style.display = 'block';
+                return;
+            }
+
+            // 처리 완료
+            span.style.display = 'none';
+            location.href = "/GJ1_main_page/main.html";
+        });

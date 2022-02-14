@@ -81,55 +81,13 @@
         </div>
 
         <!-- 사이드 메뉴바 -->
-        <div data-include="../assets/inc/side_menu_logout.html"></div>
+        <div data-include="../assets/inc/side_menu.html"></div>
     </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script async="false" src="../assets/js/include_side.js"></script>
     <script src="./assets/js/login_regex_helper.js"></script>
-
-    <script>
-        document.querySelector('#login').addEventListener("submit", async e => {
-            e.preventDefault();
-
-            const regexHelper = new RegexHelper();
-
-            /** 아이디 검사 */
-            if (!regexHelper.id_value(".user_id")) { return false; }
-
-            /** 비밀번호 검사 */
-            if (!regexHelper.pw_value(".user_pw")) { return false; }
-
-            let json = null;
-
-            const user_id = document.querySelector(".user_id").value;
-            const user_pw = document.querySelector(".user_pw").value;
-            const span = document.querySelector(".idpw_err");
-
-            try {
-                const response = await axios.post("/memberstest/login", {
-                    user_id: user_id,
-                    user_pw: user_pw
-                });
-
-                json = response.data;
-
-                // document.getElementById("login_button").style.display = "none";
-                // document.getElementById("mypage_button").style.display = "block";
-                // document.getElementById("logout_btn").style.display = "block";
-                
-            } catch (e) {
-                span.style.display = 'block';
-                return;
-            }
-
-            // 처리 완료
-            span.style.display = 'none';
-            location.href = "/GJ1_main_page/main_login.html";
-        });
-    </script>
 
 </body>
 

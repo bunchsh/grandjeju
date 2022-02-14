@@ -238,6 +238,20 @@ module.exports = (app) => {
     });
 
     /**
+     * 로그인 정보 확인
+     */
+     router.get("/memberstest/info", async (req, res, next) => {
+        if (!req.session.memberInfo) {
+            return next(new BadRequestException('로그인 상태가 아닙니다.'));
+        }
+
+        res.sendJson({
+            'item': req.session.memberInfo
+        });
+    });
+
+
+    /**
      * 관리자 로그인
      */
      router.post("/memberstest/adminlogin", async (req, res, next) => {
