@@ -5,21 +5,23 @@
 
 /** 객실 선택 시, 객실에 따른 선택 가능 인원 출력 */
 function roomPerson(e) {
+    
     let maxfour = ["2", "3", "4"];
-    let maxsix = ["4", "5", "6"];
-    let maxseven = ["5", "6", "7"];
-    let maxeight = ["6", "7", "8"];
+    let maxsix = ["2", "3", "4"];
+    let maxseven = ["2", "3", "4", "5"];
+    let maxeight = ["2", "3", "4", "5"];
     let target = document.getElementById("person");
 
-    if (e.value == "35M") var option = maxfour;
-    else if (e.value == "35O") var option = maxfour;
-    else if (e.value == "50M") var option = maxsix;
-    else if (e.value == "70O") var option = maxseven;
-    else if (e.value == "85M") var option = maxeight;
+    if (e == "35M" || e.value =="35M") var option = maxfour;
+    else if (e == "35O" || e.value =="35O") var option = maxfour;
+    else if (e == "50M" || e.value =="50M") var option = maxsix;
+    else if (e == "70O" || e.value =="70O") var option = maxseven;
+    else if (e == "85M" || e.value =="85M") var option = maxeight;
 
     target.options.length = 0;
 
     for (x in option) {
+        console.log("안녕")
         let opt = document.createElement("option");
         opt.value = option[x];  // option의 value
         opt.innerHTML = option[x] + "명";

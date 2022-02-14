@@ -10,11 +10,12 @@ document.querySelector("#reservation_form").addEventListener("submit", async (e)
 
     // 입력값 받아오기
     const user_id = document.querySelector("#user_id").value;
-    const reserv_name = document.querySelector("#reserv_name");
-    const reserv_phone = document.querySelector("#reserv_phone");
-    const room = document.querySelector("#room");
-    const stay_start = document.querySelector("#stay_start");
-    const stay_end = document.querySelector("#stay_end");
+    const reserv_name = document.querySelector("#reserv_name").value;
+    const reserv_phone = document.querySelector("#reserv_phone").value;
+    const room = document.querySelector("#room").value;
+    const person = document.querySelector("#person").value;
+    const stay_start = document.querySelector("#stay_start").value;
+    const stay_end = document.querySelector("#stay_end").value;
 
     // 입력값에 대한 유효성 검사 진행 (생략)
 
@@ -26,6 +27,7 @@ document.querySelector("#reservation_form").addEventListener("submit", async (e)
             reserv_name: reserv_name,
             reserv_phone: reserv_phone,
             room: room,
+            person: person,
             stay_start: stay_start,
             stay_end: stay_end
         });
@@ -34,5 +36,10 @@ document.querySelector("#reservation_form").addEventListener("submit", async (e)
     } catch (e) {
         alert(e.response.data.rtmsg);
         return;
+    }
+
+    if(json != null) {
+        console.log(json);
+        window.location = "/GJ3_reservation_manage/reservation_manage.html"
     }
 });

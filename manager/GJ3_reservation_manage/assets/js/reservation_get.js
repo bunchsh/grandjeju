@@ -13,6 +13,7 @@ let reserv_id = null; // 아래에서 받은 reserv_id을 받아 사용 가능
     const inputName = document.querySelector("#reserv_name");
     const inputReservphone = document.querySelector("#reserv_phone");
     const inputRoom = document.querySelector("#room");
+    const inputPerson = document.querySelector("#person");
     const inputStaystart = document.querySelector("#stay_start");
     const inputStayend = document.querySelector("#stay_end");
 
@@ -41,13 +42,17 @@ let reserv_id = null; // 아래에서 받은 reserv_id을 받아 사용 가능
     // 조회 결과가 있다면 input 태그에 조회 데이터 세팅
     if (json != null) {
         console.log(json);
+        console.log(json.item[0].room);
+        roomPerson(json.item[0].room);
 
         inputUserid.value = json.item[0].user_id;
         inputName.value = json.item[0].reserv_name;
         inputReservphone.value = json.item[0].reserv_phone;
         inputRoom.value = json.item[0].room;
+        inputPerson.value = json.item[0].person
         inputStaystart.value = json.item[0].stay_start;
         inputStayend.value = json.item[0].stay_end;
+
     }
 
 })();

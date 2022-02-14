@@ -133,7 +133,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const sql = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
             const [result] = await dbcon.query(sql, [reserv_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -226,7 +226,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 수정하기
-            const sql = 'UPDATE reservation SET user_id=?, reserv_name=?, room=?, person=?, stay_start=?, stay_end=? WHERE reserv_id=?';
+            const sql = 'UPDATE reservation SET user_id=?, reserv_name=?, room=?, reserv_phone=?, person=?, stay_start=?, stay_end=? WHERE reserv_id=?';
             const input_data = [user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end, reserv_id];
             const [result1] = await dbcon.query(sql, input_data);
 
