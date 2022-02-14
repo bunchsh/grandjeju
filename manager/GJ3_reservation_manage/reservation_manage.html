@@ -43,7 +43,7 @@
                             <div class="input-group" style="width: 400px;">
                                 <select id="search" name="search" class="user-select-auto" style="width:120px;">
                                     <option value="user_id">회원 아이디</option>
-                                    <option value="user_name">이름</option>
+                                    <option value="reserv_name">이름</option>
                                     <option value="room">객실</option>
                                 </select>
                                 <input type="search" name="query" class="form-control" id="query">
@@ -68,6 +68,7 @@
                                 <th scope="col">결제 수단</th>
                                 <th id="order_btn" scope="col">예약 일시</th>
                                 <th scope="col">회원 아이디</th>
+                                <th scope="col">예약자</th>
                                 <th scope="col">휴대폰 번호</th>
                                 <th scope="col">객실</th>
                                 <th scope="col">인원</th>
@@ -99,6 +100,7 @@
                 <td>{{pay_way}}</td>
                 <td>{{reserv_date}}</td>
                 <td>{{user_id}}</td>
+                <td>{{reserv_name}}</td>
                 <td>{{reserv_phone}}</td>
                 <td>{{room}}</td>
                 <td>{{person}}</td>

@@ -31,15 +31,15 @@
                 <hr />
             </div>
 
+            <div id="fixed">
+                <label for="user_id" class="title_label"> 회원 아이디
+                </label>
+                <div class="input_group">
+                    <input type="text" class="form-control" name="user_id" id="user_id" disabled />
+                </div>
+            </div>
             <!-- 수정 form -->
             <form name="form" id="reservation_form" class="form-horizontal">
-                <div class="form-group">
-                    <label for="user_id" class="title_label"> 회원 아이디
-                    </label>
-                    <div class="input_group">
-                        <input type="text" class="form-control" name="user_id" id="user_id" disabled />
-                    </div>
-                </div>
                 <div class="form-group">
                     <label for="reserv_name" class="title_label"><span class="text-danger">*</span> 예약자 이름 </label>
                     <div class="input_group">
@@ -55,12 +55,18 @@
                 </div>
                 <div class="form-group">
                     <label for="room" class="title_label"><span class="text-danger">*</span> 객실 </label>
-                    <select name="room" id="room" class"form-control">
+                    <select name="room" id="room" class="form-control" onchange="roomPerson(this)">
+                        <option value="35M" data-price="40000">35M</option>
+                        <option value="35O" data-price="40000">35O</option>
+                        <option value="50M" data-price="70000">50M</option>
+                        <option value="70O" data-price="120000">70O</option>
+                        <option value="85M" data-price="160000">85M</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="person" class="title_label"><span class="text-danger">*</span> 인원 </label>
-                    <select name="person" id="person" class"form-control">
+
+                    <select name="person" id="person" class="form-control">
                     </select>
                 </div>
                 <div class="form-group">
@@ -84,10 +90,10 @@
         <script src="../assets/js/include.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
+        <script src="./assets/js/person_option.js"></script>
         <script src="./assets/js/reservation_get.js"></script>
         <script src="./assets/js/reservation_submit.js"></script>
-        <script src="./assets/js/person_option.js"></script>
-        <script src="./assets/js/select.js"></script>
+
 
         <!-- flatpickr을 사용하기 위한 script -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
