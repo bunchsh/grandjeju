@@ -128,6 +128,15 @@ class RegexHelper {
     }
 
     /**
+     * 영문과 숫자, 특수문자로만 이루어 졌는지 검사하기 위해 field()를 간접적으로 호출한다.
+     * @param {string} content     입력내용
+     * @param {string} msg         표시할 메시지
+     */
+     engNumSpecial(content, msg) {
+        return this.field(content, msg, /^[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]*$/);
+    }
+
+    /**
      * 이메일주소 형식인지 검사하기 위해 field()를 간접적으로 호출한다.
      * @param {string} content     입력내용
      * @param {string} msg         표시할 메시지
@@ -171,7 +180,7 @@ class RegexHelper {
 
         var src = content.trim();
 
-        // 입력값이 ㅇ벗거나, 핸드푠 형식도 아니고     집전화 형식도 아니라면
+        // 입력값이 없거나, 핸드푠 형식도 아니고 집전화 형식도 아니라면
         if (!src || (!check1.test(src) && !check2.test(src))) {
             throw new BadRequestException(msg);
         }

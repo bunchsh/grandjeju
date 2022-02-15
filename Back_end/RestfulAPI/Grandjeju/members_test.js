@@ -121,29 +121,26 @@ module.exports = (app) => {
         const user_pw = req.post('user_pw');
         const user_name = req.post('user_name');
         const user_phone = req.post('user_phone');
-        const is_out = req.post('is_out');
-        const reg_date = req.post('reg_date');
-        const is_admin = req.post('is_admin');
 
         // not null로 설정된 정보에 대한 입력 값 유효성 검사 및 입력한 내용의 형식 검사
         try {
             regexHelper.value(user_id, '아이디가 없습니다.');
-            // regexHelper.maxLength(user_id, 20, '아이디는 최대 20자까지 입력 가능합니다.');
-            // regexHelper.minLength(user_id, 4, '아이디는 최소 4자 이상 입력 가능합니다.');
-            // regexHelper.engNum(user_id, '아이디는 영어와 숫자 조합만 입력 가능합니다.');
+            regexHelper.maxLength(user_id, 20, '아이디는 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_id, 6, '아이디는 최소 6자 이상 입력 가능합니다.');
+            regexHelper.engNum(user_id, '아이디는 영문, 숫자 조합만 입력 가능합니다.');
 
             regexHelper.value(user_pw, '비밀번호가 없습니다.');
-            // regexHelper.maxLength(user_pw, 30, '비밀번호는 최대 30자까지 입력 가능합니다.');
-            // regexHelper.minLength(user_pw, 4, '비밀번호는 최소 4자 이상 입력 가능합니다.');
-            // regexHelper.engNum(user_pw, '비밀번호는 영어와 숫자 조합만 입력 가능합니다.');
+            regexHelper.maxLength(user_pw, 11, '비밀번호는 최대 11자까지 입력 가능합니다.');
+            regexHelper.minLength(user_pw, 8, '비밀번호는 최소 8자 이상 입력 가능합니다.');
+            regexHelper.engNumSpecial(user_pw, '비밀번호는 영문, 숫자, 특수문자 조합만 입력 가능합니다.');
 
             regexHelper.value(user_name, '이름이 없습니다.');
-            // regexHelper.maxLength(user_name, 20, '이름은 최대 20자까지 입력 가능합니다.');
-            // regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
-            // regexHelper.kor(user_name, '이름은 한글만 입력 가능합니다.');
+            regexHelper.maxLength(user_name, 20, '이름은 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
+            regexHelper.kor(user_name, '이름은 한글만 입력 가능합니다.');
 
             regexHelper.value(user_phone, '연락처를 입력하세요.');
-            // regexHelper.phone(user_phone, '연락처가 잘못되었습니다.');
+            regexHelper.phone(user_phone, '연락처가 잘못되었습니다.');
         } catch (err) {
             return next(err);
         }
@@ -165,7 +162,7 @@ module.exports = (app) => {
             }
 
             // 전송받은 모든 정보를 회원 테이블에 저장 (INSERT)
-            let sql = "INSERT INTO members (user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin) VALUES (?,?,?,?,'N',now(),'N')";
+            let sql = "INSERT INTO members (user_id, user_pw, user_name, user_phone) VALUES (?,?,?,?)";
 
             const args = [user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin];
 
