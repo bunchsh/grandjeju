@@ -38,18 +38,11 @@
                 <form name="form" id="inquiry_answer_form" class="form-horizontal">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class="thead-dark">
+                            <tbody id="listBody" class="thead-dark">
                                 <tr>
                                     <th scope="col">문의 종류</th>
-                                    <th scope="col">제목</th>
-                                    <th scope="col">질문</th>
-                                    <th scope="col">답변</th>
-                                </tr>
-                            </thead>
-                            <tbody id="listBody">
-                                <tr>
                                     <td>
-                                        <select class="inquiry_option">
+                                        <select id="type"  class="form-control">
                                             <option value="">문의 종류</option>
                                             <option value="예약 문의">예약 문의</option>
                                             <option value="시설 문의">시설 문의</option>
@@ -57,27 +50,37 @@
                                             <option value="기타 문의">기타 문의</option>
                                         </select>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">제목</th>
                                     <td>
-                                        <input class="title_input" type="text" placeholder="제목">
+                                        <input id="title" type="text" placeholder="제목을 입력해 주세요" class="form-control">
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">질문</th>
                                     <td>
-                                        <div id="inquiry_editor" name="inquiry_editor"></div>
+                                        <div id="inquiry_editor"></div>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">답변</th>
                                     <td>
-                                        <div id="answer_editor" name="answer_editor"></div>
+                                        <div id="answer_editor"></div>
                                     </td>
-                            </tr>
+                                </tr>
                             </tbody>
                         </table>
+                    </div>
+                                <!-- BUTTON -->
+                    <div class="float-right">
+                        <a href="/GJ5_inquiry_manage/inquiry_manage.html" class="btn btn-xs list_btn">목록</a>
+                        <button type="submit" class="btn btn-xs save_btn">확인</button>
                     </div>
                 </form>
             </div>
             
-            <!-- BUTTON -->
-            <div class="float-right">
-                <a href="/GJ5_inquiry_manage/inquiry_manage.html" class="btn btn-xs list_btn">목록</a>
-                <button type="submit" class="btn btn-xs save_btn">확인</button>
-            </div>
+
         </div>
     </div>
 
@@ -85,24 +88,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../assets/js/include.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script id="inquiry-list-template" type="text/x-handlebars-template">
-        {{#each item}}
-        <tr>
-            <th scope="row">
-                <div class="input_group">
-                    <input type="text" class="form-control" name="type" id="type" />
-                </div>
-            </th>
-            <td><div class="input_group">
-                <input type="text" class="form-control" name="title" id="title" value="{{title}}" />
-            </div></td>
-            <td>{{inquiry_text}}</td>
-            <td>
-                <textarea id="editor" name="content">{{answer_text}}</textarea>
-            </td>
-        </tr>
-        {{/each}}
-    </script>
 
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 
@@ -122,10 +107,8 @@
             previewStyle: 'vertical'
         });
     </script>
-    
-    <!-- <script src="./assets/js/inquiry_search.js"></script>
-    <script src="./assets/js/inquiry_pagination.js"></script>
-    <script src="./assets/js/inquiry_order.js"></script> -->
+    <script src="./assets/js/inquiry_get.js"></script>
+    <script src="./assets/js/inquiry_submit.js"></script>
 
 </body>
 

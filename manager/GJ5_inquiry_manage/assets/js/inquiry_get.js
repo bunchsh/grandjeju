@@ -1,26 +1,24 @@
 /**
- * @filename    : reservation_get.js
- * @author      : 한송희 (onee.ssong@gmail.com) 
+ * @filename    : inquiry_get.js
+ * @author      : 양수원 (ysw7939@gmail.com) 
  * @description : get 파라미터로 받을 예약 번호 가져오기
  */
 
 /** 전역변수로 사용할 예약 번호 (GET파라미터로 받아야 함) */
-let reserv_id = null; // 아래에서 받은 reserv_id을 받아 사용 가능
+let inquiry_id = null; // 아래에서 받은 inquiry_id을 받아 사용 가능
 
 (async () => {
     /** 입력을 위한 input 태그 객체 */
     const inputType = document.querySelector("#type");
     const inputTitle = document.querySelector("#title");
-    const inqueryEditor = document.querySelector("#inquiry_text");
-    const answerEditor = document.querySelector("#answer_text")
 
     /** GET 파라미터 받기 */
     const params = new URLSearchParams(window.location.search);
-    reserv_id = params.get('reserv_id');
+    inquiry_id = params.get('inquiry_id');
 
     // 파라미터가 정상적이지 않으므로 메시지 출력, 전페이지 이동 처리 후 수행 중단 (return)
-    if (!reserv_id) {
-        alert('예약 번호가 없습니다.');
+    if (!inquiry_id) {
+        alert('문의 번호가 없습니다.');
         history.back();
         return;
     }
@@ -29,7 +27,7 @@ let reserv_id = null; // 아래에서 받은 reserv_id을 받아 사용 가능
     let json = null;
 
     try {
-        const response = await axios.get('/reservation/' + reserv_id);
+        const response = await axios.get('/inquiry/' + inquiry_id);
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);
@@ -39,16 +37,15 @@ let reserv_id = null; // 아래에서 받은 reserv_id을 받아 사용 가능
     // 조회 결과가 있다면 input 태그에 조회 데이터 세팅
     if (json != null) {
         console.log(json);
-        console.log(json.item[0].room);
-        roomPerson(json.item[0].room);
+        console.log(json.item[0].type);
+        console.log(answer_editor)
 
         inputType.value = json.item[0].type;
         inputTitle.value = json.item[0].title;
-        inputReservphone.value = json.item[0].reserv_phone;
-        inputRoom.value = json.item[0].room;
-        inputPerson.value = json.item[0].person
-        inputStaystart.value = json.item[0].stay_start;
-        inputStayend.value = json.item[0].stay_end;
+        inquiry_editor.setHTML(json.item[0].inquiry_text);
+        if (json.item[0].answer_text != null) {
+            answer_editor.setHTML(json.item[0].answer_text);
+        }
 
     }
 
