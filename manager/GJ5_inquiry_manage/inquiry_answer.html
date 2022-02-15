@@ -1,6 +1,6 @@
 <!--
  @filename    : inquiry_anwser.html
- @author      : 한송희 (onee.ssong@gmail.com)
+ @author      : 양수원 (ysw7939@gmail.com)
  @description : Grandjeju 관리자 사이트의 1:1 문의 답변 페이지 구조 구현
 -->
 
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/inquiry_answer.css">
     <link rel="stylesheet" href="../assets/css/header_css.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 
 <body>
@@ -30,11 +31,7 @@
                 <hr />
             </div>
 
-            <!-- BUTTON -->
-            <div class="float-right">
-                <a href="/manager/GJ5_inquiry_manage/inquiry_manage.html" class="btn btn-xs list_btn">목록</a>
-                <button type="submit" class="btn btn-xs save_btn">확인</button>
-            </div>
+            
 
             <!-- 데이터 테이블 -->
             <div class="content">
@@ -50,17 +47,36 @@
                                 </tr>
                             </thead>
                             <tbody id="listBody">
-                                
+                                <tr>
+                                    <td>
+                                        <select class="inquiry_option">
+                                            <option value="">문의 종류</option>
+                                            <option value="예약 문의">예약 문의</option>
+                                            <option value="시설 문의">시설 문의</option>
+                                            <option value="취소 및 환불">취소 및 환불</option>
+                                            <option value="기타 문의">기타 문의</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="title_input" type="text" placeholder="제목">
+                                    </td>
+                                    <td>
+                                        <div id="inquiry_editor" name="inquiry_editor"></div>
+                                    </td>
+                                    <td>
+                                        <div id="answer_editor" name="answer_editor"></div>
+                                    </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </form>
             </div>
-
-            <!-- pagination -->
-            <div class="text-center">
-                <ul class="pagination justify-content-center">
-                </ul>
+            
+            <!-- BUTTON -->
+            <div class="float-right">
+                <a href="/GJ5_inquiry_manage/inquiry_manage.html" class="btn btn-xs list_btn">목록</a>
+                <button type="submit" class="btn btn-xs save_btn">확인</button>
             </div>
         </div>
     </div>
@@ -88,26 +104,28 @@
         {{/each}}
     </script>
 
-    <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 
     <script>
         /** editor 구성 */
-        ClassicEditor.create(document.querySelector('#editor'))
-            .then((editor) => {
-                console.log(editor);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-            document.querySelector('#inquiry_answer_form').addEventListener("submit", e => {
-            e.preventDefault();
+        const Editor = toastui.Editor;
+        const inquiry_editor = new Editor({
+            el: document.querySelector('#inquiry_editor'),
+            height: '500px',
+            initialEditType: 'html',
+            previewStyle: 'vertical'
+        });
+        const answer_editor = new Editor({
+            el: document.querySelector('#answer_editor'),
+            height: '500px',
+            initialEditType: 'html',
+            previewStyle: 'vertical'
         });
     </script>
     
-    <script src="./assets/js/inquiry_search.js"></script>
+    <!-- <script src="./assets/js/inquiry_search.js"></script>
     <script src="./assets/js/inquiry_pagination.js"></script>
-    <script src="./assets/js/inquiry_order.js"></script>
+    <script src="./assets/js/inquiry_order.js"></script> -->
 
 </body>
 
