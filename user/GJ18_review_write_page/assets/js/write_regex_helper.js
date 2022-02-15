@@ -35,10 +35,12 @@ class RegexHelper {
 
     editor_value(selector, msg) {
         // 앞뒤의 공백을 제외하고 내용만 추출
-        const field = document.querySelector(selector);
-        const content = document.querySelector(selector).innerText.length;
 
-        if (content <= 1) {
+        const content = selector.replaceAll(" ","").replaceAll("<br>","").replaceAll("<p></p>","");
+        console.log(selector)
+        console.log(content);
+
+        if (!content) {
             // 값이 없다면?
             swal({
                 text: msg, // Alert 내용
@@ -46,7 +48,6 @@ class RegexHelper {
                     confirm: "OK",  // 확인 버튼
                 }
             });
-            field.focus(); // 대상 요소에게 포커스 강제 지정
             return false; // 실패했음을 반환
         }
         return true; // 성공했음을 반환

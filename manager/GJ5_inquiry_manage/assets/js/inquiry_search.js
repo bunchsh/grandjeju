@@ -87,7 +87,7 @@ document.querySelector('#search').value = search;
                 <td>${v.title}</td>
                 <td>${v.inquiry_date}</td>
                 <td>
-                    <a href="/GJ5_inquiry_manage/inquiry_manage.html?inquiry_id=${v.inquiry_id}" class="btn btn-success btn-xs btn-edit">답변</a>
+                    <a href="/GJ5_inquiry_manage/inquiry_answer.html?inquiry_id=${v.inquiry_id}" class="btn btn-success btn-xs btn-edit">답변</a>
                     <a href="#" class="btn btn-danger btn-xs btn-delete" data-inquiry_id=${v.inquiry_id}" data-user_name="${v.user_name}">삭제</a>
                 </td>
             </tr>` 
