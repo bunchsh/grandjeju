@@ -111,7 +111,7 @@ module.exports = (app) => {
     });
 
     /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
-    router.get("/members/:member_id", async (req, res, next) => {
+    router.get("/memberss/:member_id", async (req, res, next) => {
         const member_id = req.get('member_id');
 
         if (member_id === undefined || member_id === null) {
@@ -260,7 +260,7 @@ module.exports = (app) => {
         }
 
         // 조회 결과를 세션에 저장
-        req.session.memberInfo = json[0].member_id;
+        req.session.memberInfo = json[0];
 
         res.sendJson();
     });

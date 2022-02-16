@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "Q:\\2021 풀스택 과정\\grandjeju\\backend\\_files\\_logs\\.57d95275a0d1c9834c077aebfdb15196044f7ce4-audit.json",
+    "files": [
+        {
+            "date": 1645012721130,
+            "name": "Q:\\2021 풀스택 과정\\grandjeju\\backend\\_files\\_logs\\error_22-02-16.log",
+            "hash": "3b81a38fc4aa4e4ac0e5446e537b31e2"
+        }
+    ],
+    "hashType": "md5"
+}

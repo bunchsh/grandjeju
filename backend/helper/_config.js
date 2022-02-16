@@ -19,13 +19,13 @@ module.exports = {
     server_port: 3020,
 
     /** manager 디렉토리 경로 */
-    public_path: path.join(__dirname, '../../manager'),
+    public_path: path.join(__dirname, '../../html/manager'),
 
     /** favicon 경로 */
     favicon_path: path.join(__dirname, '../favicon.png'),
 
     /** manager 디렉토리 경로 */
-    user_path: path.join(__dirname, '../../user'),
+    user_path: path.join(__dirname, '../../html/user'),
 
     /** 쿠키 저장시 사용할 도메인 */
     // 1) localhost인 경우 공백으로 설정
