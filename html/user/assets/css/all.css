@@ -28,6 +28,7 @@ body::-webkit-scrollbar {
     overflow-y: auto;
     margin: 0 auto;
     min-height: 800px;
+    margin-bottom: 20px;
 }
 
 #wrap::-webkit-scrollbar {
