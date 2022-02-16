@@ -134,7 +134,7 @@
             }
 
             if (json != null) {
-                console.log(json.item);
+                // console.log(json.item);
                 const source = document.querySelector("#content-template").innerHTML;
                 const template = Handlebars.compile(source);
                 const html = template(json.item);
