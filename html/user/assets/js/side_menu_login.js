@@ -33,6 +33,7 @@ window.addEventListener("load", () => {
                     document.getElementById("mypage_button").style.display = "none";
                     document.getElementById("logout").style.display = "none";
                     alert('로그아웃되었습니다.');
+                    location.href = "../GJ1_main_page/main.html"
                 } catch (error) {
                     const errorMsg = "[" + error.response.status + "] " + error.response.statusText
                     console.error(errorMsg);

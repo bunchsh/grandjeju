@@ -150,10 +150,12 @@ app.use('/', router);
 | 5) 각 URL별 백엔드 기능 정의
 -----------------------------------------------------------*/
 app.use(require('./Grandjeju/Members')(app));
-app.use(require('./Grandjeju/Members_test')(app));
 app.use(require('./Grandjeju/reservation')(app));
 app.use(require('./Grandjeju/review')(app));
 app.use(require('./Grandjeju/inquiry')(app));
+
+app.use(require('./Grandjeju/Members_test')(app));
+app.use(require('./Grandjeju/reservation_test')(app));
 
 
 //런타임 에러가 발생한 경우에 대한 일괄 처리

@@ -36,33 +36,9 @@
             </warp>
         </div>
         <div id="content">
-            <!-- <div class="user_wrap">
-                <a class="setting" href="../GJ5_my_modify/my_modify.html"><img src="assets/img/setting_button.png"></a>
-                <a class="user_img"><img src="assets/img/user.png"></a>
-                <h3><span class="user_name"></span> 님</h3>
-            </div>
-            <div id="tabs">
-                <div class="tab_three" data-tab='reserve'>
-                    <a class="default"><span>예약내역</span></a>
-                </div>
-                <div class="tab_three" data-tab='inquiry'>
-                    <a><span>1:1문의</span></a>
-                </div>
-                <div class="tab_three" data-tab='review'>
-                    <a><span>리뷰내역</span></a>
-                </div>
-            </div> -->
         </div>
-        <div id="reserve" class="tab_content">
-            <div class="history">
-                <a href="../GJ7_reservation_detail_page/reservation_detail.html">
-                    <img src="assets/img/right-arrow.png">
-                    <h3 class="room"></h3>
-                    <span class="reserv_name"></span>
-                    <div class="stay_date"><span class="stay_start"></span> ~ <span class="stay_end"></span></div>
-                    <span class="state"></span>
-                </a>
-            </div>
+        <div id="reserv" class="tab_content">
+            
         </div>
         <div id="inquiry" class="tab_content none">
             <div class="history">
@@ -120,6 +96,27 @@
         </div>
     </script>
 
+    <script id="reserv-template" type="text/x-handlebars-template">
+        <!-- {{#each item}}
+            <div class="history">
+                <a href="../GJ7_reservation_detail_page/reservation_detail.html">
+                    <img src="assets/img/right-arrow.png">
+                    <h3 class="room">{{room}}</h3>
+                    <span class="reserv_name">{{reserv_name}}</span>
+                    <div class="stay_date"><span class="stay_start">{{stay_start}}</span> ~ <span class="stay_end">{{stay_end}}</span></div>
+                </a>
+            </div>
+        {{/each}} -->
+        <div class="history">
+            <a href="../GJ7_reservation_detail_page/reservation_detail.html">
+                <img src="assets/img/right-arrow.png">
+                <h3 class="room">{{room}}</h3>
+                <span class="reserv_name">{{reserv_name}}</span>
+                <div class="stay_date"><span class="stay_start">{{stay_start}}</span> ~ <span class="stay_end">{{stay_end}}</span></div>
+            </a>
+        </div>
+    </script>
+
     <script>
         (async () => {
             let json = null;
@@ -135,12 +132,38 @@
 
             if (json != null) {
                 // console.log(json.item);
-                const source = document.querySelector("#content-template").innerHTML;
-                const template = Handlebars.compile(source);
-                const html = template(json.item);
+                const profile = document.querySelector("#content-template").innerHTML;
+                const p_template = Handlebars.compile(profile);
+                const p_html = p_template(json.item);
 
-                document.querySelector('#content').insertAdjacentHTML('beforeend', html);
-            }
+                document.querySelector('#content').insertAdjacentHTML('beforeend', p_html);
+
+                (async () => {
+
+                    if (!json.item.user_id) {
+                        alert('예약 내역이 없습니다.');
+                        return;
+                    }
+
+                    let json2 = null;
+
+                    try {
+                        const response = await axios.get('/reservationtest/' + json.item.user_id);
+                        json2 = response.data;
+                    } catch (e) {
+                        alert(e.response.data.rtmsg);
+                        return;
+                    }
+
+                    if(json2 != null) {
+                        console.log(json2);
+                        const reserv = document.querySelector("#reserv-template").innerHTML;
+                        const r_template = Handlebars.compile(reserv);
+                        const r_html = r_template(json2.item[0]);
+                        document.querySelector('#reserv').insertAdjacentHTML('beforeend', r_html);
+                    }
+                })();
+            };
         })();
     </script>
 
