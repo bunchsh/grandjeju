@@ -97,7 +97,7 @@
     </script>
 
     <script id="reserv-template" type="text/x-handlebars-template">
-        <!-- {{#each item}}
+        {{#each item}}
             <div class="history">
                 <a href="../GJ7_reservation_detail_page/reservation_detail.html">
                     <img src="assets/img/right-arrow.png">
@@ -106,15 +106,15 @@
                     <div class="stay_date"><span class="stay_start">{{stay_start}}</span> ~ <span class="stay_end">{{stay_end}}</span></div>
                 </a>
             </div>
-        {{/each}} -->
-        <div class="history">
+        {{/each}}
+        <!-- <div class="history">
             <a href="../GJ7_reservation_detail_page/reservation_detail.html">
                 <img src="assets/img/right-arrow.png">
                 <h3 class="room">{{room}}</h3>
                 <span class="reserv_name">{{reserv_name}}</span>
                 <div class="stay_date"><span class="stay_start">{{stay_start}}</span> ~ <span class="stay_end">{{stay_end}}</span></div>
             </a>
-        </div>
+        </div> -->
     </script>
 
     <script>
@@ -159,7 +159,7 @@
                         console.log(json2);
                         const reserv = document.querySelector("#reserv-template").innerHTML;
                         const r_template = Handlebars.compile(reserv);
-                        const r_html = r_template(json2.item[0]);
+                        const r_html = r_template(json2);
                         document.querySelector('#reserv').insertAdjacentHTML('beforeend', r_html);
                     }
                 })();
