@@ -16,6 +16,8 @@
         return;
     }
 
+    console.log(json.item);
+
     if (json != null) {
         const profile = document.querySelector("#profile-template").innerHTML;
         const p_template = Handlebars.compile(profile);
