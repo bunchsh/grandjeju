@@ -6,7 +6,7 @@
 
 // tab
 const tabs = document.querySelectorAll(".tab_three");
-const  tab_contents = document.querySelectorAll(".tab_content");
+const tab_contents = document.querySelectorAll(".tab_content");
 
 for(let tab of tabs) {
     tab.addEventListener("click", e =>{
