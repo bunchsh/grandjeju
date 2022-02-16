@@ -182,7 +182,7 @@ document.querySelector("#modify_form_group").addEventListener("submit" ,e =>{
     if(!regexHelper.check_name(name,error)){return false};
     if(!regexHelper.check_tel(tel,error)){return false};
 
-    alert("회원정보 수정 완료");
+    // alert("회원정보 수정 완료");
 
     
 })

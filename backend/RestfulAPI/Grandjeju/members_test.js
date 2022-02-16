@@ -358,5 +358,71 @@ module.exports = (app) => {
         res.sendJson();
     });
 
+    /** 데이터 수정 --> Update(UPDATE) */
+    router.put("/memberstest/:member_id", async (req, res,next) =>{
+        const member_id = req.get('member_id');
+        const user_id = req.post('user_id');
+        const user_pw = req.post('user_pw');
+        const user_name = req.post('user_name');
+        const user_phone = req.post('user_phone');
+        
+        try {
+            regexHelper.value(member_id, '필수 파라미터가 없습니다.');
+
+            regexHelper.value(user_id, '아이디가 없습니다.');
+
+            regexHelper.value(user_pw, '비밀번호가 없습니다.');
+            regexHelper.maxLength(user_pw, 11, '비밀번호는 최대 11자까지 입력 가능합니다.');
+            regexHelper.minLength(user_pw, 8, '비밀번호는 최소 8자 이상 입력 가능합니다.');
+            regexHelper.engNum(user_pw, '비밀번호는 영어와 숫자 조합만 입력 가능합니다.');
+
+            regexHelper.value(user_name, '이름이 없습니다.');
+            regexHelper.maxLength(user_name, 10, '이름은 최대 10자까지 입력 가능합니다.');
+            regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
+            regexHelper.kor(user_name, '이름은 한글만 입력 가능합니다.');
+
+            regexHelper.value(user_phone, '연락처를 입력하세요.');
+            regexHelper.phone(user_phone, '연락처가 잘못되었습니다.');
+        } catch (err) {
+            return next(err);
+        }
+
+        /** 회원 정보 수정하기 */
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+        
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 데이터 수정하기
+            const sql = 'UPDATE members SET user_id=?, user_pw=?, user_name=?, user_phone=? WHERE member_id=?';
+            const input_data = [user_id, user_pw, user_name, user_phone, member_id];
+            const [result1] = await dbcon.query(sql, input_data);
+
+            // 결과 행 수가 0이라면 예외처리
+            if (result1.affectedRows < 1) {
+                throw new Error('수정된 데이터가 없습니다.');
+            }
+
+            // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
+            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date, is_admin FROM members where member_id=?';
+            const [result2] = await dbcon.query(sql2, [member_id]);
+
+            // 조회 결과를 미리 준비한 변수에 저장함
+            json = result2;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson({
+            'item': json
+        });
+    })
+
     return router;
 }
