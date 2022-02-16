@@ -105,7 +105,7 @@
         <div class="user_wrap">
             <a class="setting" href="../GJ5_my_modify/my_modify.html"><img src="assets/img/setting_button.png"></a>
             <a class="user_img"><img src="assets/img/user.png"></a>
-            <h3><span class="user_name"></span>{{user_name}} 님</h3>
+            <h3><span class="user_name">{{user_name}}</span> 님</h3>
         </div>
         <div id="tabs">
             <div class="tab_three" data-tab='reserve'>
@@ -133,7 +133,14 @@
                 return;
             }
 
-            console.log(json.item);
+            if (json != null) {
+                console.log(json.item);
+                const source = document.querySelector("#content-template").innerHTML;
+                const template = Handlebars.compile(source);
+                const html = template(json.item);
+
+                document.querySelector('#content').insertAdjacentHTML('beforeend', html);
+            }
         })();
     </script>
 
