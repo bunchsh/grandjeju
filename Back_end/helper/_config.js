@@ -30,7 +30,7 @@ module.exports = {
     /** 쿠키 저장시 사용할 도메인 */
     // 1) localhost인 경우 공백으로 설정
     // 2) 도메인이 itpaper.co.kr인 경우 앞에 점을 붙여서 명시 --> ".itpaper.co.kr"
-    cookie_domain: '',
+    // cookie_domain: '',
 
     /** 보안키 (암호화 키) */
     secure: {

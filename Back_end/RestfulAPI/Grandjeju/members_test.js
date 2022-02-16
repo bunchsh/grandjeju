@@ -1,5 +1,3 @@
-
-
 /** 모듈 참조 부분 */
 const config = require('../../helper/_config');
 const logger = require('../../helper/LogHelper');
@@ -68,7 +66,7 @@ module.exports = (app) => {
             
 
             // 데이터 조회
-            let sql2 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members"
+            let sql2 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date, is_admin FROM members"
 
             // SQL문에 설정할 치환값
             let args2 = [];
@@ -110,6 +108,39 @@ module.exports = (app) => {
         
         // 모든 처리에 성공했으므로 정상 조회 결과 구성
         res.sendJson({'pagenation': pagenation, 'item': json});
+    });
+
+    /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
+    router.get("/members/:member_id", async (req, res, next) => {
+        const member_id = req.get('member_id');
+
+        if (member_id === undefined || member_id === null) {
+            // 400 Bad Request -> 잘못된 요청
+            return next(new Error(400));
+        }
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 데이터 조회
+            const sql = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date, is_admin FROM members WHERE member_id=?";
+            const [result] = await dbcon.query(sql, [member_id]);
+
+            // 조회 결과를 미리 준비한 변수에 저장
+            json = result;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+        res.sendJson({
+            'item': json
+        });
     });
 
     /**
@@ -229,7 +260,7 @@ module.exports = (app) => {
         }
 
         // 조회 결과를 세션에 저장
-        req.session.memberInfo = json[0];
+        req.session.memberInfo = json[0].member_id;
 
         res.sendJson();
     });

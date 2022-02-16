@@ -36,7 +36,7 @@
             </warp>
         </div>
         <div id="content">
-            <div class="user_wrap">
+            <!-- <div class="user_wrap">
                 <a class="setting" href="../GJ5_my_modify/my_modify.html"><img src="assets/img/setting_button.png"></a>
                 <a class="user_img"><img src="assets/img/user.png"></a>
                 <h3><span class="user_name"></span> 님</h3>
@@ -51,7 +51,7 @@
                 <div class="tab_three" data-tab='review'>
                     <a><span>리뷰내역</span></a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div id="reserve" class="tab_content">
             <div class="history">
@@ -92,17 +92,70 @@
         <div data-include="../assets/inc/side_menu.html"></div>
     </div>
 
-    
-    <script src="../assets/js/side_menu_login.js"></script>
-
 
     <script type="text/javascript" src="assets/js/tab.js"></script>
 
+    <script src="../assets/js/side_menu_login.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script async="false" src="../assets/js/include_side.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script id="content-template" type="text/x-handlebars-template">
+        <div class="user_wrap">
+            <a class="setting" href="../GJ5_my_modify/my_modify.html"><img src="assets/img/setting_button.png"></a>
+            <a class="user_img"><img src="assets/img/user.png"></a>
+            <h3><span class="user_name"></span>{{user_name}} 님</h3>
+        </div>
+        <div id="tabs">
+            <div class="tab_three" data-tab='reserve'>
+                <a class="default"><span>예약내역</span></a>
+            </div>
+            <div class="tab_three" data-tab='inquiry'>
+                <a><span>1:1문의</span></a>
+            </div>
+            <div class="tab_three" data-tab='review'>
+                <a><span>리뷰내역</span></a>
+            </div>
+        </div>
+    </script>
+
+    <script>
+        (async () => {
+            /** GET 파라미터 받기 */
+            const params = new URLSearchParams(window.location.search);
+            const member_id = params.get('member_id');
+
+            if (!member_id) {
+                alert('로그인 정보가 없습니다.');
+                history.back();
+                return;
+            }
+
+            /** Ajax 요청 */
+            let json = null;
+
+            try {
+                const response = await axios.get('/memberstest/' + members_id);
+                json = response.data;
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                return;
+            }
+
+            if (json != null) {
+                console.log(json);
+                const source = document.querySelector("#content-template").innerHTML;
+                const template = Handlebars.compile(source);
+                const html = template(json.item[0]);
+
+                document.querySelector('#content').insertAdjacentHTML('beforeend', html);
+            }
+        })();
+    </script>
 
     <!-- Fake API 이름 출력 -->
-    <script>
+    <!-- <script>
         function get_user(user) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
@@ -139,10 +192,10 @@
             get_user(101);
         })();
 
-    </script>
+    </script> -->
 
     <!-- Fake API 예약 내역 출력 -->
-    <script>
+    <!-- <script>
         function get_reservation(reserv_id) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
@@ -183,10 +236,10 @@
             get_reservation(9001);
         })();
 
-    </script>
+    </script> -->
 
     <!-- Fake API 1:1 문의 내역 출력 -->
-    <script>
+    <!-- <script>
         function get_inquiry(inquiry_id) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
@@ -225,10 +278,10 @@
             get_inquiry(900001);
         })();
 
-    </script>
+    </script> -->
 
     <!-- Fake API 리뷰 내역 출력 -->
-    <script>
+    <!-- <script>
         function get_review(review_id) {
             const xhr = new XMLHttpRequest();
             const method = 'GET';
@@ -266,7 +319,7 @@
             get_review(90001);
         })();
 
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -129,6 +129,7 @@ app.use(expressSession({
     // 암호화 키
     secret: config.secure.cookie_encrypt_key,
     // 세션을 쿠키 상태로 클라이언트에게 노출 시킬지 여부
+    // 세션이 변경되지 않아도 계속 저장됨(덮어쓰기) 기본 값은 true이지만 false로 사용할 것을 권장
     resave: false,
     // 세션이 저장되기 전에 기존의 세션을 초기화 상태로 만들지 여부
     saveUninitialized : false,
