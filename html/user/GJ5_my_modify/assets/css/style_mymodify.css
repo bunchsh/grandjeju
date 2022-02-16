@@ -25,8 +25,12 @@
     height: 35px;
     width: 310px;
     margin: 0 10px 10px 10px; 
+    padding: 0 5px;
     border-radius: 5px 5px 5px 5px;
     border: 1px solid #000;
+}
+.modify_form .modify_id_group input {
+    background-color: #e9ecef;
 }
 .button_wrap button{
     width: 140px;
