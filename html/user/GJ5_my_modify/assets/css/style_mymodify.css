@@ -6,21 +6,21 @@
 
 
 /* form */
-.join_form{
+.modify_form{
     margin: auto;
     margin-top: 30px;
     width: 330px;
     position:relative;
 }
 
-.join_form a {
+.modify_form a {
     width: 300px;
     padding: 10px;
     display: block;
     font-size: 16px;
     font-weight: bold;
 }
-.join_form input{
+.modify_form input{
     padding: 0;
     height: 35px;
     width: 310px;

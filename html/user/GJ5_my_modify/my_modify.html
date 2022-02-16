@@ -27,31 +27,31 @@
             <h2 class="title">내 정보 수정</h2>
         </div>
         <!-- form -->
-        <form id="join_form_group">
-            <div class="join_form">
-                <div class="join_id_group">
+        <form id="modify_form_group">
+            <div class="modify_form">
+                <div class="modify_id_group">
                     <a>아이디</a>
-                    <input type="text" class="join_id" value="" disabled placeholder="">
+                    <input type="text" class="modify_id" value="" disabled placeholder="">
                     <span class="error_text"></span>
                 </div>
-                <div class="join_pw_group">
+                <div class="modify_pw_group">
                     <a>비밀번호</a>
-                    <input type="password" class="join_pw">
+                    <input type="password" class="modify_pw">
                     <span class="error_text"></span>
                 </div>
-                <div class="join_pw_re_group">
+                <div class="modify_pw_re_group">
                     <a>비밀번호 확인</a>
-                    <input type="password" class="join_pw_re">
+                    <input type="password" class="modify_pw_re">
                     <span class="error_text"></span>
                 </div>
-                <div class="join_name_group">
+                <div class="modify_name_group">
                     <a>이름</a>
-                    <input type="text" class="join_name">
+                    <input type="text" class="modify_name">
                     <span class="error_text"></span>
                 </div>
-                <div class="join_tel_group">
+                <div class="modify_tel_group">
                     <a>휴대폰 번호</a>
-                    <input type="tel" class="join_tel">
+                    <input type="tel" class="modify_tel">
                     <span class="error_text"></span>
                 </div>
             </div>
@@ -63,7 +63,25 @@
     </div>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src='./assets/js/join_regex_helper.js'></script>
-    <script src='./assets/js/my_info.js'></script>
+    <!-- <script src='./assets/js/my_info.js'></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        (async () => {
+            let json = null;
+
+            try {
+                const response = await axios.get('/memberstest/info');
+                json = response.data;
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                history.back();
+                return;
+            }
+
+            console.log(json.item);
+        })();
+    </script>
     
 </body>
 </html>
