@@ -37,18 +37,10 @@
         </div>
         <div id="content">
         </div>
-        <div id="reserv" class="tab_content">
+        <div id="reserv" class="tab_content none">
             
         </div>
-        <div id="inquiry" class="tab_content none">
-            <div class="history">
-                <a href="../GJ9_inquiry_detail_page/inquiry_detail_after.html">
-                    <img src="assets/img/right-arrow.png">
-                    <h3 class="title_inquiry"></h3>
-                    <span class="state_inquiry"></span>
-                    <span class="inquiry_date"></span>
-                </a>
-            </div>
+        <div id="inquiry" class="tab_content">
             <div class="history">
                 <a class="pluse" href="../GJ8_inquiry_write_page/inquiry_write.html">
                     <img src="assets/img/plus.png">
@@ -77,6 +69,7 @@
     <script async="false" src="../assets/js/include_side.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
+    <!-- 프로필 section -->
     <script id="content-template" type="text/x-handlebars-template">
         <div class="user_wrap">
             <a class="setting" href="../GJ5_my_modify/my_modify.html"><img src="assets/img/setting_button.png"></a>
@@ -96,6 +89,7 @@
         </div>
     </script>
 
+    <!-- 예약 내역 section -->
     <script id="reserv-template" type="text/x-handlebars-template">
         {{#each item}}
             <div class="history">
@@ -107,14 +101,20 @@
                 </a>
             </div>
         {{/each}}
-        <!-- <div class="history">
-            <a href="../GJ7_reservation_detail_page/reservation_detail.html">
-                <img src="assets/img/right-arrow.png">
-                <h3 class="room">{{room}}</h3>
-                <span class="reserv_name">{{reserv_name}}</span>
-                <div class="stay_date"><span class="stay_start">{{stay_start}}</span> ~ <span class="stay_end">{{stay_end}}</span></div>
-            </a>
-        </div> -->
+    </script>
+
+    <!-- 1:1 문의 section -->
+    <script id="inquiry-template" type="text/x-handlebars-template">
+        {{#each item}}
+            <div class="history">
+                <a href="../GJ9_inquiry_detail_page/inquiry_detail_after.html">
+                    <img src="assets/img/right-arrow.png">
+                    <h3 class="title_inquiry">{{title}}</h3>
+                    <span class="state_inquiry">{{state}}</span>
+                    <span class="inquiry_date">{{inquiry_date}}</span>
+                </a>
+            </div>
+        {{/each}}
     </script>
 
     <script>
@@ -138,6 +138,7 @@
 
                 document.querySelector('#content').insertAdjacentHTML('beforeend', p_html);
 
+                // 예약 내역 리스트 출력
                 (async () => {
 
                     if (!json.item.user_id) {
@@ -163,6 +164,33 @@
                         document.querySelector('#reserv').insertAdjacentHTML('beforeend', r_html);
                     }
                 })();
+
+                // 1:1 문의 내역 리스트 출력
+                (async () => {
+
+                    if (!json.item.user_id) {
+                        alert('문의 내역이 없습니다.');
+                        return;
+                    }
+
+                    let json3 = null;
+
+                    try {
+                        const response = await axios.get('/inquirytest/' + json.item.user_id);
+                        json3 = response.data;
+                    } catch (e) {
+                        alert(e.response.data.rtmsg);
+                        return;
+                    }
+
+                    if(json3 != null) {
+                        console.log(json3);
+                        const inquiry = document.querySelector("#inquiry-template").innerHTML;
+                        const i_template = Handlebars.compile(inquiry);
+                        const i_html = i_template(json3);
+                        document.querySelector('#inquiry').insertAdjacentHTML('beforeend', i_html);
+                    }
+                    })();
             };
         })();
     </script>
