@@ -70,6 +70,7 @@
         (async () => {
             let json = null;
 
+            // 세션에 저장된 로그인 정보
             try {
                 const response = await axios.get('/memberstest/info');
                 json = response.data;
@@ -80,6 +81,45 @@
             }
 
             console.log(json.item);
+
+            if (json != null) {
+
+                (async () => {
+                    /** 입력을 위한 input 태그 객체 */
+                    const inputUserid = document.querySelector(".modify_id");
+                    const inputPw = document.querySelector(".modify_pw");
+                    const inputName = document.querySelector(".modify_name");
+                    const inputUserphone = document.querySelector(".modify_tel");
+
+                    if (!json.item.member_id) {
+                        alert('회원 정보가 없습니다.');
+                        return;
+                    }
+
+                    /** 수정 form에 기존의 데이터를 표시하기 위해 Ajax로 저장된 데이터를 조회해야 함 */
+                    let json2 = null;
+                    let member_id = json.item.member_id;
+
+                    try {
+                        const response = await axios.get('/members/' + member_id);
+                        json2 = response.data;
+                    } catch (e) {
+                        alert(e.response.data.rtmsg);
+                        return;
+                    }
+
+                    // 조회 결과가 있다면 input 태그에 조회 데이터 세팅
+                    if (json2 != null) {
+                        console.log(json2.item[0]);
+
+                        inputUserid.value = json2.item[0].user_id;
+                        inputPw.value = json2.item[0].user_pw;
+                        inputName.value = json2.item[0].user_name;
+                        inputUserphone.value = json2.item[0].user_phone;
+                    }
+
+                })();
+                }
         })();
     </script>
     
