@@ -358,7 +358,7 @@ module.exports = (app) => {
         res.sendJson();
     });
 
-    /** 데이터 수정 --> Update(UPDATE) */
+    /** 회원 정보 수정하기 */
     router.put("/memberstest/:member_id", async (req, res,next) =>{
         const member_id = req.get('member_id');
         const user_id = req.post('user_id');
@@ -387,7 +387,7 @@ module.exports = (app) => {
             return next(err);
         }
 
-        /** 회원 정보 수정하기 */
+        /** 수정한 회원 정보 저장하기 */
         // 데이터 조회 결과가 저장될 빈 변수
         let json = null;
         

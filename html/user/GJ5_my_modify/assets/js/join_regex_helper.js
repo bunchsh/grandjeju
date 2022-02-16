@@ -173,8 +173,8 @@ tel.addEventListener("focusout", e=>{
 // 데이터를 전송 할때 (submit버튼) 폼요소 전체의 유효성 검사
 document.querySelector("#modify_form_group").addEventListener("submit" ,e =>{
     e.preventDefault();
-    console.log(error,id);
-    console.log(tel.value);
+    // console.log(error,id);
+    // console.log(tel.value);
     const regexHelper = new RegexHelper();
 
     if(!regexHelper.check_pw(password,error)){return false};
