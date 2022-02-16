@@ -269,7 +269,7 @@ module.exports = (app) => {
      * 로그인 정보 확인
      */
      router.get("/memberstest/info", async (req, res, next) => {
-        if (!req.session.memberInfo) {
+        if (req.session.memberInfo === undefined) {
             return next(new BadRequestException('로그인 상태가 아닙니다.'));
         }
 

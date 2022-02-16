@@ -127,9 +127,10 @@
             try {
                 const response = await axios.get('/memberstest/info');
                 json = response.data;
-            } catch (err) {
-                const data = e.response.data;
-                alert("[");
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                history.back();
+                return;
             }
 
             console.log(json.item);
