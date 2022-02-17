@@ -208,7 +208,7 @@ date.addEventListener("change", (e) => {
                             );
                         }
                     });
-            } else if {
+            } else if (pay_radio[i].value == "kakaopay"){
                 document
                     .querySelector("#reservation")
                     .addEventListener("submit", (e) => {
