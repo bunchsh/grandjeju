@@ -36,7 +36,7 @@
             let json2 = null;
 
             try {
-                const response = await axios.get('/reservation/' + json.item.user_id);
+                const response = await axios.get('/reservationdetail/' + json.item.user_id);
                 json2 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);
@@ -63,7 +63,7 @@
             let json3 = null;
 
             try {
-                const response = await axios.get('/inquiry/' + json.item.user_id);
+                const response = await axios.get('/inquirydetail/' + json.item.user_id);
                 json3 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);
@@ -90,7 +90,7 @@
             let json4 = null;
 
             try {
-                const response = await axios.get('/review/' + json.item.user_id);
+                const response = await axios.get('/reviewdetail/' + json.item.user_id);
                 json4 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);

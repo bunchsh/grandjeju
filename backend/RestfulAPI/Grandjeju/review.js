@@ -163,7 +163,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, CONVERT(photo USING utf8) as photo, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE user_id=?";
+            const sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE user_id=?";
             const [result] = await dbcon.query(sql, [user_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함

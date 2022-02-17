@@ -190,7 +190,7 @@ module.exports = (app) => {
     });
 
     /** 세션에 저장된 로그인 정보에 대한 상세 조회 --> Read(SELECT) */
-    router.get("/inquirytest/:user_id", async(req, res, next) =>{
+    router.get("/inquirydetail/:user_id", async(req, res, next) =>{
         const user_id = req.get('user_id');
 
         try {
@@ -207,7 +207,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT inquiry_id, user_id, user_name, type, title, CONVERT(inquiry_text USING utf8) as inquiry_text, CONVERT(answer_text USING utf8) as answer_text, date_format(inquiry_date,'%Y-%m-%d') inquiry_date, date_format(answer_date,'%Y-%m-%d') answer_date, state  FROM inquiry WHERE inquiry_id=?";
+            const sql = "SELECT inquiry_id, user_id, user_name, type, title, CONVERT(inquiry_text USING utf8) as inquiry_text, CONVERT(answer_text USING utf8) as answer_text, date_format(inquiry_date,'%Y-%m-%d') inquiry_date, date_format(answer_date,'%Y-%m-%d') answer_date, state FROM inquiry WHERE user_id=?";
             const [result] = await dbcon.query(sql, [user_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
