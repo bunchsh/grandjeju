@@ -50,21 +50,21 @@ class RegexHelper {
         return true;
     }
 
-    /**
-     * 두 값이 동일한지 검사한다.
-     * @param {string} origin   원본
-     * @param {string} compare  검사 대상
-     * @param {string} msg      값이 없을 경우 표시될 메시지
-     */
-    minLength(origin, compare, msg) {
-        var src = origin.trim(); // 원본값을 가져온다.
-        var dsc = compare.trim(); // 비교할 값을 가져온다.
+    // /**
+    //  * 두 값이 동일한지 검사한다.
+    //  * @param {string} origin   원본
+    //  * @param {string} compare  검사 대상
+    //  * @param {string} msg      값이 없을 경우 표시될 메시지
+    //  */
+    // minLength(origin, compare, msg) {
+    //     var src = origin.trim(); // 원본값을 가져온다.
+    //     var dsc = compare.trim(); // 비교할 값을 가져온다.
 
-        if (src != dsc) {
-            throw new BadRequestException(msg);
-        }
-        return true;
-    }
+    //     if (src != dsc) {
+    //         throw new BadRequestException(msg);
+    //     }
+    //     return true;
+    // }
 
     /**
      * 입력값이 정규표현식을 충족하는지 검사한다.

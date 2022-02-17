@@ -39,7 +39,7 @@
             let json2 = null;
 
             try {
-                const response = await axios.get('/members/' + member_id);
+                const response = await axios.get('/memberss/' + member_id);
                 json2 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);
@@ -95,17 +95,12 @@
                 (async () => {
                     try {
                         // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                        const response = await axios.delete("/memberstest/logout");
-                        
-                        // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
-                        document.getElementById("login_button").style.display = "block";
-                        document.getElementById("mypage_button").style.display = "none";
-                        document.getElementById("logout").style.display = "none";
-                        location.href = "../GJ1_main_page/main.html"
+                        const response = await axios.delete("/members/logout");
                     } catch (error) {
                         const errorMsg = "[" + error.response.status + "] " + error.response.statusText
                         console.error(errorMsg);
                         alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                        history.back();
                     }
                 })();
                 window.location = "/GJ2_login_page/login.html"

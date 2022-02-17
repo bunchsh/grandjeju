@@ -83,7 +83,7 @@
         (async () => {
 
             if (!json.item.user_id) {
-                alert('문의 내역이 없습니다.');
+                alert('리뷰 내역이 없습니다.');
                 return;
             }
 

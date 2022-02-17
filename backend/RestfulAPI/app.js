@@ -149,7 +149,7 @@ app.use('/', router);
 /*----------------------------------------------------------
 | 5) 각 URL별 백엔드 기능 정의
 -----------------------------------------------------------*/
-app.use(require('./Grandjeju/Members')(app));
+app.use(require('./Grandjeju/members')(app));
 app.use(require('./Grandjeju/reservation')(app));
 app.use(require('./Grandjeju/review')(app));
 app.use(require('./Grandjeju/inquiry')(app));
