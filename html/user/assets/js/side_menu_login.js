@@ -6,7 +6,7 @@
 window.addEventListener("load", () => {
     (async () => {
         try {
-            const response = await axios.get("/memberstest/info");
+            const response = await axios.get("/members/info");
             
             // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
             document.getElementById("login_button").style.display = "none";
@@ -26,7 +26,7 @@ window.addEventListener("load", () => {
             (async () => {
                 try {
                     // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                    const response = await axios.delete("/memberstest/logout");
+                    const response = await axios.delete("/members/logout");
                     
                     // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
                     document.getElementById("login_button").style.display = "block";

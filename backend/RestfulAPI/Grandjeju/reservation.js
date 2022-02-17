@@ -1,5 +1,7 @@
 /**
- * department 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @filename    : reservation.js
+ * @author      : 양수원 (ysw7939@gmail.com), 한송희 (onee.ssong@gmail.com)
+ * @description : reservation 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
@@ -135,6 +137,39 @@ module.exports = (app) => {
             // 데이터 조회
             const sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
             const [result] = await dbcon.query(sql, [reserv_id]);
+
+            // 조회 결과를 미리 준비한 변수에 저장함
+            json = result;
+        } catch (err) {
+            next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        //모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson({'item': json});
+    });
+
+    /** 세션에 저장된 로그인 정보에 대한 상세 조회 --> Read(SELECT) */
+    router.get("/reservationdetail/:user_id", async(req, res, next) =>{
+        const user_id = req.get('user_id');
+
+        try {
+            regexHelper.value(user_id, '요청 파라미터가 없습니다.');
+        } catch (err) {
+            return next(err);
+        }
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 데이터 조회
+            const sql = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
+            const [result] = await dbcon.query(sql, [user_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result;

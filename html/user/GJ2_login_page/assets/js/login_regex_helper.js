@@ -120,7 +120,7 @@ document.querySelector('#login').addEventListener("submit", async e => {
             const span = document.querySelector(".idpw_err");
 
             try {
-                const response = await axios.post("/memberstest/login", {
+                const response = await axios.post("/members/login", {
                     user_id: user_id,
                     user_pw: user_pw
                 });
