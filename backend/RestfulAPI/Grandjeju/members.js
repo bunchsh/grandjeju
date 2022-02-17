@@ -70,7 +70,7 @@ module.exports = (app) => {
             
 
             // 데이터 조회
-            let sql2 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members"
+            let sql2 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members"
 
             // SQL문에 설정할 치환값
             let args2 = [];
@@ -133,7 +133,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date FROM members WHERE member_id=?';
+            const sql = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, reg_date FROM members WHERE member_id=?';
             const [result] = await dbcon.query(sql, [member_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -177,7 +177,7 @@ module.exports = (app) => {
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out reg_date  FROM members where member_id=?';
+            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin reg_date  FROM members where member_id=?';
             const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -228,7 +228,7 @@ module.exports = (app) => {
             }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, reg_date FROM members where member_id=?';
+            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, reg_date FROM members where member_id=?';
             const [result2] = await dbcon.query(sql2, [member_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -307,7 +307,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회결과에서 비밀번호는 제외)
-            let sql1 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_out, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members WHERE user_id =? AND user_pw=?" ;
+            let sql1 = "SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, date_format(reg_date,'%Y/%m/%d %H:%i') as reg_date  FROM members WHERE user_id =? AND user_pw=?" ;
             let args1 = [user_id, user_pw];
 
             const [result1] = await dbcon.query(sql1, args1);
@@ -330,7 +330,7 @@ module.exports = (app) => {
         }
 
         // 탈퇴한 회원은 로그인 금지
-        if(json[0].is_out == 'Y') {
+        if(json[0].is_admin == 'Y') {
             return next(new BadRequestException('탈퇴한 회원입니다.'));
         }
 

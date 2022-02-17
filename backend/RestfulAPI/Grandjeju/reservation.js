@@ -70,7 +70,7 @@ module.exports = (app) => {
             
 
             // 데이터 조회
-            let sql2 = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person,  date_format(stay_start,'%Y-%m-%d') as stay_start,  date_format(stay_end,'%Y-%m-%d') as stay_end FROM reservation"
+            let sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person,  date_format(stay_start,'%Y-%m-%d') as stay_start,  date_format(stay_end,'%Y-%m-%d') as stay_end FROM reservation"
 
             // SQL문에 설정할 치환값
             let args2 = [];
@@ -133,7 +133,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
+            const sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
             const [result] = await dbcon.query(sql, [reserv_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -151,7 +151,7 @@ module.exports = (app) => {
     /** 데이터 추가 --> Create(INSERT) */
     router.post("/reservation", async(req, res, next) =>{
         // 저장을 위한 파라미터 입력받기
-        const pay_no = req.post('pay_no');
+        const order_no = req.post('order_no');
         const pay_price = req.post('pay_price');
         const pay_way = req.post('pay_way');
         const user_id = req.post('user_id');
@@ -178,12 +178,12 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 저장하기
-            const sql = 'INSERT INTO reservation (pay_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end ) VALUES (?,?,?,?,?,?,?,?,?,?)';
-            const input_data = [pay_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end];
+            const sql = 'INSERT INTO reservation (order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end ) VALUES (?,?,?,?,?,?,?,?,?,?)';
+            const input_data = [order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
             const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -236,7 +236,7 @@ module.exports = (app) => {
             }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT reserv_id, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
             const [result2] = await dbcon.query(sql2, [reserv_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
