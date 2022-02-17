@@ -1,5 +1,7 @@
 /**
- * department 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @filename    : members.js
+ * @author      : 양수원 (ysw7939@gmail.com), 한송희 (onee.ssong@gmail.com)
+ * @description : members 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
@@ -9,6 +11,7 @@ const router = require('express').Router();
 const mysql2  = require('mysql2/promise');
 const regexHelper = require('../../helper/RegexHelper');
 const utilHelper = require('../../helper/UtilHelper');
+const BadRequestException = require('../../exceptions/BadRequestExeption');
 
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
@@ -115,7 +118,7 @@ module.exports = (app) => {
     });
 
     /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
-    router.get("/members/:member_id", async(req, res, next) =>{
+    router.get("/membersdetail/:member_id", async(req, res, next) =>{
         const member_id = req.get('member_id');
 
 
@@ -148,8 +151,8 @@ module.exports = (app) => {
         res.sendJson({'item': json});
     });
 
-    /** 데이터 추가 --> Create(INSERT) */
-    router.post("/members", async(req, res, next) =>{
+    /** 회원가입 --> Create(INSERT) */
+    router.post("/members/join", async(req, res, next) =>{
         // 저장을 위한 파라미터 입력받기
         const user_id = req.post('user_id');
         const user_pw = req.post('user_pw');
@@ -157,12 +160,28 @@ module.exports = (app) => {
         const user_phone = req.post('user_phone');
 
         try {
-            regexHelper.value(user_pw, '아이디가 없습니다.');
+            regexHelper.value(user_id, '아이디가 없습니다.');
+            regexHelper.maxLength(user_id, 20, '아이디는 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_id, 6, '아이디는 최소 6자 이상 입력 가능합니다.');
+            regexHelper.engNum(user_id, '아이디는 영문, 숫자 조합만 입력 가능합니다.');
+
+            regexHelper.value(user_pw, '비밀번호가 없습니다.');
+            regexHelper.maxLength(user_pw, 11, '비밀번호는 최대 11자까지 입력 가능합니다.');
+            regexHelper.minLength(user_pw, 8, '비밀번호는 최소 8자 이상 입력 가능합니다.');
+            regexHelper.engNumSpecial(user_pw, '비밀번호는 영문, 숫자, 특수문자 조합만 입력 가능합니다.');
+
+            regexHelper.value(user_name, '이름이 없습니다.');
+            regexHelper.maxLength(user_name, 20, '이름은 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
+            regexHelper.kor(user_name, '이름은 한글만 입력 가능합니다.');
+
+            regexHelper.value(user_phone, '연락처를 입력하세요.');
+            regexHelper.phone(user_phone, '연락처가 잘못되었습니다.');
         } catch (err) {
             return next(err);
         }
 
-        /** 데이터 저장하기 */
+        /** 회원 정보 저장하기 */
         // 데이터 조회 결과가 저장될 빈 변수
         let json = null;
 
@@ -171,28 +190,173 @@ module.exports = (app) => {
             dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
-            // 데이터 저장하기
-            const sql = 'INSERT INTO members (user_id, user_pw, user_name, user_phone) VALUES (?,?,?,?)';
-            const input_data = [user_id, user_pw, user_name, user_phone];
-            const [result1] = await dbcon.query(sql, input_data);
+            // 전체 데이터 수를 조회 (중복 검사)
+            let sql1 = 'SELECT COUNT(*) AS cnt FROM members WHERE user_id=?';
+            let args1 = [user_id, sql1];
 
-            // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin reg_date  FROM members where member_id=?';
-            const [result2] = await dbcon.query(sql2, [result1.insertId]);
+            const [result1] = await dbcon.query(sql1, args1);
+            const totalCount = result1[0].cnt;
 
-            // 조회 결과를 미리 준비한 변수에 저장함
-            json = result2
+            if (totalCount > 0) {
+                throw new BadRequestException('이미 사용 중인 아이디입니다.');
+            }
+
+            // 전송받은 모든 정보를 회원 테이블에 저장 (INSERT)
+            let sql = "INSERT INTO members (user_id, user_pw, user_name, user_phone) VALUES (?,?,?,?)";
+
+            const args = [user_id, user_pw, user_name, user_phone, is_admin, reg_date];
+
+            await dbcon.query(sql, args);
         } catch (err) {
             return next(err);
         } finally {
             dbcon.end();
         }
 
-        // 모든 처리에 성공했으므로 정상 조회 결과 구성
-        res.sendJson({'item': json});
+        // 처리 성공 시에 대한 응답 처리
+        res.sendJson();
     });
 
-    /** 데이터 수정 --> Update(UPDATE) */
+    /**
+     * 로그인
+     */
+     router.post("/members/login", async (req, res, next) => {
+        // 저장을 위한 파라미터 입력 받기
+        const user_id = req.post('user_id');
+        console.log(user_id);
+        const user_pw = req.post('user_pw');
+        console.log(user_pw);
+
+        try {
+            // 아이디와 비밀번호를 유추하는데 힌트가 될 수 있으므로 유효성 검사는 입력 여부만 확인
+            regexHelper.value(user_id, '아이디를 입력하세요.');
+            regexHelper.value(user_pw, '비밀번호를 입력하세요.');
+        } catch (err) {
+            return next(err);
+        }
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회 결과에서 비밀번호는 제외)
+            let sql1 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, reg_date FROM members WHERE user_id=? AND user_pw=?';
+            let args1 = [user_id, user_pw];
+
+            const [result1] = await dbcon.query(sql1, args1);
+
+            // 조회된 회원 정보 객체를 저장하고 있는 1차원 배열 (원소는 1개)
+            json = result1;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 조회된 데이터가 없다면? WHERE절이 맞지 않는다는 의미
+        // => 아이디 비밀번호가 틀림
+        if (json == null || json.length == 0) {
+            return next(new BadRequestException('아이디나 비밀번호가 잘못되었습니다.'));
+        }
+
+        // 조회 결과를 세션에 저장
+        req.session.memberInfo = json[0];
+
+        res.sendJson();
+    });
+
+    /**
+     * 관리자 로그인
+     */
+     router.post("/members/adminlogin", async (req, res, next) => {
+        // 저장을 위한 파라미터 입력 받기
+        const user_id = req.post('user_id');
+        console.log(user_id);
+        const user_pw = req.post('user_pw');
+        console.log(user_pw);
+
+        try {
+            // 아이디와 비밀번호를 유추하는데 힌트가 될 수 있으므로 유효성 검사는 입력 여부만 확인
+            regexHelper.value(user_id, '아이디를 입력하세요.');
+            regexHelper.value(user_pw, '비밀번호를 입력하세요.');
+        } catch (err) {
+            return next(err);
+        }
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회 결과에서 비밀번호는 제외)
+            let sql1 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, reg_date FROM members WHERE user_id=? AND user_pw=?';
+            let args1 = [user_id, user_pw];
+
+            const [result1] = await dbcon.query(sql1, args1);
+
+            // 조회된 회원 정보 객체를 저장하고 있는 1차원 배열 (원소는 1개)
+            json = result1;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 조회된 데이터가 없다면? WHERE절이 맞지 않는다는 의미
+        // => 아이디 비밀번호가 틀림
+        if (json == null || json.length == 0) {
+            return next(new BadRequestException('아이디나 비밀번호가 잘못되었습니다.'));
+        }
+
+        // 관리자만 로그인 가능
+        if (json[0].is_admin == 'N') {
+            return next(new BadRequestException('관리자가 아닙니다.'));
+        }
+
+        // 조회 결과를 세션에 저장
+        req.session.memberInfo = json[0];
+
+        res.sendJson();
+    });
+
+    /**
+     * 로그인 정보 확인
+     */
+     router.get("/members/info", async (req, res, next) => {
+        if (req.session.memberInfo === undefined) {
+            return next(new BadRequestException('로그인 상태가 아닙니다.'));
+        }
+
+        res.sendJson({
+            'item': req.session.memberInfo
+        });
+    });
+
+    /**
+     * 로그아웃
+     */
+     router.delete("/members/logout", async (req, res, next) => {
+        if (!req.session.memberInfo) {
+            return next(new BadRequestException('로그인 상태가 아닙니다.'));
+        }
+
+        try {
+            await req.session.destroy();
+        } catch (err) {
+            return next(err);
+        }
+
+        res.sendJson();
+    });
+
+    /** 회원 정보 수정 --> Update(UPDATE) */
     router.put("/members/:member_id", async (req, res,next) =>{
         const member_id = req.get('member_id');
         const user_id = req.post('user_id');
@@ -203,12 +367,26 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(member_id, '필수 파라미터가 없습니다.');
-            regexHelper.value(user_id, '교수이름이 없습니다.');
+
+            regexHelper.value(user_id, '아이디가 없습니다.');
+
+            regexHelper.value(user_pw, '비밀번호가 없습니다.');
+            regexHelper.maxLength(user_pw, 11, '비밀번호는 최대 11자까지 입력 가능합니다.');
+            regexHelper.minLength(user_pw, 8, '비밀번호는 최소 8자 이상 입력 가능합니다.');
+            regexHelper.engNum(user_pw, '비밀번호는 영어와 숫자 조합만 입력 가능합니다.');
+
+            regexHelper.value(user_name, '이름이 없습니다.');
+            regexHelper.maxLength(user_name, 10, '이름은 최대 10자까지 입력 가능합니다.');
+            regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
+            regexHelper.kor(user_name, '이름은 한글만 입력 가능합니다.');
+
+            regexHelper.value(user_phone, '연락처를 입력하세요.');
+            regexHelper.phone(user_phone, '연락처가 잘못되었습니다.');
         } catch (err) {
             return next(err);
         }
 
-        /** 데이터 수정하기 */
+        /** 수정한 회원 정보 저장하기 */
         // 데이터 조회 결과가 저장될 빈 변수
         let json = null;
         
@@ -228,7 +406,7 @@ module.exports = (app) => {
             }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = 'SELECT member_id, user_id, user_pw, user_name, user_phone, is_admin, reg_date FROM members where member_id=?';
+            const sql2 = 'SELECT user_id, user_pw, user_name, user_phone, is_admin, reg_date FROM members where member_id=?';
             const [result2] = await dbcon.query(sql2, [member_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -283,7 +461,6 @@ module.exports = (app) => {
     });
 
     /* 회원가입, 로그인 ,로그아웃 로직 시작 */
-
     router.post("/members/login", async(req, res, next) => {
         // 파라미터 받기
         const user_id = req.post('user_id');
