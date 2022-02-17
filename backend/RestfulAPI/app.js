@@ -153,6 +153,7 @@ app.use(require('./Grandjeju/members')(app));
 app.use(require('./Grandjeju/reservation')(app));
 app.use(require('./Grandjeju/review')(app));
 app.use(require('./Grandjeju/inquiry')(app));
+app.use(require('./Grandjeju/photo')(app));
 
 
 //런타임 에러가 발생한 경우에 대한 일괄 처리

@@ -33,17 +33,24 @@
 
         <!-- CONTAINER -->
         <div id="container">
+
+            <form>
+                <input type='file' name='photo_img' multiple id='photo_img'/>
+            </form>
+
             <!-- CONTENT -->
             <div id="content">
                 <form id="inquiry_write">
                     <!-- 제목 항목 -->
                     <div class="title_group">
-                        <input class="title_input" type="text" placeholder="제목">
+                        <input class="title_input" id="title" type="text" placeholder="제목">
                     </div>
                     <!-- 본문 항목 -->
                     <div class="editor_group">
                         <div id="editor"></div>
                     </div>
+                    <!-- 파일id -->
+                    <!-- <input type="hidden" name="photo_id" id="photo_id"> -->
                     <!-- 버튼 -->
                     <div class="btn_group">
                         <button type="submit" class="btn_write">등록</button>
@@ -51,9 +58,10 @@
                 </form>
             </div>
         </div>
+        <div id="console"></div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/write_regex_helper.js"></script>
@@ -65,11 +73,12 @@
             initialEditType: 'html',
             previewStyle: 'vertical'
         });
+    
 
     
         document.querySelector('#inquiry_write').addEventListener("submit", e => {
             e.preventDefault();
-            console.log(editor);
+            console.log(editor.getHTML);
 
             const regexHelper = new RegexHelper();
 
@@ -79,10 +88,92 @@
             if (!regexHelper.editor_value(editor.getHTML(), "내용이 입력되지 않았습니다.")) { return false; }
 
             // 처리 완료
-            location.href = "../GJ9_inquiry_detail_page/inquiry_detail_before.html";
+            // location.href = "../GJ9_inquiry_detail_page/inquiry_detail_before.html";
         });
     </script>
+    <script>
+        let img_array = []
+        let id_array = []
+        document.querySelector('#photo_img').addEventListener('change', async (e) => {
+            const files = e.target.files;
+            const keys = Object.keys(files);
 
+
+            console.log(files)
+
+            // javascript로 가상의 form을 생성
+            const form = new FormData();
+            // 가상의 폼에 input요소 추가
+            form.append('photo_img', files[0]);
+            
+
+            keys.forEach((i, v) => {
+                // javascript로 가상의 form을 생성
+                const form = new FormData();
+                // 가상의 폼에 input요소 추가
+                form.append('photo_img', files[v]);
+                
+                (async () => {
+                    try {
+                        const response = await axios.post("/photo", form);
+                        console.log(response.data);
+                        json = response.data
+
+                        
+                        keys.forEach(v => {
+                        
+                            img_array.push(`<img src='${json.item[0].path}'/>`) 
+                            console.log(img_array);
+                            
+                            console.log(img_array.join(``))
+                            editor.setHTML(img_array.join(``))
+
+
+                            id_array.push(json.item[0].photo_id)
+                        });
+
+
+                    } catch (error) {
+                        console.error(error);
+                    }
+                })();
+            });
+        })
+    </script>
+    <script>
+        document.querySelector('#inquiry_write').addEventListener("submit", async(e) => {
+            e.preventDefault();
+
+            const user_name = "양수원"
+            const user_id = "ysw7939"
+            const title = document.querySelector("#title").value;
+            const text = editor.getHTML();
+
+            let json = null;
+            let up = null;
+            try { 
+                const response = await axios.post("/review", {
+                    user_name : user_name,
+                    user_id : user_id,
+                    title : title,
+                    text : text
+                });
+                json = response.data;
+
+                id_array.forEach(async (v, i) => {
+                    const updated = await axios.put("/photo/" + v ,{
+                        review_id : json.item[0].review_id
+                    });
+                    up = updated.data;
+                })
+                
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                return;
+            }
+            console.log(up);
+        })
+    </script>
 </body>
 
 </html>

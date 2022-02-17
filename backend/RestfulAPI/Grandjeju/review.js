@@ -31,7 +31,7 @@ module.exports = (app) => {
         // 한 페이지에 보여줄 목록 수 받기 (기본값은 10, 최소 10, 최대 30)
         const rows = req.get('rows', 10);
 
-        const order = req.get('order');
+        const order = req.get('order', 'desc');
         // 데이터 조회 결과가 저장될 빈 변수
         let json = null;
         let pagenation = null;

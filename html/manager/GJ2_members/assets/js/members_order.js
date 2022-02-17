@@ -16,7 +16,11 @@ function order_btn(data) {
     icon.classList.add("bi-sort-alpha-down");
     
     if(order == "") {
-        btn_a.setAttribute("href",data + "desc")
+        btn_a.setAttribute("href",data + "asc")
+    }
+
+    if(data.indexOf("order") == -1) {
+        btn_a.setAttribute("href",data + "&order=desc")
     }
 
     if(data.indexOf("?") == -1) {
