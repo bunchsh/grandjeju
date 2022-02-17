@@ -1,5 +1,5 @@
 /**
- * @filename    : review_order.js
+ * @filename    : inquiry_order.js
  * @author      : 양수원 (ysw7939@gmail.com) 
  * @description : order by를 사용한 내림차순 버튼 구현을 위한 함수
  */
@@ -14,9 +14,9 @@ function order_btn(data) {
     const icon = document.createElement("i")
     icon.classList.add("bi");
     icon.classList.add("bi-sort-alpha-down");
-
-    if(data.indexOf("order") == -1) {
-        btn_a.setAttribute("href",data + "&order=desc")
+    
+    if(order == "") {
+        btn_a.setAttribute("href",data + "desc")
     }
 
     if(data.indexOf("?") == -1) {
@@ -25,7 +25,9 @@ function order_btn(data) {
 
     if(order == 'asc' ) {
         btn_a.setAttribute("href",data.substring(0,data.indexOf('asc')) + "desc");
+        btn_a.classList.add("blue");
         icon.classList.replace("bi-sort-alpha-up-alt" ,"bi-sort-alpha-down");
+        
     }
     if(order == 'desc'){
         btn_a.setAttribute("href",data.substring(0,data.indexOf('desc')) + "asc");
@@ -35,3 +37,4 @@ function order_btn(data) {
     btn_a.appendChild(icon);
     document.querySelector('#order_btn').appendChild(btn_a)
 }
+

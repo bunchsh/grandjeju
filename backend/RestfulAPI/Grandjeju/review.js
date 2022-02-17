@@ -149,7 +149,7 @@ module.exports = (app) => {
         const user_name = req.post('user_name');
         const title = req.post('title');
         const text = req.post('text');
-        const photo = req.post('photo','없음');
+        
 
         try {
             regexHelper.value(user_id, '아이디가 없습니다.');
@@ -167,8 +167,8 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 저장하기
-            const sql = 'INSERT INTO review (user_id, user_name, title, text, photo) VALUES (?,?,?,?,?)';
-            const input_data = [user_id, user_name, title, text, photo];
+            const sql = 'INSERT INTO review (user_id, user_name, title, text) VALUES (?,?,?,?)';
+            const input_data = [user_id, user_name, title, text, ];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
@@ -194,7 +194,7 @@ module.exports = (app) => {
         const user_name = req.post('user_name');
         const title = req.post('title');
         const text = req.post('text');
-        const photo = req.post('photo','없음');
+
         
 
         try {
@@ -213,8 +213,8 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 수정하기
-            const sql = 'UPDATE review SET user_id=?, user_name=?, title=?, text=?, photo=? WHERE review_id=?';
-            const input_data = [user_id, user_name, title, text, photo, review_id];
+            const sql = 'UPDATE review SET user_id=?, user_name=?, title=?, text=?, =? WHERE review_id=?';
+            const input_data = [user_id, user_name, title, text, , review_id];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 결과 행 수가 0이라면 예외처리

@@ -33,7 +33,7 @@ module.exports = (app) => {
 
         const search_type = req.get('search_type');
 
-        const order = req.get('order');
+        const order = req.get('order','desc');
         // 데이터 조회 결과가 저장될 빈 변수
         let json = null;
         let pagenation = null;

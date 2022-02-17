@@ -15,7 +15,7 @@ const params = new URLSearchParams(window.location.search);
 const query = params.get('query') || "";
 const page = params.get('page') || 1;
 const search = params.get('search') || 'user_id';
-const order = params.get('order')
+const order = params.get('order') || "";
 
 // 검색어 파라미터를 input 태그에 설정된
 document.querySelector('#query').value = query;
