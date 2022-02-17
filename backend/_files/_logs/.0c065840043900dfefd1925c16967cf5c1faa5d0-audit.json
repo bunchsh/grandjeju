@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "C:\\Users\\User\\grandjeju\\backend\\_files\\_logs\\.0c065840043900dfefd1925c16967cf5c1faa5d0-audit.json",
+    "files": [
+        {
+            "date": 1645089508470,
+            "name": "C:\\Users\\User\\grandjeju\\backend\\_files\\_logs\\error_22-02-17.log",
+            "hash": "c939d9b487b94e78699a7e98dd205339"
+        }
+    ],
+    "hashType": "md5"
+}
