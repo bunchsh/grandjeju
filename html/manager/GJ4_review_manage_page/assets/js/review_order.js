@@ -19,6 +19,10 @@ function order_btn(data) {
         btn_a.setAttribute("href",data + "desc")
     }
 
+    if(data.indexOf("order") == -1) {
+        btn_a.setAttribute("href",data + "&order=desc")
+    }
+
     if(data.indexOf("?") == -1) {
         btn_a.setAttribute("href",data + "?order=desc")
     }
