@@ -8,7 +8,7 @@
     let json = null;
 
     try {
-        const response = await axios.get('/memberstest/info');
+        const response = await axios.get('/members/info');
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);
@@ -36,7 +36,7 @@
             let json2 = null;
 
             try {
-                const response = await axios.get('/reservationtest/' + json.item.user_id);
+                const response = await axios.get('/reservation/' + json.item.user_id);
                 json2 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);
@@ -63,7 +63,7 @@
             let json3 = null;
 
             try {
-                const response = await axios.get('/inquirytest/' + json.item.user_id);
+                const response = await axios.get('/inquiry/' + json.item.user_id);
                 json3 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);
@@ -90,7 +90,7 @@
             let json4 = null;
 
             try {
-                const response = await axios.get('/reviewtest/' + json.item.user_id);
+                const response = await axios.get('/review/' + json.item.user_id);
                 json4 = response.data;
             } catch (e) {
                 alert(e.response.data.rtmsg);
