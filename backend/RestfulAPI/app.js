@@ -153,6 +153,7 @@ app.use(require('./Grandjeju/Members')(app));
 app.use(require('./Grandjeju/reservation')(app));
 app.use(require('./Grandjeju/review')(app));
 app.use(require('./Grandjeju/inquiry')(app));
+app.use(require('./Grandjeju/photo')(app));
 
 app.use(require('./Grandjeju/Members_test')(app));
 app.use(require('./Grandjeju/reservation_test')(app));
