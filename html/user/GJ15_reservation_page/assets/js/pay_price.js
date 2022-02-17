@@ -208,7 +208,7 @@ date.addEventListener("change", (e) => {
                             );
                         }
                     });
-            } else {
+            } else if {
                 document
                     .querySelector("#reservation")
                     .addEventListener("submit", (e) => {
