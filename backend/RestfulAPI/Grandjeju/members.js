@@ -647,5 +647,46 @@ module.exports = (app) => {
 
     //     res.sendJson();
     // });
+
+
+    /** 회원 탈퇴 --> Delete(DELETE) */
+    router.delete("/membersout/:member_id", async (req, res,next) =>{
+        const member_id = req.get('member_id');
+
+        try {
+            regexHelper.value(member_id, '요청 파라미터가 없습니다.');
+        } catch (err) {
+            return next(err);
+        }
+        
+        /** 데이터 삭제하기 */
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
+           // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
+            // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
+            // await dbcon.query("DELETE FROM student WHERE member_id=?", [member_id]);
+            // 데이터 삭제하기
+            const sql = 'DELETE FROM members WHERE member_id=?';
+            const [result1] = await dbcon.query(sql, [member_id]);
+
+
+            // 결과 행 수가 0이라면 예외처리
+            if (result1.affectedRows < 1){
+                throw new Error('삭제된 데이터가 없습니다.');
+            }
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        // 모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson();
+    });
+    
     return router;
 }

@@ -187,15 +187,4 @@ document.querySelector("#modify_form_group").addEventListener("submit" ,e =>{
     
 })
 
-const drop = document.querySelector(".dorp_button")
-drop.addEventListener("click", e =>{
-    swal({
-        text: "정말 탈퇴하시겠습니까?", // Alert 내용
-        buttons: {
-            confirm: "OK",  // 확인 버튼
-            cancel: true    // 취소 버튼
-        }
-    }).then(function () {   // 확인 버튼 이벤트
-        location.href = "#";    // 이동
-    });
-})
+

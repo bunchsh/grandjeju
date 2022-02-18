@@ -1,5 +1,5 @@
 /**
- * @filename    : my_info.js
+ * @filename    : my_info_modify.js
  * @author      : 한송희 (onee.ssong@gmail.com) 
  * @description : 로그인된 회원 정보를 조회하여 각 항목의 정보들을 출력하고 수정하여 저장
  */
