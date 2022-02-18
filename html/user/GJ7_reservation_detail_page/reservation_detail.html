@@ -48,6 +48,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
+    <script src="./assets/js/detail.js"></script>
+
     <script id="content-template" type="text/x-handlebars-template">
         <!-- 객실 항목 -->
         <div class="room_group">
@@ -79,40 +81,6 @@
             <h3 class="paytitle">결제 금액</h3>
             <span class="pay_price">{{pay_price}}</span>
         </div>
-    </script>
-
-    <script>
-        (async () => {
-            /** GET 파라미터 받기 */
-            const params = new URLSearchParams(window.location.search);
-            const reserv_id = params.get('reserv_id');
-
-            if (!reserv_id) {
-                alert('조회할 예약 내역이 없습니다.');
-                history.back();
-                return;
-            }
-
-            /** Ajax 요청 */
-            let json = null;
-
-            try {
-                const response = await axios.get('/reservation/' + reserv_id);
-                json = response.data;
-            } catch (e) {
-                alert(e.response.data.rtmsg);
-                return;
-            }
-
-            if (json != null) {
-                console.log(json);
-                const source = document.querySelector("#content-template").innerHTML;
-                const template = Handlebars.compile(source);
-                const html = template(json.item[0]);
-
-                document.querySelector('#content').insertAdjacentHTML('beforeend', html);
-            }
-        })();
     </script>
 </body>
 </html>
