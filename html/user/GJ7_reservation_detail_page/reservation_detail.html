@@ -32,38 +32,9 @@
         <div id="container">
             <!-- CONTENT -->
             <div id="content">
-                <!-- 객실 항목 -->
-                <div class="room_group">
-                    <h3 class="roomtitle">객실</h3>
-                    <span class="room"></span>
-                </div>
-                <!-- 숙박 기간 항목 -->
-                <div class="date_group">
-                    <h3 class="datetitle">숙박 기간</h3>
-                    <p class="select_date"><span class="stay_start"></span> ~ <span class="stay_end"></span></p>
-                </div>
-                <!-- 인원 항목 -->
-                <div class="person_group">
-                    <h3 class="persontitle">인원</h3>
-                    <span class="person"></span>
-                </div>
-                <!-- 예약자명 항목 -->
-                <div class="name_group">
-                    <h3 class="nametitle">예약자명</h3>
-                    <span class="reserv_name"></span>
-                </div>
-                <!-- 예약자 연락처 항목 -->
-                <div class="number_group">
-                    <h3 class="numbertitle">예약자 연락처</h3>
-                    <span class="reserv_phone"></span>
-                </div>
-                <!-- 결제 금액 항목 -->
-                <div class="pay_group">
-                    <h3 class="paytitle">결제 금액</h3>
-                    <span class="pay_price"></span>
-                </div>
-
+                
             </div>
+            
             <!-- 예약 취소 버튼 -->
             <div class="btn_group">
                 <span class="notice">예약 변경은 취소 후, 재예약 바랍니다.</span>
@@ -73,10 +44,75 @@
     </div>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/cancel_alert.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
     <script id="content-template" type="text/x-handlebars-template">
-        
+        <!-- 객실 항목 -->
+        <div class="room_group">
+            <h3 class="roomtitle">객실</h3>
+            <span class="room">{{room}}</span>
+        </div>
+        <!-- 숙박 기간 항목 -->
+        <div class="date_group">
+            <h3 class="datetitle">숙박 기간</h3>
+            <p class="select_date"><span class="stay_start">{{stay_start}}</span> ~ <span class="stay_end">{{stay_end}}</span></p>
+        </div>
+        <!-- 인원 항목 -->
+        <div class="person_group">
+            <h3 class="persontitle">인원</h3>
+            <span class="person">{{person}}</span>
+        </div>
+        <!-- 예약자명 항목 -->
+        <div class="name_group">
+            <h3 class="nametitle">예약자명</h3>
+            <span class="reserv_name">{{reserv_name}}</span>
+        </div>
+        <!-- 예약자 연락처 항목 -->
+        <div class="number_group">
+            <h3 class="numbertitle">예약자 연락처</h3>
+            <span class="reserv_phone">{{reserv_phone}}</span>
+        </div>
+        <!-- 결제 금액 항목 -->
+        <div class="pay_group">
+            <h3 class="paytitle">결제 금액</h3>
+            <span class="pay_price">{{pay_price}}</span>
+        </div>
+    </script>
+
+    <script>
+        (async () => {
+            /** GET 파라미터 받기 */
+            const params = new URLSearchParams(window.location.search);
+            const reserv_id = params.get('reserv_id');
+
+            if (!reserv_id) {
+                alert('조회할 예약 내역이 없습니다.');
+                history.back();
+                return;
+            }
+
+            /** Ajax 요청 */
+            let json = null;
+
+            try {
+                const response = await axios.get('/reservation/' + reserv_id);
+                json = response.data;
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                return;
+            }
+
+            if (json != null) {
+                console.log(json);
+                const source = document.querySelector("#content-template").innerHTML;
+                const template = Handlebars.compile(source);
+                const html = template(json.item[0]);
+
+                document.querySelector('#content').insertAdjacentHTML('beforeend', html);
+            }
+        })();
     </script>
 </body>
 </html>
