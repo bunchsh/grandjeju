@@ -37,20 +37,26 @@ document.querySelector(".drop_button").addEventListener("click", e =>{
                         const response = await axios.delete("/membersout/" + member_id);
                         
                         // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
-                        alert("탈퇴가 완료되었습니다.");
-                        (async () => {
-                            try {
-                                // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                                const response = await axios.delete("/members/logout");
-                                
-                                // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
-                                location.href = "../GJ1_main_page/main.html"
-                            } catch (error) {
-                                const errorMsg = "[" + error.response.status + "] " + error.response.statusText
-                                console.error(errorMsg);
-                                alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                        swal({
+                            text: "탈퇴가 완료되었습니다.", // Alert 내용
+                            buttons: {
+                                confirm: "OK",  // 확인 버튼
                             }
-                        })();
+                        }).then(() => {
+                            (async () => {
+                                try {
+                                    // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
+                                    const response = await axios.delete("/members/logout");
+                                    
+                                    // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
+                                    location.href = "../GJ1_main_page/main.html"
+                                } catch (error) {
+                                    const errorMsg = "[" + error.response.status + "] " + error.response.statusText
+                                    console.error(errorMsg);
+                                    alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                                }
+                            })();
+                        });
                     } catch (error) {
                         const errorMsg = "[" + error.response.status + "] " + error.response.statusText
                         console.error(errorMsg);
