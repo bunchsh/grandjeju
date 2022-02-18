@@ -148,14 +148,16 @@ module.exports = (app) => {
     router.get("/reviewdetail/:user_id", async(req, res, next) =>{
         const user_id = req.get('user_id');
 
+        const order = req.get('order','desc');
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
 
         try {
             regexHelper.value(user_id, '요청 파라미터가 없습니다.');
         } catch (err) {
             return next(err);
         }
-        // 데이터 조회 결과가 저장될 빈 변수
-        let json = null;
 
         try {
             // 데이터베이스 접속
@@ -163,8 +165,19 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE user_id=?";
-            const [result] = await dbcon.query(sql, [user_id]);
+            let sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE user_id=?";
+            
+            let args = [];
+
+            if (order != null) {
+                if (order == 'asc'){
+                    sql += " ORDER BY review_date asc"
+                } else if (order == 'desc'){
+                    sql += " ORDER BY review_date desc"
+                }
+            }
+
+            const [result] = await dbcon.query(sql, [user_id], args);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result;
