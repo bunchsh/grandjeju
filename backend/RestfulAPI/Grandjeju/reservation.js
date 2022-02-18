@@ -153,13 +153,16 @@ module.exports = (app) => {
     router.get("/reservationdetail/:user_id", async(req, res, next) =>{
         const user_id = req.get('user_id');
 
+        const order = req.get('order','desc');
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
         try {
             regexHelper.value(user_id, '요청 파라미터가 없습니다.');
         } catch (err) {
             return next(err);
         }
-        // 데이터 조회 결과가 저장될 빈 변수
-        let json = null;
 
         try {
             // 데이터베이스 접속
@@ -167,8 +170,18 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
-            const [result] = await dbcon.query(sql, [user_id]);
+            let sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
+
+            let args = [];
+
+            if (order != null) {
+                if (order == 'asc'){
+                    sql += " ORDER BY reserv_date asc"
+                } else if (order == 'desc'){
+                    sql += " ORDER BY reserv_date desc"
+                }
+            }
+            const [result] = await dbcon.query(sql, [user_id], args);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result;
