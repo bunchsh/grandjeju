@@ -74,50 +74,5 @@
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/cancel_alert.js"></script>
 
-    <!-- Fake API 예약 내역 출력 -->
-    <script>
-        function get_reservation(reserv_id) {
-            const xhr = new XMLHttpRequest();
-            const method = 'GET';
-            const url = "http://localhost:3000/reservation/" + reserv_id;
-
-            xhr.onreadystatechange = (e) => {
-                const { target } = e;
-
-                if (target.readyState == XMLHttpRequest.DONE) {
-                    if (target.status == 200) {
-                        const req = JSON.parse(target.response);
-                        document.querySelector('.room').innerHTML = req.room;
-                        document.querySelector('.reserv_name').innerHTML = req.reserv_name;
-                        document.querySelector('.reserv_phone').innerHTML = req.reserv_phone;
-                        document.querySelector('.stay_start').innerHTML = req.stay_start;
-                        document.querySelector('.stay_end').innerHTML = req.stay_end;
-                        document.querySelector('.person').innerHTML = req.person;
-                        document.querySelector('.pay_price').innerHTML = req.pay_price;
-                    } else {
-                        const s = parseInt(target.status / 100);
-                        let errMsg = null;
-
-                        if (s == 4) {
-                            errMsg = '[' + target.status + ']' + target.statusText + '- 요청 주소가 잘못되었습니다.';
-                        } else if (s == 5) {
-                            errMsg = '[' + target.status + ']' + target.statusText + '- 서버의 응답이 없습니다.';
-                        } else {
-                            errMsg = '[' + target.status + ']' + target.statusText + '- 요청에 실패하였습니다.';
-                        }
-                        alert(errMsg);
-                    }
-                }
-            };
-
-            xhr.open(method, url);
-            xhr.send();
-        }
-
-        (() => {
-            get_reservation(9001);
-        })();
-
-    </script>
 </body>
 </html>

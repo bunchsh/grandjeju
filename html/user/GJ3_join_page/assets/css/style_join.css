@@ -5,6 +5,10 @@
  */
 
 /* form */
+#join_form_group {
+    margin-top: 80px;
+}
+
 .join_form{
     margin: auto;
     margin-top: 30px;

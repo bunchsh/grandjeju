@@ -5,13 +5,6 @@
  */
 
 @charset "UTF-8";
-
-/** ---------- CONTAINER ---------- */
-#container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 30px 0;
-}
 /** ---------- CONTENT ---------- */
 #container #content h3 {
     font-size: 15px;
@@ -82,7 +75,7 @@
 #container #content .btn_group .btn_cancel {
     display: block;
     width: 90%;
-    height: 40px;
+    height: 50px;
     background-color: black;
     color: white;
     border-radius: 5px 5px 5px 5px;

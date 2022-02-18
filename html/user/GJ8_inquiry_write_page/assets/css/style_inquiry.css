@@ -6,12 +6,6 @@
 
 @charset "UTF-8";
 
-/** ---------- CONTAINER ---------- */
-#container {
-    width: 80%;
-    margin: 0 auto;
-}
-
 /** Dropdown */
 #container #content #inquiry_write .select_group {
     padding: 10px 0;

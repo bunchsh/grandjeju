@@ -12,6 +12,9 @@
     color: black;
     text-decoration: none;
  }
+ #container {
+     width: 100%;
+ }
 
 /* user */
 #content .user_wrap {
@@ -22,8 +25,7 @@
 
 #content .user_wrap .setting {
     position: absolute; 
-    right : 10px;
-    top: 10px;    
+    right : 10px;  
     width: 25px;
     height: 25px;
 }
@@ -33,7 +35,7 @@
 
 #content .user_wrap .user_img {
     position: absolute;
-    top: 60px;
+    top: 50px;
     width: 100%;
     text-align: center;
 }
@@ -78,6 +80,11 @@
 }
 #tabs .tab_three .default {
     border-bottom: 4px solid #000;
+}
+
+/* tab_content*/
+.tab_content {
+    margin-bottom: 20px;
 }
 
 /* reserve */
