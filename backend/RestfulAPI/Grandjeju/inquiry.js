@@ -193,13 +193,16 @@ module.exports = (app) => {
     router.get("/inquirydetail/:user_id", async(req, res, next) =>{
         const user_id = req.get('user_id');
 
+        const order = req.get('order','desc');
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
         try {
             regexHelper.value(user_id, '요청 파라미터가 없습니다.');
         } catch (err) {
             return next(err);
         }
-        // 데이터 조회 결과가 저장될 빈 변수
-        let json = null;
 
         try {
             // 데이터베이스 접속
@@ -207,8 +210,19 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT inquiry_id, user_id, user_name, type, title, CONVERT(inquiry_text USING utf8) as inquiry_text, CONVERT(answer_text USING utf8) as answer_text, date_format(inquiry_date,'%Y-%m-%d') inquiry_date, date_format(answer_date,'%Y-%m-%d') answer_date, state FROM inquiry WHERE user_id=?";
-            const [result] = await dbcon.query(sql, [user_id]);
+            let sql = "SELECT inquiry_id, user_id, user_name, type, title, CONVERT(inquiry_text USING utf8) as inquiry_text, CONVERT(answer_text USING utf8) as answer_text, date_format(inquiry_date,'%Y-%m-%d') inquiry_date, date_format(answer_date,'%Y-%m-%d') answer_date, state FROM inquiry WHERE user_id=?";
+
+            let args = [];
+
+            if (order != null) {
+                if (order == 'asc'){
+                    sql += " ORDER BY inquiry_date asc"
+                } else if (order == 'desc'){
+                    sql += " ORDER BY inquiry_date desc"
+                }
+            }
+
+            const [result] = await dbcon.query(sql, [user_id], args);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result;
