@@ -58,12 +58,12 @@
 }
 
 /** 예약 취소 버튼 항목 */
-#container #content .btn_group {
+#container .btn_group {
     display: block;
     margin: 0 auto;
 }
 
-#container #content .btn_group .notice {
+#container .btn_group .notice {
     display: block;
     width: 90%;
     font-size: 8px;
@@ -72,7 +72,7 @@
     margin: 0 auto;
 }
 
-#container #content .btn_group .btn_cancel {
+#container .btn_group .btn_cancel {
     display: block;
     width: 90%;
     height: 50px;
@@ -83,7 +83,7 @@
     margin: 0 auto;
 }
 
-#container #content .btn_group .btn_cancel_oneday {
+#container .btn_group .btn_cancel_oneday {
     display: block;
     width: 90%;
     height: 40px;
@@ -95,7 +95,7 @@
 }
 
 /** 환불 관련 안내 */
-#container #content .notice_group .notice {
+#container .notice_group .notice {
     display: block;
     width: 90%;
     font-size: 8px;
