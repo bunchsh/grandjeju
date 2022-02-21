@@ -75,24 +75,6 @@
             initialEditType: 'html',
             previewStyle: 'vertical'
         });
-
-
-
-        // document.querySelector('#inquiry_write').addEventListener("submit", e => {
-        // e.preventDefault();
-
-        // const regexHelper = new RegexHelper();
-
-        // /** 문의 종류 검사 */
-        // if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) {return false;}
-        // /** 제목 검사 */
-        // if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
-        // /** 내용 검사 */
-        // if (!regexHelper.editor_value(editor.getHTML(), "내용이 입력되지 않았습니다.")) {return false;}
-        
-        // // 처리 완료
-        // // 
-        // });
     </script>
     <script>
         let json = null;
@@ -146,7 +128,7 @@
                 }
                 console.log(json2);
                 if (json2 != null) {
-                    window.location ="/GJ9_inquiry_detail_page/inquiry_detail_before.html";
+                    window.location ="/GJ9_inquiry_detail_page/inquiry_detail_before.html?inquiry_id=" + json2.item[0].inquiry_id;
                 }
         })
 

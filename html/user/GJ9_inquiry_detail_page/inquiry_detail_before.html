@@ -47,6 +47,9 @@
                     <div class="ask_group">
                         <p class="inquiry_text">
                     </div>
+                    <div class="answer_group">
+                        <p class="answer_text">
+                    </div>
                 </div>
 
                 <!-- 버튼 -->
@@ -57,8 +60,40 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/cancel_alert.js"></script>
+
+    <script>
+        (async () => {
+            // GET 파라미터 받기
+            const params = new URLSearchParams(window.location.search);
+            const inquiry_id = params.get('inquiry_id');
+
+            const type = document.querySelector(".type")
+            const title = document.querySelector(".title_title")
+            const inquiry_date = document.querySelector(".inquiry_date")
+            const inquiry_text = document.querySelector(".inquiry_text")
+            const answer_text = document.querySelector(".answer_text")
+
+            let json = null;
+            try {
+                const response = await axios.get('/inquiry/' + inquiry_id)
+                json = response.data
+            }catch (e) {
+                alert(e.response.data.rtmsg);
+                return;
+            }
+            if(json != null) {
+                console.log(json);
+                title.innerHTML = json.item[0].title;
+                type.innerHTML = json.item[0].type
+                inquiry_date.innerHTML = json.item[0].inquiry_date
+                inquiry_text.innerHTML = json.item[0].inquiry_text
+                answer_text.innerHTML = json.item[0].answer_text
+            }
+        })();
+    </script>
 
 
     <!-- 수정 버튼 클릭 시, 수정 페이지 이동 -->
@@ -66,8 +101,12 @@
         document.querySelector('.btn_modify').addEventListener("click", e => {
             e.preventDefault();
 
+            // GET 파라미터 받기
+            const params = new URLSearchParams(window.location.search);
+            const inquiry_id = params.get('inquiry_id');
+
             // 수정 페이지로 이동
-            location.href="../GJ11_inquiry_modify_page/inquiry_modify.html";
+            location.href="/GJ10_inquiry_modify_page/inquiry_modify.html?inquiry_id=" + inquiry_id;
         });
     </script>
 </body>
