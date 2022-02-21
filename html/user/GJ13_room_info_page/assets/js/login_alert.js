@@ -32,4 +32,3 @@ document.querySelector(".btn_reservation_logout").addEventListener('click', e =>
         };
     })();
 });
- 
