@@ -38,7 +38,7 @@
                 <form id="inquiry_write">
                     <!-- 문의 종류 선택 -->
                     <div class="select_group">
-                        <select class="inquiry_option">
+                        <select class="inquiry_option" id="option">
                             <option value="">문의 종류</option>
                             <option value="예약 문의">예약 문의</option>
                             <option value="시설 문의">시설 문의</option>
@@ -48,11 +48,11 @@
                     </div>
                     <!-- 제목 항목 -->
                     <div class="title_group">
-                        <input class="title_input" type="text" placeholder="제목">
+                        <input class="title_input" id="title" type="text" placeholder="제목">
                     </div>
                     <!-- 본문 항목 -->
                     <div class="editor_group">
-                        <div id="editor" name="content"></div>
+                        <div id="editor"></div>
                     </div>
                     <!-- 버튼 -->
                     <div class="btn_group">
@@ -62,6 +62,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/write_regex_helper.js"></script>
@@ -77,24 +78,69 @@
 
 
 
-        document.querySelector('#inquiry_write').addEventListener("submit", e => {
-        e.preventDefault();
+        // document.querySelector('#inquiry_write').addEventListener("submit", e => {
+        // e.preventDefault();
 
-        const regexHelper = new RegexHelper();
+        // const regexHelper = new RegexHelper();
 
-        /** 문의 종류 검사 */
-        if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) {return false;}
-        /** 제목 검사 */
-        if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
-        /** 내용 검사 */
-        if (!regexHelper.value(editor.getHTML(), "내용이 입력되지 않았습니다.")) {return false;}
+        // /** 문의 종류 검사 */
+        // if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) {return false;}
+        // /** 제목 검사 */
+        // if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
+        // /** 내용 검사 */
+        // if (!regexHelper.editor_value(editor.getHTML(), "내용이 입력되지 않았습니다.")) {return false;}
         
-        // 처리 완료
-        location.href="../GJ10_inquiry_detail_page/inquiry_detail_before.html";
-        });
+        // // 처리 완료
+        // // 
+        // });
     </script>
     <script>
-    
+        let json = null;
+        (async () => {
+            try {
+                const response = await axios.get('/members/info');
+                json = response.data
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                // history.back();
+                return;
+            }
+            console.log(json.item);
+        })();
+        
+        document.querySelector('#inquiry_write').addEventListener('submit', async(e) => {
+
+            e.preventDefault();
+            console.log(json.item);
+        
+            const user_id = json.item.user_id;
+            const user_name = json.item.user_name;
+            const type = document.querySelector('#option').value;
+            const title = document.querySelector("#title").value;
+            const inquiry_text = editor.getHTML();
+
+            let json2 = null;
+
+            try {
+                const response = await axios.post("/inquiry", {
+                    user_id : user_id,
+                    user_name : user_name,
+                    type : type,
+                    title : title,
+                    inquiry_text : inquiry_text
+                })
+                json2 = response.data
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    return;
+                }
+                console.log(json2);
+                if (json2 != null) {
+                    // window.location ="/GJ9_inquiry_detail_page/inquiry_detail_before.html";
+                }
+                
+        })
+
     </script>
 </body>
 
