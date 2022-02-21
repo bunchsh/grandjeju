@@ -1,5 +1,5 @@
 <!--
- @filename    : inquiry_write.html
+ @filename    : review_write.html
  @author      : 한송희 (onee.ssong@gmail.com)
  @description : Grandjeju REVEIW 작성 페이지의 구조 구현
 -->
@@ -40,7 +40,7 @@
 
             <!-- CONTENT -->
             <div id="content">
-                <form id="inquiry_write">
+                <form id="review_write">
                     <!-- 제목 항목 -->
                     <div class="title_group">
                         <input class="title_input" id="title" type="text" placeholder="제목">
@@ -76,7 +76,7 @@
     
 
     
-        document.querySelector('#inquiry_write').addEventListener("submit", e => {
+        document.querySelector('#review_write').addEventListener("submit", e => {
             e.preventDefault();
             console.log(editor.getHTML);
 
@@ -141,7 +141,7 @@
         })
     </script>
     <script>
-        document.querySelector('#inquiry_write').addEventListener("submit", async(e) => {
+        document.querySelector('#review_write').addEventListener("submit", async(e) => {
             e.preventDefault();
 
             const user_name = "양수원"
