@@ -5,7 +5,7 @@
  */
 
 /** 로그인 Alert */
-document.querySelector(".btn_reservation_logout").addEventListener('click', e => {
+document.querySelector(".btn_reservation").addEventListener('click', e => {
     (async () => {
         let json = null;
     
