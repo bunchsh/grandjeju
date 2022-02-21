@@ -11,16 +11,15 @@ class RegexHelper {
      * @Param {string} msg     값이 없는 경우 표시할 메시지 내용
      */
 
-    value(content, msg) {
+     value(content, msg) {
         if (
-            content == undefined ||
-            content == null ||
-            content.trim().length == 0
-        ) {
+            content == undefined || 
+            content == null || 
+            content.length == 0
+            ) {
             throw new BadRequestException(msg);
         }
-
-        return true;
+        return true; // 성공했음을 반환
     }
 
     /**
