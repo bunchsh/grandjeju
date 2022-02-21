@@ -509,7 +509,7 @@ module.exports = (app) => {
      */
      router.get("/members/info", async (req, res, next) => {
         if (req.session.memberInfo === undefined) {
-            return next(new BadRequestException('로그인 상태가 아닙니다.'));
+            return next(new BadRequestException('로그인 후, 이용해 주세요.'));
         }
 
         res.sendJson({
