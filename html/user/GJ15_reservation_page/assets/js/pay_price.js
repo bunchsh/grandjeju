@@ -77,6 +77,7 @@ date.addEventListener("change", (e) => {
     const diff_date = start_date.getTime() - end_date.getTime();
     let date_days = Math.abs(diff_date / (1000 * 3600 * 24));
 
+    console.log(start);
     console.log("기간:: ", date_days);
 
     /** 객실 변경 시, 결제 금액 */
@@ -106,6 +107,78 @@ date.addEventListener("change", (e) => {
     } else {
         document.querySelector(".payfee").innerHTML = total_price;
     }
+
+    (async () => {
+        let json = null;
+
+        try {
+            const response = await axios.get('/members/info');
+            json = response.data;
+        } catch (e) {
+            alert(e.response.data.rtmsg);
+            window.location = "/GJ2_login_page/login.html";
+            return;
+        }
+
+        console.log(json.item);
+
+        if (json != null) {
+            document.querySelector("#reservation").addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                // 입력값 받아오기
+                const room = document.querySelector("#room_select").value;
+                console.log(room);
+                const person = document.querySelector("#person_select").value;
+                console.log(person);
+
+                const stay_start = document.querySelector(".day_select").value.slice(0, 10);
+                const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
+                const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
+                console.log(stay_start);
+                console.log(stay_end);
+
+                const reserv_name = document.querySelector(".booker_input").value;
+                console.log(reserv_name);
+                const reserv_phone = document.querySelector(".phone_input").value;
+                console.log(reserv_phone);
+                const pay_way = document.querySelector(".pay").value;
+                console.log(pay_way);
+
+                const pay_price = document.querySelector(".pay").value;
+                console.log(pay_price);
+
+                // 입력값에 대한 유효성 검사 진행 (생략)
+
+                let json2 = null;
+
+                try {
+                    const response = await axios.post("/reservation", {
+                        user_id: json.item.user_id,
+                        room: room,
+                        person: person,
+                        stay_start: stay_start,
+                        stay_end: stay_end,
+                        reserv_name: reserv_name,
+                        reserv_phone: reserv_phone,
+                        pay_way: pay_way,
+                        pay_price: total_price
+                    });
+
+                    json2 = response.data;
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    return;
+                }
+
+                if (json2 != null) {
+                    console.log(json);
+                    // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                    window.location = "/GJ16_reservation_clear/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
+                }
+            });
+        }
+    })();
 
     const pay_radio = document.getElementsByName("pay");
     const buyer_name = document.getElementsByClassName("booker_input").value;

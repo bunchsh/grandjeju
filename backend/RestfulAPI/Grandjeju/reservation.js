@@ -210,7 +210,7 @@ module.exports = (app) => {
         const stay_end = req.post('stay_end');
 
         try {
-            regexHelper.value(pay_price, '아이디가 없습니다.');
+            regexHelper.value(pay_price, '결제 금액이 없습니다.');
         } catch (err) {
             return next(err);
         }

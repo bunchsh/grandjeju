@@ -22,7 +22,7 @@ module.exports = {
     public_path: path.join(__dirname, '../../html/manager'),
 
     /** favicon 경로 */
-    favicon_path: path.join(__dirname, '../favicon.png'),
+    favicon_path: path.join(__dirname, '../../html/favicon.png'),
 
     /** manager 디렉토리 경로 */
     user_path: path.join(__dirname, '../../html/user'),
