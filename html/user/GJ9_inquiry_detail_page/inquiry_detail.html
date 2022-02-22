@@ -70,27 +70,41 @@
             const params = new URLSearchParams(window.location.search);
             const inquiry_id = params.get('inquiry_id');
 
+            // 출력할 요소에 대한 변수 선언
             const type = document.querySelector(".type")
             const title = document.querySelector(".title_title")
             const inquiry_date = document.querySelector(".inquiry_date")
             const inquiry_text = document.querySelector(".inquiry_text")
             const answer_text = document.querySelector(".answer_text")
 
-            let json = null;
+            // 데이터를 저장할 전역변수 
+            let json_inquiry = null;
+            let json_login = null;
             try {
-                const response = await axios.get('/inquiry/' + inquiry_id)
-                json = response.data
+                const response1 = await axios.get('/inquiry/' + inquiry_id)
+                const response2 = await axios.get('/members/info');
+                json_inquiry = response1.data
+                json_login = response2.data
             }catch (e) {
                 alert(e.response.data.rtmsg);
                 return;
             }
-            if(json != null) {
-                console.log(json);
-                title.innerHTML = json.item[0].title;
-                type.innerHTML = json.item[0].type
-                inquiry_date.innerHTML = json.item[0].inquiry_date
-                inquiry_text.innerHTML = json.item[0].inquiry_text
-                answer_text.innerHTML = json.item[0].answer_text
+            console.log(json_inquiry);
+
+            // 작성자와 접속유저가 일치하는지 확인
+            if (json_inquiry.item[0].user_id != json_login.item.user_id) {
+                alert("접근 권한이 없습니다");
+                history.back()
+                throw new Error("접근 권한이 없습니다");
+            }
+
+            // 요소 출력
+            if(json_inquiry != null) {
+                title.innerHTML = json_inquiry.item[0].title;
+                type.innerHTML = json_inquiry.item[0].type
+                inquiry_date.innerHTML = json_inquiry.item[0].inquiry_date
+                inquiry_text.innerHTML = json_inquiry.item[0].inquiry_text
+                answer_text.innerHTML = json_inquiry.item[0].answer_text
             }
         })();
     </script>
