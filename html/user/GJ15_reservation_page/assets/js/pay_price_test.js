@@ -175,11 +175,8 @@ date.addEventListener("change", (e) => {
                                     const reserv_phone = document.querySelector(".phone_input").value;
                                     console.log(reserv_phone);
 
-                                    const pay_way = document.querySelector(".only-sr").value;
+                                    const pay_way = pay_radio[i].value;
                                     console.log(pay_way);
-
-                                    const order_no = 'test123';
-                                    console.log(order_no);
 
                                     // 입력값에 대한 유효성 검사 진행 (생략)
 
@@ -196,7 +193,7 @@ date.addEventListener("change", (e) => {
                                             reserv_phone: reserv_phone,
                                             pay_way: pay_way,
                                             pay_price: total_price,
-                                            order_no: order_no
+                                            order_no: rsp.merchant_uid
                                         });
 
                                         json2 = response.data;
@@ -274,11 +271,8 @@ date.addEventListener("change", (e) => {
                                 const reserv_phone = document.querySelector(".phone_input").value;
                                 console.log(reserv_phone);
 
-                                const pay_way = document.querySelector(".only-sr").value;
+                                const pay_way = pay_radio[i].value;
                                 console.log(pay_way);
-
-                                const order_no = 'test123';
-                                console.log(order_no);
 
                                 // 입력값에 대한 유효성 검사 진행 (생략)
 
@@ -295,7 +289,7 @@ date.addEventListener("change", (e) => {
                                         reserv_phone: reserv_phone,
                                         pay_way: pay_way,
                                         pay_price: total_price,
-                                        order_no: order_no
+                                        order_no: rsp.merchant_uid
                                     });
 
                                     json2 = response.data;
