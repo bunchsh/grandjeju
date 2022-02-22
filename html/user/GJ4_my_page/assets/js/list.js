@@ -12,7 +12,7 @@
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);
-        history.back();
+        window.location = "/GJ2_login_page/login.html";
         return;
     }
 

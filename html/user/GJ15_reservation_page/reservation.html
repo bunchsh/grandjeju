@@ -119,87 +119,92 @@
     <!-- 객실에 따른 선택 가능 인원 출력 -->
     <script src="./assets/js/person_option.js"></script>
 
-    <!-- 결제 금액 출력 -->
-    <script src="./assets/js/pay_price.js"></script>
-
     <!-- 아임 포트 사용 -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <!-- 예약 버튼 이벤트 -->
+    <script src="./assets/js/pay_price.js"></script>
+
     <script>
         (async () => {
-            let json = null;
+        let json = null;
 
-            try {
-                const response = await axios.get('/members/info');
-                json = response.data;
-            } catch (e) {
-                alert(e.response.data.rtmsg);
-                window.location = "/GJ2_login_page/login.html";
-                return;
-            }
+        try {
+            const response = await axios.get('/members/info');
+            json = response.data;
+        } catch (e) {
+            alert(e.response.data.rtmsg);
+            window.location = "/GJ2_login_page/login.html";
+            return;
+        }
 
-            console.log(json.item);
+        console.log(json.item);
 
-            if (json != null) {
-                document.querySelector("#reservation").addEventListener("submit", async (e) => {
-                    e.preventDefault();
+        /** 예약 정보 DB 저장 */
+        if (json != null) {
+            document.querySelector("#reservation").addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-                    // 입력값 받아오기
-                    const room = document.querySelector("#room_select").value;
-                    console.log(room);
-                    const person = document.querySelector("#person_select").value;
-                    console.log(person);
+                // 입력값 받아오기
+                const room = document.querySelector("#room_select").value;
+                console.log(room);
+                const person = document.querySelector("#person_select").value;
+                console.log(person);
 
-                    const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-                    const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-                    const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-                    console.log(stay_start);
-                    console.log(stay_end);
+                const stay_start = document.querySelector(".day_select").value.slice(0, 10);
+                const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
+                const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
+                console.log(stay_start);
+                console.log(stay_end);
 
-                    const reserv_name = document.querySelector(".booker_input").value;
-                    console.log(reserv_name);
-                    const reserv_phone = document.querySelector(".phone_input").value;
-                    console.log(reserv_phone);
-                    const pay_way = document.querySelector(".pay").value;
-                    console.log(pay_way);
+                const reserv_name = document.querySelector(".booker_input").value;
+                console.log(reserv_name);
+                const reserv_phone = document.querySelector(".phone_input").value;
+                console.log(reserv_phone);
 
-                    const pay_price = document.querySelector(".pay").value;
-                    console.log(pay_price);
+                const pay_way = document.querySelector(".only-sr").value;
+                console.log(pay_way);
+                // const pay_price = total_price;
+                console.log(total_price);
 
-                    // 입력값에 대한 유효성 검사 진행 (생략)
+                const order_no = 'test123';
+                console.log(order_no);
 
-                    let json2 = null;
+                // 입력값에 대한 유효성 검사 진행 (생략)
 
-                    try {
-                        const response = await axios.post("/reservation", {
-                            user_id: json.item.user_id,
-                            room: room,
-                            person: person,
-                            stay_start: stay_start,
-                            stay_end: stay_end,
-                            reserv_name: reserv_name,
-                            reserv_phone: reserv_phone,
-                            pay_way: pay_way,
-                            pay_price: total_price
-                        });
+                let json2 = null;
 
-                        json2 = response.data;
-                    } catch (e) {
-                        alert(e.response.data.rtmsg);
-                        return;
-                    }
+                try {
+                    const response = await axios.post("/reservation", {
+                        user_id: json.item.user_id,
+                        room: room,
+                        person: person,
+                        stay_start: stay_start,
+                        stay_end: stay_end,
+                        reserv_name: reserv_name,
+                        reserv_phone: reserv_phone,
+                        pay_way: pay_way,
+                        pay_price: total_price,
+                        order_no: order_no
+                    });
 
-                    if (json2 != null) {
-                        console.log(json);
-                        // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-                        window.location = "/GJ16_reservation_clear/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
-                    }
-                });
-            }
-        })();
+                    json2 = response.data;
+
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    return;
+                }
+
+                if (json2 != null) {
+                    console.log(json2);
+                    // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                }
+            });
+        }
+    })();
     </script>
 
 </body>
