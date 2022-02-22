@@ -140,7 +140,7 @@ date.addEventListener("change", (e) => {
                                 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
                                 */
                             },
-                                (async (rsp) => {
+                                async (rsp) => {
                                     console.log(rsp);
                                     if (rsp.success) {
                                         var msg = "결제가 완료되었습니다.";
@@ -211,7 +211,7 @@ date.addEventListener("change", (e) => {
                                         // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
                                         window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
                                     }
-                                })
+                                }
                             );
                         }
                     });
@@ -239,111 +239,18 @@ date.addEventListener("change", (e) => {
                                 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
                                 */
                             },
-                                (async (rsp) => {
-                                    console.log(rsp);
-                                    if (rsp.success) {
-                                        var msg = "결제가 완료되었습니다.";
-                                        msg += "고유ID : " + rsp.imp_uid;
-                                        msg +=
-                                            "상점 거래ID : " + rsp.merchant_uid;
-                                        msg += "결제 금액 : " + rsp.paid_amount;
-                                        msg +=
-                                            "카드 승인번호 : " + rsp.apply_num;
-                                        location.href =
-                                            "../GJ16_reservation_clear_page/resevation_clear.html";
-                                    } else {
-                                        var msg = "결제에 실패하였습니다.";
-                                        msg += "에러내용 : " + rsp.error_msg;
-                                        history.back();
-                                    }
-                                    alert(msg);
-                                    // 입력값 받아오기
-                                    const room = document.querySelector("#room_select").value;
-                                    console.log(room);
-                                    const person = document.querySelector("#person_select").value;
-                                    console.log(person);
-
-                                    const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-                                    const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-                                    const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-                                    console.log(stay_start);
-                                    console.log(stay_end);
-
-                                    const reserv_name = document.querySelector(".booker_input").value;
-                                    console.log(reserv_name);
-                                    const reserv_phone = document.querySelector(".phone_input").value;
-                                    console.log(reserv_phone);
-
-                                    const pay_way = document.querySelector(".only-sr").value;
-                                    console.log(pay_way);
-
-                                    const order_no = 'test123';
-                                    console.log(order_no);
-
-                                    // 입력값에 대한 유효성 검사 진행 (생략)
-
-                                    let json2 = null;
-
-                                    try {
-                                        const response = await axios.post("/reservation", {
-                                            user_id: json.item.user_id,
-                                            room: room,
-                                            person: person,
-                                            stay_start: stay_start,
-                                            stay_end: stay_end,
-                                            reserv_name: reserv_name,
-                                            reserv_phone: reserv_phone,
-                                            pay_way: pay_way,
-                                            pay_price: total_price,
-                                            order_no: order_no
-                                        });
-
-                                        json2 = response.data;
-
-                                    } catch (e) {
-                                        alert(e.response.data.rtmsg);
-                                        return;
-                                    }
-
-                                    if (json2 != null) {
-                                        console.log(json2);
-                                        // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-                                        window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
-                                    }
-                                })
-                            );
-                        }
-                    });
-            } else if (pay_radio[i].value == "kakaopay"){
-                document
-                    .querySelector("#reservation")
-                    .addEventListener("submit", (e) => {
-                        e.preventDefault();
-                        console.log("카카오페이");
-                        if (regex()) {
-                            IMP.init("imp52209533");
-                            // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-                            // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-                            IMP.request_pay({
-                                pg: "kakaopay", //카카오페이 결제창 호출
-                                amount: total_price,
-                                name: "GrandJeju",
-                                buyer_name: buyer_name,
-                                m_redirect_url: "https://www.yourdomain.com/payments/complete",
-                                /*
-                                모바일 결제시,
-                                결제가 끝나고 랜딩되는 URL을 지정
-                                (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-                                */
-                            },
-                            (async (rsp) => {
+                            async (rsp) => {
                                 console.log(rsp);
                                 if (rsp.success) {
                                     var msg = "결제가 완료되었습니다.";
                                     msg += "고유ID : " + rsp.imp_uid;
-                                    msg += "상점 거래ID : " + rsp.merchant_uid;
+                                    msg +=
+                                        "상점 거래ID : " + rsp.merchant_uid;
                                     msg += "결제 금액 : " + rsp.paid_amount;
-                                    msg += "카드 승인번호 : " + rsp.apply_num;
+                                    msg +=
+                                        "카드 승인번호 : " + rsp.apply_num;
+                                    location.href =
+                                        "../GJ16_reservation_clear_page/resevation_clear.html";
                                 } else {
                                     var msg = "결제에 실패하였습니다.";
                                     msg += "에러내용 : " + rsp.error_msg;
@@ -403,7 +310,97 @@ date.addEventListener("change", (e) => {
                                     // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
                                     window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
                                 }
-                            })
+                            }
+                            );
+                        }
+                    });
+            } else if (pay_radio[i].value == "kakaopay"){
+                document
+                    .querySelector("#reservation")
+                    .addEventListener("submit", (e) => {
+                        e.preventDefault();
+                        console.log("카카오페이");
+                        if (regex()) {
+                            IMP.init("imp52209533");
+                            // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+                            // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+                            IMP.request_pay({
+                                pg: "kakaopay", //카카오페이 결제창 호출
+                                amount: total_price,
+                                name: "GrandJeju",
+                                buyer_name: buyer_name,
+                                m_redirect_url: "https://www.yourdomain.com/payments/complete",
+                                /*
+                                모바일 결제시,
+                                결제가 끝나고 랜딩되는 URL을 지정
+                                (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+                                */
+                            },
+                            async (rsp) => {
+                                console.log(rsp);
+                                if (rsp.success) {
+                                    var msg = "결제가 완료되었습니다.";
+                                    msg += "고유ID : " + rsp.imp_uid;
+                                    msg += "상점 거래ID : " + rsp.merchant_uid;
+                                    msg += "결제 금액 : " + rsp.paid_amount;
+                                    msg += "카드 승인번호 : " + rsp.apply_num;
+                                } else {
+                                    var msg = "결제에 실패하였습니다.";
+                                    msg += "에러내용 : " + rsp.error_msg;
+                                    history.back();
+                                }
+                                alert(msg);
+                                // 입력값 받아오기
+                                const room = document.querySelector("#room_select").value;
+                                console.log(room);
+                                const person = document.querySelector("#person_select").value;
+                                console.log(person);
+
+                                const stay_start = document.querySelector(".day_select").value.slice(0, 10);
+                                const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
+                                const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
+                                console.log(stay_start);
+                                console.log(stay_end);
+
+                                const reserv_name = document.querySelector(".booker_input").value;
+                                console.log(reserv_name);
+                                const reserv_phone = document.querySelector(".phone_input").value;
+                                console.log(reserv_phone);
+
+                                const pay_way = document.querySelector(".only-sr").value;
+                                console.log(pay_way);
+
+                                // 입력값에 대한 유효성 검사 진행 (생략)
+
+                                let json2 = null;
+
+                                try {
+                                    const response = await axios.post("/reservation", {
+                                        user_id: json.item.user_id,
+                                        room: room,
+                                        person: person,
+                                        stay_start: stay_start,
+                                        stay_end: stay_end,
+                                        reserv_name: reserv_name,
+                                        reserv_phone: reserv_phone,
+                                        pay_way: pay_way,
+                                        pay_price: total_price,
+                                        order_no: rsp.merchant_uid
+                                    });
+
+                                    json2 = response.data;
+
+                                } catch (e) {
+                                    alert(e.response.data.rtmsg);
+                                    return;
+                                }
+
+                                if (json2 != null) {
+                                    console.log(json2);
+                                    // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                                    window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
+                                }
+                            }
                         );
                     }
                 });
