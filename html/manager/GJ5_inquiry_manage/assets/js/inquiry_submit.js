@@ -20,7 +20,7 @@ document.querySelector("#inquiry_answer_form").addEventListener("submit", async 
     let json = null;
 
     try {
-        const response = await axios.put("/inquiry/" + inquiry_id, {
+        const response = await axios.put("/inquiry_answer/" + inquiry_id, {
             type: type,
             title: title,
             inquiry_text: inquiry_text,
