@@ -54,8 +54,7 @@
 
                 <!-- 버튼 -->
                 <div class="btn_group">
-                    <button class="btn_modify" type="button">수정</button>
-                    <button class="btn_delete" type="button">삭제</button>
+                    
                 </div>
             </div>
         </div>
@@ -76,6 +75,7 @@
             const inquiry_date = document.querySelector(".inquiry_date")
             const inquiry_text = document.querySelector(".inquiry_text")
             const answer_text = document.querySelector(".answer_text")
+            const btn_group = document.querySelector(".btn_group")
 
             // 데이터를 저장할 전역변수 
             let json_inquiry = null;
@@ -91,20 +91,54 @@
             }
             console.log(json_inquiry);
 
-            // 작성자와 접속유저가 일치하는지 확인
-            if (json_inquiry.item[0].user_id != json_login.item.user_id) {
-                alert("접근 권한이 없습니다");
-                history.back()
-                throw new Error("접근 권한이 없습니다");
-            }
-
             // 요소 출력
             if(json_inquiry != null) {
+
+                // 작성자와 접속유저가 일치하는지 확인
+                if (json_inquiry.item[0].user_id != json_login.item.user_id) {
+                    alert("접근 권한이 없습니다");
+                    history.back()
+                    throw new Error("접근 권한이 없습니다");
+                }
                 title.innerHTML = json_inquiry.item[0].title;
                 type.innerHTML = json_inquiry.item[0].type
                 inquiry_date.innerHTML = json_inquiry.item[0].inquiry_date
                 inquiry_text.innerHTML = json_inquiry.item[0].inquiry_text
                 answer_text.innerHTML = json_inquiry.item[0].answer_text
+            }
+
+            if(json_inquiry.item[0].state == "N") {
+                btn_group.innerHTML = `
+                <button class="btn_modify" type="button"><a href="/GJ10_inquiry_modify_page/inquiry_modify.html?inquiry_id=${inquiry_id}">수정</a></button>
+                <button class="btn_delete" type="button" onclick="back()" >삭제</button>
+                `
+            }
+            const btn_delete = function () {
+                swal({
+                    
+                    text: "정말 삭제하시겠습니까?", // Alert 내용
+                    buttons: {
+                        OK : true,  // 확인 버튼
+                        cancel: "cancel"    // 취소 버튼
+                    }
+                }).then( async (value) => {   // 확인 버튼 이벤트
+                    console.log(value);
+                    if(value == 'OK'){
+
+                        try {
+                            const url = '/inquiry/' + inquiry_id;
+                            await axios.delete(url);
+                        } catch (e) {
+                            // 에러가 발생한 경우 벡엔드가 주는 json 받기
+                            const data = e.response.data;
+                            alert("[" + data.rt + "]" + data.rmsg);
+                            return;
+                        }
+                        window.location ="/GJ4_my_page/my.html"
+                    
+                    }
+                    
+                });
             }
         })();
     </script>
