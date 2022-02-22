@@ -43,13 +43,6 @@
             </div>
         </div>
     </div>
-    
-    <script type="text/javascript">
-        // 해당 예약 상세 내역 페이지 이동
-        document.querySelector('.btn_ok').addEventListener('click', e => {
-            location.href="../GJ7_reservation_detail_page/reservation_detail.html";
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
@@ -131,6 +124,11 @@
                         const html = template(json2.item[0]);
 
                         document.querySelector('#contents').insertAdjacentHTML('beforeend', html);
+
+                        // 해당 예약 상세 내역 페이지 이동
+                        document.querySelector('.btn_ok').addEventListener('click', e => {
+                            location.href="/GJ7_reservation_detail_page/reservation_detail.html?reserv_id=" + json2.item[0].reserv_id;
+                        });
                     }
                 })();
             };
