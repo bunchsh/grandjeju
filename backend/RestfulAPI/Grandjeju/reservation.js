@@ -212,26 +212,27 @@ module.exports = (app) => {
         try {
             regexHelper.value(order_no, '결제 번호가 없습니다.');
 
-            regexHelper.value(pay_price, '결제 금액이 없습니다.');
-
+            // regexHelper.value(pay_price, '결제 금액이 없습니다.');
+            
             regexHelper.value(pay_way, '결제 방법이 없습니다.');
-
+            
             regexHelper.value(user_id, '아이디가 없습니다.');
-
+            
             regexHelper.value(reserv_name, '예약자명이 없습니다.');
-
+            
             regexHelper.value(room, '객실이 없습니다.');
-
+            
             regexHelper.value(reserv_phone, '예약자 연락처가 없습니다.');
 
             regexHelper.value(person, '인원이 없습니다.');
-
+            
             regexHelper.value(stay_start, '입실일이 없습니다.');
-
+            
             regexHelper.value(stay_end, '퇴실일이 없습니다.');
         } catch (err) {
             return next(err);
         }
+        console.log(pay_price);
 
         /** 데이터 저장하기 */
         // 데이터 조회 결과가 저장될 빈 변수
