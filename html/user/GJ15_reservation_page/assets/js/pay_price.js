@@ -5,6 +5,7 @@
 
  (async () => {
     let json = null;
+    let total_price = null;
 
     try {
         const response = await axios.get('/members/info');
@@ -95,7 +96,7 @@
                 }
             });
             /** 최종 결제할 가격 */
-            var total_price =
+            total_price =
                 (parseInt(person.options[person.selectedIndex].dataset.price) +
                     parseInt(room.options[room.selectedIndex].dataset.price)) *
                 date_days;
@@ -104,6 +105,8 @@
             } else {
                 document.querySelector(".payfee").innerHTML = total_price;
             }
+
+            /** 아임 포트 연동 */
             const pay_radio = document.getElementsByName("pay");
             const buyer_name = document.getElementsByClassName("booker_input").value;
             const buyer_tel = document.getElementsByClassName("phone_input").value;
@@ -145,8 +148,6 @@
                                                 msg += "결제 금액 : " + rsp.paid_amount;
                                                 msg +=
                                                     "카드 승인번호 : " + rsp.apply_num;
-                                                location.href =
-                                                    "../GJ16_reservation_clear_page/resevation_clear.html";
                                             } else {
                                                 var msg = "결제에 실패하였습니다.";
                                                 msg += "에러내용 : " + rsp.error_msg;
@@ -191,8 +192,6 @@
                                                 msg += "결제 금액 : " + rsp.paid_amount;
                                                 msg +=
                                                     "카드 승인번호 : " + rsp.apply_num;
-                                                location.href =
-                                                    "../GJ16_reservation_clear_page/resevation_clear.html";
                                             } else {
                                                 var msg = "결제에 실패하였습니다.";
                                                 msg += "에러내용 : " + rsp.error_msg;
@@ -233,8 +232,6 @@
                                             msg += "상점 거래ID : " + rsp.merchant_uid;
                                             msg += "결제 금액 : " + rsp.paid_amount;
                                             msg += "카드 승인번호 : " + rsp.apply_num;
-                                            location.href =
-                                                "../GJ16_reservation_clear_page/resevation_clear.html";
                                         } else {
                                             var msg = "결제에 실패하였습니다.";
                                             msg += "에러내용 : " + rsp.error_msg;
@@ -250,64 +247,63 @@
             }
 
             /** 예약 정보 DB 저장 */
-        document.querySelector("#reservation").addEventListener("submit", async (e) => {
-            e.preventDefault();
+            document.querySelector("#reservation").addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-            // 입력값 받아오기
-            const room = document.querySelector("#room_select").value;
-            console.log(room);
-            const person = document.querySelector("#person_select").value;
-            console.log(person);
+                // 입력값 받아오기
+                const room = document.querySelector("#room_select").value;
+                console.log(room);
+                const person = document.querySelector("#person_select").value;
+                console.log(person);
 
-            const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-            const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-            const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-            console.log(stay_start);
-            console.log(stay_end);
+                const stay_start = document.querySelector(".day_select").value.slice(0, 10);
+                const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
+                const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
+                console.log(stay_start);
+                console.log(stay_end);
 
-            const reserv_name = document.querySelector(".booker_input").value;
-            console.log(reserv_name);
-            const reserv_phone = document.querySelector(".phone_input").value;
-            console.log(reserv_phone);
+                const reserv_name = document.querySelector(".booker_input").value;
+                console.log(reserv_name);
+                const reserv_phone = document.querySelector(".phone_input").value;
+                console.log(reserv_phone);
 
-            const pay_way = document.querySelector(".only-sr").value;
-            console.log(pay_way);
-            const pay_price = total_price;
-            console.log(pay_price);
+                const pay_way = document.querySelector(".only-sr").value;
+                console.log(pay_way);
 
-            const order_no = 'test123';
-            console.log(order_no);
+                const order_no = 'test123';
+                console.log(order_no);
 
-            // 입력값에 대한 유효성 검사 진행 (생략)
+                // 입력값에 대한 유효성 검사 진행 (생략)
 
-            let json2 = null;
+                let json2 = null;
 
-            try {
-                const response = await axios.post("/reservation", {
-                    user_id: json.item.user_id,
-                    room: room,
-                    person: person,
-                    stay_start: stay_start,
-                    stay_end: stay_end,
-                    reserv_name: reserv_name,
-                    reserv_phone: reserv_phone,
-                    pay_way: pay_way,
-                    pay_price: pay_price,
-                    order_no: order_no
-                });
+                try {
+                    const response = await axios.post("/reservation", {
+                        user_id: json.item.user_id,
+                        room: room,
+                        person: person,
+                        stay_start: stay_start,
+                        stay_end: stay_end,
+                        reserv_name: reserv_name,
+                        reserv_phone: reserv_phone,
+                        pay_way: pay_way,
+                        pay_price: total_price,
+                        order_no: order_no
+                    });
 
-                json2 = response.data;
+                    json2 = response.data;
 
-            } catch (e) {
-                alert(e.response.data.rtmsg);
-                return;
-            }
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    return;
+                }
 
-            if (json2 != null) {
-                console.log(json2);
-                // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-            }
-        });
+                if (json2 != null) {
+                    console.log(json2);
+                    // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                    window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
+                }
+            });
         });
 
         

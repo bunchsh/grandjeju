@@ -124,87 +124,10 @@
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    
     <!-- 예약 버튼 이벤트 -->
-    <script src="./assets/js/pay_price.js"></script>
+    <script src="./assets/js/pay_price_test.js"></script>
 
-    <script>
-    //     (async () => {
-    //     let json = null;
-
-    //     try {
-    //         const response = await axios.get('/members/info');
-    //         json = response.data;
-    //     } catch (e) {
-    //         alert(e.response.data.rtmsg);
-    //         window.location = "/GJ2_login_page/login.html";
-    //         return;
-    //     }
-
-    //     console.log(json.item);
-
-    //     /** 예약 정보 DB 저장 */
-    //     if (json != null) {
-    //         document.querySelector("#reservation").addEventListener("submit", async (e) => {
-    //             e.preventDefault();
-
-    //             // 입력값 받아오기
-    //             const room = document.querySelector("#room_select").value;
-    //             console.log(room);
-    //             const person = document.querySelector("#person_select").value;
-    //             console.log(person);
-
-    //             const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-    //             const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-    //             const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-    //             console.log(stay_start);
-    //             console.log(stay_end);
-
-    //             const reserv_name = document.querySelector(".booker_input").value;
-    //             console.log(reserv_name);
-    //             const reserv_phone = document.querySelector(".phone_input").value;
-    //             console.log(reserv_phone);
-
-    //             const pay_way = document.querySelector(".only-sr").value;
-    //             console.log(pay_way);
-    //             // const pay_price = total_price;
-    //             console.log(total_price);
-
-    //             const order_no = 'test123';
-    //             console.log(order_no);
-
-    //             // 입력값에 대한 유효성 검사 진행 (생략)
-
-    //             let json2 = null;
-
-    //             try {
-    //                 const response = await axios.post("/reservation", {
-    //                     user_id: json.item.user_id,
-    //                     room: room,
-    //                     person: person,
-    //                     stay_start: stay_start,
-    //                     stay_end: stay_end,
-    //                     reserv_name: reserv_name,
-    //                     reserv_phone: reserv_phone,
-    //                     pay_way: pay_way,
-    //                     pay_price: total_price,
-    //                     order_no: order_no
-    //                 });
-
-    //                 json2 = response.data;
-
-    //             } catch (e) {
-    //                 alert(e.response.data.rtmsg);
-    //                 return;
-    //             }
-
-    //             if (json2 != null) {
-    //                 console.log(json2);
-    //                 // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-    //             }
-    //         });
-    //     }
-    // })();
-    </script>
+    
 
 </body>
