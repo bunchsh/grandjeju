@@ -63,6 +63,10 @@
     border: 1px solid black;
     margin-right: -4px;
 }
+#container #content .btn_group .btn_modify a, .btn_delete a {
+    color: white;
+    text-decoration: none;
+}
 #container #content .btn_group .btn_delete {
     width: 60px;
     height: 35px;

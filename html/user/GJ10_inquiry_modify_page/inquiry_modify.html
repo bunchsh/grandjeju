@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                 <form id="inquiry_modify">
                     <!-- 문의 종류 선택 -->
                     <div class="select_group">
-                        <select class="inquiry_option">
+                        <select class="inquiry_option"id="option">
                             <option value="">문의 종류</option>
                             <option value="예약 문의">예약 문의</option>
                             <option value="시설 문의">시설 문의</option>
@@ -46,11 +47,11 @@
                     </div>
                     <!-- 제목 항목 -->
                     <div class="title_group">
-                        <input class="title_input" type="text" placeholder="제목">
+                        <input class="title_input" id="title" type="text" placeholder="제목">
                     </div>
                     <!-- 본문 항목 -->
                     <div class="editor_group">
-                        <textarea id="editor" name="content"></textarea>
+                        <div id="editor" ></div>
                     </div>
                     <!-- 버튼 -->
                     <div class="btn_group">
@@ -61,36 +62,76 @@
             </div>
         </div>
     </div>
-    <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-    <script src="./assets/js/cancel_alert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
     <script src="./assets/js/write_regex_helper.js"></script>
     <script>
         /** editor 구성 */
-        ClassicEditor.create(document.querySelector('#editor'))
-            .then((editor) => {
-                console.log(editor);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        const Editor = toastui.Editor;
+        const editor = new Editor({
+            el: document.querySelector('#editor'),
+            height: '500px',
+            initialEditType: 'html',
+            previewStyle: 'vertical'
+        });
+    </script>
+    <script src="./assets/js/get_inquiry.js"></script>
+    <script>
 
-        document.querySelector('#inquiry_modify').addEventListener("submit", e => {
+        let json = null;
+        (async () => {
+            try {
+                const response = await axios.get('/members/info');
+                json = response.data
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                // history.back();
+                return;
+            }
+            console.log(json.item);
+        })();
+        
+        document.querySelector('#inquiry_modify').addEventListener('submit', async(e) => {
             e.preventDefault();
-
+            
             const regexHelper = new RegexHelper();
 
             /** 문의 종류 검사 */
-            if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) { return false; }
+            if (!regexHelper.value(".inquiry_option", "문의 종류가 선택되지 않았습니다.")) {return false;}
             /** 제목 검사 */
-            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) { return false; }
+            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) {return false;}
             /** 내용 검사 */
-            if (!regexHelper.value("#editor", "내용이 입력되지 않았습니다.")) { return false; }
+            if (!regexHelper.editor_value(editor.getHTML(), "내용이 입력되지 않았습니다.")) {return false;}
 
-            // 처리 완료
-            location.href = "../GJ10_inquiry_detail_page/inquiry_detail_before.html";
-        });
+            
+            console.log(json.item);
+
+            const type = document.querySelector('#option').value;
+            const title = document.querySelector("#title").value;
+            const inquiry_text = editor.getHTML();
+
+            let json2 = null;
+
+            try {
+                const response = await axios.put("/inquiry/" + inquiry_id, {
+                    type : type,
+                    title : title,
+                    inquiry_text : inquiry_text
+                })
+                json2 = response.data
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    return;
+                }
+                console.log(json2);
+                if (json2 != null) {
+                    window.location ="/GJ4_my_page/my.html"
+                }
+        })
     </script>
+    <script src="assets/js/cancel_btn.js"></script>
 </body>
 
 </html>
