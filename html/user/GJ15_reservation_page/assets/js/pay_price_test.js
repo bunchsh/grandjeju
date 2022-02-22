@@ -367,7 +367,7 @@ date.addEventListener("change", (e) => {
                                 const reserv_phone = document.querySelector(".phone_input").value;
                                 console.log(reserv_phone);
 
-                                const pay_way = document.querySelector(".only-sr").value;
+                                const pay_way = pay_radio[i].value;
                                 console.log(pay_way);
 
                                 // 입력값에 대한 유효성 검사 진행 (생략)
