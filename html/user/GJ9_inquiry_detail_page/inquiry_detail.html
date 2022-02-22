@@ -61,7 +61,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-    <script src="./assets/js/cancel_alert.js"></script>
 
     <script>
         (async () => {
@@ -105,47 +104,54 @@
                 inquiry_date.innerHTML = json_inquiry.item[0].inquiry_date
                 inquiry_text.innerHTML = json_inquiry.item[0].inquiry_text
                 answer_text.innerHTML = json_inquiry.item[0].answer_text
+                
             }
 
+
+            
             if(json_inquiry.item[0].state == "N") {
                 btn_group.innerHTML = `
                 <button class="btn_modify" type="button"><a href="/GJ10_inquiry_modify_page/inquiry_modify.html?inquiry_id=${inquiry_id}">수정</a></button>
-                <button class="btn_delete" type="button" onclick="back()" >삭제</button>
+                <button class="btn_delete" type="button">삭제</button>
                 `
-            }
-            const btn_delete = function () {
-                swal({
-                    
-                    text: "정말 삭제하시겠습니까?", // Alert 내용
-                    buttons: {
-                        OK : true,  // 확인 버튼
-                        cancel: "cancel"    // 취소 버튼
-                    }
-                }).then( async (value) => {   // 확인 버튼 이벤트
-                    console.log(value);
-                    if(value == 'OK'){
-
-                        try {
-                            const url = '/inquiry/' + inquiry_id;
-                            await axios.delete(url);
-                        } catch (e) {
-                            // 에러가 발생한 경우 벡엔드가 주는 json 받기
-                            const data = e.response.data;
-                            alert("[" + data.rt + "]" + data.rmsg);
-                            return;
+                 // 삭제 버튼눌렀을 때 알럿창과 ok버튼을 눌렀을때 데이터 삭제
+                document.querySelector('.btn_delete').addEventListener('click', e => {
+                    swal({
+                        
+                        text: "정말 삭제하시겠습니까?", // Alert 내용
+                        buttons: {
+                            OK : true,  // 확인 버튼
+                            cancel: "cancel"    // 취소 버튼
                         }
-                        window.location ="/GJ4_my_page/my.html"
-                    
-                    }
-                    
-                });
+                    }).then( async (value) => {   // 확인 버튼 이벤트
+                        console.log(value);
+                        if(value == 'OK'){
+
+                            try {
+                                const url = '/inquiry/' + inquiry_id;
+                                await axios.delete(url);
+                            } catch (e) {
+                                // 에러가 발생한 경우 벡엔드가 주는 json 받기
+                                const data = e.response.data;
+                                alert("[" + data.rt + "]" + data.rmsg);
+                                return;
+                            }
+                            window.location ="/GJ4_my_page/my.html"
+                        }
+                        
+                    });
+                } )
+        
             }
+
+            
+    
         })();
     </script>
 
 
     <!-- 수정 버튼 클릭 시, 수정 페이지 이동 -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         document.querySelector('.btn_modify').addEventListener("click", e => {
             e.preventDefault();
 
@@ -155,7 +161,7 @@
 
             // 수정 페이지로 이동
             location.href="/GJ10_inquiry_modify_page/inquiry_modify.html?inquiry_id=" + inquiry_id;
-        });
+        }); -->
     </script>
 </body>
 </html>
