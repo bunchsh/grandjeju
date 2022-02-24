@@ -5,7 +5,11 @@
 
  (async () => {
     let json = null;
-    let total_price = null;
+    let total_price = null; // 최종 결제 금액을 저장할 변수
+
+    let start = null;   // 입실일 변수
+    let cut = null;     // 문자열 파싱을 위한 변수
+    let end = null;     // 퇴실일 변수
     
     try {
         const response = await axios.get('/members/info');
@@ -162,12 +166,6 @@
                                         const person = document.querySelector("#person_select").value;
                                         console.log(person);
     
-                                        const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-                                        const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-                                        const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-                                        console.log(stay_start);
-                                        console.log(stay_end);
-    
                                         const reserv_name = document.querySelector(".booker_input").value;
                                         console.log(reserv_name);
                                         const reserv_phone = document.querySelector(".phone_input").value;
@@ -185,8 +183,8 @@
                                                 user_id: json.item.user_id,
                                                 room: room,
                                                 person: person,
-                                                stay_start: stay_start,
-                                                stay_end: stay_end,
+                                                stay_start: start,
+                                                stay_end: end,
                                                 reserv_name: reserv_name,
                                                 reserv_phone: reserv_phone,
                                                 pay_way: pay_way,
@@ -256,12 +254,6 @@
                                     const person = document.querySelector("#person_select").value;
                                     console.log(person);
     
-                                    const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-                                    const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-                                    const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-                                    console.log(stay_start);
-                                    console.log(stay_end);
-    
                                     const reserv_name = document.querySelector(".booker_input").value;
                                     console.log(reserv_name);
                                     const reserv_phone = document.querySelector(".phone_input").value;
@@ -279,8 +271,8 @@
                                             user_id: json.item.user_id,
                                             room: room,
                                             person: person,
-                                            stay_start: stay_start,
-                                            stay_end: stay_end,
+                                            stay_start: start,
+                                            stay_end: end,
                                             reserv_name: reserv_name,
                                             reserv_phone: reserv_phone,
                                             pay_way: pay_way,
@@ -346,12 +338,6 @@
                                     const person = document.querySelector("#person_select").value;
                                     console.log(person);
     
-                                    const stay_start = document.querySelector(".day_select").value.slice(0, 10);
-                                    const cut = document.querySelector(".day_select").value.indexOf("~") + 2;
-                                    const stay_end = document.querySelector(".day_select").value.slice(cut, cut + 10);
-                                    console.log(stay_start);
-                                    console.log(stay_end);
-    
                                     const reserv_name = document.querySelector(".booker_input").value;
                                     console.log(reserv_name);
                                     const reserv_phone = document.querySelector(".phone_input").value;
@@ -369,8 +355,8 @@
                                             user_id: json.item.user_id,
                                             room: room,
                                             person: person,
-                                            stay_start: stay_start,
-                                            stay_end: stay_end,
+                                            stay_start: start,
+                                            stay_end: end,
                                             reserv_name: reserv_name,
                                             reserv_phone: reserv_phone,
                                             pay_way: pay_way,
