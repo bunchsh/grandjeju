@@ -75,12 +75,15 @@
 #container .btn_group .btn_cancel {
     display: block;
     width: 90%;
-    height: 50px;
+    height: 55px;
     background-color: black;
     color: white;
     border-radius: 5px 5px 5px 5px;
     border: none;
     margin: 0 auto;
+
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #container .btn_group .btn_cancel_oneday {
