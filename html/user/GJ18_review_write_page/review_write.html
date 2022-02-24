@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b718907b8f.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
@@ -34,10 +35,6 @@
         <!-- CONTAINER -->
         <div id="container">
 
-            <form>
-                <input type='file' name='photo_img' multiple id='photo_img'/>
-            </form>
-
             <!-- CONTENT -->
             <div id="content">
                 <form id="review_write">
@@ -49,11 +46,15 @@
                     <div class="editor_group">
                         <div id="editor"></div>
                     </div>
-                    <!-- 파일id -->
-                    <!-- <input type="hidden" name="photo_id" id="photo_id"> -->
                     <!-- 버튼 -->
                     <div class="btn_group">
                         <button type="submit" class="btn_write">등록</button>
+                    </div>
+                    <div class="upload_group">
+                        <label for="photo_img">이미지
+                            <i class="fa-solid fa-images"></i>
+                        </label> 
+                        <input type='file' name='photo_img' multiple id='photo_img'/>
                     </div>
                 </form>
             </div>
