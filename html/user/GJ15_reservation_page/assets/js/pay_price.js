@@ -132,7 +132,7 @@
                                 IMP.request_pay({
                                     pg: "html5_inicis",
                                     pay_method: "card",
-                                    merchant_uid: "merchant_" + new Date().getTime(),
+                                    merchant_uid: "grandjeju" + new Date().getTime(),
                                     name: "GrandJeju",
                                     amount: total_price,
                                     buyer_name: buyer_name,
@@ -219,7 +219,7 @@
                                 // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
                                 IMP.request_pay({
                                     pg: "payco",
-                                    merchant_uid: "merchant_" + new Date().getTime(),
+                                    merchant_uid: "grandjeju" + new Date().getTime(),
                                     name: "GrandJeju",
                                     amount: total_price,
                                     buyer_name: buyer_name,
@@ -306,6 +306,7 @@
                                 // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
                                 IMP.request_pay({
                                     pg: "kakaopay", //카카오페이 결제창 호출
+                                    merchant_uid: "grandjeju-" + new Date().getTime(),
                                     amount: total_price,
                                     name: "GrandJeju",
                                     buyer_name: buyer_name,
