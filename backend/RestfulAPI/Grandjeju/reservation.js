@@ -212,7 +212,7 @@ module.exports = (app) => {
         try {
             regexHelper.value(order_no, '결제 번호가 없습니다.');
 
-            // regexHelper.value(pay_price, '결제 금액이 없습니다.');
+            regexHelper.value(pay_price, '결제 금액이 없습니다.');
             
             regexHelper.value(pay_way, '결제 방법이 없습니다.');
             
