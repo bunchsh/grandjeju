@@ -16,10 +16,10 @@ function pagenation(selector, data) {
     const a1 = document.createElement("a");
     a1.innerHTML = "&laquo;";
     a1.classList.add("page-link");
-    a1.setAttribute("href",`/GJ17_review/review.html?page=${data.prevGroupLastPage}`);
+    a1.setAttribute("href",`/GJ17_review/review.html?page=${data.prev}`);
 
     
-    if (data.prevGroupLastPage == 0) {
+    if (data.prev == 0) {
         li1.classList.add('disabled');
         a1.removeAttribute('href');
     }
@@ -53,9 +53,9 @@ function pagenation(selector, data) {
     const a3 = document.createElement("a");
     a3.innerHTML = "&raquo;";
     a3.classList.add("page-link");
-    a3.setAttribute("href",`/GJ17_review/review.html?page=${data.nextGroupFirstPage}`);
+    a3.setAttribute("href",`/GJ17_review/review.html?page=${data.next}`);
 
-    if (data.nextGroupFirstPage == 0) {
+    if (data.next == 0) {
         li3.classList.add('disabled');
         a3.removeAttribute('href');
     }

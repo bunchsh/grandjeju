@@ -75,6 +75,12 @@ module.exports.pagenation = function(totalCount=0, nowPage=1, listCount=10, grou
     // LIMIT 절에서 사용할 데이터 시작 위치
     var offset = (nowPage -1) * listCount;
 
+    // 다음 페이지 번호
+    var next = nowPage + 1 ;
+
+    // 이전 페이지 번호
+    var prev = nowPage - 1 ;
+
     // 리턴한 데이터들을 객체로 묶기
     return {
         nowPage : nowPage,
@@ -88,6 +94,8 @@ module.exports.pagenation = function(totalCount=0, nowPage=1, listCount=10, grou
         groupEnd : groupEnd,
         prevGroupLastPage : prevGroupLastPage,
         nextGroupFirstPage : nextGroupFirstPage,
-        offset : offset
+        offset : offset,
+        next : next,
+        prev : prev,
     }
 }
