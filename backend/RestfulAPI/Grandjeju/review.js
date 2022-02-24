@@ -165,7 +165,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            let sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE user_id=?";
+            let sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE user_id=?";
             
             let args = [];
 
@@ -221,7 +221,7 @@ module.exports = (app) => {
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE review_id=?";
+            const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE review_id=?";
             const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -247,7 +247,7 @@ module.exports = (app) => {
         
 
         try {
-            regexHelper.value(user_id, '교수이름이 없습니다.');
+            regexHelper.value(user_id, '리뷰 내역이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -272,7 +272,7 @@ module.exports = (app) => {
             }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y-%m-%d') review_date FROM review WHERE review_id=?";
+            const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE review_id=?";
             const [result2] = await dbcon.query(sql2, [review_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함

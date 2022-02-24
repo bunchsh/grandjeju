@@ -134,7 +134,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
+            const sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
             const [result] = await dbcon.query(sql, [reserv_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -170,7 +170,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            let sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
+            let sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
 
             let args = [];
 
@@ -249,7 +249,7 @@ module.exports = (app) => {
             const [result1] = await dbcon.query(sql, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
             const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -302,7 +302,7 @@ module.exports = (app) => {
             }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y.%m.%d') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
             const [result2] = await dbcon.query(sql2, [reserv_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
