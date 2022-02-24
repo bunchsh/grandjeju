@@ -34,67 +34,7 @@
             </div>
 
             <div id="content">
-                <ul>
-                    <li>
-                        <a>
-                            <img src="assets/img/right-arrow.png">
-                            <h4 class="title">다시 한번 더 방문할게요~</h4>
-                            <p class="date">
-                                <span class="name">한송희 |</span>
-                                2022.01.05
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="assets/img/right-arrow.png">
-                            <h4 class="title">즐거운 추억 많이 만들고 갑니다!</h4>
-                            <p class="date">
-                                <span class="name">고길동 |</span>
-                                2022.01.04
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="assets/img/right-arrow.png">
-                            <h4 class="title">청결한 방! 꺠끗한 침구!</h4>
-                            <p class="date">
-                                <span class="name">둘리 |</span>
-                                2022.01.02
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="assets/img/right-arrow.png">
-                            <h4 class="title">마치 제주도 토박이가 된 기분이였어요~</h4>
-                            <p class="date">
-                                <span class="name">양수원 |</span>
-                                2022.01.01
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="assets/img/right-arrow.png">
-                            <h4 class="title">즐거운 여행~</h4>
-                            <p class="date">
-                                <span class="name">짱구 |</span>
-                                2022.01.01
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="assets/img/right-arrow.png">
-                            <h4 class="title">재미난 여행~</h4>
-                            <p class="date">
-                                <span class="name">짱아 |</span>
-                                2022.01.01
-                            </p>
-                        </a>
-                    </li>
+                <ul id="content_ul">
                 </ul>
             </div>
             
@@ -123,12 +63,74 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="assets/js/swiper.js"></script>
     <script async="false" src="../assets/js/include_side.js"></script>
     
-    <script src='./assets/js/join_regex_helper.js'></script>
 
     <script src='./assets/js/login_alert.js'></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+
+    <script>
+        /** GET 파라미터 받기 */
+const params = new URLSearchParams(window.location.search);
+const query = params.get('query') || "";
+const page = params.get('page') || 1;
+const search = params.get('search') || 'title';
+const order = params.get('order') || "";
+
+
+(async () => {
+    // ajax 결과가 저장될 json
+    let json = null;
+    // 총 회원수
+    let total_count = null;
+
+    // ajax 요청
+    try {
+        const response = await axios.get('/review', {
+            params: {
+                query: query,
+                page: page,
+                search: search,
+                order: order
+            }
+        });
+        const total = await axios.get('/review')
+        json = response.data
+        total_count = total.data.pagenation.totalCount
+        console.log(json);
+    } catch (e) {
+        // 에러가 발생한 경우 백엔드가 주는 json 받기
+        const data = e.response.data;
+        alert("[" + data.rt + "] " + data.rtmsg);
+    }
+
+    // ajax결과가 존재한다면?
+    if (json != null) {
+        console.log(json.pagenation);
+        json.item.forEach((v) => {
+            const content_ul = document.querySelector('#content_ul')
+            content_ul.innerHTML +=
+            `
+                <li>
+                    <a>
+                        <img src="assets/img/right-arrow.png">
+                        <h4 class="title">${v.title}</h4>
+                        <p class="date">
+                            <span class="name">${v.user_name} |</span>
+                            ${v.review_date}
+                        </p>
+                    </a>
+                </li>
+            `
+        });
+
+
+        /** 페이지번호 구형 한수 호출하기 */
+        // --> 페이지번호 HTML이 출력될 위치에 대한 selector와 페이지 번호 구현에 필요한 정보 전달
+        // pagenation(".pagination", json.pagenation);
+        // order_btn(decodeURIComponent(location.href));
+    }
+})();
+    </script>
 </body>
 </html>
