@@ -303,10 +303,9 @@ module.exports = (app) => {
             dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
-            // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
-            // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
-            // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
-            // await dbcon.query("DELETE FROM student WHERE review_id=?", [review_id]);
+            // 참조 파일 삭제
+            await dbcon.query("DELETE FROM photo WHERE review_id=?", [review_id])
+
             // 데이터 삭제하기
             const sql = 'DELETE FROM review WHERE review_id=?';
             const [result1] = await dbcon.query(sql, [review_id]);
