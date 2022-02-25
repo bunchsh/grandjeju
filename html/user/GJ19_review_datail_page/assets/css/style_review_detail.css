@@ -68,7 +68,10 @@
     border-radius: 0 5px 5px 0;
     border: 1px solid black;
 }
-
+#container #content .btn_group .btn_modify a, .btn_delete a {
+    color: white;
+    text-decoration: none;
+}
 /** sweetalert */
 .swal-modal {
     width: 250px;

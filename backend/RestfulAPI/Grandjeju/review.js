@@ -165,7 +165,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            let sql = "SELECT user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE user_id=?";
+            let sql = "SELECT review_id, user_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE user_id=?";
             
             let args = [];
 
