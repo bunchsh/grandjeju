@@ -196,6 +196,40 @@ module.exports = (app) => {
         res.sendJson({'item': json});
     });
 
+    /** 데이터 중복 조회 */
+    router.get("/reservationoverlap/:room", async(req, res, next) =>{
+        // 저장을 위한 파라미터 입력받기
+        const room = req.get('room');
+
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            regexHelper.value(room, '선택된 객실이 없습니다.');
+        } catch (err) {
+            return next(err);
+        }
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            let sql = 'SELECT stay_start, stay_end FROM reservation where room = ?';
+
+            const [result] = await dbcon.query(sql, [room]);
+
+            json = result;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end(); // 저장 활성화 시 삭제해 주어야 함 
+        }
+
+        // 모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson({'item': json});
+    });
+
     /** 데이터 추가 --> Create(INSERT) */
     router.post("/reservation", async(req, res, next) =>{
         // 저장을 위한 파라미터 입력받기
