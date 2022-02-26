@@ -44,11 +44,6 @@
     border: 0;
 }
 
-/** 에디터 */
-.ck-editor__editable_inline {
-    min-height: 360px;
-}
-
 /** 등록 btn */
 #container #content #review_write .btn_group {
     float: right;

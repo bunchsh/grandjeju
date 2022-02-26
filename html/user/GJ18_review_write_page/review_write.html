@@ -140,11 +140,23 @@
         })
     </script>
     <script>
+        let login_info = null;
+        (async () => {
+            try {
+                const response = await axios.get('/members/info');
+                login_info = response.data
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                // history.back();
+                return;
+            }
+            console.log(login_info.item);
+        })();
         document.querySelector('#review_write').addEventListener("submit", async(e) => {
             e.preventDefault();
 
-            const user_name = "양수원"
-            const user_id = "ysw7939"
+            const user_name = login_info.item.user_name;
+            const user_id = login_info.item.user_id;
             const title = document.querySelector("#title").value;
             const text = editor.getHTML();
 

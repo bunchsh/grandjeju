@@ -239,15 +239,13 @@ module.exports = (app) => {
     /** 데이터 수정 --> Update(UPDATE) */
     router.put("/review/:review_id", async (req, res,next) =>{
         const review_id = req.get('review_id');
-        const user_id = req.post('user_id');
-        const user_name = req.post('user_name');
         const title = req.post('title');
         const text = req.post('text');
 
         
 
         try {
-            regexHelper.value(user_id, '리뷰 내역이 없습니다.');
+            regexHelper.value(title, '리뷰 제목이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -262,8 +260,8 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 수정하기
-            const sql = 'UPDATE review SET user_id=?, user_name=?, title=?, text=?, =? WHERE review_id=?';
-            const input_data = [user_id, user_name, title, text, , review_id];
+            const sql = 'UPDATE review SET title=?, text=? WHERE review_id=?';
+            const input_data = [ title, text, review_id];
             const [result1] = await dbcon.query(sql, input_data);
 
             // 결과 행 수가 0이라면 예외처리

@@ -20,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <script src="https://kit.fontawesome.com/b718907b8f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -32,51 +34,126 @@
         <div id="container">
             <!-- CONTENT -->
             <div id="content">
-                <form id="inquiry_modify">
+                <form id="review_write">
                     <!-- 제목 항목 -->
                     <div class="title_group">
-                        <input class="title_input" type="text" placeholder="제목">
+                        <input class="title_input" id="title" type="text" placeholder="제목">
                     </div>
                     <!-- 본문 항목 -->
                     <div class="editor_group">
-                        <textarea id="editor" name="content"></textarea>
+                        <div id="editor"></div>
                     </div>
                     <!-- 버튼 -->
                     <div class="btn_group">
                         <button class="btn_modify" type="submit">수정</button>
                         <button class="btn_delete" type="button">삭제</button>
                     </div>
+                    <div class="upload_group">
+                        <label for="photo_img">이미지
+                            <i class="fa-solid fa-images"></i>
+                        </label> 
+                        <input type='file' name='photo_img' multiple id='photo_img'/>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-    <script src="./assets/js/cancel_alert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./assets/js/cancel_btn.js"></script>
     <script src="./assets/js/write_regex_helper.js"></script>
     <script>
         /** editor 구성 */
-        ClassicEditor.create(document.querySelector('#editor'))
-            .then((editor) => {
-                console.log(editor);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        const Editor = toastui.Editor;
+        const editor = new Editor({
+            el: document.querySelector('#editor'),
+            height: '500px',
+            initialEditType: 'html',
+            previewStyle: 'vertical'
+        });
+    </script>
+    <script src="./assets/js/get_review.js"></script>
+    <script>
+        let id_array = []
+        document.querySelector('#photo_img').addEventListener('change', async (e) => {
+            const files = e.target.files;
+            const keys = Object.keys(files);
 
-        document.querySelector('#inquiry_modify').addEventListener("submit", e => {
+            // 현제 에디터의 작성 내용 저장
+            let get_editor = editor.getHTML()
+
+            console.log(get_editor);
+            console.log(files)
+
+            // javascript로 가상의 form을 생성
+            const form = new FormData();
+            // 가상의 폼에 input요소 추가
+            form.append('photo_img', files[0]);
+            
+
+            keys.forEach((i, v) => {
+                // javascript로 가상의 form을 생성
+                const form = new FormData();
+                // 가상의 폼에 input요소 추가
+                form.append('photo_img', files[v]);
+                
+                (async () => {
+                    try {
+                        const response = await axios.post("/photo", form);
+                        console.log(response.data);
+                        json = response.data
+
+                        
+                        keys.forEach(v => {
+                            console.log(get_editor);
+                            
+                            // 기존 에디터의 작성내용 + 새로 추가된 이미지
+                            editor.setHTML(`${get_editor}<img src='${json.item[0].path}'/>`);
+
+                            // 파일 테이블에 저장된 pk값 배열로 저장
+                            id_array.push(json.item[0].photo_id)
+                        });
+
+
+                    } catch (error) {
+                        console.error(error);
+                    }
+                })();
+            });
+        })
+    </script>
+    <script>
+        document.querySelector('#review_write').addEventListener("submit", async(e) => {
             e.preventDefault();
 
-            const regexHelper = new RegexHelper();
+            const title = document.querySelector("#title").value;
+            const text = editor.getHTML();
 
-            /** 제목 검사 */
-            if (!regexHelper.value(".title_input", "제목을 입력되지 않았습니다.")) { return false; }
-            /** 내용 검사 */
-            if (!regexHelper.value("#editor", "내용이 입력되지 않았습니다.")) { return false; }
+            let json = null;
+            let up = null;
+            try { 
+                const response = await axios.put("/review/" + review_id, {
+                    title : title,
+                    text : text
+                });
+                json = response.data;
 
-            // 처리 완료
-            location.href = "../GJ10_inquiry_detail_page/inquiry_detail_before.html";
-        });
+                id_array.forEach(async (v, i) => {
+                    const updated = await axios.put("/photo/" + v ,{
+                        review_id : json.item[0].review_id
+                    });
+                    up = updated.data;
+                })
+                
+            } catch (e) {
+                alert(e.response.data.rtmsg);
+                return;
+            }
+            if(json != null) {
+                window.location ="/GJ19_review_datail_page/review_detail.html?review_id=" + json.item[0].review_id;
+            }
+        })
     </script>
 </body>
 
