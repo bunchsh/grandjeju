@@ -45,7 +45,7 @@ room.addEventListener("change", (e) => {
                     }
                 });
             };
-        } else if (json.item.length == 0) {
+        } else if (json.item == 0) {
             /** 숙박 기간 날짜 범위 선택 */
             flatpickr(".day_select", {
                 mode: "range",
