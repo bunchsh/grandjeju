@@ -26,7 +26,7 @@ room.addEventListener("change", (e) => {
         console.log(json.item);
 
         // ajax 결과가 존재한다면?
-        if (json.item != null) {
+        if (json.item != 0) {
             for (let i = 0; i < json.item.length; i++) {
                 console.log(json.item[i]);
                 /** 숙박 기간 날짜 범위 선택 */
