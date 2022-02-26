@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
     <div id="wrap">
         <!-- HEADER -->
         <div id="header">
@@ -108,7 +108,8 @@
         </div>
     </div>
 
-    
+    <script src="./assets/js/historyback.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
     <!-- 유효성 검사를 사용하기 위한 script -->
