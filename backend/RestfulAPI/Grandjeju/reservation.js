@@ -176,7 +176,7 @@ module.exports = (app) => {
             let args = [];
 
             if (order != null) {
-                if (order == 'asc'){
+                if (order == 'asc'){                         
                     sql += " ORDER BY reserv_date asc"
                 } else if (order == 'desc'){
                     sql += " ORDER BY reserv_date desc"
