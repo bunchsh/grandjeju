@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 
 <body>
@@ -39,7 +40,7 @@
                     </div>
                     <!-- 본문 항목 -->
                     <div class="editor_group">
-                        <textarea id="editor" name="content"></textarea>
+                        <div id="editor"></div>
                     </div>
                     <!-- 버튼 -->
                     <div class="btn_group">
@@ -50,20 +51,23 @@
             </div>
         </div>
     </div>
-    <script src="//cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./assets/js/cancel_alert.js"></script>
     <script src="./assets/js/write_regex_helper.js"></script>
     <script>
         /** editor 구성 */
-        ClassicEditor.create(document.querySelector('#editor'))
-            .then((editor) => {
-                console.log(editor);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
+        const Editor = toastui.Editor;
+        const editor = new Editor({
+            el: document.querySelector('#editor'),
+            height: '500px',
+            initialEditType: 'html',
+            previewStyle: 'vertical'
+        });
+    </script>
+    <script src="./assets/js/get_review.js"></script>
+    <script>
         document.querySelector('#inquiry_modify').addEventListener("submit", e => {
             e.preventDefault();
 
