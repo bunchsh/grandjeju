@@ -296,7 +296,7 @@ module.exports = (app) => {
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
             const sql3 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
-            const [result3] = await dbcon.query(sql3, [result3.insertId]);
+            const [result3] = await dbcon.query(sql3, [result2.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result3
