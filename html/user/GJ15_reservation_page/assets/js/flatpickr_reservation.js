@@ -14,6 +14,7 @@ room.addEventListener("change", (e) => {
 
         // ajax 결과가 저장될 json
         let json = null;
+        let date = []
 
         // ajax 요청
         try {
@@ -29,22 +30,22 @@ room.addEventListener("change", (e) => {
         if (json.item != 0) {
             for (let i = 0; i < json.item.length; i++) {
                 console.log(json.item[i]);
-                /** 숙박 기간 날짜 범위 선택 */
-                flatpickr(".day_select", {
-                    mode: "range",
-                    minDate: "today",
-                    dateFormat: "Y-m-d",
-                    disable: [
-                        {
-                            from: json.item[i].stay_start, 
-                            to: json.item[i].stay_end
-                        }
-                    ],
-                    locale: {
-                        rangeSeparator: ' ~ '
-                    }
-                });
+                date.push({
+                    from: json.item[i].stay_start, 
+                    to: json.item[i].stay_end
+                })
             };
+            console.log(date)
+            /** 숙박 기간 날짜 범위 선택 */
+            flatpickr(".day_select", {
+                mode: "range",
+                minDate: "today",
+                dateFormat: "Y-m-d",
+                disable: date,
+                locale: {
+                    rangeSeparator: ' ~ '
+                }
+            });
         } else if (json.item == 0) {
             /** 숙박 기간 날짜 범위 선택 */
             flatpickr(".day_select", {
@@ -58,14 +59,3 @@ room.addEventListener("change", (e) => {
         };
     })();
 });
-
-/** 숙박 기간 날짜 범위 선택 */
-// flatpickr(".day_select", {
-//     mode: "range",
-//     minDate: "today",
-//     dateFormat: "Y-m-d",
-//     disable: ["2022-01-30", "2022-02-21", "2022-03-08", new Date(2025, 4, 9) ],
-//     locale: {
-//         rangeSeparator: ' ~ '
-//     }
-// });
