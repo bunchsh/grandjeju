@@ -26,6 +26,12 @@
         return;
     }
 
+    if (!json.item.reserv_id) {
+        alert('조회할 예약 내역이 없습니다.');
+        history.back();
+        return;
+    }
+
     if (json != null) {
         console.log(json);
         const source = document.querySelector("#content-template").innerHTML;
