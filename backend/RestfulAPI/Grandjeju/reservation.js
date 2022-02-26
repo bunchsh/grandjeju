@@ -11,6 +11,7 @@ const router = require('express').Router();
 const mysql2  = require('mysql2/promise');
 const regexHelper = require('../../helper/RegexHelper');
 const utilHelper = require('../../helper/UtilHelper');
+const BadRequestException = require('../../exceptions/BadRequestExeption');
 
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
@@ -243,17 +244,28 @@ module.exports = (app) => {
             dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
+            // 전체 데이터 수를 조회 (중복 검사)
+            let sql1 = 'SELECT COUNT(*) AS cnt FROM reservation WHERE stay_start=? AND stay_end=? AND room=?';
+            let args1 = [stay_start, stay_end, room, sql1];
+
+            const [result1] = await dbcon.query(sql1, args1);
+            const totalCount = result1[0].cnt;
+
+            if (totalCount > 0) {
+                throw new BadRequestException('예약하실 수 없는 일정입니다. 다른 일정을 선택해 주세요.');
+            }
+
             // 데이터 저장하기
-            const sql = 'INSERT INTO reservation (order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end ) VALUES (?,?,?,?,?,?,?,?,?,?)';
+            const sql2 = 'INSERT INTO reservation (order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end ) VALUES (?,?,?,?,?,?,?,?,?,?)';
             const input_data = [order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end];
-            const [result1] = await dbcon.query(sql, input_data);
+            const [result2] = await dbcon.query(sql2, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
-            const [result2] = await dbcon.query(sql2, [result1.insertId]);
+            const sql3 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const [result3] = await dbcon.query(sql3, [result3.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
-            json = result2
+            json = result3
         } catch (err) {
             return next(err);
         } finally {
