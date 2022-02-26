@@ -1,10 +1,10 @@
 /**
  * @filename    : write_regex_helper.js
  * @author      : 한송희 (onee.ssong@gmail.com)
- * @description : 1:1 문의 작성 정규표현식 검사 수행 후, true/false로 해당 정규표현식을 충족하는지 여부를 반환하는 함수들의 모음
+ * @description : REVIEW 작성 정규표현식 검사 수행 후, true/false로 해당 정규표현식을 충족하는지 여부를 반환하는 함수들의 모음
  */
 
-class RegexHelper {
+ class RegexHelper {
     // constructor() {}
 
     /**
@@ -13,6 +13,7 @@ class RegexHelper {
      * @param {string} msg      값이 없을 경우 표시할 메시지 내용
      * @return {boolean}        입력된 경우 true / 입력되지 않은 경우 false
      */
+
     value(selector, msg) {
         // 앞뒤의 공백을 제외하고 내용만 추출
         const field = document.querySelector(selector);
@@ -27,6 +28,26 @@ class RegexHelper {
                 }
             });
             field.focus(); // 대상 요소에게 포커스 강제 지정
+            return false; // 실패했음을 반환
+        }
+        return true; // 성공했음을 반환
+    }
+
+    editor_value(selector, msg) {
+        // 앞뒤의 공백을 제외하고 내용만 추출
+
+        const content = selector.replaceAll(" ","").replaceAll("<br>","").replaceAll("<p></p>","");
+        console.log(selector)
+        console.log(content);
+
+        if (!content) {
+            // 값이 없다면?
+            swal({
+                text: msg, // Alert 내용
+                buttons: {
+                    confirm: "OK",  // 확인 버튼
+                }
+            });
             return false; // 실패했음을 반환
         }
         return true; // 성공했음을 반환

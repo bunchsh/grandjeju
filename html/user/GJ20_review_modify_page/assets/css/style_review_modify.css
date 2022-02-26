@@ -7,20 +7,42 @@
 @charset "UTF-8";
 /** ---------- CONTENT ---------- */
 /** 제목 input */
-#container #content #inquiry_modify .title_group {
+#container #content #review_write .title_group {
     padding-bottom: 10px;
     margin-top: 25px;
 }
-#container #content #inquiry_modify .title_group input {
+#container #content #review_write .title_group input {
     width: 80%;
     height: 35px;
     border-radius: 5px;
     border: 1px solid gray;
 }
 
-/** 에디터 */
-.ck-editor__editable_inline {
-    min-height: 360px;
+/* 파일 업로드 input */
+#container #content #review_write .upload_group {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    color: #000;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+    border: 1px solid #222;
+    border-bottom-color: #222;
+    border-radius: 0.25em;
+    margin-top: 10px;
+}
+.upload_group input[type="file"] {
+    /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 /** 버튼 */
