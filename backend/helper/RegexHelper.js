@@ -185,5 +185,25 @@ class RegexHelper {
         }
         return true;
     }
+    /**
+     * 문의 종류중 하나인지 검사
+     * @param {string} content     입력내용
+     * @param {string} msg         표시할 메시지
+     */
+    inquiry_type(content, msg) {
+        if (!(content == '예약 문의'|| content == '시설 문의'|| content == '취소 및 환불'|| content == '기타 문의')) {
+            throw new BadRequestException(msg);
+        }
+    }
+    /**
+     * N 혹은 Y 인지 검사
+     * @param {string} content     입력내용
+     * @param {string} msg         표시할 메시지
+     */
+    is_state(content, msg){
+        if(!(content == 'N' || content == 'Y')) {
+            throw new BadRequestException(msg);
+        }
+    }
 }
 module.exports = new RegexHelper();
