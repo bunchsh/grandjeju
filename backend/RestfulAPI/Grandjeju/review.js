@@ -202,6 +202,18 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(user_id, '아이디가 없습니다.');
+            regexHelper.maxLength(user_id, 20, '아이디는 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_id, 6, '아이디는 최소 6자 이상 입력 가능합니다.');
+            regexHelper.engNum(user_id, '아이디는 영문, 숫자 조합만 입력 가능합니다.');
+
+            regexHelper.value(user_name, '작성자 이름이 없습니다.');
+            regexHelper.maxLength(user_name, 20, '이름은 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
+
+            regexHelper.value(title, '리뷰제목이 없습니다.');
+            regexHelper.maxLength(title, 255, '리뷰제목은 최대 255자까지 입력 가능합니다.');
+
+            regexHelper.value(text, '리뷰내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -245,7 +257,10 @@ module.exports = (app) => {
         
 
         try {
-            regexHelper.value(title, '리뷰 제목이 없습니다.');
+            regexHelper.value(title, '리뷰제목이 없습니다.');
+            regexHelper.maxLength(title, 255, '리뷰제목은 최대 255자까지 입력 가능합니다.');
+
+            regexHelper.value(text, '리뷰내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
