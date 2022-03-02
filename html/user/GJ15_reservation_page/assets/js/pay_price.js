@@ -82,10 +82,9 @@
         let start = date_range.slice(0, 10);
         let cut = date_range.indexOf("~") + 2;
         let end = date_range.slice(cut, cut + 10);
-        let start_date = new Date(start);
-        let end_date = new Date(end);
-        const diff_date = start_date.getTime() - end_date.getTime();
-        let date_days = Math.abs(diff_date / (1000 * 3600 * 24));
+        let start_date = dayjs(start, 'YYYY-MM-DD');
+        let end_date = dayjs(end, 'YYYY-MM-DD');
+        const date_days = end_date.diff(start_date, "day")
         console.log("기간:: ", date_days);
     
         /** 객실 변경 시, 결제 금액 */
