@@ -12,6 +12,7 @@ const mysql2  = require('mysql2/promise');
 const regexHelper = require('../../helper/RegexHelper');
 const utilHelper = require('../../helper/UtilHelper');
 const BadRequestException = require('../../exceptions/BadRequestExeption');
+const axios = require('axios');
 
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
@@ -406,7 +407,12 @@ module.exports = (app) => {
     });
 
     /** 환불 */
-    router.post('/payments/cancel', async (req, res, next) => {
+    router.post('/payments/cancel/', async (req, res, next) => {
+        const pk = req.post("reserv_id");
+        console.log(pk);
+
+        let json = null;
+
         // 결제번호
         let imp_uid = null;
         // 주문번호
@@ -422,14 +428,19 @@ module.exports = (app) => {
           await dbcon.connect();
 
           // 데이터 조회
-          let sql = "SELECT pay_no AS imp_uid, order_no AS merchant_uid, pay_price FROM reserv_id = ?";
+          let sql = "SELECT pay_no, order_no, pay_price FROM reservation WHERE reserv_id = ?";
 
-          const [result] = await dbcon.query(sql, [reserv_id]);
+          const [result] = await dbcon.query(sql, [pk]);
+          console.log(result[0]);
 
           // 검색하여 조회한 결과 할당
-          imp_uid = result[0].imp_uid;
-          merchant_uid = result[0].merchant_uid;
+          imp_uid = result[0].pay_no;
+          merchant_uid = result[0].order_no;
           pay_price = result[0].pay_price;
+
+          console.log(imp_uid);
+          console.log(merchant_uid);
+          console.log(pay_price);
 
       } catch (err) {
         next(err);
@@ -458,7 +469,17 @@ module.exports = (app) => {
         });
 
         // 조회한 결제 정보
-        logger.degub(getPaymentData.data.response);
+        console.log(getPaymentData.data.response);
+
+        const cancelableAmount = pay_price;
+        console.log(cancelableAmount);
+        if (cancelableAmount <= 0) {
+            // 전액 환불이 완료된 경우
+            return res.status(400).json({message: '이미 환불 완료된 내역입니다.'});
+        }
+
+        console.log(imp_uid);
+        console.log(reason);
         
         /* 아임포트 REST API로 결제환불 요청 */
         const getCancelData = await axios({
@@ -477,7 +498,7 @@ module.exports = (app) => {
         });
 
         console.log(getCancelData.data); // 환불 결과
-        json = response;
+        json = getCancelData.data;
 
         console.log(json);
 
