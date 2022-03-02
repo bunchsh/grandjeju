@@ -66,7 +66,12 @@ class RegexHelper {
 
         // 입력값이 없거나 입력값에 대한 정규표현식 검사가 실패라면?
         if (!src || !regex_expr.test(src)) {
-            alert(msg); // 메시지 표시
+            swal({
+                text: msg, // Alert 내용
+                buttons: {
+                    confirm: "OK",  // 확인 버튼
+                }
+            });
             field.value = ''; // 입력값을 강제로 지운다
             field.focus(); // 포커스 강제 지정
             return false; // 실패했음을 반환

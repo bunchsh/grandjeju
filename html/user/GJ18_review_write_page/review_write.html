@@ -146,8 +146,12 @@
                 const response = await axios.get('/members/info');
                 login_info = response.data
             } catch (e) {
-                alert(e.response.data.rtmsg);
-                // history.back();
+                swal({
+                text: e.response.data.rtmsg, // Alert 내용
+                buttons: {
+                    OK: true,  // 확인 버튼
+                }
+            });
                 return;
             }
             console.log(login_info.item);
@@ -179,7 +183,12 @@
                 })
                 
             } catch (e) {
-                alert(e.response.data.rtmsg);
+                swal({
+                text: e.response.data.rtmsg, // Alert 내용
+                buttons: {
+                    OK: true,  // 확인 버튼
+                }
+            });
                 return;
             }
             if(json != null) {

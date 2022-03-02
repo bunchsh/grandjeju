@@ -15,9 +15,17 @@
         const response = await axios.get('/members/info');
         json = response.data;
     } catch (e) {
-        alert(e.response.data.rtmsg);
-        window.location = "/GJ2_login_page/login.html";
-        return;
+        swal({
+        text: e.response.data.rtmsg, // Alert 내용
+        buttons: {
+            OK: true,  // 확인 버튼
+            }
+        }).then((value) => {   // 확인 버튼 이벤트
+            if (value == 'OK') {
+                window.location = "/GJ2_login_page/login.html";
+                return;
+            }
+        });
     }
     
     /** 객실에 따른 가격 */
@@ -190,8 +198,16 @@
                                                 json2 = response.data;
         
                                             } catch (e) {
-                                                alert(e.response.data.rtmsg);
-                                                return;
+                                                swal({
+                                                    text: e.response.data.rtmsg, // Alert 내용
+                                                    buttons: {
+                                                        OK: true,  // 확인 버튼
+                                                    }
+                                                }).then((value) => {   // 확인 버튼 이벤트
+                                                    if (value == 'OK') {
+                                                    return;
+                                                    }
+                                                });
                                             }
         
                                             if (json2 != null) {
@@ -204,7 +220,12 @@
                                             msg += "에러내용 : " + rsp.error_msg;
                                             history.back();
                                         }
-                                        alert(msg);
+                                        swal({
+                                            text: msg, // Alert 내용
+                                            buttons: {
+                                                OK: true,  // 확인 버튼
+                                            }
+                                        });
                                     }
                                 );
                             }
@@ -278,8 +299,16 @@
                                             json2 = response.data;
         
                                         } catch (e) {
-                                            alert(e.response.data.rtmsg);
-                                            return;
+                                            swal({
+                                                text: e.response.data.rtmsg, // Alert 내용
+                                                buttons: {
+                                                    OK: true,  // 확인 버튼
+                                                }
+                                            }).then((value) => {   // 확인 버튼 이벤트
+                                                if (value == 'OK') {
+                                                return;
+                                                }
+                                            });
                                         }
         
                                         if (json2 != null) {
@@ -292,7 +321,12 @@
                                         msg += "에러내용 : " + rsp.error_msg;
                                         history.back();
                                     }
-                                    alert(msg);
+                                    swal({
+                                        text: msg, // Alert 내용
+                                        buttons: {
+                                            OK: true,  // 확인 버튼
+                                        }
+                                    });
                                 }
                                 );
                             }
@@ -365,8 +399,16 @@
                                             json2 = response.data;
         
                                         } catch (e) {
-                                            alert(e.response.data.rtmsg);
-                                            return;
+                                            swal({
+                                                text: e.response.data.rtmsg, // Alert 내용
+                                                buttons: {
+                                                    OK: true,  // 확인 버튼
+                                                }
+                                            }).then((value) => {   // 확인 버튼 이벤트
+                                                if (value == 'OK') {
+                                                return;
+                                                }
+                                            });
                                         }
         
                                         if (json2 != null) {
@@ -380,8 +422,12 @@
                                         msg += "에러내용 : " + rsp.error_msg;
                                         history.back();
                                     }
-                                    alert(msg);
-                                    
+                                    swal({
+                                        text: msg, // Alert 내용
+                                        buttons: {
+                                            OK: true,  // 확인 버튼
+                                        }
+                                    });
                                 }
                             );
                         }
