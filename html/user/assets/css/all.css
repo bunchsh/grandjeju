@@ -44,7 +44,8 @@ body::-webkit-scrollbar {
 /** sweetalert */
 .swal-modal {
     width: 250px;
-    height: 150px;
+    height: auto;
+    min-height: 150px;
     background-color: white;
     border: 2px solid black;
   }
