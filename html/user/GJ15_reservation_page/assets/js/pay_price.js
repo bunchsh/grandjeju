@@ -79,9 +79,11 @@
     const date = document.querySelector(".day_select");
     date.addEventListener("change", (e) => {
         let date_range = date.value;
-        let start = date_range.slice(0, 10);
-        let cut = date_range.indexOf("~") + 2;
-        let end = date_range.slice(cut, cut + 10);
+        console.log(date_range)
+        let date_array = date_range.replaceAll(' ','').split('~')
+        console.log(date_array)
+        let start = date_array[0]
+        let end = date_array[1]
         let start_date = dayjs(start, 'YYYY-MM-DD');
         let end_date = dayjs(end, 'YYYY-MM-DD');
         const date_days = end_date.diff(start_date, "day")
