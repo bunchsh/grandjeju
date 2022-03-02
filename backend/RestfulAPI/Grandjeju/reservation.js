@@ -72,7 +72,7 @@ module.exports = (app) => {
             
 
             // 데이터 조회
-            let sql2 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person,  date_format(stay_start,'%Y-%m-%d') as stay_start,  date_format(stay_end,'%Y-%m-%d') as stay_end FROM reservation"
+            let sql2 = "SELECT reserv_id, order_no, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person,  date_format(stay_start,'%Y-%m-%d') as stay_start,  date_format(stay_end,'%Y-%m-%d') as stay_end FROM reservation"
 
             // SQL문에 설정할 치환값
             let args2 = [];
@@ -135,7 +135,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            const sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
+            const sql = "SELECT reserv_id, order_no, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE reserv_id=?";
             const [result] = await dbcon.query(sql, [reserv_id]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -171,7 +171,7 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 조회
-            let sql = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
+            let sql = "SELECT reserv_id, order_no, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, date_format(stay_start,'%Y-%m-%d') as stay_start, date_format(stay_end,'%Y-%m-%d') as stay_end  FROM reservation WHERE user_id=?";
 
             let args = [];
 
@@ -234,6 +234,7 @@ module.exports = (app) => {
     router.post("/reservation", async(req, res, next) =>{
         // 저장을 위한 파라미터 입력받기
         const order_no = req.post('order_no');
+        const pay_no = req.post('pay_no');
         const pay_price = req.post('pay_price');
         const pay_way = req.post('pay_way');
         const user_id = req.post('user_id');
@@ -245,7 +246,9 @@ module.exports = (app) => {
         const stay_end = req.post('stay_end');
 
         try {
-            regexHelper.value(order_no, '결제 번호가 없습니다.');
+            regexHelper.value(order_no, '주문 번호가 없습니다.');
+
+            regexHelper.value(pay_no, '결제 번호가 없습니다.');
 
             regexHelper.value(pay_price, '결제 금액이 없습니다.');
             
@@ -290,12 +293,12 @@ module.exports = (app) => {
             }
 
             // 데이터 저장하기
-            const sql2 = 'INSERT INTO reservation (order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end ) VALUES (?,?,?,?,?,?,?,?,?,?)';
-            const input_data = [order_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end];
+            const sql2 = 'INSERT INTO reservation (order_no, pay_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end ) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+            const input_data = [order_no, pay_no, pay_price, pay_way, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end];
             const [result2] = await dbcon.query(sql2, input_data);
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-            const sql3 = "SELECT reserv_id, order_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end  FROM reservation WHERE reserv_id=?";
+            const sql3 = "SELECT reserv_id, order_no, pay_no, pay_price, pay_way, date_format(reserv_date,'%Y/%m/%d %H:%i') as reserv_date, user_id, reserv_name, room, reserv_phone, person, stay_start, stay_end FROM reservation WHERE reserv_id=?";
             const [result3] = await dbcon.query(sql3, [result2.insertId]);
 
             // 조회 결과를 미리 준비한 변수에 저장함
@@ -401,5 +404,92 @@ module.exports = (app) => {
         // 모든 처리에 성공했으므로 정상 조회 결과 구성
         res.sendJson();
     });
+
+    /** 환불 */
+    router.post('/payments/cancel', async (req, res, next) => {
+        // 결제번호
+        let imp_uid = null;
+        // 주문번호
+        let merchant_uid = null;
+        // 결제 금액
+        let pay_price = null;
+        // 환불 사유
+        let reason = "고객 변심";
+
+        try {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.GJ_database);
+          await dbcon.connect();
+
+          // 데이터 조회
+          let sql = "SELECT pay_no AS imp_uid, order_no AS merchant_uid, pay_price FROM reserv_id = ?";
+
+          const [result] = await dbcon.query(sql, [reserv_id]);
+
+          // 검색하여 조회한 결과 할당
+          imp_uid = result[0].imp_uid;
+          merchant_uid = result[0].merchant_uid;
+          pay_price = result[0].pay_price;
+
+      } catch (err) {
+        next(err);
+      }
+
+      try {
+          // 액세스 토큰(access token) 발급 받기
+        const getToken = await axios({
+            url: "https://api.iamport.kr/users/getToken",
+            method: "post", // POST method
+            headers: { "Content-Type": "application/json" }, // "Content-Type": "application/json"
+            data: {
+            imp_key: "0019416345961328", // REST API 키
+            imp_secret: "ee9f22bd3233449577256b77f6064b76b2f55f4cb5e3461c1baf9458ea6928175904cd0f590cab94" // REST API Secret
+            }
+        });
+
+        const { access_token } = getToken.data.response; // 인증 토큰
+        console.log(access_token);
+
+        // imp_uid로 아임포트 서버에서 결제 정보 조회
+        const getPaymentData = await axios({
+            url: `https://api.iamport.kr/payments/${imp_uid}`, // imp_uid 전달
+            method: "get", // GET method
+            headers: { "Authorization": access_token }, // 인증 토큰 Authorization header에 추가
+        });
+
+        // 조회한 결제 정보
+        logger.degub(getPaymentData.data.response);
+        
+        /* 아임포트 REST API로 결제환불 요청 */
+        const getCancelData = await axios({
+            url: "https://api.iamport.kr/payments/cancel",
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": access_token // 아임포트 서버로부터 발급받은 엑세스 토큰
+            },
+            data: {
+              reason, // 가맹점 클라이언트로부터 받은 환불사유
+              imp_uid, // imp_uid를 환불 `unique key`로 입력
+            //   amount: cancel_request_amount, // 가맹점 클라이언트로부터 받은 환불금액
+              checksum: cancelableAmount // [권장] 환불 가능 금액 입력
+            }
+        });
+
+        console.log(getCancelData.data); // 환불 결과
+        json = response;
+
+        console.log(json);
+
+      } catch (err) {
+        next(err);
+      } finally {
+        dbcon.end();
+    }
+
+        //모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson({'item': json});
+    });
+
     return router;
 }

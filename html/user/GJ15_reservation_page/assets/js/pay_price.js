@@ -3,7 +3,7 @@
  * @author      : 한송희 (onee.ssong@gmail.com)
  * @description : Grandjeju 예약하기 페이지의 결제 금액 출력과 아임포트를 통한 결제 및 예약 정보 DB 전송을 위한 함수 */
 
- (async () => {
+(async () => {
     let json = null;
     let total_price = null; // 최종 결제 금액을 저장할 변수
 
@@ -154,49 +154,50 @@
                                             msg += "카드 승인번호 : " + rsp.apply_num;
 
                                             // 입력값 받아오기
-                                        const room = document.querySelector("#room_select").value;
-                                        console.log(room);
-                                        const person = document.querySelector("#person_select").value;
-                                        console.log(person);
-    
-                                        const reserv_name = document.querySelector(".booker_input").value;
-                                        console.log(reserv_name);
-                                        const reserv_phone = document.querySelector(".phone_input").value;
-                                        console.log(reserv_phone);
-    
-                                        const pay_way = pay_radio[i].value;
-                                        console.log(pay_way);
-    
-                                        // 입력값에 대한 유효성 검사 진행 (생략)
-    
-                                        let json2 = null;
-    
-                                        try {
-                                            const response = await axios.post("/reservation", {
-                                                user_id: json.item.user_id,
-                                                room: room,
-                                                person: person,
-                                                stay_start: start,
-                                                stay_end: end,
-                                                reserv_name: reserv_name,
-                                                reserv_phone: reserv_phone,
-                                                pay_way: pay_way,
-                                                pay_price: total_price,
-                                                order_no: rsp.merchant_uid
-                                            });
-    
-                                            json2 = response.data;
-    
-                                        } catch (e) {
-                                            alert(e.response.data.rtmsg);
-                                            return;
-                                        }
-    
-                                        if (json2 != null) {
-                                            console.log(json2);
-                                            // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-                                            window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
-                                        }
+                                            const room = document.querySelector("#room_select").value;
+                                            console.log(room);
+                                            const person = document.querySelector("#person_select").value;
+                                            console.log(person);
+        
+                                            const reserv_name = document.querySelector(".booker_input").value;
+                                            console.log(reserv_name);
+                                            const reserv_phone = document.querySelector(".phone_input").value;
+                                            console.log(reserv_phone);
+        
+                                            const pay_way = pay_radio[i].value;
+                                            console.log(pay_way);
+        
+                                            // 입력값에 대한 유효성 검사 진행 (생략)
+        
+                                            let json2 = null;
+        
+                                            try {
+                                                const response = await axios.post("/reservation", {
+                                                    user_id: json.item.user_id,
+                                                    room: room,
+                                                    person: person,
+                                                    stay_start: start,
+                                                    stay_end: end,
+                                                    reserv_name: reserv_name,
+                                                    reserv_phone: reserv_phone,
+                                                    pay_way: pay_way,
+                                                    pay_price: total_price,
+                                                    order_no: rsp.merchant_uid,
+                                                    pay_no: rsp.imp_uid
+                                                });
+        
+                                                json2 = response.data;
+        
+                                            } catch (e) {
+                                                alert(e.response.data.rtmsg);
+                                                return;
+                                            }
+        
+                                            if (json2 != null) {
+                                                console.log(json2);
+                                                // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                                                window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
+                                            }
                                         } else {
                                             var msg = "결제에 실패하였습니다.";
                                             msg += "에러내용 : " + rsp.error_msg;
@@ -241,49 +242,50 @@
                                         msg += "카드 승인번호 : " + rsp.apply_num;
 
                                         // 입력값 받아오기
-                                    const room = document.querySelector("#room_select").value;
-                                    console.log(room);
-                                    const person = document.querySelector("#person_select").value;
-                                    console.log(person);
-    
-                                    const reserv_name = document.querySelector(".booker_input").value;
-                                    console.log(reserv_name);
-                                    const reserv_phone = document.querySelector(".phone_input").value;
-                                    console.log(reserv_phone);
-    
-                                    const pay_way = pay_radio[i].value;
-                                    console.log(pay_way);
-    
-                                    // 입력값에 대한 유효성 검사 진행 (생략)
-    
-                                    let json2 = null;
-    
-                                    try {
-                                        const response = await axios.post("/reservation", {
-                                            user_id: json.item.user_id,
-                                            room: room,
-                                            person: person,
-                                            stay_start: start,
-                                            stay_end: end,
-                                            reserv_name: reserv_name,
-                                            reserv_phone: reserv_phone,
-                                            pay_way: pay_way,
-                                            pay_price: total_price,
-                                            order_no: rsp.merchant_uid
-                                        });
-    
-                                        json2 = response.data;
-    
-                                    } catch (e) {
-                                        alert(e.response.data.rtmsg);
-                                        return;
-                                    }
-    
-                                    if (json2 != null) {
-                                        console.log(json2);
-                                        // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-                                        window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
-                                    }
+                                        const room = document.querySelector("#room_select").value;
+                                        console.log(room);
+                                        const person = document.querySelector("#person_select").value;
+                                        console.log(person);
+        
+                                        const reserv_name = document.querySelector(".booker_input").value;
+                                        console.log(reserv_name);
+                                        const reserv_phone = document.querySelector(".phone_input").value;
+                                        console.log(reserv_phone);
+        
+                                        const pay_way = pay_radio[i].value;
+                                        console.log(pay_way);
+        
+                                        // 입력값에 대한 유효성 검사 진행 (생략)
+        
+                                        let json2 = null;
+        
+                                        try {
+                                            const response = await axios.post("/reservation", {
+                                                user_id: json.item.user_id,
+                                                room: room,
+                                                person: person,
+                                                stay_start: start,
+                                                stay_end: end,
+                                                reserv_name: reserv_name,
+                                                reserv_phone: reserv_phone,
+                                                pay_way: pay_way,
+                                                pay_price: total_price,
+                                                order_no: rsp.merchant_uid,
+                                                pay_no: rsp.imp_uid
+                                            });
+        
+                                            json2 = response.data;
+        
+                                        } catch (e) {
+                                            alert(e.response.data.rtmsg);
+                                            return;
+                                        }
+        
+                                        if (json2 != null) {
+                                            console.log(json2);
+                                            // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                                            window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
+                                        }
                                     } else {
                                         var msg = "결제에 실패하였습니다.";
                                         msg += "에러내용 : " + rsp.error_msg;
@@ -310,7 +312,7 @@
                                     amount: total_price,
                                     name: "GrandJeju",
                                     buyer_name: buyer_name,
-                                    m_redirect_url: "https://www.yourdomain.com/payments/complete",
+                                    m_redirect_url: "/payments/complete",
                                     /*
                                     모바일 결제시,
                                     결제가 끝나고 랜딩되는 URL을 지정
@@ -327,49 +329,51 @@
                                         msg += "카드 승인번호 : " + rsp.apply_num;
 
                                         // 입력값 받아오기
-                                    const room = document.querySelector("#room_select").value;
-                                    console.log(room);
-                                    const person = document.querySelector("#person_select").value;
-                                    console.log(person);
-    
-                                    const reserv_name = document.querySelector(".booker_input").value;
-                                    console.log(reserv_name);
-                                    const reserv_phone = document.querySelector(".phone_input").value;
-                                    console.log(reserv_phone);
-    
-                                    const pay_way = pay_radio[i].value;
-                                    console.log(pay_way);
-    
-                                    // 입력값에 대한 유효성 검사 진행 (생략)
-    
-                                    let json2 = null;
-    
-                                    try {
-                                        const response = await axios.post("/reservation", {
-                                            user_id: json.item.user_id,
-                                            room: room,
-                                            person: person,
-                                            stay_start: start,
-                                            stay_end: end,
-                                            reserv_name: reserv_name,
-                                            reserv_phone: reserv_phone,
-                                            pay_way: pay_way,
-                                            pay_price: total_price,
-                                            order_no: rsp.merchant_uid
-                                        });
-    
-                                        json2 = response.data;
-    
-                                    } catch (e) {
-                                        alert(e.response.data.rtmsg);
-                                        return;
-                                    }
-    
-                                    if (json2 != null) {
-                                        console.log(json2);
-                                        // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
-                                        window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
-                                    }
+                                        const room = document.querySelector("#room_select").value;
+                                        console.log(room);
+                                        const person = document.querySelector("#person_select").value;
+                                        console.log(person);
+        
+                                        const reserv_name = document.querySelector(".booker_input").value;
+                                        console.log(reserv_name);
+                                        const reserv_phone = document.querySelector(".phone_input").value;
+                                        console.log(reserv_phone);
+        
+                                        const pay_way = pay_radio[i].value;
+                                        console.log(pay_way);
+        
+                                        // 입력값에 대한 유효성 검사 진행 (생략)
+        
+                                        let json2 = null;
+        
+                                        try {
+                                            const response = await axios.post("/reservation", {
+                                                user_id: json.item.user_id,
+                                                room: room,
+                                                person: person,
+                                                stay_start: start,
+                                                stay_end: end,
+                                                reserv_name: reserv_name,
+                                                reserv_phone: reserv_phone,
+                                                pay_way: pay_way,
+                                                pay_price: total_price,
+                                                order_no: rsp.merchant_uid,
+                                                pay_no: rsp.imp_uid
+                                            });
+        
+                                            json2 = response.data;
+        
+                                        } catch (e) {
+                                            alert(e.response.data.rtmsg);
+                                            return;
+                                        }
+        
+                                        if (json2 != null) {
+                                            console.log(json2);
+                                            // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
+                                            window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
+                                        }
+
                                     } else {
                                         var msg = "결제에 실패하였습니다.";
                                         msg += "에러내용 : " + rsp.error_msg;
@@ -385,4 +389,4 @@
             });
         } 
     });  
-    })();
+})();
