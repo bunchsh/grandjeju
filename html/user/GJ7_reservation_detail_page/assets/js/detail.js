@@ -76,13 +76,10 @@
                             reserv_id: reserv_id
                         });
 
-                    } catch (e) {
-                        swal({
-                            text: "취소가 불가합니다. 다시 시도해 주세요.", // Alert 내용
-                            buttons: {
-                                confirm: "OK",  // 확인 버튼
-                            }
-                        })
+                    } catch (error) {
+                        const errorMsg = "[" + error.response.status + "] " + error.response.statusText
+                        console.error(errorMsg);
+                        alert("예약 취소에 실패했습니다. 잠시 후 다시 시도해 주세요.");
                     }
                     // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
                     const response = await axios.delete("/reservation/" + reserv_id);
@@ -100,5 +97,4 @@
             });
         }
     })();
-
 })();

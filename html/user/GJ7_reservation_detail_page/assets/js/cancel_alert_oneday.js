@@ -7,7 +7,7 @@
 /** 예약 취소 불가 Alert */
 document.getElementsByClassName("btn_cancel_oneday")[0].addEventListener('click', function () {
     swal({
-        text: "예약을 취소가 불가합니다", // Alert 내용
+        text: "예약 취소가 불가합니다", // Alert 내용
         buttons: {
             confirm: "OK",  // 확인 버튼
         }
