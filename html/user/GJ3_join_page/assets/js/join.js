@@ -39,6 +39,14 @@
         return;
     }
 
-    alert("회원가입이 완료되었습니다!");
-    window.location = "/GJ2_login_page/login.html"
+    swal({
+        text: "회원가입이 완료되었습니다!", // Alert 내용
+        buttons: {
+            OK: true,  // 확인 버튼
+        }
+    }).then((value) => {   // 확인 버튼 이벤트
+        if (value == 'OK') {
+            window.location = "/GJ2_login_page/login.html"
+        };
+    });
 });

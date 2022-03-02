@@ -12,9 +12,18 @@
         const response = await axios.get('/members/info');
         json = response.data;
     } catch (e) {
-        alert(e.response.data.rtmsg);
-        history.back();
-        return;
+        swal({
+            text: e.response.data.rtmsg, // Alert 내용
+            buttons: {
+                OK: true,  // 확인 버튼
+            }
+        }).then((value) => {   // 확인 버튼 이벤트
+            if (value == 'OK') {
+                history.back();
+                return;
+            };
+        });
+        
     }
 
     let member_id = json.item.member_id;
@@ -30,8 +39,17 @@
             const inputUserphone = document.querySelector(".modify_tel");
 
             if (!member_id) {
-                alert('회원 정보가 없습니다.');
-                return;
+                swal({
+                    text: '회원 정보가 없습니다.', // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                }).then((value) => {   // 확인 버튼 이벤트
+                    if (value == 'OK') {
+                        history.back();
+                        return;
+                    };
+                });
             }
 
 
@@ -42,8 +60,16 @@
                 const response = await axios.get('/memberss/' + member_id);
                 json2 = response.data;
             } catch (e) {
-                alert(e.response.data.rtmsg);
-                return;
+                swal({
+                    text: e.response.data.rtmsg, // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                }).then((value) => {   // 확인 버튼 이벤트
+                    if (value == 'OK') {
+                        return;
+                    };
+                });
             }
 
             // 조회 결과가 있다면 input 태그에 조회 데이터 세팅
@@ -84,26 +110,47 @@
 
                 json3 = response.data;
             } catch (e) {
-                alert(e.response.data.rtmsg);
-                return;
+                swal({
+                    text: e.response.data.rtmsg, // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                }).then((value) => {   // 확인 버튼 이벤트
+                    if (value == 'OK') {
+                        return;
+                    };
+                });
             }
 
             if (json3 != null) {
-                alert('수정이 완료되었습니다! 다시 로그인해 주세요.');
-
-                /** 세션의 로그인 data 갱신을 위해 강제 로그아웃 */
-                (async () => {
-                    try {
-                        // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                        const response = await axios.delete("/members/logout");
-                    } catch (error) {
-                        const errorMsg = "[" + error.response.status + "] " + error.response.statusText
-                        console.error(errorMsg);
-                        alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
-                        history.back();
+                swal({
+                    text: '회원 정보 수정이 완료되었습니다. \n 다시 로그인해 주세요.', // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
                     }
-                })();
-                window.location = "/GJ2_login_page/login.html"
+                }).then((value) => {   // 확인 버튼 이벤트
+                    if (value == 'OK') {
+                        /** 세션의 로그인 data 갱신을 위해 강제 로그아웃 */
+                        (async () => {
+                            try {
+                                // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
+                                const response = await axios.delete("/members/logout");
+                            } catch (error) {
+                                const errorMsg = "[" + error.response.status + "] " + error.response.statusText
+                                console.error(errorMsg);
+                                swal({
+                                    text: "로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.", // Alert 내용
+                                    buttons: {
+                                        OK: true,  // 확인 버튼
+                                    }
+                                });
+                                history.back();
+                            }
+                        })();
+                        window.location = "/GJ2_login_page/login.html"
+                    };
+                });
+
             }
         });
     }

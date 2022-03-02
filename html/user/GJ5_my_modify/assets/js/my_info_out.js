@@ -8,62 +8,63 @@ document.querySelector(".drop_button").addEventListener("click", e =>{
     swal({
         text: "정말 탈퇴하시겠습니까?", // Alert 내용
         buttons: {
-            confirm: "OK",  // 확인 버튼
-            cancel: true    // 취소 버튼
+            OK: true,  // 확인 버튼
+            cancel: "cancel"    // 취소 버튼
         }
-    }).then(() => {   // 확인 버튼 이벤트
-        e.preventDefault();
+    }).then((value) => {   // 확인 버튼 이벤트
+        if (value == 'OK') {
+            e.preventDefault();
 
-        (async () => {
-            let json = null;
+            (async () => {
+                let json = null;
 
-            // 세션에 저장된 로그인 정보
-            try {
-                const response = await axios.get('/members/info');
-                json = response.data;
-            } catch (e) {
-                alert(e.response.data.rtmsg);
-                history.back();
-                return;
-            }
+                // 세션에 저장된 로그인 정보
+                try {
+                    const response = await axios.get('/members/info');
+                    json = response.data;
+                } catch (e) {
+                    alert(e.response.data.rtmsg);
+                    history.back();
+                    return;
+                }
 
-            let member_id = json.item.member_id;
+                let member_id = json.item.member_id;
 
-            if (json != null) {
-                // 즉시실행 비동기 처리 함수
-                (async () => {
-                    try {
-                        // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                        const response = await axios.delete("/membersout/" + member_id);
-                        
-                        // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
-                        swal({
-                            text: "탈퇴가 완료되었습니다.", // Alert 내용
-                            buttons: {
-                                confirm: "OK",  // 확인 버튼
-                            }
-                        }).then(() => {
-                            (async () => {
-                                try {
-                                    // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                                    const response = await axios.delete("/members/logout");
-                                    
-                                    // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
-                                    location.href = "../GJ1_main_page/main.html"
-                                } catch (error) {
-                                    const errorMsg = "[" + error.response.status + "] " + error.response.statusText
-                                    console.error(errorMsg);
-                                    alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                if (json != null) {
+                    // 즉시실행 비동기 처리 함수
+                    (async () => {
+                        try {
+                            // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
+                            const response = await axios.delete("/membersout/" + member_id);
+                            
+                            // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
+                            swal({
+                                text: "탈퇴가 완료되었습니다.", // Alert 내용
+                                buttons: {
+                                    confirm: "OK",  // 확인 버튼
                                 }
-                            })();
-                        });
-                    } catch (error) {
-                        const errorMsg = "[" + error.response.status + "] " + error.response.statusText
-                        console.error(errorMsg);
-                        alert("회원 탈퇴에 실패했습니다. 잠시 후 다시 시도해 주세요.");
-                    }
-                })();
-            };
-        })();
-    });
+                            }).then(() => {
+                                (async () => {
+                                    try {
+                                        // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
+                                        const response = await axios.delete("/members/logout");
+                                        
+                                        // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
+                                        location.href = "../GJ1_main_page/main.html"
+                                    } catch (error) {
+                                        const errorMsg = "[" + error.response.status + "] " + error.response.statusText
+                                        console.error(errorMsg);
+                                        alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                                    }
+                                })();
+                            });
+                        } catch (error) {
+                            const errorMsg = "[" + error.response.status + "] " + error.response.statusText
+                            console.error(errorMsg);
+                            alert("회원 탈퇴에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                        }
+                    })();
+                };
+            })();
+        }});
 });
