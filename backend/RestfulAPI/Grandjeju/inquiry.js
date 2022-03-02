@@ -247,6 +247,21 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(user_id, '아이디가 없습니다.');
+            regexHelper.maxLength(user_id, 20, '아이디는 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_id, 6, '아이디는 최소 6자 이상 입력 가능합니다.');
+            regexHelper.engNum(user_id, '아이디는 영문, 숫자 조합만 입력 가능합니다.');
+
+            regexHelper.value(user_name, '작성자 이름이 없습니다.');
+            regexHelper.maxLength(user_name, 20, '이름은 최대 20자까지 입력 가능합니다.');
+            regexHelper.minLength(user_name, 2, '이름은 최소 2자 이상 입력 가능합니다.');
+
+            regexHelper.value(type, '문의종류가 없습니다.');
+            regexHelper.inquiry_type(type, '문의 종류가 잘못되었습니다.')
+
+            regexHelper.value(title, '문의제목이 없습니다.');
+            regexHelper.maxLength(title, 255, '문의제목은 최대 255자까지 입력 가능합니다.');
+
+            regexHelper.value(inquiry_text, '문의내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -291,6 +306,14 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(inquiry_id, '필수 파라미터가 없습니다.');
+
+            regexHelper.value(type, '문의종류가 없습니다.');
+            regexHelper.inquiry_type(type, '문의 종류가 잘못되었습니다.')
+
+            regexHelper.value(title, '문의제목이 없습니다.');
+            regexHelper.maxLength(title, 255, '문의제목은 최대 255자까지 입력 가능합니다.');
+            
+            regexHelper.value(inquiry_text, '문의내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -341,6 +364,15 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(inquiry_id, '필수 파라미터가 없습니다.');
+
+            regexHelper.value(type, '문의종류가 없습니다.');
+            regexHelper.inquiry_type(type, '문의 종류가 잘못되었습니다.')
+
+            regexHelper.value(title, '문의제목이 없습니다.');
+            regexHelper.maxLength(title, 255, '문의제목은 최대 255자까지 입력 가능합니다.');
+            
+            regexHelper.value(inquiry_text, '문의내용이 없습니다.');
+            regexHelper.value(answer_text, '탑변내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -389,6 +421,8 @@ module.exports = (app) => {
 
         try {
             regexHelper.value(inquiry_id, '필수 파라미터가 없습니다.');
+            regexHelper.value(state, '답변상태 값이 없습니다');
+            regexHelper.is_state(state, '답변상태 값이 잘못되었습니다')
         } catch (err) {
             return next(err);
         }
