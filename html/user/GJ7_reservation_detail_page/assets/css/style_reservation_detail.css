@@ -107,31 +107,3 @@
     margin: 0 auto;
     text-align: center;
 }
-
-
-/** sweetalert */
-.swal-modal {
-    width: 250px;
-    height: 150px;
-    background-color: white;
-    border: 2px solid black;
-  }
-.swal-text {
-    font-size: 14px;
-    color: black;
-    text-align: center;
-}
-.swal-footer {
-    overflow: hidden;
-    text-align: center;
-  }
-.swal-button {
-    display: block;
-    background-color: black;
-    color: white;
-    font-size: 12px;
-    margin: 0 auto;
-    padding: 0;
-    width: 70px;
-    height: 43px;
-}

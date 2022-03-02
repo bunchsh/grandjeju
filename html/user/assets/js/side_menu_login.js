@@ -32,12 +32,25 @@ window.addEventListener("load", () => {
                     document.getElementById("login_button").style.display = "block";
                     document.getElementById("mypage_button").style.display = "none";
                     document.getElementById("logout").style.display = "none";
-                    alert('로그아웃되었습니다.');
-                    location.href = "../GJ1_main_page/main.html"
+                    swal({
+                        text: "로그아웃되었습니다.", // Alert 내용
+                        buttons: {
+                            OK: true,  // 확인 버튼
+                        }
+                    }).then((value) => {   // 확인 버튼 이벤트
+                        if (value == 'OK') {
+                            location.href = "../GJ1_main_page/main.html"
+                        };
+                    });
                 } catch (error) {
                     const errorMsg = "[" + error.response.status + "] " + error.response.statusText
                     console.error(errorMsg);
-                    alert("로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                    swal({
+                        text: "로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.", // Alert 내용
+                        buttons: {
+                            OK: true,  // 확인 버튼
+                        }
+                    });
                 }
             })();
         });
