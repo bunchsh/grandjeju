@@ -78,20 +78,6 @@
             previewStyle: 'vertical'
         });
     
-
-    
-        document.querySelector('#review_write').addEventListener("submit", e => {
-            e.preventDefault();
-            console.log(editor.getHTML);
-
-            const regexHelper = new RegexHelper();
-
-            /** 제목 검사 */
-            if (!regexHelper.value(".title_input", "제목이 입력되지 않았습니다.")) { return false; }
-            /** 내용 검사 */
-            if (!regexHelper.editor_value(editor.getHTML(), "내용이 입력되지 않았습니다.")) { return false; }
-
-        });
     </script>
     <script>
         let id_array = []
@@ -161,6 +147,13 @@
         })();
         document.querySelector('#review_write').addEventListener("submit", async(e) => {
             e.preventDefault();
+
+            const regexHelper = new RegexHelper();
+
+            /** 제목 검사 */
+            if (!regexHelper.value("#title", "제목을 입력되지 않았습니다.")) {return false;}
+            /** 내용 검사 */
+            if (!regexHelper.editor_value(editor.getHTML(), "내용이 입력되지 않았습니다.")) {return false;}
 
             const user_name = login_info.item.user_name;
             const user_id = login_info.item.user_id;
