@@ -205,5 +205,19 @@ class RegexHelper {
             throw new BadRequestException(msg);
         }
     }
+
+    /**
+     * 에디터 유효성 검사
+     * @param {string} content     입력내용
+     * @param {string} msg         표시할 메시지
+     */
+    editor_value(selector, msg) {
+        // 앞뒤의 공백을 제외하고 내용만 추출
+        const content = selector.replaceAll(" ","").replaceAll("<br>","").replaceAll("<p></p>","");
+
+        if (!content) {
+            throw new BadRequestException(msg);
+        }
+    }
 }
 module.exports = new RegexHelper();

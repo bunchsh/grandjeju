@@ -214,6 +214,7 @@ module.exports = (app) => {
             regexHelper.maxLength(title, 255, '리뷰제목은 최대 255자까지 입력 가능합니다.');
 
             regexHelper.value(text, '리뷰내용이 없습니다.');
+            regexHelper.editor_value(text, '리뷰내용이 없습니다.')
         } catch (err) {
             return next(err);
         }
@@ -261,6 +262,7 @@ module.exports = (app) => {
             regexHelper.maxLength(title, 255, '리뷰제목은 최대 255자까지 입력 가능합니다.');
 
             regexHelper.value(text, '리뷰내용이 없습니다.');
+            regexHelper.editor_value(text, '리뷰내용이 없습니다.')
         } catch (err) {
             return next(err);
         }

@@ -314,6 +314,7 @@ module.exports = (app) => {
             regexHelper.maxLength(title, 255, '문의제목은 최대 255자까지 입력 가능합니다.');
             
             regexHelper.value(inquiry_text, '문의내용이 없습니다.');
+            regexHelper.editor_value(inquiry_text, '문의내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
@@ -372,7 +373,9 @@ module.exports = (app) => {
             regexHelper.maxLength(title, 255, '문의제목은 최대 255자까지 입력 가능합니다.');
             
             regexHelper.value(inquiry_text, '문의내용이 없습니다.');
-            regexHelper.value(answer_text, '탑변내용이 없습니다.');
+            regexHelper.editor_value(inquiry_text, '문의내용이 없습니다.');
+            regexHelper.value(answer_text, '답변내용이 없습니다.');
+            regexHelper.editor_value(answer_text, '답변내용이 없습니다.');
         } catch (err) {
             return next(err);
         }
