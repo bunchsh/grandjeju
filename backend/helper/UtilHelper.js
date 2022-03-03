@@ -76,10 +76,13 @@ module.exports.pagenation = function(totalCount=0, nowPage=1, listCount=10, grou
     var offset = (nowPage -1) * listCount;
 
     // 다음 페이지 번호
-    var next = nowPage + 1 ;
+    var next = 0;
+    if(nowPage != totalPage) {next = nowPage + 1}
+
 
     // 이전 페이지 번호
-    var prev = nowPage - 1 ;
+    var prev = 0;
+    if (nowPage != 1) {prev = nowPage - 1}
 
     // 리턴한 데이터들을 객체로 묶기
     return {
