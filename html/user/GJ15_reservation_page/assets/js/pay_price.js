@@ -94,7 +94,7 @@
         let end = date_array[1]
         let start_date = dayjs(start, 'YYYY-MM-DD');
         let end_date = dayjs(end, 'YYYY-MM-DD');
-        const date_days = end_date.diff(start_date, "day");
+        const date_days = end_date.diff(start_date, "day")
         console.log("기간:: ", date_days);
     
         /** 객실 변경 시, 결제 금액 */
@@ -104,8 +104,9 @@
                 (parseInt(person.options[person.selectedIndex].dataset.price) +
                     parseInt(room.options[room.selectedIndex].dataset.price)) *
                 date_days;
-            if (isNaN(total_price) || total_price < 0  || end_date != null || end_date != undefined) {
+            if (isNaN(total_price) || total_price < 0) {
                 total_price = "";
+                document.querySelector(".payfee").innerHTML = total_price
             } else {
                 document.querySelector(".payfee").innerHTML = total_price;
             }
@@ -116,12 +117,12 @@
             (parseInt(person.options[person.selectedIndex].dataset.price) +
                 parseInt(room.options[room.selectedIndex].dataset.price)) *
             date_days;
-        
-            if (isNaN(total_price) || total_price < 0  || end_date != null || end_date != undefined) {
-                total_price = "";
-            } else {
-                document.querySelector(".payfee").innerHTML = total_price;
-            }
+        if (isNaN(total_price) || total_price < 0) {
+            total_price = "";
+            document.querySelector(".payfee").innerHTML = total_price
+        } else {
+            document.querySelector(".payfee").innerHTML = total_price;
+        }
     
         const pay_radio = document.getElementsByName("pay");
         const buyer_name = document.getElementsByClassName("booker_input").value;
@@ -157,6 +158,11 @@
                                     async (rsp) => {
                                         console.log(rsp);
                                         if (rsp.success) {
+                                            var msg = "결제가 완료되었습니다.";
+                                            msg += "고유ID : " + rsp.imp_uid;
+                                            msg += "상점 거래ID : " + rsp.merchant_uid; //결제번호
+                                            msg += "결제 금액 : " + rsp.paid_amount;
+                                            msg += "카드 승인번호 : " + rsp.apply_num;
                                             // 입력값 받아오기
                                             const room = document.querySelector("#room_select").value;
                                             console.log(room);
@@ -193,16 +199,8 @@
                                                 json2 = response.data;
         
                                             } catch (e) {
-                                                swal({
-                                                    text: e.response.data.rtmsg, // Alert 내용
-                                                    buttons: {
-                                                        OK: true,  // 확인 버튼
-                                                    }
-                                                }).then((value) => {   // 확인 버튼 이벤트
-                                                    if (value == 'OK') {
-                                                    return;
-                                                    }
-                                                });
+                                                alert(e.response.data.rtmsg);
+                                                return;
                                             }
         
                                             if (json2 != null) {
@@ -212,15 +210,10 @@
                                             }
                                         } else {
                                             var msg = "결제에 실패하였습니다.";
-                                            msg += "[" + rsp.error_msg + "]";
+                                            msg += "에러내용 : " + rsp.error_msg;
                                             history.back();
                                         }
-                                        swal({
-                                            text: msg, // Alert 내용
-                                            buttons: {
-                                                OK: true,  // 확인 버튼
-                                            }
-                                        });
+                                        alert(msg);
                                     }
                                 );
                             }
@@ -252,6 +245,11 @@
                                 async (rsp) => {
                                     console.log(rsp);
                                     if (rsp.success) {
+                                        var msg = "결제가 완료되었습니다.";
+                                        msg += "고유ID : " + rsp.imp_uid;
+                                        msg += "상점 거래ID : " + rsp.merchant_uid;
+                                        msg += "결제 금액 : " + rsp.paid_amount;
+                                        msg += "카드 승인번호 : " + rsp.apply_num;
                                         // 입력값 받아오기
                                         const room = document.querySelector("#room_select").value;
                                         console.log(room);
@@ -288,16 +286,8 @@
                                             json2 = response.data;
         
                                         } catch (e) {
-                                            swal({
-                                                text: e.response.data.rtmsg, // Alert 내용
-                                                buttons: {
-                                                    OK: true,  // 확인 버튼
-                                                }
-                                            }).then((value) => {   // 확인 버튼 이벤트
-                                                if (value == 'OK') {
-                                                return;
-                                                }
-                                            });
+                                            alert(e.response.data.rtmsg);
+                                            return;
                                         }
         
                                         if (json2 != null) {
@@ -307,15 +297,10 @@
                                         }
                                     } else {
                                         var msg = "결제에 실패하였습니다.";
-                                        msg += "[" + rsp.error_msg + "]";
+                                        msg += "에러내용 : " + rsp.error_msg;
                                         history.back();
                                     }
-                                    swal({
-                                        text: msg, // Alert 내용
-                                        buttons: {
-                                            OK: true,  // 확인 버튼
-                                        }
-                                    });
+                                    alert(msg);
                                 }
                                 );
                             }
@@ -346,6 +331,11 @@
                                 async (rsp) => {
                                     console.log(rsp);
                                     if (rsp.success) {
+                                        var msg = "결제가 완료되었습니다.";
+                                        msg += "고유ID : " + rsp.imp_uid;
+                                        msg += "상점 거래ID : " + rsp.merchant_uid;
+                                        msg += "결제 금액 : " + rsp.paid_amount;
+                                        msg += "카드 승인번호 : " + rsp.apply_num;
                                         // 입력값 받아오기
                                         const room = document.querySelector("#room_select").value;
                                         console.log(room);
@@ -382,16 +372,8 @@
                                             json2 = response.data;
         
                                         } catch (e) {
-                                            swal({
-                                                text: e.response.data.rtmsg, // Alert 내용
-                                                buttons: {
-                                                    OK: true,  // 확인 버튼
-                                                }
-                                            }).then((value) => {   // 확인 버튼 이벤트
-                                                if (value == 'OK') {
-                                                return;
-                                                }
-                                            });
+                                            alert(e.response.data.rtmsg);
+                                            return;
                                         }
         
                                         if (json2 != null) {
@@ -399,24 +381,19 @@
                                             // 새로 생성된 data의 PK를 상세 페이지로 전달하여 저장 결과 확인
                                             window.location = "/GJ16_reservation_clear_page/reservation_clear.html?reserv_id=" + json2.item[0].reserv_id;
                                         }
-
                                     } else {
                                         var msg = "결제에 실패하였습니다.";
-                                        msg += "[" + rsp.error_msg + "]";
+                                        msg += "에러내용 : " + rsp.error_msg;
                                         history.back();
                                     }
-                                    swal({
-                                        text: msg, // Alert 내용
-                                        buttons: {
-                                            OK: true,  // 확인 버튼
-                                        }
-                                    });
+                                    alert(msg);
+                                    
                                 }
                             );
                         }
                     });
                 }
             });
-        }
+        } 
     });  
 })();
