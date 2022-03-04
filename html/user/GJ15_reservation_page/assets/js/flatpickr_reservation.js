@@ -12,6 +12,9 @@ room.addEventListener("change", (e) => {
         const stay_start = params.get('stay_start');
         const stay_end = params.get('stay_end');
 
+        const now = dayjs();
+        const min = now.add(1, "day").format("YYYY-MM-DD");
+
         // ajax 결과가 저장될 json
         let json = null;
         let date = []
@@ -39,7 +42,7 @@ room.addEventListener("change", (e) => {
             /** 숙박 기간 날짜 범위 선택 */
             flatpickr(".day_select", {
                 mode: "range",
-                minDate: "today",
+                minDate: min,
                 dateFormat: "Y-m-d",
                 disable: date,
                 locale: {
