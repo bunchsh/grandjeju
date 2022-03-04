@@ -86,22 +86,22 @@
     font-weight: bold;
 }
 
-#container .btn_group .btn_cancel_oneday {
-    display: block;
-    width: 90%;
-    height: 40px;
-    background-color: black;
-    color: white;
-    border-radius: 5px 5px 5px 5px;
-    border: none;
-    margin: 0 auto;
-}
-
 /** 환불 관련 안내 */
 #container .notice_group .notice {
     display: block;
     width: 90%;
     font-size: 8px;
+    font-weight: bold;
+    color: gray;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/** 사용 완료 안내 */
+#container .complete .complete_text {
+    display: block;
+    width: 90%;
+    font-size: 13px;
     font-weight: bold;
     color: gray;
     margin: 0 auto;

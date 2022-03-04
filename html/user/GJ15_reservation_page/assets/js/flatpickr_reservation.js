@@ -53,7 +53,7 @@ room.addEventListener("change", (e) => {
             /** 숙박 기간 날짜 범위 선택 */
             flatpickr(".day_select", {
                 mode: "range",
-                minDate: "today",
+                minDate: min,
                 dateFormat: "Y-m-d",
                 locale: {
                     rangeSeparator: ' ~ '

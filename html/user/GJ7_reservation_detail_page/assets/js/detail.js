@@ -52,21 +52,29 @@
             const template = Handlebars.compile(source);
             const html = template(json2.item[0]);
             
+            // 현재 날짜
             const now = dayjs();
             
+            // 입실일
             const start_date = dayjs(json2.item[0].stay_start);
             console.log(start_date);
 
+            // 입실일 전 날짜
             const yesterday = start_date.subtract(1, "day").format("YYYY-MM-DD");
             console.log(yesterday);
     
             document.querySelector('#content').insertAdjacentHTML('beforeend', html);
 
+            if (now.isAfter(start_date) == true) {
+                document.querySelector(".btn_group").style.display="none";
+                document.querySelector(".complete").style.display="block";
+            };
+
             /** 예약 취소 Alert */
             document.getElementsByClassName("btn_cancel")[0].addEventListener('click', (e) => {
                 if (now.format("YYYY-MM-DD") == json2.item[0].stay_start || now.format("YYYY-MM-DD") == yesterday) {
                     swal({
-                        text: "예약 취소가 불가합니다. \n 예약 시 유의 사항을 확인해 주세요.",
+                        text: "예약 취소가 불가합니다. \n 취소 시 유의 사항을 확인해 주세요.",
                         button: {
                             OK: true
                         }
@@ -108,7 +116,7 @@
                         });
                         }
                     });
-                };
+                }
             });
         }
     })();
