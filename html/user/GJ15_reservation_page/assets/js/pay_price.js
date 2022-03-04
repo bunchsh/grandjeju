@@ -94,7 +94,7 @@
         let end = date_array[1]
         let start_date = dayjs(start, 'YYYY-MM-DD');
         let end_date = dayjs(end, 'YYYY-MM-DD');
-        const date_days = end_date.diff(start_date, "day")
+        const date_days = end_date.diff(start_date, "day");
         console.log("기간:: ", date_days);
     
         /** 객실 변경 시, 결제 금액 */
@@ -104,7 +104,7 @@
                 (parseInt(person.options[person.selectedIndex].dataset.price) +
                     parseInt(room.options[room.selectedIndex].dataset.price)) *
                 date_days;
-            if (isNaN(total_price)) {
+            if (isNaN(total_price) || total_price < 0  || end_date != null || end_date != undefined) {
                 total_price = "";
             } else {
                 document.querySelector(".payfee").innerHTML = total_price;
@@ -116,11 +116,12 @@
             (parseInt(person.options[person.selectedIndex].dataset.price) +
                 parseInt(room.options[room.selectedIndex].dataset.price)) *
             date_days;
-        if (isNaN(total_price)) {
-            total_price = "";
-        } else {
-            document.querySelector(".payfee").innerHTML = total_price;
-        }
+        
+            if (isNaN(total_price) || total_price < 0  || end_date != null || end_date != undefined) {
+                total_price = "";
+            } else {
+                document.querySelector(".payfee").innerHTML = total_price;
+            }
     
         const pay_radio = document.getElementsByName("pay");
         const buyer_name = document.getElementsByClassName("booker_input").value;
@@ -416,6 +417,6 @@
                     });
                 }
             });
-        } 
+        }
     });  
 })();
