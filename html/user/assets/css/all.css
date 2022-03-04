@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
     overflow-x: hidden;
     overflow-y: auto;
     margin: 0 auto;
-    min-height: 800px;
+    /* min-height: 800px; */
 }
 
 #wrap::-webkit-scrollbar {
@@ -35,7 +35,7 @@ body::-webkit-scrollbar {
 }
 
 #container {
-    margin: 80px auto;
+    margin: 80px auto 30px auto;
     width: 80%;
     min-width: 360px;
     max-width: 820px;
