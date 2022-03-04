@@ -15,16 +15,24 @@
 
     <link rel="stylesheet" href="../assets/css/all.css">
     <link rel="stylesheet" href="../assets/css/header_style.css">
+    <link rel="stylesheet" href="../assets/css/side_menu.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style_review_detail.css">
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik&display=swap" rel="stylesheet">    
 </head>
 
 <body>
     <div id="wrap">
         <!-- HEADER -->
         <div id="header">
-            <h2 class="title">REVIEW</h2>
+            <warp class="header_warp">
+                <div class="hamburger_icon">
+                    <a><img src="../assets/img/Hamburger_icon.png"></a>
+                </div>
+                <h2 class="title">REVIEW</h2>
+            </warp>
         </div>
         <!-- CONTAINER -->
         <div id="container">
@@ -51,7 +59,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- 사이드 메뉴바 -->
+    <div data-include="../assets/inc/side_menu.html"></div>
+</div>
+
+    <script async="false" src="../assets/js/include_side.js"></script>
+    <script src="../assets/js/side_menu_login.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
 
