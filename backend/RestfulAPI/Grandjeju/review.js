@@ -236,14 +236,6 @@ module.exports = (app) => {
             const input_data = [user_id, user_name, title, text];
             const [result1] = await dbcon.query(sql1, input_data);
 
-            if (photos != null) {
-                photos.forEach(async(v, i) => {
-                    // 데이터 수정하기
-                    const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
-                    const input_data = [result1.insertId, v];
-                    const [result_p] = await dbcon.query(sql_p, input_data);
-                })
-            }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
             const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE review_id=?";
@@ -251,9 +243,29 @@ module.exports = (app) => {
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result2
-            
-            console.log(json)
 
+            console.log(json)
+        
+
+            if (photos != null) {
+                photos.forEach(async(v, i) => {
+                    dbcon = await mysql2.createConnection(config.GJ_database);
+                    await dbcon.connect();
+
+                    const sql_photo = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE photo_id=?';
+                    const [result_photo] = await dbcon.query(sql_photo, [v]);
+                    console.log(result_photo[0].path)
+                
+                    if (json[0].text.indexOf(result_photo[0].path) != -1) {
+                        console.log(v)
+                        // 데이터 수정하기
+                        const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
+                        const input_data1 = [result1.insertId, v];
+                        const [result_p] = await dbcon.query(sql_p, input_data1);
+                    }
+                })
+            }
+            
         } catch (err) {
             return next(err);
         } finally {
@@ -295,15 +307,6 @@ module.exports = (app) => {
             const input_data = [ title, text, review_id];
             const [result1] = await dbcon.query(sql, input_data);
 
-            if (photos != null) {
-                photos.forEach(async(v, i) => {
-                    // 데이터 수정하기
-                    const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
-                    const input_data = [review_id, v];
-                    const [result_p] = await dbcon.query(sql_p, input_data);
-                })
-            }
-
             // 결과 행 수가 0이라면 예외처리
             if (result1.affectedRows < 1) {
                 throw new Error('수정된 데이터가 없습니다.');
@@ -315,6 +318,25 @@ module.exports = (app) => {
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result2;
+
+            if (photos != null) {
+                photos.forEach(async(v, i) => {
+                    dbcon = await mysql2.createConnection(config.GJ_database);
+                    await dbcon.connect();
+
+                    const sql_photo = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE photo_id=?';
+                    const [result_photo] = await dbcon.query(sql_photo, [v]);
+                    console.log(result_photo[0].path)
+                
+                    if (json[0].text.indexOf(result_photo[0].path) != -1) {
+                        console.log(v)
+                        // 데이터 수정하기
+                        const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
+                        const input_data1 = [review_id, v];
+                        const [result_p] = await dbcon.query(sql_p, input_data1);
+                    }
+                })
+            }
         } catch (err) {
             return next(err);
         } finally {
