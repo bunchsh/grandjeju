@@ -12,6 +12,8 @@ const mysql2  = require('mysql2/promise');
 const regexHelper = require('../../helper/RegexHelper');
 const utilHelper = require('../../helper/UtilHelper');
 
+const fs = require('fs');   
+
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
     let dbcon = null;
@@ -319,11 +321,20 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 참조 파일 삭제
+            const sql = 'SELECT photo_id,  CONVERT(path USING utf8) as path FROM photo WHERE review_id=?';
+            const [result] = await dbcon.query(sql, [review_id])
+            console.log(result);
+
+            result.forEach((v, i) => {
+                fs.unlinkSync(`../_files${v.path}`);
+            })
+            
+            // 참조 포토테이블 삭제
             await dbcon.query("DELETE FROM photo WHERE review_id=?", [review_id])
 
             // 데이터 삭제하기
-            const sql = 'DELETE FROM review WHERE review_id=?';
-            const [result1] = await dbcon.query(sql, [review_id]);
+            const sql1 = 'DELETE FROM review WHERE review_id=?';
+            const [result1] = await dbcon.query(sql1, [review_id]);
 
 
             // 결과 행 수가 0이라면 예외처리

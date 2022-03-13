@@ -45,7 +45,7 @@ module.exports = (app) => {
                 const [result1] =await dbcon.query(sql1, args);
 
                 // 저장된 데이터의 
-                            // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
+                // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
                 const sql2 = 'SELECT photo_id,  CONVERT(path USING utf8) as path FROM photo WHERE photo_id=?';
                 const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
