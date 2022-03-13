@@ -8,6 +8,8 @@ const BadRequestException = require('../../exceptions/BadRequestExeption');
 const RuntimeException = require('../../exceptions/RuntimeException');
 const MultipartException = require('../../exceptions/MultipartException');
 
+const fs = require('fs');   
+
 module.exports = (app) => {
     router.post("/photo", async(req, res, next) =>{
         // WebHelper에 추가된 기능을 활용하여 업로드 객체 반화받기
@@ -93,6 +95,32 @@ module.exports = (app) => {
 
         // 모든 처리에 성공했으므로 정상 조회 결과 구성
         res.sendJson({'item': json});
+    })
+    // 리뷰Id가 없는 photo테이블 데이터를 삭제
+    router.delete("/photo", async(req, res, next) => {
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.GJ_database);
+            await dbcon.connect();
+
+            const sql = 'SELECT photo_id,  CONVERT(path USING utf8) as path FROM photo WHERE review_id IS ?';
+            const [result] = await dbcon.query(sql, [null]);
+
+            console.log(result);
+
+            // 리뷰Id가 없는 photo파일 삭제 
+            result.forEach((v, i) => {
+                fs.unlinkSync(`../_files${v.path}`);
+            })
+
+            await dbcon.query("DELETE FROM photo WHERE review_id IS ?", [null])
+        }catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }
+
+        res.sendJson();
     })
 return router;
 }
