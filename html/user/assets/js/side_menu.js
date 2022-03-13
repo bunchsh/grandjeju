@@ -9,7 +9,6 @@
 
 document.write("<script src='./include.js'></script>");
 
-console.log("사이드 메뉴 스크립트 시작")
 const burger = document.querySelector(".hamburger_icon");
 const side = document.querySelector("#side_menu_bar");
 const x = document.querySelector(".x_button");

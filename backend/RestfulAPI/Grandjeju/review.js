@@ -254,14 +254,16 @@ module.exports = (app) => {
 
                     const sql_photo = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE photo_id=?';
                     const [result_photo] = await dbcon.query(sql_photo, [v]);
-                    console.log(result_photo[0].path)
                 
                     if (json[0].text.indexOf(result_photo[0].path) != -1) {
-                        console.log(v)
                         // 데이터 수정하기
                         const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
                         const input_data1 = [result1.insertId, v];
                         const [result_p] = await dbcon.query(sql_p, input_data1);
+                    } else {
+                        // 파일 삭제
+                        await dbcon.query("DELETE FROM photo WHERE photo_id=?", [v])
+                        fs.unlinkSync(`../_files${result_photo[0].path}`);
                     }
                 })
             }
@@ -326,14 +328,16 @@ module.exports = (app) => {
 
                     const sql_photo = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE photo_id=?';
                     const [result_photo] = await dbcon.query(sql_photo, [v]);
-                    console.log(result_photo[0].path)
                 
                     if (json[0].text.indexOf(result_photo[0].path) != -1) {
-                        console.log(v)
                         // 데이터 수정하기
                         const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
                         const input_data1 = [review_id, v];
                         const [result_p] = await dbcon.query(sql_p, input_data1);
+                    } else {
+                        // 파일 삭제
+                        await dbcon.query("DELETE FROM photo WHERE photo_id=?", [v])
+                        fs.unlinkSync(`../_files${result_photo[0].path}`);
                     }
                 })
             }
@@ -369,9 +373,12 @@ module.exports = (app) => {
             console.log(result);
 
             // 참조 파일 삭제
-            result.forEach((v, i) => {
-                fs.unlinkSync(`../_files${v.path}`);
-            })
+            if (result != null) {
+                result.forEach((v, i) => {
+                    fs.unlinkSync(`../_files${v.path}`);
+                })
+            }
+            
             
             // 참조 포토테이블 삭제
             await dbcon.query("DELETE FROM photo WHERE review_id=?", [review_id])

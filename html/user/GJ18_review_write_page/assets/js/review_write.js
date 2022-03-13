@@ -1,15 +1,16 @@
 let login_info = null;
+let complete = false;
 (async () => {
     try {
         const response = await axios.get('/members/info');
         login_info = response.data
     } catch (e) {
         swal({
-        text: e.response.data.rtmsg, // Alert 내용
-        buttons: {
-            OK: true,  // 확인 버튼
-        }
-    });
+            text: e.response.data.rtmsg, // Alert 내용
+            buttons: {
+                OK: true,  // 확인 버튼
+            }
+        });
         return;
     }
     console.log(login_info.item);
@@ -41,7 +42,7 @@ document.querySelector('#review_write').addEventListener("submit", async(e) => {
         });
         json = response.data;
 
-        
+
     } catch (e) {
         swal({
         text: e.response.data.rtmsg, // Alert 내용
@@ -51,7 +52,9 @@ document.querySelector('#review_write').addEventListener("submit", async(e) => {
     });
         return;
     }
+
     if(json != null) {
+
         window.location ="/GJ19_review_datail_page/review_detail.html?review_id=" + json.item[0].review_id;
     }
 })

@@ -1,9 +1,7 @@
 /** GET 파라미터 받기 */
 const params = new URLSearchParams(window.location.search);
-console.log(params);
 const query = params.get('query') || "";
 const page = params.get('page') || 1;
-console.log(page);
 const search = params.get('search') || 'title';
 const order = params.get('order') || "";
 
