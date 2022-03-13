@@ -103,7 +103,7 @@ module.exports = (app) => {
             dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
-            const sql = 'SELECT photo_id,  CONVERT(path USING utf8) as path FROM photo WHERE review_id IS ?';
+            const sql = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE review_id IS ?';
             const [result] = await dbcon.query(sql, [null]);
 
             console.log(result);

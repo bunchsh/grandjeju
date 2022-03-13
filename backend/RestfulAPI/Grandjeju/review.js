@@ -200,6 +200,7 @@ module.exports = (app) => {
         const user_name = req.post('user_name');
         const title = req.post('title');
         const text = req.post('text');
+        const photos = req.post('photos');
         
 
         try {
@@ -231,9 +232,18 @@ module.exports = (app) => {
             await dbcon.connect();
 
             // 데이터 저장하기
-            const sql = 'INSERT INTO review (user_id, user_name, title, text) VALUES (?,?,?,?)';
-            const input_data = [user_id, user_name, title, text, ];
-            const [result1] = await dbcon.query(sql, input_data);
+            const sql1 = 'INSERT INTO review (user_id, user_name, title, text) VALUES (?,?,?,?)';
+            const input_data = [user_id, user_name, title, text];
+            const [result1] = await dbcon.query(sql1, input_data);
+
+            if (photos != null) {
+                photos.forEach(async(v, i) => {
+                    // 데이터 수정하기
+                    const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
+                    const input_data = [result1.insertId, v];
+                    const [result_p] = await dbcon.query(sql_p, input_data);
+                })
+            }
 
             // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
             const sql2 = "SELECT review_id, user_id, user_name, title, CONVERT(text USING utf8) as text, date_format(review_date,'%Y/%m/%d %H:%i') review_date FROM review WHERE review_id=?";
@@ -241,6 +251,9 @@ module.exports = (app) => {
 
             // 조회 결과를 미리 준비한 변수에 저장함
             json = result2
+            
+            console.log(json)
+
         } catch (err) {
             return next(err);
         } finally {
@@ -320,11 +333,12 @@ module.exports = (app) => {
             dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
-            // 참조 파일 삭제
+            // 참조 포토데이터 조회
             const sql = 'SELECT photo_id,  CONVERT(path USING utf8) as path FROM photo WHERE review_id=?';
             const [result] = await dbcon.query(sql, [review_id])
             console.log(result);
 
+            // 참조 파일 삭제
             result.forEach((v, i) => {
                 fs.unlinkSync(`../_files${v.path}`);
             })

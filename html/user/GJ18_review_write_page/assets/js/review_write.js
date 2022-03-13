@@ -36,16 +36,11 @@ document.querySelector('#review_write').addEventListener("submit", async(e) => {
             user_name : user_name,
             user_id : user_id,
             title : title,
-            text : text
+            text : text,
+            photos : id_array
         });
         json = response.data;
 
-        id_array.forEach(async (v, i) => {
-            const updated = await axios.put("/photo/" + v ,{
-                review_id : json.item[0].review_id
-            });
-            up = updated.data;
-        })
         
     } catch (e) {
         swal({
