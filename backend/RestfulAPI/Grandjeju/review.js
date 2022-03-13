@@ -269,8 +269,7 @@ module.exports = (app) => {
         const review_id = req.get('review_id');
         const title = req.post('title');
         const text = req.post('text');
-
-        
+        const photos = req.post('photos');
 
         try {
             regexHelper.value(title, '리뷰제목이 없습니다.');
@@ -295,6 +294,15 @@ module.exports = (app) => {
             const sql = 'UPDATE review SET title=?, text=? WHERE review_id=?';
             const input_data = [ title, text, review_id];
             const [result1] = await dbcon.query(sql, input_data);
+
+            if (photos != null) {
+                photos.forEach(async(v, i) => {
+                    // 데이터 수정하기
+                    const sql_p = 'UPDATE photo SET review_id=? WHERE photo_id=?';
+                    const input_data = [review_id, v];
+                    const [result_p] = await dbcon.query(sql_p, input_data);
+                })
+            }
 
             // 결과 행 수가 0이라면 예외처리
             if (result1.affectedRows < 1) {

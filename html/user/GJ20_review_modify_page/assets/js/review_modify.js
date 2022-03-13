@@ -9,17 +9,11 @@ document.querySelector('#review_write').addEventListener("submit", async(e) => {
     try { 
         const response = await axios.put("/review/" + review_id, {
             title : title,
-            text : text
+            text : text,
+            photos : id_array
         });
         json = response.data;
 
-        id_array.forEach(async (v, i) => {
-            const updated = await axios.put("/photo/" + v ,{
-                review_id : json.item[0].review_id
-            });
-            up = updated.data;
-        })
-        
     } catch (e) {
         swal({
         text: e.response.data.rtmsg, // Alert 내용
