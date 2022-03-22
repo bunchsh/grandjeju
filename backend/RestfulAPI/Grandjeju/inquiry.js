@@ -419,9 +419,7 @@ module.exports = (app) => {
     router.put("/inquiry_state/:inquiry_id", async (req, res,next) =>{
         const inquiry_id = req.get('inquiry_id');
         const state = req.post('state');
-        console.log(state);
         
-
         try {
             regexHelper.value(inquiry_id, '필수 파라미터가 없습니다.');
             regexHelper.value(state, '답변상태 값이 없습니다');

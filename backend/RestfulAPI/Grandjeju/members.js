@@ -458,9 +458,7 @@ module.exports = (app) => {
      router.post("/members/login", async (req, res, next) => {
         // 저장을 위한 파라미터 입력 받기
         const user_id = req.post('user_id');
-        console.log(user_id);
         const user_pw = req.post('user_pw');
-        console.log(user_pw);
 
         try {
             // 아이디와 비밀번호를 유추하는데 힌트가 될 수 있으므로 유효성 검사는 입력 여부만 확인
@@ -524,9 +522,7 @@ module.exports = (app) => {
      router.post("/members/adminlogin", async (req, res, next) => {
         // 저장을 위한 파라미터 입력 받기
         const user_id = req.post('user_id');
-        console.log(user_id);
         const user_pw = req.post('user_pw');
-        console.log(user_pw);
 
         try {
             // 아이디와 비밀번호를 유추하는데 힌트가 될 수 있으므로 유효성 검사는 입력 여부만 확인
