@@ -119,6 +119,7 @@ app.use("/", static(config.public_path));
 app.use("/", static(config.user_path));
 app.use('/upload', static(config.upload.dir));
 app.use('/thumb',static(config.thumbnail.dir));
+app.use(favicon(config.favicon_path));
 
 /** 쿠키를 처리할 수 있는 객체 연결 (04-Cookie.js)*/ 
 app.use(cookieParser(config.secure.cookie_encrypt_key));
