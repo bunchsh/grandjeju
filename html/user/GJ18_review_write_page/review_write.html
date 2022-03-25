@@ -80,6 +80,12 @@
     </script>
     <script src='./assets/js/review_file_upload.js'></script>
     <script src="./assets/js/review_write.js"></script>
+    <script>
+        const delete_photo = async() => {
+            await axios.delete("/photo")
+        }
+        window.addEventListener('beforeunload', delete_photo);
+    </script>
 </body>
 
 </html>

@@ -17,6 +17,7 @@ let complete = false;
 })();
 document.querySelector('#review_write').addEventListener("submit", async(e) => {
     e.preventDefault();
+    window.removeEventListener('beforeunload', delete_photo)
 
     const regexHelper = new RegexHelper();
 

@@ -98,6 +98,7 @@ module.exports = (app) => {
     })
     // 리뷰Id가 없는 photo테이블 데이터를 삭제
     router.delete("/photo", async(req, res, next) => {
+        
         try {
             // 데이터베이스 접속
             dbcon = await mysql2.createConnection(config.GJ_database);
