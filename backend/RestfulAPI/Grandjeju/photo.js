@@ -97,24 +97,31 @@ module.exports = (app) => {
         res.sendJson({'item': json});
     })
     // 리뷰Id가 없는 photo테이블 데이터를 삭제
-    router.delete("/photo", async(req, res, next) => {
-        
+    router.put("/photo_cancel", async(req, res, next) => {
+        const photos = req.post('photos');
+
         try {
             // 데이터베이스 접속
             dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
-            const sql = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE review_id IS ?';
-            const [result] = await dbcon.query(sql, [null]);
+            photos.forEach(async(v, i) => {
+                const sql = 'SELECT photo_id, CONVERT(path USING utf8) as path FROM photo WHERE review_id IS ? and photo_id=?';
 
-            console.log(result);
+                const [result] = await dbcon.query(sql, [null, v]);
 
-            // 리뷰Id가 없는 photo파일 삭제 
-            result.forEach((v, i) => {
-                fs.unlinkSync(`../_files${v.path}`);
+                // 리뷰Id가 없는 photo파일 삭제 
+                result.forEach((v, i) => {
+                    fs.unlinkSync(`../_files${v.path}`);
+                })
+            })
+            
+
+            photos.forEach(async(v, i) => {
+                await dbcon.query("DELETE FROM photo WHERE review_id IS ? and photo_id=?", [null,v ])
             })
 
-            await dbcon.query("DELETE FROM photo WHERE review_id IS ?", [null])
+            
         }catch (err) {
             return next(err);
         } finally {

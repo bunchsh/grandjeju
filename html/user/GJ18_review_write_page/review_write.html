@@ -70,6 +70,7 @@
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     <script src="./assets/js/write_regex_helper.js"></script>
     <script>
+        let id_array = []
         const Editor = toastui.Editor;
         const editor = new Editor({
             el: document.querySelector('#editor'),
@@ -81,10 +82,17 @@
     <script src='./assets/js/review_file_upload.js'></script>
     <script src="./assets/js/review_write.js"></script>
     <script>
-        const delete_photo = async() => {
-            await axios.delete("/photo")
+        const photo_cancel = async() => {
+            if (id_array[0] != null) {
+                await axios.put("/photo_cancel" , {
+                    photos : id_array
+                })
+            }
         }
-        window.addEventListener('beforeunload', delete_photo);
+
+        window.addEventListener('beforeunload', photo_cancel)
+
+
     </script>
 </body>
 

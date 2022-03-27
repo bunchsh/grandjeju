@@ -1,4 +1,4 @@
-let id_array = []
+
 document.querySelector('#photo_img').addEventListener('change', async (e) => {
     const files = e.target.files;
     const keys = Object.keys(files);
@@ -45,4 +45,5 @@ document.querySelector('#photo_img').addEventListener('change', async (e) => {
             }
         })();
     });
+    console.log(id_array)
 })

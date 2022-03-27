@@ -201,7 +201,6 @@ module.exports = (app) => {
         const title = req.post('title');
         const text = req.post('text');
         const photos = req.post('photos');
-        
 
         try {
             regexHelper.value(user_id, '아이디가 없습니다.');
