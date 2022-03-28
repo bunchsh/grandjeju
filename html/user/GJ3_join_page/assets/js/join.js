@@ -35,7 +35,12 @@
 
         json = response.data;
     } catch (e) {
-        alert(e.response.data.rtmsg);
+        swal({
+            text: e.response.data.rtmsg, // Alert 내용
+            buttons: {
+                OK: true,  // 확인 버튼
+            }
+        });
         return;
     }
 

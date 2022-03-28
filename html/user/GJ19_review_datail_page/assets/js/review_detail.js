@@ -13,10 +13,10 @@
      let json_login = null;
      try {
          const response1 = await axios.get('/review/' + review_id)
-         const response2 = await axios.get('/members/info');
-         json_review = response1.data
-         json_login = response2.data
-     }catch (e) {
+         const response2 = await axios.get('/membersinfo');
+         json_review = response1.data;
+         json_login = response2.data;
+     } catch (e) {
          swal({
          text: e.response.data.rtmsg, // Alert 내용
          buttons: {
@@ -24,7 +24,8 @@
              }
          }).then((value) => {   // 확인 버튼 이벤트
              if (value == 'OK') {
-             return;
+                history.back();
+                return;
              }
          });
      }
