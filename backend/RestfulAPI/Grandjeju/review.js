@@ -371,9 +371,16 @@ module.exports = (app) => {
             console.log(result);
 
             // 참조 파일 삭제
+            // 리뷰데이터에 파일경로가 존재하다면
             if (result != null) {
                 result.forEach((v, i) => {
-                    fs.unlinkSync(`../_files${v.path}`);
+                    // 파일의 존재여부 검사
+                    fs.exists(`../_files${v.path}`, (exists) => {
+                        // 존재한다면 파일 삭제
+                        if(exists) {
+                            fs.unlinkSync(`../_files${v.path}`);
+                        } 
+                    });
                 })
             }
             
