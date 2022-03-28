@@ -106,7 +106,7 @@ module.exports = {
         createDatabaseTable: true,
         // DB 테이블 구조.
         schema : {
-            tableName: 'sessions',
+            tableName: 'sessions2',
             columNames: {
                 session_id: 'session_id',
                 expires: 'expires',

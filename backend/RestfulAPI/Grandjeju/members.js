@@ -529,6 +529,23 @@ module.exports = (app) => {
         res.sendJson();
     });
 
+    /**
+     * 관리자 로그아웃
+     */
+     router.delete("/admin/logout", async (req, res, next) => {
+        if (!req.session.adminInfo) {
+            return next(new BadRequestException('로그인 상태가 아닙니다.'));
+        }
+
+        try {
+            await req.session.destroy();
+        } catch (err) {
+            return next(err);
+        }
+
+        res.sendJson();
+    });
+
     
     /** 회원 탈퇴 --> Delete(DELETE) */
     router.delete("/membersout/:member_id", async (req, res,next) =>{

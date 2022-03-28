@@ -7,9 +7,10 @@ window.addEventListener("load", () => {
     // 페이지 로드시 로그인 여부 검사
     (async () => {
         try {
-            const response = await axios.get("/membersinfo");
+            const response = await axios.get("/admininfo");
         } catch (error) {
             alert("로그인 정보가 없습니다.");
+            location.href = "../GJ1_login_page/login.html";
         }
 
         // 로그아웃
@@ -20,7 +21,7 @@ window.addEventListener("load", () => {
             (async () => {
                 try {
                     // Ajax 요청 보내기 -> 백엔드가 전달한 결과값이 response.data에 저장된다.
-                    const response = await axios.delete("/members/logout");
+                    const response = await axios.delete("/admin/logout");
                     alert("로그아웃되었습니다.");
                     location.href = "../GJ1_login_page/login.html";
                 } catch (error) {
