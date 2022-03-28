@@ -447,12 +447,14 @@ module.exports = (app) => {
      * 로그인 정보 확인
      */
      router.get("/admininfo", async (req, res, next) => {
-        if (req.session.adminInfo === undefined) {
+        if (req.session.memberInfo === undefined) {
             return next(new BadRequestException('로그인 후, 이용해 주세요.'));
+        } else if (req.session.memberInfo.is_admin === "N") {
+            return next(new BadRequestException('접근 권한이 없습니다.'));
         }
 
         res.sendJson({
-            'item': req.session.adminInfo
+            'item': req.session.memberInfo
         });
     });
 
@@ -478,7 +480,7 @@ module.exports = (app) => {
 
         try {
             // 데이터베이스 접속
-            dbcon = await mysql2.createConnection(config.GJ_database2);
+            dbcon = await mysql2.createConnection(config.GJ_database);
             await dbcon.connect();
 
             // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회 결과에서 비밀번호는 제외)
@@ -507,7 +509,7 @@ module.exports = (app) => {
         }
 
         // 조회 결과를 세션에 저장
-        req.session.adminInfo = json[0];
+        req.session.memberInfo = json[0];
 
         res.sendJson();
     });
@@ -517,23 +519,6 @@ module.exports = (app) => {
      */
      router.delete("/members/logout", async (req, res, next) => {
         if (!req.session.memberInfo) {
-            return next(new BadRequestException('로그인 상태가 아닙니다.'));
-        }
-
-        try {
-            await req.session.destroy();
-        } catch (err) {
-            return next(err);
-        }
-
-        res.sendJson();
-    });
-
-    /**
-     * 관리자 로그아웃
-     */
-     router.delete("/admin/logout", async (req, res, next) => {
-        if (!req.session.adminInfo) {
             return next(new BadRequestException('로그인 상태가 아닙니다.'));
         }
 

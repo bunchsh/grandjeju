@@ -89,29 +89,4 @@ module.exports = {
             },
         },
     },
-
-    GJ_database2: {
-        host: 'localhost', // MSQL 서버 주소 (다른 PC인 경우 IP주소)
-        port: 3306, // MySQL 설치시 기본값 3306
-        user: 'root', // 접근 권한 이이디 (root=관리자)
-        password: 'root', // 설치시 입력한 비밀번호
-        database: 'grandjeju', // 사용할 데이터베이스 이름
-
-        // -------- 세션
-        // 세션 만료시간. (지정된 시간동안 페이지 이동이 없을 경우 로그아웃)
-        checkExpirationInterval: 900000,
-        //최대 유효 세션 수 (최대 동접자 수)
-        expiration: 86400000,
-        // DB테이블이 없을 경우 자동 생성
-        createDatabaseTable: true,
-        // DB 테이블 구조.
-        schema : {
-            tableName: 'sessions2',
-            columNames: {
-                session_id: 'session_id',
-                expires: 'expires',
-                data: 'data',
-            },
-        },
-    },
 };
