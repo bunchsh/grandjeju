@@ -65,7 +65,7 @@
                 const user_pw = document.querySelector(".user_pw").value;
 
                 try {
-                    const response = await axios.post("/memberstest/adminlogin", {
+                    const response = await axios.post("/members/adminlogin", {
                         user_id: user_id,
                         user_pw: user_pw
                     });
