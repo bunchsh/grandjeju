@@ -12,7 +12,7 @@
     let end = null;     // 퇴실일 변수
     
     try {
-        const response = await axios.get('/members/info');
+        const response = await axios.get('/membersinfo');
         json = response.data;
     } catch (e) {
         swal({

@@ -2,7 +2,7 @@ let login_info = null;
 let complete = false;
 (async () => {
     try {
-        const response = await axios.get('/members/info');
+        const response = await axios.get('/membersinfo');
         login_info = response.data
     } catch (e) {
         swal({

@@ -3,7 +3,7 @@ document.querySelector(".btn-write").addEventListener('click', e => {
         let json = null;
     
         try {
-            const response = await axios.get('/members/info');
+            const response = await axios.get('/membersinfo');
             json = response.data;
         } catch (e) {
             swal({
