@@ -71,7 +71,19 @@ document.querySelector('#search').value = search;
                 const reserv_id = current.dataset.reserv_id;
                 const reserv_name = current.dataset.reserv_name;
 
-                if (confirm('정말' + reserv_name + '(을)를 삭제하시겠습니까?')) {
+                if (confirm('정말 ' + reserv_name + '님의 예약을 취소하시겠습니까?')) {
+
+                    try {
+                        const response = await axios.post("/payments/cancel", {
+                            reserv_id: reserv_id
+                        });
+
+                    } catch (error) {
+                        const errorMsg = "[" + error.response.status + "] " + error.response.statusText
+                        console.error(errorMsg);
+                        alert("예약 취소에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                    }
+
                     // Ajax를 통한 삭제 처리
                     try {
                         const url = '/reservation/' + reserv_id;

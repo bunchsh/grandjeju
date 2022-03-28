@@ -2,7 +2,7 @@
  * @filename    : reservation_pagination.js
  * @author      : 양수원 (ysw7939@gmail.com) 
  * @description : pagination 구현을 위한 함수
- */
+*/
 
 /** 페이지 번호 구현 함수 */
 function pagenation(selector, data) {
