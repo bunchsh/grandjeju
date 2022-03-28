@@ -443,6 +443,19 @@ module.exports = (app) => {
         });
     });
 
+    /**
+     * 로그인 정보 확인
+     */
+     router.get("/admininfo", async (req, res, next) => {
+        if (req.session.adminInfo === undefined) {
+            return next(new BadRequestException('로그인 후, 이용해 주세요.'));
+        }
+
+        res.sendJson({
+            'item': req.session.adminInfo
+        });
+    });
+
 
     /**
      * 관리자 로그인
@@ -465,7 +478,7 @@ module.exports = (app) => {
 
         try {
             // 데이터베이스 접속
-            dbcon = await mysql2.createConnection(config.GJ_database);
+            dbcon = await mysql2.createConnection(config.GJ_database2);
             await dbcon.connect();
 
             // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회 결과에서 비밀번호는 제외)
@@ -494,7 +507,7 @@ module.exports = (app) => {
         }
 
         // 조회 결과를 세션에 저장
-        req.session.memberInfo = json[0];
+        req.session.admininfo = json[0];
 
         res.sendJson();
     });

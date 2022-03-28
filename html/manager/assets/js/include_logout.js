@@ -10,7 +10,6 @@ window.addEventListener("load", () => {
             const response = await axios.get("/membersinfo");
         } catch (error) {
             alert("로그인 정보가 없습니다.");
-            location.href = "../GJ1_login_page/login.html";
         }
 
         // 로그아웃
