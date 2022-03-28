@@ -103,7 +103,7 @@
     </script>
 
     <!-- 1:1 문의 section -->
-    <script id="inquiry-template" type="text/x-handlebars-template">
+    <!-- <script id="inquiry-template" type="text/x-handlebars-template">
         {{#each item}}
             <div class="history">
                 <a href="../GJ9_inquiry_detail_page/inquiry_detail.html?inquiry_id={{inquiry_id}}">
@@ -114,7 +114,7 @@
                 </a>
             </div>
         {{/each}}
-    </script>
+    </script> -->
 
     <!-- 리뷰 내역 section -->
     <script id="review-template" type="text/x-handlebars-template">
@@ -134,3 +134,17 @@
 </body>
 
 </html>
+
+json2.item.forEach((v) => {
+    const reserv = document.querySelector("#reserv-template")
+    reserv.innerHTML += `
+    <div class="history">
+        <a href="../GJ9_inquiry_detail_page/inquiry_detail.html?inquiry_id=${v.inquiry_id}">
+            <img src="assets/img/right-arrow.png">
+            <h3 class="title_inquiry">${v.title}</h3>
+            <span class="state_inquiry">${state_translation(v.state)}</span>
+            <span class="inquiry_date">${v.inquiry_date}</span>
+        </a>
+    </div>
+`
+})
