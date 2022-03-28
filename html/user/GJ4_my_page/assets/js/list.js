@@ -4,6 +4,15 @@
  * @description : 로그인된 회원 정보를 조회하여 각 항목의 내역들을 리스트로 출력
  */
 
+// 답변상태에 따른 출력 내용을 변경
+const state_translation = (state) => {
+    if (state == 'Y') {
+        return '답변 완료'
+    } else if (state == 'N') {
+        return '답변 대기'
+    }
+}
+
 (async () => {
     let json = null;
 
@@ -97,10 +106,23 @@
 
             if (json3 != null) {
                 console.log(json3);
-                const inquiry = document.querySelector("#inquiry-template").innerHTML;
-                const i_template = Handlebars.compile(inquiry);
-                const i_html = i_template(json3);
-                document.querySelector('#inquiry').insertAdjacentHTML('beforeend', i_html);
+                // const inquiry = document.querySelector("#inquiry-template").innerHTML;
+                json3.item.forEach((v) => {
+                    const inquiry = document.querySelector("#inquiry")
+                    inquiry.innerHTML += `
+                    <div class="history">
+                        <a href="../GJ9_inquiry_detail_page/inquiry_detail.html?inquiry_id=${v.inquiry_id}">
+                            <img src="assets/img/right-arrow.png">
+                            <h3 class="title_inquiry">${v.title}</h3>
+                            <span class="state_inquiry">${state_translation(v.state)}</span>
+                            <span class="inquiry_date">${v.inquiry_date}</span>
+                        </a>
+                    </div>
+                `
+                })
+                // const i_template = Handlebars.compile(inquiry);
+                // const i_html = i_template(json3);
+                // document.querySelector('#inquiry').insertAdjacentHTML('beforeend', i_html);
             }
         })();
 
