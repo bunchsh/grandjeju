@@ -51,12 +51,13 @@ let inquiry_id = params.get('inquiry_id');
     }
 
 
-    
-    if(json_inquiry.item[0].state == "N") {
-        btn_group.insertAdjacentHTML('afterbegin',
-            `
-            <button class="btn_modify" type="button"><a href="/GJ10_inquiry_modify_page/inquiry_modify.html?inquiry_id=${inquiry_id}">수정</a></button>
-            `
-        )  
+    const btn_modify = document.querySelector(".btn_modify");
+    const btn_delete = document.querySelector(".btn_delete");
+    const btn_modify_after = document.querySelector(".btn_delete_after");
+
+    if(json_inquiry.item[0].state == "Y") {
+        btn_modify.style.display='none';
+        btn_delete.style.display='none';
+        btn_modify_after.style.display='block';
     }
 })();
