@@ -80,7 +80,7 @@ document.querySelector('#search').value = search;
             listBody.innerHTML +=`
             <tr>
                 <th scope="row">${index}</th>
-                <td><button class="btn ${state_btn(v.state)}  btn-state" data-inquiry_id=${v.inquiry_id} data-state=${state_change(v.state)}>${state_translation(v.state)}</button></td>
+                <td><button class="btn ${state_btn(v.state)}  btn-state" data-inquiry_id=${v.inquiry_id}>${state_translation(v.state)}</button></td>
                 <td>${v.type}</td>
                 <td>${v.user_id}</td>
                 <td>${v.user_name}</td>
@@ -129,36 +129,36 @@ document.querySelector('#search').value = search;
         });
 
         // 답변상태 버튼에 대한 이벤트 처리
-        const btnState = document.querySelectorAll(".btn-state");
+        // const btnState = document.querySelectorAll(".btn-state");
         
-        btnState.forEach((v, i) => {
-            v.addEventListener("click", async e => {
-                e.preventDefault();
+        // btnState.forEach((v, i) => {
+        //     v.addEventListener("click", async e => {
+        //         e.preventDefault();
 
-                // 클릭된 버튼 자신
-                const current = e.currentTarget;
+        //         // 클릭된 버튼 자신
+        //         const current = e.currentTarget;
 
-                // 클릭된 버튼에 숨겨진 data속성값들을 가져온다.
-                const inquiry_id = current.dataset.inquiry_id;
-                const state = current.dataset.state;
-                console.log(state);
+        //         // 클릭된 버튼에 숨겨진 data속성값들을 가져온다.
+        //         const inquiry_id = current.dataset.inquiry_id;
+        //         const state = current.dataset.state;
+        //         console.log(state);
 
-                try {                    
-                    const json = await axios.put('/inquiry_state/' + inquiry_id ,{
-                        state: state
-                    });
-                } catch (e) {
-                    // 에러가 발생한 경우 벡엔드가 주는 json 받기
-                    const data = e.response.data;
-                    alert("[" + data.rt + "]" + data.rmsg);
-                    return;
-                }
-                // 요청 성공시 변경된 상태에 알맞은 형태로 버튼의 속성을 변경 한다.
-                current.innerHTML = state_translation(state);
-                current.className = `btn ${state_btn(state)} btn-state`
-                current.dataset.state = state_change(state);
-            });
-        });
+        //         try {                    
+        //             const json = await axios.put('/inquiry_state/' + inquiry_id ,{
+        //                 state: state
+        //             });
+        //         } catch (e) {
+        //             // 에러가 발생한 경우 벡엔드가 주는 json 받기
+        //             const data = e.response.data;
+        //             alert("[" + data.rt + "]" + data.rmsg);
+        //             return;
+        //         }
+        //         // 요청 성공시 변경된 상태에 알맞은 형태로 버튼의 속성을 변경 한다.
+        //         current.innerHTML = state_translation(state);
+        //         current.className = `btn ${state_btn(state)} btn-state`
+        //         current.dataset.state = state_change(state);
+        //     });
+        // });
 
         /** 페이지번호 구형 한수 호출하기 */
         // --> 페이지번호 HTML이 출력될 위치에 대한 selector와 페이지 번호 구현에 필요한 정보 전달

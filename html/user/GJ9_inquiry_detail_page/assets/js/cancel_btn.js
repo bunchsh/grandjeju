@@ -19,6 +19,5 @@ document.querySelector('.btn_delete').addEventListener('click', e => {
             }
             window.location ="/GJ4_my_page/my.html"
         }
-        
     });
 })
