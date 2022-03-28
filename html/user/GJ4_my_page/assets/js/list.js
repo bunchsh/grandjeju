@@ -8,7 +8,7 @@
     let json = null;
 
     try {
-        const response = await axios.get('/members/info');
+        const response = await axios.get('/membersinfo');
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);
