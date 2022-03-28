@@ -507,7 +507,7 @@ module.exports = (app) => {
         }
 
         // 조회 결과를 세션에 저장
-        req.session.admininfo = json[0];
+        req.session.adminInfo = json[0];
 
         res.sendJson();
     });
