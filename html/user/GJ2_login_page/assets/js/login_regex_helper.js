@@ -103,36 +103,36 @@ class RegexHelper {
 }
 
 document.querySelector('#login').addEventListener("submit", async e => {
-            e.preventDefault();
+    e.preventDefault();
 
-            const regexHelper = new RegexHelper();
+    const regexHelper = new RegexHelper();
 
-            /** 아이디 검사 */
-            if (!regexHelper.id_value(".user_id")) { return false; }
+    /** 아이디 검사 */
+    if (!regexHelper.id_value(".user_id")) { return false; }
 
-            /** 비밀번호 검사 */
-            if (!regexHelper.pw_value(".user_pw")) { return false; }
+    /** 비밀번호 검사 */
+    if (!regexHelper.pw_value(".user_pw")) { return false; }
 
-            let json = null;
+    let json = null;
 
-            const user_id = document.querySelector(".user_id").value;
-            const user_pw = document.querySelector(".user_pw").value;
-            const span = document.querySelector(".idpw_err");
+    const user_id = document.querySelector(".user_id").value;
+    const user_pw = document.querySelector(".user_pw").value;
+    const span = document.querySelector(".idpw_err");
 
-            try {
-                const response = await axios.post("/members/login", {
-                    user_id: user_id,
-                    user_pw: user_pw
-                });
-
-                json = response.data;
-                
-            } catch (e) {
-                span.style.display = 'block';
-                return;
-            }
-
-            // 처리 완료
-            span.style.display = 'none';
-            location.href = "/GJ1_main_page/main.html";
+    try {
+        const response = await axios.post("/members/login", {
+            user_id: user_id,
+            user_pw: user_pw
         });
+
+        json = response.data;
+        
+    } catch (e) {
+        span.style.display = 'block';
+        return;
+    }
+
+    // 처리 완료
+    span.style.display = 'none';
+    location.href = "/GJ1_main_page/main.html";
+});

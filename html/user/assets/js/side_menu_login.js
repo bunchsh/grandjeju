@@ -6,7 +6,7 @@
 window.addEventListener("load", () => {
     (async () => {
         try {
-            const response = await axios.get("/members/info");
+            const response = await axios.get("/membersinfo");
             
             // 백엔드에서 전달된 결과가 로그인 성공을 의미하는 경우
             document.getElementById("login_button").style.display = "none";
