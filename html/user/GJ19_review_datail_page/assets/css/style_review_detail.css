@@ -8,7 +8,7 @@
 /** ---------- CONTENT ---------- */
 /** 제목 */
 #container #content .title_group {
-    padding: 30px 0 10px 0;
+    padding: 10px 5px;
 }
 #container #content .title_group span {
     font-size: 18px;
@@ -17,7 +17,7 @@
 
 /** 작성자 이름 및 작성 날짜 */
 #container #content .writer_group {
-    padding-bottom: 10px;
+    padding: 0 5px 10px 5px;
     border-bottom: 1px solid gray;
 }
 #container #content .writer_group span {
@@ -26,7 +26,6 @@
 
 /** 본문 */
 #container #content .main_group {
-    min-height: 480px;
     margin: 0 auto;
     margin-top: 30px;
     font-size: 14px;
