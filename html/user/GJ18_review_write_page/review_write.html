@@ -80,6 +80,19 @@
     </script>
     <script src='./assets/js/review_file_upload.js'></script>
     <script src="./assets/js/review_write.js"></script>
+    <script>
+        const photo_cancel = async() => {
+            if (id_array[0] != null) {
+                await axios.put("/photo_cancel" , {
+                    photos : id_array
+                })
+            }
+        }
+
+        window.addEventListener('beforeunload', photo_cancel)
+
+
+    </script>
 </body>
 
 </html>
