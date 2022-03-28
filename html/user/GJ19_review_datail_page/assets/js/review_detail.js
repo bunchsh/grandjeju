@@ -3,10 +3,10 @@
  let review_id = params.get('review_id');
 
  (async () => {
-     
-
      const title = document.querySelector(".review_title")
      const text = document.querySelector(".text")
+     const user_name = document.querySelector(".user_name")
+     const review_date = document.querySelector(".review_date")
      const btn_group = document.querySelector(".btn_group")
 
      let json_review = null;
@@ -32,7 +32,9 @@
      if(json_review != null) {
          console.log(json_review);
          title.innerHTML = json_review.item[0].title;
-         text.innerHTML = json_review.item[0].text
+         text.innerHTML = json_review.item[0].text;
+         user_name.innerHTML = json_review.item[0].user_name;
+         review_date.innerHTML = json_review.item[0].review_date;
      }
 
      if (json_review.item[0].user_id == json_login.item.user_id) {

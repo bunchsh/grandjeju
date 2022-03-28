@@ -17,27 +17,24 @@
 
 /** 작성자 이름 및 작성 날짜 */
 #container #content .writer_group {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid gray;
 }
 #container #content .writer_group span {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /** 본문 */
 #container #content .main_group {
-    width: 90%;
     min-height: 480px;
     margin: 0 auto;
+    margin-top: 30px;
+    font-size: 14px;
     border-bottom: 1px solid gray;
 }
-#container #content .main_group .ask_group {
-    min-height: 200px;
-    padding-top: 10px;
-}
-#container #content .main_group .ask_group .ask_text {
-    font-size: 12px;
-    line-height: 20px;
+#container #content .main_group .text {
+    width: 95%;
+    margin: 0 auto;
 }
 #container #content .main_group img {
     display: block;
