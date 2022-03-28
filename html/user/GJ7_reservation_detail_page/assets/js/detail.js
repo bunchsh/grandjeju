@@ -9,7 +9,7 @@
 
     // 세션에 저장된 로그인 정보
     try {
-        const response = await axios.get('/members/info');
+        const response = await axios.get('/membersinfo');
         json = response.data;
     } catch (e) {
         alert(e.response.data.rtmsg);

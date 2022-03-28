@@ -20,7 +20,12 @@ const state_translation = (state) => {
         const response = await axios.get('/membersinfo');
         json = response.data;
     } catch (e) {
-        alert(e.response.data.rtmsg);
+        swal({
+            text: e.response.data.rtmsg, // Alert 내용
+            buttons: {
+                OK: true,  // 확인 버튼
+            }
+        });
         window.location = "/GJ2_login_page/login.html";
         return;
     }
@@ -38,7 +43,12 @@ const state_translation = (state) => {
         (async () => {
 
             if (!json.item.user_id) {
-                alert('예약 내역이 없습니다.');
+                swal({
+                    text: '예약 내역이 없습니다.', // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                });
                 return;
             }
 
@@ -48,7 +58,12 @@ const state_translation = (state) => {
                 const response = await axios.get('/reservationdetail/' + json.item.user_id);
                 json2 = response.data;
             } catch (e) {
-                alert(e.response.data.rtmsg);
+                swal({
+                    text: e.response.data.rtmsg, // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                });
                 return;
             }
 
@@ -65,7 +80,12 @@ const state_translation = (state) => {
         (async () => {
 
             if (!json.item.user_id) {
-                alert('문의 내역이 없습니다.');
+                swal({
+                    text: '문의 내역이 없습니다.', // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                });
                 return;
             }
 
@@ -75,7 +95,12 @@ const state_translation = (state) => {
                 const response = await axios.get('/inquirydetail/' + json.item.user_id);
                 json3 = response.data;
             } catch (e) {
-                alert(e.response.data.rtmsg);
+                swal({
+                    text: e.response.data.rtmsg, // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                });
                 return;
             }
 
@@ -105,7 +130,12 @@ const state_translation = (state) => {
         (async () => {
 
             if (!json.item.user_id) {
-                alert('리뷰 내역이 없습니다.');
+                swal({
+                    text: '리뷰 내역이 없습니다.', // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                });
                 return;
             }
 
@@ -115,7 +145,12 @@ const state_translation = (state) => {
                 const response = await axios.get('/reviewdetail/' + json.item.user_id);
                 json4 = response.data;
             } catch (e) {
-                alert(e.response.data.rtmsg);
+                swal({
+                    text: e.response.data.rtmsg, // Alert 내용
+                    buttons: {
+                        OK: true,  // 확인 버튼
+                    }
+                });
                 return;
             }
 

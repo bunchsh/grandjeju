@@ -213,7 +213,7 @@
                                             msg += "에러내용 : " + rsp.error_msg;
                                             history.back();
                                         }
-                                        alert(msg);
+                                        // alert(msg);
                                     }
                                 );
                             }
@@ -300,7 +300,7 @@
                                         msg += "에러내용 : " + rsp.error_msg;
                                         history.back();
                                     }
-                                    alert(msg);
+                                    // alert(msg);
                                 }
                                 );
                             }
@@ -386,7 +386,7 @@
                                         msg += "에러내용 : " + rsp.error_msg;
                                         history.back();
                                     }
-                                    alert(msg);
+                                    // alert(msg);
                                     
                                 }
                             );

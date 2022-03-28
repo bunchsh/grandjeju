@@ -16,7 +16,7 @@ let inquiry_id = params.get('inquiry_id');
     let json_login = null;
     try {
         const response1 = await axios.get('/inquiry/' + inquiry_id)
-        const response2 = await axios.get('/members/info');
+        const response2 = await axios.get('/membersinfo');
         json_inquiry = response1.data
         json_login = response2.data
     }catch (e) {
