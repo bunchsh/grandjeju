@@ -38,8 +38,16 @@ let inquiry_id = params.get('inquiry_id');
         type.innerHTML = json_inquiry.item[0].type
         inquiry_date.innerHTML = json_inquiry.item[0].inquiry_date
         inquiry_text.innerHTML = json_inquiry.item[0].inquiry_text
-        answer_text.innerHTML = json_inquiry.item[0].answer_text
         
+        if (json_inquiry.item[0].answer_text == null) {
+            answer_text.insertAdjacentHTML('afterbegin',
+                `
+                <span class="no_answer">답변 대기 중입니다.</span>
+                `
+            )
+        } else {
+            answer_text.innerHTML = json_inquiry.item[0].answer_text
+        }
     }
 
 
