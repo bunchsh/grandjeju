@@ -1,9 +1,4 @@
 { 
-  "scripts": {
-  "start": "cd backend/RestfulAPI && node app.js",
-  "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-  "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-},
   "dependencies": {
     "axios": "^0.24.0",
     "body-parser": "^1.19.1",
