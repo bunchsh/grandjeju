@@ -1,4 +1,4 @@
-{ 
+{
   "dependencies": {
     "axios": "^0.24.0",
     "body-parser": "^1.19.1",
@@ -24,5 +24,24 @@
     "sweetalert": "^2.1.2",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
-  }
+  },
+  "name": "grandjeju",
+  "description": "> 펜션 예약 웹 사이트 프로젝트\r <br />",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend/RestfulAPI && node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bunchsh/grandjeju.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bunchsh/grandjeju/issues"
+  },
+  "homepage": "https://github.com/bunchsh/grandjeju#readme"
 }

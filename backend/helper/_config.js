@@ -16,7 +16,7 @@ module.exports = {
     },
 
     /** 웹 서버 포트번호 */
-    server_port: 3020,
+    server_port: process.env.PORT || 3020,
 
     /** manager 디렉토리 경로 */
     public_path: path.join(__dirname, '../../html/manager'),
