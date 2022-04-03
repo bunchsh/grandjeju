@@ -64,7 +64,7 @@
 }
 #content p {
     font-size: 13px;
-    color: #555;
+    color: #666;
     margin-bottom: 15px;
 }
 #content h4 {
@@ -99,7 +99,7 @@
 
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333;
+    color: #222;
 }
 
 .text-center .pagination > li {
